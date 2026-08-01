@@ -32,7 +32,7 @@ export function SectionHeading({
       <h2
         id={titleId}
         className={cn(
-          "col-span-6 font-display text-[clamp(3.2rem,5.3vw,6.3rem)] font-semibold leading-[0.94] tracking-[-0.045em] text-balance max-[940px]:col-start-3 max-[940px]:col-end-[-1] max-[640px]:col-span-1 max-[640px]:mt-5 max-[640px]:text-[clamp(3rem,13.7vw,4.8rem)]",
+          "col-span-6 font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] text-balance max-[940px]:col-start-3 max-[940px]:col-end-[-1] max-[640px]:col-span-1 max-[640px]:mt-5 max-[640px]:text-[clamp(3rem,13.7vw,4.8rem)]",
           compact && "col-span-8",
         )}
       >

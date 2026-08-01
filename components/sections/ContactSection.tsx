@@ -54,7 +54,7 @@ export function ContactSection({ locale, messages }: { locale: Locale; messages:
       <div className="grid grid-cols-12 gap-grid max-[940px]:grid-cols-6 max-[940px]:gap-y-16">
         <div className="reveal-on-scroll col-span-7 max-[940px]:col-span-full">
           <Eyebrow>{contact.eyebrow}</Eyebrow>
-          <h2 className="mt-6 max-w-[9ch] font-display text-[clamp(3.7rem,6.7vw,7.8rem)] font-semibold leading-[0.92] tracking-[-0.05em] max-[640px]:text-[clamp(3.2rem,13.8vw,5rem)]">{contact.title}</h2>
+          <h2 className="mt-6 max-w-[9ch] font-display text-[clamp(3.7rem,6.7vw,7.8rem)] [font-weight:580] leading-[0.92] tracking-[-0.05em] max-[640px]:text-[clamp(3.2rem,13.8vw,5rem)]">{contact.title}</h2>
           <p className="mt-8 max-w-[46ch] text-[clamp(1rem,calc(.23vw+.96rem),1.15rem)] leading-[1.58] text-foreground/65">{contact.description}</p>
           <div className="mt-8 flex items-center gap-6 max-[640px]:flex-col max-[640px]:items-start">
             <ButtonLink variant="light" href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(contact.form.subject)}`}>{contact.mailCta}<span aria-hidden="true">↗</span></ButtonLink>

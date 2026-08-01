@@ -20,7 +20,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
             key={service.title}
           >
             <span className="col-span-1 font-mono text-[0.59rem] text-accent">{String(index + 1).padStart(2, "0")}</span>
-            <h3 className="col-start-3 col-span-3 font-display text-[clamp(2rem,3.2vw,3.8rem)] font-semibold leading-none tracking-[-0.04em] max-[1180px]:col-span-3 max-[940px]:col-start-2 max-[940px]:col-span-2 max-[640px]:col-start-2 max-[640px]:col-span-1">{service.title}</h3>
+            <h3 className="col-start-3 col-span-3 font-display text-[clamp(1.8rem,3vw,3.4rem)] [font-weight:560] leading-none tracking-[-0.04em] max-[1180px]:col-span-3 max-[940px]:col-start-2 max-[940px]:col-span-2 max-[640px]:col-start-2 max-[640px]:col-span-1">{service.title}</h3>
             <p className="col-start-6 col-span-4 max-w-[38ch] text-[0.96rem] leading-[1.58] text-surface/65 max-[1180px]:col-start-6 max-[940px]:col-start-4 max-[940px]:col-span-3 max-[640px]:col-start-2 max-[640px]:col-span-1">{service.description}</p>
             <div className="col-start-10 col-span-2 flex flex-wrap gap-2 max-[940px]:col-start-2 max-[940px]:col-span-5 max-[940px]:mt-4 max-[640px]:col-start-2 max-[640px]:col-span-1 max-[640px]:mt-1">
               {service.tags.map((tag) => <span className="rounded-full border border-surface/20 px-3 py-1.5 font-mono text-[0.51rem] uppercase tracking-[0.06em] text-surface/65" key={tag}>{tag}</span>)}

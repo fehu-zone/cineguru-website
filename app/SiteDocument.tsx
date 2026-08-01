@@ -1,11 +1,5 @@
-import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-cine-display",
-  subsets: ["latin", "latin-ext"],
-  display: "swap",
-});
 
 const inter = Inter({
   variable: "--font-cine-body",
@@ -32,7 +26,7 @@ export default function SiteDocument({
         <link rel="preload" as="image" href="/assets/showreel-poster-1280.avif" type="image/avif" fetchPriority="high" />
         <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
       </head>
-      <body className={`${bricolage.variable} ${inter.variable} ${jetBrainsMono.variable}`}>
+      <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
         {children}
       </body>
     </html>

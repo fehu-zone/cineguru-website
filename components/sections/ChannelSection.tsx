@@ -19,7 +19,7 @@ export function ChannelSection({ messages, onOpenVideo }: { messages: Messages; 
             </picture>
           </div>
           <div className="grid grid-cols-[1fr_auto] gap-4 border-t border-foreground/20 py-4 max-[640px]:grid-cols-1">
-            <div><p className="font-mono text-[0.54rem] uppercase tracking-[0.09em] text-foreground/50">{channel.instagramOverline}</p><h3 className="mt-2 font-display text-[clamp(1.5rem,2.2vw,2.4rem)] font-semibold leading-tight tracking-[-0.035em]">{channel.instagramTitle}</h3></div>
+            <div><p className="font-mono text-[0.54rem] uppercase tracking-[0.09em] text-foreground/50">{channel.instagramOverline}</p><h3 className="mt-2 max-w-[13ch] font-display text-[clamp(1.5rem,2.4vw,2.8rem)] [font-weight:560] leading-[1.02] tracking-[-0.035em]">{channel.instagramTitle}</h3></div>
             <span className="self-end font-mono text-[0.55rem] text-foreground/60">{channel.instagramLink} ↗</span>
           </div>
         </a>
@@ -32,7 +32,7 @@ export function ChannelSection({ messages, onOpenVideo }: { messages: Messages; 
               return (
                 <a key={reel.id} href={`https://www.youtube.com/shorts/${reel.youtubeId}`} className="group block max-[640px]:snap-start" data-cursor-label={messages.global.cursor} onClick={(event) => { event.preventDefault(); onOpenVideo({ id: reel.youtubeId, title: content.title, orientation: "vertical" }); }} aria-label={`${content.title} — ${channel.watchReel}`}>
                   <span className="block aspect-[9/16] overflow-hidden bg-surface"><ReelPoster slug={reel.slug} alt={content.alt} sizes="(max-width: 640px) 72vw, (max-width: 940px) 44vw, 28vw" /></span>
-                  <span className="block border-t border-foreground/20 py-4"><small className="font-mono text-[0.52rem] uppercase tracking-[0.08em] text-foreground/45">{content.type} · {reel.year}</small><strong className="mt-1 block font-display text-xl tracking-[-0.025em]">{content.title}</strong><i className="mt-2 block font-mono text-[0.52rem] not-italic text-foreground/55">{channel.watchReel} ↗</i></span>
+                  <span className="block border-t border-foreground/20 py-4"><small className="font-mono text-[0.52rem] uppercase tracking-[0.08em] text-foreground/45">{content.type} · {reel.year}</small><strong className="mt-1 block font-display text-xl [font-weight:560] leading-[1.05] tracking-[-0.03em]">{content.title}</strong><i className="mt-2 block font-mono text-[0.52rem] not-italic text-foreground/55">{channel.watchReel} ↗</i></span>
                 </a>
               );
             })}

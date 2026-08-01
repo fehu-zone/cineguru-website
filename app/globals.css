@@ -14,7 +14,7 @@
 }
 
 @theme inline {
-  --font-display: var(--font-cine-display);
+  --font-display: var(--font-cine-body);
   --font-body: var(--font-cine-body);
   --font-mono: var(--font-cine-mono);
 }
@@ -37,7 +37,7 @@
     overflow-x: clip;
     color: var(--color-foreground);
     background: var(--color-canvas);
-    font-family: var(--font-body), sans-serif;
+    font-family: var(--font-body), "Inter", sans-serif;
     font-size: clamp(1rem, calc(0.2vw + 0.96rem), 1.125rem);
     line-height: 1.5;
     text-rendering: optimizeLegibility;
@@ -90,7 +90,7 @@
 
   .eyebrow {
     color: var(--color-accent);
-    font-family: var(--font-mono), monospace;
+    font-family: var(--font-mono), "JetBrains Mono", monospace;
     font-size: clamp(0.61rem, calc(0.12vw + 0.58rem), 0.72rem);
     font-weight: 600;
     letter-spacing: 0.12em;
@@ -169,9 +169,11 @@
 
 @media (max-width: 600px) {
   .hero-reference-track {
-    animation: reference-marquee 34s linear infinite;
+    animation: reference-marquee 30s linear infinite;
     will-change: transform;
   }
+
+  .custom-cursor { display: none; }
 
   .hero-cinematic-overlay {
     background: linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 62%, transparent), color-mix(in srgb, var(--color-canvas) 20%, transparent) 38%, color-mix(in srgb, var(--color-canvas) 70%, transparent));

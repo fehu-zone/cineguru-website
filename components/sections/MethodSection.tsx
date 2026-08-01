@@ -35,7 +35,7 @@ export function MethodSection({ messages }: { messages: Messages }) {
     <section className="page-shell grid grid-cols-12 gap-grid bg-surface py-section max-[940px]:grid-cols-6 max-[940px]:gap-y-16" id="method">
       <div className="reveal-on-scroll col-span-5 max-[1180px]:col-span-5 max-[940px]:col-span-full">
         <Eyebrow>{method.eyebrow}</Eyebrow>
-        <h2 className="mt-6 max-w-[9ch] font-display text-[clamp(3.5rem,6vw,7rem)] font-semibold leading-[0.92] tracking-[-0.05em] max-[940px]:max-w-[10ch] max-[640px]:text-[clamp(3.1rem,13vw,4.8rem)]">{method.title}</h2>
+        <h2 className="mt-6 max-w-[9ch] font-display text-[clamp(3.4rem,5.5vw,6.4rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] max-[940px]:max-w-[10ch] max-[640px]:text-[clamp(3.1rem,13vw,4.8rem)]">{method.title}</h2>
         <p className="mt-8 max-w-[42ch] leading-[1.62] text-foreground/60">{method.description}</p>
       </div>
 
@@ -56,7 +56,7 @@ export function MethodSection({ messages }: { messages: Messages }) {
           </div>
           <div className="absolute left-3 top-1/2 grid gap-2 font-mono text-[0.48rem] text-foreground/45 max-[640px]:hidden">{method.phases.map((item, index) => <span className={cn("flex items-center gap-2", index === activeIndex && "text-accent")} key={item.name}><i className="h-px w-3 bg-current" />0{index + 1} {item.name.toUpperCase()}</span>)}</div>
         </div>
-        <div className="grid grid-cols-2 gap-4 border-t border-foreground/15 p-4 max-[640px]:grid-cols-1"><div><span className="font-mono text-[0.53rem] tracking-[0.08em] text-accent">{phase.tag}</span><strong className="mt-1 block font-display text-2xl">{phase.name}</strong></div><p className="text-sm leading-[1.55] text-foreground/60">{phase.detail}</p></div>
+        <div className="grid grid-cols-2 gap-4 border-t border-foreground/15 p-4 max-[640px]:grid-cols-1"><div><span className="font-mono text-[0.53rem] tracking-[0.08em] text-accent">{phase.tag}</span><strong className="mt-1 block font-display text-2xl [font-weight:560]">{phase.name}</strong></div><p className="text-sm leading-[1.55] text-foreground/60">{phase.detail}</p></div>
         <div className="grid grid-cols-3 border-t border-foreground/15" role="tablist" aria-label={method.tabsLabel}>
           {method.phases.map((item, index) => (
             <button

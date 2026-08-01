@@ -45,7 +45,6 @@ export const reels = [
 ] as const;
 
 export const brands = [
-  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp" },
   { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp" },
   { label: "BiBOYA", id: "biboya", logo: "/assets/references/BiBOYA-1.webp" },
   { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp" },
@@ -58,6 +57,7 @@ export const brands = [
   { label: "Vodafone", id: "vodafone", logo: "/assets/references/Vodafone.webp" },
   { label: "World Ethnosport", id: "world-ethnosport", logo: "/assets/references/World-Ethnosport.webp" },
   { label: "World Nomad Games", id: "world-nomad-games", logo: "/assets/references/World-Nomad-Games.webp" },
+  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp" },
 ] as const;
 
 export const methodPhases = [

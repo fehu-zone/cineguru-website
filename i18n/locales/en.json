@@ -34,6 +34,7 @@
   "hero": {
     "eyebrow": "AI-POWERED VIDEO PRODUCTION · ISTANBUL",
     "titleLines": ["We turn ideas into films", "that leave a mark."],
+    "mobileTitleLines": ["From idea to film,", "we make work that", "leaves a mark."],
     "description": "We bring artificial intelligence and human creativity into one production discipline for commercials, brand films and social content.",
     "primaryCta": "Explore the work",
     "foot": "IDEA → PRODUCTION → FINAL",
