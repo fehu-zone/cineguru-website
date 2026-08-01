@@ -47,7 +47,7 @@ test("renders localized Turkish and English experiences", async () => {
   assert.match(trHtml, /<html[^>]+lang=["']tr["']/i);
   assert.match(enHtml, /<html[^>]+lang=["']en["']/i);
   assert.match(trHtml, /Fikri, iz bırakan\s+filme dönüştürüyoruz\./);
-  assert.match(enHtml, /We turn ideas into films that leave a mark\./);
+  assert.match(enHtml, /We turn ideas into films\s+that leave a mark\./);
   assert.match(enHtml, /\/en/);
   assert.match(trHtml, /Sıfır Atık Haftası/);
   assert.match(trHtml, /VEX Robotics Türkiye/);
