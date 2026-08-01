@@ -755,6 +755,12 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
           </a>
         </div>
 
+        <div className="hero-reference-strip" aria-label={language === "tr" ? "Referans markalar" : "Selected clients"}>
+          <div className="hero-reference-track">
+            {brandNames.map((brand) => <img key={brand.id} src={brand.logo} alt={brand.label} loading="eager" decoding="async" />)}
+          </div>
+        </div>
+
         <div className="hero-foot">
           <p>{copy.heroFoot}</p>
           <div className="hero-tags">{copy.heroTags.map((tag) => <span key={tag}>{tag}</span>)}</div>
