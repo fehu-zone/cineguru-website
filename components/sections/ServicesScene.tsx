@@ -13,6 +13,8 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 
+import { useMotionPolicy } from "@/hooks/useMotion";
+
 /* ─── palette (brighter for visibility) ─── */
 const ACCENT = "#ff3d00";
 const BODY_DARK = "#2e2e32";
@@ -793,7 +795,13 @@ const SCENE_OBJECTS = [StrategyChessSet, SteampunkCamera, PreProductionCamera, P
 /* ═══════════════════════════════════════════════════════════
    Main Inner Scene with 3D Hotspot Cards
    ═══════════════════════════════════════════════════════════ */
-function ServicesSceneInner({ activeIndex }: { activeIndex: number }) {
+function ServicesSceneInner({
+  activeIndex,
+  reducedMotion,
+}: {
+  activeIndex: number;
+  reducedMotion: boolean;
+}) {
   const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
 
   useEffect(() => {
@@ -817,7 +825,7 @@ function ServicesSceneInner({ activeIndex }: { activeIndex: number }) {
 
       <OrbitControls
         ref={controlsRef}
-        autoRotate
+        autoRotate={!reducedMotion}
         autoRotateSpeed={1.2}
         enableZoom={false}
         enablePan={false}
@@ -847,6 +855,8 @@ function ServicesSceneInner({ activeIndex }: { activeIndex: number }) {
    Exported Canvas Wrapper
    ═══════════════════════════════════════════════════════════ */
 export function ServicesScene({ activeIndex }: { activeIndex: number }) {
+  const { reducedMotion } = useMotionPolicy();
+
   return (
     <Canvas
       camera={{ position: [0, 0, 4.8], fov: 36 }}
@@ -860,7 +870,7 @@ export function ServicesScene({ activeIndex }: { activeIndex: number }) {
       onPointerDown={(e) => { (e.target as HTMLElement).style.cursor = "grabbing"; }}
       onPointerUp={(e) => { (e.target as HTMLElement).style.cursor = "grab"; }}
     >
-      <ServicesSceneInner activeIndex={activeIndex} />
+      <ServicesSceneInner activeIndex={activeIndex} reducedMotion={reducedMotion} />
     </Canvas>
   );
 }

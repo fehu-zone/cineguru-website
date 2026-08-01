@@ -225,6 +225,21 @@
   background: var(--color-canvas);
 }
 
+.services-scene-layer {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  background: var(--color-canvas);
+  isolation: isolate;
+}
+
+.services-canvas-fallback--error {
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 34%),
+    var(--color-canvas);
+}
+
 .services-canvas-container canvas {
   display: block;
   width: 100% !important;
@@ -538,6 +553,5 @@
   .typewriter-character { animation: none; color: var(--color-foreground); opacity: 1; }
   .custom-cursor { display: none !important; }
   [data-magnetic] { transform: none !important; }
-  .services-canvas-container canvas { display: none !important; }
   .services-detail-panel { animation: none; }
 }

@@ -1,6 +1,16 @@
 "use client";
 
-import { forwardRef, useCallback, useRef, useState, type CSSProperties, Suspense, lazy } from "react";
+import {
+  Component,
+  forwardRef,
+  lazy,
+  Suspense,
+  useCallback,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 
 import type { Messages } from "@/i18n/config";
 import { cn } from "@/lib/classNames";
@@ -14,6 +24,25 @@ const ServicesScene = lazy(() =>
 const ServicesSplineScene = lazy(() =>
   import("./ServicesSplineScene").then((module) => ({ default: module.ServicesSplineScene })),
 );
+
+class ServicesSceneErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <div className="services-canvas-fallback services-canvas-fallback--error" />;
+    }
+
+    return this.props.children;
+  }
+}
 
 export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }>(function ServicesSection({ messages }, ref) {
   const services = messages.services;
@@ -125,17 +154,21 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
       >
         {/* ─── 3D Canvas — full width, large ─── */}
         <div className="services-canvas-container services-canvas-container--full" ref={ref}>
-          {inView ? (
-            <Suspense fallback={<div className="services-canvas-fallback" />}>
-              {activeIndex === 3 ? (
-                <ServicesSplineScene activeIndex={activeIndex} />
+          <div className="services-scene-layer">
+            <ServicesSceneErrorBoundary key={`services-scene-${activeIndex}`}>
+              {inView ? (
+                <Suspense fallback={<div className="services-canvas-fallback" />}>
+                  {activeIndex === 3 ? (
+                    <ServicesSplineScene activeIndex={activeIndex} />
+                  ) : (
+                    <ServicesScene activeIndex={activeIndex} />
+                  )}
+                </Suspense>
               ) : (
-                <ServicesScene activeIndex={activeIndex} />
+                <div className="services-canvas-fallback" />
               )}
-            </Suspense>
-          ) : (
-            <div className="services-canvas-fallback" />
-          )}
+            </ServicesSceneErrorBoundary>
+          </div>
           {/* ─── Cinematic HUD overlay + 3 Floating Glassmorphism Info Boxes ─── */}
           <div className={`services-canvas-hud services-canvas-hud-${activeIndex}`} key={`hud-cards-${activeIndex}`}>
             <span className="services-hud-corner services-hud-tl" />
