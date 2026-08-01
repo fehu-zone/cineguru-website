@@ -10,7 +10,7 @@ export function ChannelSection({ messages, onOpenVideo }: { messages: Messages; 
   return (
     <section className="channel-section page-shell py-section" aria-labelledby="channel-title">
       <SectionHeading eyebrow={channel.eyebrow} title={channel.title} description={channel.description} titleId="channel-title" />
-      <div className="mt-[clamp(4rem,7vw,7rem)] grid grid-cols-12 gap-grid max-[940px]:grid-cols-6 max-[940px]:gap-y-20">
+      <div className="mt-[clamp(5rem,8vw,10rem)] grid grid-cols-12 gap-grid max-[940px]:grid-cols-6 max-[940px]:gap-y-20">
         <a className="reveal-on-scroll group col-span-4 max-[940px]:col-start-2 max-[940px]:col-span-4 max-[640px]:col-span-full max-[640px]:mx-auto max-[640px]:w-[min(100%,24.375rem)]" href={siteConfig.social[0].href} target="_blank" rel="noreferrer" aria-label={channel.instagramAria}>
           <div className="aspect-[550/909] overflow-hidden bg-surface">
             <picture>

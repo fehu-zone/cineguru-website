@@ -10,7 +10,7 @@ export function AboutSection({ messages }: { messages: Messages }) {
   return (
     <section className="page-shell py-section text-surface bg-foreground" id="about">
       <SectionHeading eyebrow={about.eyebrow} title={about.title} description={about.description} />
-      <div className="mt-[clamp(5rem,8vw,8rem)] grid grid-cols-3 gap-grid max-[940px]:grid-cols-1">
+      <div className="mt-[clamp(2.5rem,3.5vw,3.5rem)] grid grid-cols-3 gap-grid max-[940px]:grid-cols-1">
         {about.principles.map((principle, index) => (
           <article className="reveal-on-scroll min-h-[18.75rem] border-t border-surface/20 pb-5 pt-4 max-[940px]:min-h-0 max-[940px]:pb-12" style={{ "--stagger": index } as CSSProperties} key={principle.title}>
             <span className="font-mono text-[0.58rem] text-accent">{String(index + 1).padStart(2, "0")}</span>

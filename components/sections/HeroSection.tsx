@@ -1,4 +1,4 @@
-import type { Ref } from "react";
+import { useEffect, useRef, type PointerEvent as ReactPointerEvent, type Ref } from "react";
 
 import { brands, siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
@@ -6,6 +6,163 @@ import { ButtonLink, TextLink } from "@/components/ui/Button";
 import { CameraHud } from "@/components/ui/CameraHud";
 import { ClientLogo } from "@/components/ui/ClientLogo";
 import { Eyebrow } from "@/components/ui/SectionHeading";
+
+function HeroBrandTicker() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const group1Ref = useRef<HTMLDivElement>(null);
+
+  const offsetRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const startOffsetRef = useRef(0);
+
+  useEffect(() => {
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 95; // 95px per second
+
+    const loop = (currentTime: number) => {
+      const deltaTime = Math.min((currentTime - lastTime) / 1000, 0.1);
+      lastTime = currentTime;
+
+      const track = trackRef.current;
+      const group1 = group1Ref.current;
+
+      if (window.innerWidth <= 600 && track && group1) {
+        const groupWidth = group1.offsetWidth;
+
+        if (!isDraggingRef.current && groupWidth > 0) {
+          offsetRef.current -= speed * deltaTime;
+        }
+
+        if (groupWidth > 0) {
+          while (offsetRef.current <= -groupWidth) {
+            offsetRef.current += groupWidth;
+          }
+          while (offsetRef.current > 0) {
+            offsetRef.current -= groupWidth;
+          }
+        }
+
+        track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+      } else if (track) {
+        track.style.transform = "none";
+      }
+
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    animationFrameId = requestAnimationFrame(loop);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  const handlePointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (window.innerWidth > 600) return;
+    isDraggingRef.current = true;
+    startXRef.current = e.clientX;
+    startOffsetRef.current = offsetRef.current;
+    try {
+      (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+    } catch {
+      // fallback if pointer capture fails
+    }
+  };
+
+  const handlePointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!isDraggingRef.current || window.innerWidth > 600) return;
+    const deltaX = e.clientX - startXRef.current;
+    offsetRef.current = startOffsetRef.current + deltaX;
+
+    const group1 = group1Ref.current;
+    if (group1) {
+      const groupWidth = group1.offsetWidth;
+      if (groupWidth > 0) {
+        while (offsetRef.current <= -groupWidth) {
+          offsetRef.current += groupWidth;
+          startOffsetRef.current += groupWidth;
+        }
+        while (offsetRef.current > 0) {
+          offsetRef.current -= groupWidth;
+          startOffsetRef.current -= groupWidth;
+        }
+      }
+    }
+
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
+    }
+  };
+
+  const handlePointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      try {
+        (e.currentTarget as HTMLElement).releasePointerCapture?.(e.pointerId);
+      } catch {
+        // fallback
+      }
+    }
+  };
+
+  return (
+    <div
+      className="mx-auto w-full max-w-site select-none overflow-hidden touch-pan-y"
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
+    >
+      <div
+        ref={trackRef}
+        className="flex w-max items-center will-change-transform max-[600px]:flex min-[601px]:grid min-[601px]:w-full min-[601px]:grid-cols-[repeat(13,minmax(0,1fr))] min-[601px]:items-center min-[601px]:gap-[clamp(1.4rem,2.8vw,3.2rem)] min-[900px]:grid-cols-[repeat(13,minmax(0,1fr))] max-[900px]:grid-cols-[repeat(7,minmax(0,1fr))] max-[900px]:gap-y-4"
+      >
+        <div ref={group1Ref} className="max-[600px]:flex max-[600px]:shrink-0 max-[600px]:items-center max-[600px]:gap-10 max-[600px]:pr-10 min-[601px]:contents">
+          {brands.map((brand) => (
+            <ClientLogo
+              className="h-[5.125rem] w-full opacity-90 max-[900px]:h-[3.875rem] max-[600px]:h-16 max-[600px]:w-32 max-[600px]:shrink-0 max-[600px]:opacity-100"
+              scale={brand.scale}
+              key={brand.id}
+              src={brand.logo}
+              alt={brand.label}
+              loading="eager"
+            />
+          ))}
+        </div>
+        <div className="hidden max-[600px]:flex max-[600px]:shrink-0 max-[600px]:items-center max-[600px]:gap-10 max-[600px]:pr-10" aria-hidden="true">
+          {brands.map((brand) => (
+            <ClientLogo
+              className="h-16 w-32 shrink-0 opacity-100"
+              scale={brand.scale}
+              key={`${brand.id}-dup1`}
+              src={brand.logo}
+              alt=""
+              width={128}
+              height={64}
+              loading="eager"
+            />
+          ))}
+        </div>
+        <div className="hidden max-[600px]:flex max-[600px]:shrink-0 max-[600px]:items-center max-[600px]:gap-10 max-[600px]:pr-10" aria-hidden="true">
+          {brands.map((brand) => (
+            <ClientLogo
+              className="h-16 w-32 shrink-0 opacity-100"
+              scale={brand.scale}
+              key={`${brand.id}-dup2`}
+              src={brand.logo}
+              alt=""
+              width={128}
+              height={64}
+              loading="eager"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function HeroSection({ messages, timecodeRef }: { messages: Messages; timecodeRef: Ref<HTMLSpanElement> }) {
   const hero = messages.hero;
@@ -64,11 +221,9 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
       </div>
 
       <div className="absolute inset-x-0 bottom-0 z-20 overflow-hidden border-t border-foreground/15 bg-canvas/95 px-page py-[1.5rem] backdrop-blur-md max-[600px]:px-0 max-[600px]:py-3.5" aria-label={hero.clientsLabel}>
-        <div className="hero-reference-track mx-auto grid w-full max-w-site grid-cols-[repeat(13,minmax(0,1fr))] items-center gap-[clamp(1.4rem,2.8vw,3.2rem)] max-[900px]:grid-cols-[repeat(7,minmax(0,1fr))] max-[900px]:gap-y-4 max-[600px]:flex max-[600px]:w-max max-[600px]:max-w-none max-[600px]:gap-10">
-          {brands.map((brand) => <ClientLogo className="h-[5.125rem] w-full opacity-90 max-[900px]:h-[3.875rem] max-[600px]:h-16 max-[600px]:w-32 max-[600px]:shrink-0 max-[600px]:opacity-100" scale={brand.scale} key={brand.id} src={brand.logo} alt={brand.label} loading="eager" />)}
-          {brands.map((brand) => <ClientLogo className="hidden h-16 w-32 shrink-0 max-[600px]:block" scale={brand.scale} key={`${brand.id}-duplicate`} src={brand.logo} alt="" aria-hidden="true" width={128} height={64} loading="eager" />)}
-        </div>
+        <HeroBrandTicker />
       </div>
     </section>
   );
 }
+

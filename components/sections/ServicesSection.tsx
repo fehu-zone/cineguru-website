@@ -9,7 +9,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
   return (
     <section className="page-shell py-section text-surface bg-foreground" id="services">
       <SectionHeading eyebrow={services.eyebrow} title={services.title} compact />
-      <div className="relative mt-[clamp(4rem,7vw,7rem)]" ref={ref}>
+      <div className="relative mt-[clamp(2.5rem,3.5vw,3.5rem)]" ref={ref}>
         <div className="absolute bottom-0 left-[calc(8.333%-0.5px)] top-0 w-px bg-surface/15 max-[940px]:hidden" aria-hidden="true">
           <i className="block w-px bg-accent [height:calc(var(--service-progress,0)*100%)]" />
         </div>

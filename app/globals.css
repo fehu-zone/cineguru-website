@@ -89,12 +89,14 @@
   }
 
   .eyebrow {
+    display: block;
+    width: auto;
     color: var(--color-accent);
     font-family: var(--font-mono), "JetBrains Mono", monospace;
-    font-size: clamp(0.61rem, calc(0.12vw + 0.58rem), 0.72rem);
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    line-height: 1.35;
+    font-size: clamp(0.7rem, calc(0.12vw + 0.66rem), 0.82rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
     text-transform: uppercase;
   }
 
@@ -116,6 +118,14 @@
     background-size: 2.5rem 2.5rem;
   }
 
+  .case-tabs-scroller {
+    scrollbar-width: none;
+  }
+
+  .case-tabs-scroller::-webkit-scrollbar {
+    display: none;
+  }
+
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
@@ -133,6 +143,12 @@
     transform: translate3d(0, 0, 0);
   }
 
+  .typewriter-character {
+    color: var(--color-accent);
+    opacity: 0;
+    animation: typewriter-character 420ms ease-out var(--typewriter-delay, 0ms) both;
+  }
+
   .custom-cursor {
     position: fixed;
     z-index: 1300;
@@ -148,9 +164,9 @@
     color: var(--color-canvas);
     background: var(--color-foreground);
     font-family: var(--font-mono), monospace;
-    font-size: 0.52rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     mix-blend-mode: difference;
     transform: translate3d(calc(var(--cursor-x, -100px) - 50%), calc(var(--cursor-y, -100px) - 50%), 0) scale(0.72);
     transition: opacity 180ms ease, transform 180ms var(--ease-cinematic);
@@ -167,12 +183,24 @@
   to { transform: translateX(-50%); }
 }
 
-@media (max-width: 600px) {
-  .hero-reference-track {
-    animation: reference-marquee 30s linear infinite;
-    will-change: transform;
-  }
+@keyframes typewriter-character {
+  0% { color: var(--color-accent); opacity: 0; }
+  35% { color: var(--color-accent); opacity: 1; }
+  100% { color: var(--color-foreground); opacity: 1; }
+}
 
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+@media (max-width: 600px) {
   .custom-cursor { display: none; }
 
   .hero-cinematic-overlay {
@@ -194,6 +222,7 @@
   }
   .motion-ready .reveal-on-scroll,
   .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
+  .typewriter-character { animation: none; color: var(--color-foreground); opacity: 1; }
   .custom-cursor { display: none !important; }
   [data-magnetic] { transform: none !important; }
   .hero-reference-track { animation: none; }

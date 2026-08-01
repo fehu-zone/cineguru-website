@@ -52,6 +52,11 @@
     "archiveLabel": "SELECTED ARCHIVE",
     "watchLabel": "Watch film",
     "caseStudyLabel": "Case Study",
+    "referenceLabel": "CINEGURU STUDIO / PRODUCTION APPROACH",
+    "referenceTabsLabel": "Production areas",
+    "referenceBrandsLabel": "Brands we create with",
+    "pauseLabel": "Pause",
+    "resumeLabel": "Resume",
     "projects": {
       "sifir-atik": {
         "title": "Zero Waste Week",
@@ -70,6 +75,46 @@
         "caseStudy": [
           { "label": "Film focus", "text": "Make the education and technology world of VEX Robotics Türkiye visible through a dynamic brand film." },
           { "label": "Production system", "text": "A film approach combining the technology theme with a strong edit rhythm and clear brand narrative." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-vialand": {
+        "title": "Vialand / 3D World",
+        "type": "3D Commercial",
+        "alt": "Vialand 3D commercial — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Make Vialand’s energy visible through a strong visual world and a sense of movement." },
+          { "label": "Production system", "text": "A visual system that brings 3D design, edit rhythm and brand colors into one flow." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-kalekim": {
+        "title": "Kalekim / Brand Story",
+        "type": "Brand Film",
+        "alt": "Kalekim brand film — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Retell Kalekim’s brand memory through a visual language made for today." },
+          { "label": "Production system", "text": "Bring human stories, product details and cinematic images into one narrative." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-etnospor": {
+        "title": "Ethnosport / Festival Film",
+        "type": "Festival Film",
+        "alt": "Ethnosport festival film — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Capture the movement, culture and crowd energy of the festival in one film rhythm." },
+          { "label": "Production system", "text": "Bring live action, fast editing and atmospheric frames into one story." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-asfat": {
+        "title": "ASFAT / Brand Film",
+        "type": "Brand Film",
+        "alt": "ASFAT brand film — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Turn technology and production strength into a clear, assured and cinematic narrative." },
+          { "label": "Production system", "text": "Build one visual language from detail frames, scale and controlled camera movement." },
           { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
         ]
       },

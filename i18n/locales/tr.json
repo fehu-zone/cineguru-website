@@ -52,6 +52,11 @@
     "archiveLabel": "SEÇKİ / ARŞİV",
     "watchLabel": "Filmi izle",
     "caseStudyLabel": "Case Study",
+    "referenceLabel": "CINEGURU STUDIO / ÜRETİM YAKLAŞIMI",
+    "referenceTabsLabel": "Üretim alanları",
+    "referenceBrandsLabel": "Birlikte ürettiğimiz markalar",
+    "pauseLabel": "Duraklat",
+    "resumeLabel": "Devam ettir",
     "projects": {
       "sifir-atik": {
         "title": "Sıfır Atık Haftası",
@@ -70,6 +75,46 @@
         "caseStudy": [
           { "label": "Film odağı", "text": "VEX Robotics Türkiye’nin eğitim ve teknoloji dünyasını dinamik bir tanıtım filmiyle görünür kılmak." },
           { "label": "Üretim sistemi", "text": "Teknoloji temasını güçlü kurgu ritmi ve net marka anlatısıyla birleştiren film yaklaşımı." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-vialand": {
+        "title": "Vialand / 3D Dünya",
+        "type": "3D Reklam Filmi",
+        "alt": "Vialand 3D reklam filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Vialand’ın enerjisini güçlü bir görsel dünya ve hareket duygusuyla görünür kılmak." },
+          { "label": "Üretim sistemi", "text": "3D tasarım, kurgu ritmi ve marka renklerini tek bir akışta buluşturan görsel sistem." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-kalekim": {
+        "title": "Kalekim / Marka Hikâyesi",
+        "type": "Marka Filmi",
+        "alt": "Kalekim marka filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Kalekim’in marka hafızasını bugünün görsel diliyle yeniden anlatmak." },
+          { "label": "Üretim sistemi", "text": "İnsan hikâyesi, ürün detayları ve sinematik görüntüyü tek bir anlatıda birleştirmek." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-etnospor": {
+        "title": "Etnospor / Festival Filmi",
+        "type": "Festival Filmi",
+        "alt": "Etnospor festival filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Festivalin hareketini, kültürünü ve kalabalık enerjisini tek bir film ritminde toplamak." },
+          { "label": "Üretim sistemi", "text": "Canlı çekim, hızlı kurgu ve güçlü atmosfer planlarını aynı hikâyede buluşturmak." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "demo-asfat": {
+        "title": "ASFAT / Tanıtım Filmi",
+        "type": "Tanıtım Filmi",
+        "alt": "ASFAT tanıtım filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Teknoloji ve üretim gücünü net, güven veren ve sinematik bir anlatıya taşımak." },
+          { "label": "Üretim sistemi", "text": "Detay planları, mekân ölçeği ve kontrollü kamera hareketini tek bir görsel dilde kurmak." },
           { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
         ]
       },

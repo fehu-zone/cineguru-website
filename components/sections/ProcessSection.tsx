@@ -8,7 +8,7 @@ export function ProcessSection({ messages }: { messages: Messages }) {
   return (
     <section className="page-shell py-section" id="process">
       <SectionHeading eyebrow={process.eyebrow} title={process.title} compact />
-      <ol className="mt-[clamp(4rem,7vw,7rem)] grid grid-cols-4 gap-grid max-[940px]:grid-cols-2 max-[640px]:grid-cols-1">
+      <ol className="mt-[clamp(2.5rem,3.5vw,3.5rem)] grid grid-cols-4 gap-grid max-[940px]:grid-cols-2 max-[640px]:grid-cols-1">
         {process.steps.map((step, index) => (
           <li className="reveal-on-scroll min-h-72 border-t border-foreground/20 pb-5 pt-4 max-[940px]:min-h-60 max-[640px]:min-h-0 max-[640px]:pb-12" style={{ "--stagger": index } as CSSProperties} key={step.title}>
             <span className="font-mono text-[0.58rem] text-accent">{String(index + 1).padStart(2, "0")}</span>
