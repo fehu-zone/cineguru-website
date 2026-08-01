@@ -1,0 +1,197 @@
+{
+  "metadata": {
+    "title": "Cineguru Studio | AI-Powered Video Production",
+    "description": "An Istanbul production studio creating commercials, brand films, event films and social content with live action, AI and post-production.",
+    "ogDescription": "We bring human creativity and artificial intelligence into one production discipline.",
+    "locale": "en_US",
+    "imageAlt": "Cineguru Studio — AI-powered video production"
+  },
+  "navigation": {
+    "items": {
+      "work": "Work",
+      "services": "Services",
+      "method": "Method",
+      "contact": "Contact"
+    },
+    "projectCta": "Start a Project",
+    "mainLabel": "Main navigation",
+    "homeLabel": "Cineguru home",
+    "openMenuLabel": "Open menu",
+    "closeMenuLabel": "Close menu",
+    "languageLabel": "Language selection",
+    "contactInfoTitle": "Contact Details",
+    "phoneLabel": "PHONE",
+    "officeLabel": "OFFICE LOCATION",
+    "followUsTitle": "Follow Us"
+  },
+  "global": {
+    "cursor": "WATCH",
+    "close": "Close",
+    "scrollHint": "SCROLL / FLOW",
+    "stages": ["IDEA", "PREVIS", "SET", "EDIT", "COLOR", "DELIVERY"]
+  },
+  "hero": {
+    "eyebrow": "AI-POWERED VIDEO PRODUCTION · ISTANBUL",
+    "titleLines": ["We turn ideas into films", "that leave a mark."],
+    "description": "We bring artificial intelligence and human creativity into one production discipline for commercials, brand films and social content.",
+    "primaryCta": "Explore the work",
+    "foot": "IDEA → PRODUCTION → FINAL",
+    "discover": "Discover",
+    "tags": ["LIVE ACTION", "AI VIDEO", "POST"],
+    "clientsLabel": "Selected clients",
+    "showreelTitle": "Where AI, film and motion meet.",
+    "showreelModalTitle": "Cineguru Showreel"
+  },
+  "work": {
+    "eyebrow": "SELECTED WORK · 01",
+    "title": "A new visual language for every brand.",
+    "description": "We combine camera, AI, 3D and post-production tools in one story, shaped around what the idea needs.",
+    "caseStudiesLabel": "LATEST CASE STUDIES",
+    "archiveLabel": "SELECTED ARCHIVE",
+    "watchLabel": "Watch film",
+    "caseStudyLabel": "Case Study",
+    "projects": {
+      "sifir-atik": {
+        "title": "Zero Waste Week",
+        "type": "Commercial Film",
+        "alt": "Zero Waste Week commercial — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Turn the Zero Waste Week message into a concise, memorable commercial film." },
+          { "label": "Production system", "text": "A hybrid production that brings message, rhythm and visual continuity into one film flow." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "vex-robotics": {
+        "title": "VEX Robotics Türkiye",
+        "type": "Brand Film",
+        "alt": "VEX Robotics Türkiye brand film — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Make the education and technology world of VEX Robotics Türkiye visible through a dynamic brand film." },
+          { "label": "Production system", "text": "A film approach combining the technology theme with a strong edit rhythm and clear brand narrative." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "kalekim": {
+        "title": "Kalekim 50th Anniversary",
+        "type": "Commercial Film",
+        "alt": "Kalekim 50th Anniversary — Cineguru film",
+        "caseStudy": []
+      },
+      "vialand": {
+        "title": "Vialand",
+        "type": "3D Commercial",
+        "alt": "Vialand — Cineguru film",
+        "caseStudy": []
+      },
+      "etnospor": {
+        "title": "Ethnosport Culture Festival",
+        "type": "Festival Film",
+        "alt": "Ethnosport Culture Festival — Cineguru film",
+        "caseStudy": []
+      },
+      "asfat": {
+        "title": "ASFAT — PN MİLGEM",
+        "type": "Brand Film",
+        "alt": "ASFAT — PN MİLGEM — Cineguru film",
+        "caseStudy": []
+      }
+    }
+  },
+  "channel": {
+    "eyebrow": "LATEST FEED · YOUTUBE + INSTAGRAM",
+    "title": "Fresh from the studio.",
+    "description": "New films, AI studies, behind the scenes and production notes.",
+    "youtubeChannel": "Open channel",
+    "youtubeOverline": "YOUTUBE SHORTS / LATEST",
+    "watchReel": "Watch Reel",
+    "instagramTitle": "Reels, behind the scenes and new work.",
+    "instagramLink": "Watch on Instagram",
+    "instagramOverline": "INSTAGRAM / STUDIO FEED",
+    "instagramAlt": "Cineguru Studio Instagram Reels and studio diary",
+    "instagramAria": "Open Cineguru Studio on Instagram",
+    "reels": {
+      "alfemo-masko": {
+        "title": "Alfemo Masko",
+        "type": "Vertical Reel",
+        "alt": "Vertical video content created for Alfemo Masko — Cineguru Studio"
+      },
+      "sifir-atik-festival": {
+        "title": "Zero Waste Festival",
+        "type": "Social Content",
+        "alt": "Vertical social media content created for Zero Waste Festival — Cineguru Studio"
+      }
+    }
+  },
+  "services": {
+    "eyebrow": "CAPABILITIES · 02",
+    "title": "One team. End-to-end production.",
+    "items": [
+      { "title": "Strategy", "description": "We find the brand's real challenge and turn the idea into a story audiences remember.", "tags": ["Creative Direction", "Campaign", "Concept"] },
+      { "title": "Pre Production", "description": "We accelerate scripts, visual worlds, character continuity and storyboards with AI.", "tags": ["Script", "AI Visuals", "Storyboard"] },
+      { "title": "Production + AI Video", "description": "We unite live action and generative AI under one directing and cinematography language.", "tags": ["Live Action", "AI Film", "Studio"] },
+      { "title": "Post Production", "description": "Editing, VFX, color, sound and format adaptations create a final that works everywhere.", "tags": ["Editing", "VFX", "Color"] }
+    ]
+  },
+  "method": {
+    "eyebrow": "CINEGURU METHOD · 03",
+    "title": "Human instinct, AI scale.",
+    "description": "For us, AI is not an effect. It is a new production layer that expands creative control from first idea to final delivery.",
+    "systemLabel": "CG / CREATIVE SYSTEM",
+    "liveLabel": "LIVE DIRECTION",
+    "tabsLabel": "Cineguru production system",
+    "phases": [
+      { "name": "Direct", "detail": "Strategy, concept and directorial instinct.", "tag": "DIRECT / INTENT", "semantic": "SHOT MAP · 03 FRAMES", "alt": "Three film frames representing direction and shot planning" },
+      { "name": "Generate", "detail": "Consistent characters and visual worlds with AI.", "tag": "GENERATE / WORLD", "semantic": "SEED LOCK · WORLD 02", "alt": "A generative system representing a consistent AI visual world" },
+      { "name": "Film", "detail": "Camera, motion, edit, VFX and final delivery.", "tag": "MOTION / FINAL", "semantic": "EDIT · VFX · COLOR · SOUND", "alt": "A cinematic structure representing camera optics and the final edit pipeline" }
+    ]
+  },
+  "process": {
+    "eyebrow": "PROCESS · 04",
+    "title": "We manage the complexity.",
+    "steps": [
+      { "title": "Discovery", "description": "Together, we define the goal, the audience and the real communication problem." },
+      { "title": "Creative System", "description": "We build the concept, script and visual world as one coherent creative system." },
+      { "title": "Production", "description": "We direct live action, AI and 3D production to the same quality standard." },
+      { "title": "Final & Adaptation", "description": "We finish the film and create strong variations for every platform." }
+    ]
+  },
+  "about": {
+    "eyebrow": "ABOUT US · 05",
+    "title": "Born from set culture. Built for what comes next.",
+    "description": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. We combine traditional filmmaking discipline with next-generation production technology.",
+    "principles": [
+      { "title": "One creative direction", "description": "Strategy, direction and final delivery work around the same idea." },
+      { "title": "Hybrid production", "description": "Live action, AI and 3D come together only when the story calls for them." },
+      { "title": "Ready for every screen", "description": "From the master film to vertical social edits, we deliver one coherent system." }
+    ],
+    "brandsLabel": "Brands we create with",
+    "brandLogoSuffix": "logo"
+  },
+  "contact": {
+    "eyebrow": "A NEW FILM · 06",
+    "title": "Let’s make the next story together.",
+    "description": "Tell us briefly about the idea, timing and what you need. We will shape the rest together.",
+    "mailCta": "Talk about the project",
+    "phoneCta": "Call us",
+    "location": "Kadıköy, Istanbul",
+    "address": "Caferağa Mah. Şifa Sk. No: 19 Kadıköy / Istanbul",
+    "emailLabel": "Email",
+    "socialLabel": "Social",
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "brief": "Project brief",
+      "send": "Send inquiry",
+      "direct": "or email us directly",
+      "nameError": "Please enter your name.",
+      "emailError": "Please enter a valid email address.",
+      "briefError": "Please describe the project in at least 20 characters.",
+      "checkError": "Please review the highlighted fields.",
+      "openingStatus": "Opening your email app.",
+      "subject": "Cineguru Project Inquiry"
+    }
+  },
+  "footer": {
+    "line": "AI-Powered Video Production"
+  }
+}
