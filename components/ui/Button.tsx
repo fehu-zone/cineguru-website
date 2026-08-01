@@ -9,8 +9,8 @@ const baseStyles =
   "inline-flex items-center justify-center rounded-full border font-mono [font-weight:650] uppercase tracking-[0.08em] transition-[color,background-color,border-color,transform] duration-300 ease-out [transform:translate3d(var(--mag-x,0),var(--mag-y,0),0)]";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "border-accent bg-accent text-foreground hover:border-foreground hover:bg-foreground hover:text-canvas",
-  light: "border-foreground bg-foreground text-canvas hover:border-accent hover:bg-accent hover:text-foreground",
+  primary: "border-accent bg-accent text-canvas font-bold hover:border-foreground hover:bg-foreground hover:text-canvas",
+  light: "border-foreground bg-foreground text-canvas font-bold hover:border-accent hover:bg-accent hover:text-canvas",
   outline: "border-foreground/25 bg-foreground/5 text-foreground hover:border-foreground hover:bg-foreground hover:text-canvas",
 };
 

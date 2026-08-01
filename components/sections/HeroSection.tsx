@@ -33,9 +33,9 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
         <div className="absolute inset-3 max-[640px]:hidden"><CameraHud timecodeRef={timecodeRef} /></div>
       </div>
 
-      <div className="relative z-[5] ml-[max(calc(var(--spacing-page)+2rem),calc((100vw-var(--container-site))/2+var(--spacing-page)+2rem))] w-[min(58vw,47.5rem)] pt-[clamp(10rem,24vh,19rem)] max-[900px]:ml-page max-[900px]:w-[min(78%,42.5rem)] max-[900px]:pt-[clamp(8rem,20vh,13rem)] max-[600px]:ml-5 max-[600px]:w-[calc(100%-2.5rem)] max-[600px]:pt-32">
+      <div className="relative z-[5] ml-[max(calc(var(--spacing-page)+2rem),calc((100vw-var(--container-site))/2+var(--spacing-page)+2rem))] w-[min(58vw,47.5rem)] pt-[clamp(10rem,24vh,19rem)] max-[900px]:ml-page max-[900px]:w-[min(78%,42.5rem)] max-[900px]:pt-[clamp(8rem,20vh,13rem)] max-[600px]:ml-5 max-[600px]:w-[calc(100%-2.5rem)] max-[600px]:pt-[clamp(11.5rem,28vh,16.5rem)]">
         <Eyebrow>{hero.eyebrow}</Eyebrow>
-        <h1 className="mt-[clamp(1.25rem,2.3vw,2.1rem)] font-display text-[clamp(3.6rem,6.25vw,7.35rem)] font-semibold leading-[0.91] tracking-[-0.045em] max-[600px]:mt-5 max-[600px]:text-[clamp(2.65rem,11.8vw,3.15rem)] max-[600px]:leading-[1.03] max-[600px]:tracking-[-0.045em]">
+        <h1 className="mt-[clamp(1.25rem,2.3vw,2.1rem)] font-display text-[clamp(3.6rem,6.25vw,7.35rem)] font-semibold leading-[0.91] tracking-[-0.045em] max-[600px]:mt-3 max-[600px]:text-[clamp(3.1rem,13vw,3.75rem)] max-[600px]:leading-[0.96] max-[600px]:tracking-[-0.04em]">
           <span className="max-[600px]:hidden">
             {hero.titleLines.map((line) => <span className="hero-title-line block whitespace-nowrap" key={line}>{line}</span>)}
           </span>
@@ -43,15 +43,15 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
             {hero.mobileTitleLines.map((line) => <span className="block whitespace-nowrap" key={line}>{line}</span>)}
           </span>
         </h1>
-        <p className="mt-[clamp(1.5rem,2.8vw,2.4rem)] max-w-[35.625rem] text-[clamp(1rem,calc(.35vw+.95rem),1.22rem)] leading-[1.56] text-foreground/75 max-[600px]:mt-6 max-[600px]:max-w-[34ch] max-[600px]:text-[0.92rem] max-[600px]:leading-[1.55]">
+        <p className="mt-[clamp(1.5rem,2.8vw,2.4rem)] max-w-[35.625rem] text-[clamp(1rem,calc(.35vw+.95rem),1.22rem)] leading-[1.56] text-foreground/75 max-[600px]:mt-4 max-[600px]:max-w-[32ch] max-[600px]:text-[1.12rem] max-[600px]:font-medium max-[600px]:leading-[1.45] max-[600px]:text-foreground/90">
           {hero.description}
         </p>
-        <div className="mt-8 flex items-center gap-6 max-[600px]:mt-8 max-[600px]:flex-col max-[600px]:items-stretch max-[600px]:gap-2.5">
-          <ButtonLink className="max-[600px]:min-h-14 max-[600px]:w-full max-[600px]:text-[0.66rem]" href="#work">
-            {hero.primaryCta}<span className="grid size-7 place-items-center rounded-full bg-canvas/15" aria-hidden="true">↓</span>
+        <div className="mt-8 flex items-center gap-6 max-[600px]:mt-8 max-[600px]:flex-col max-[600px]:items-stretch max-[600px]:gap-3.5">
+          <ButtonLink className="max-[600px]:min-h-[3.75rem] max-[600px]:w-full max-[600px]:justify-center max-[600px]:text-[0.88rem] max-[600px]:font-bold max-[600px]:tracking-[0.06em]" href="#work">
+            {hero.primaryCta}<span className="grid size-7 place-items-center rounded-full bg-black/10 text-canvas" aria-hidden="true">↓</span>
           </ButtonLink>
           <TextLink className="max-[600px]:hidden" href="#contact">{messages.navigation.projectCta}<span aria-hidden="true">↗</span></TextLink>
-          <ButtonLink variant="light" className="hidden max-[600px]:flex max-[600px]:min-h-14 max-[600px]:w-full max-[600px]:text-[0.66rem]" href="#contact">
+          <ButtonLink variant="light" className="min-[601px]:!hidden max-[600px]:flex max-[600px]:min-h-[3.75rem] max-[600px]:w-full max-[600px]:justify-center max-[600px]:text-[0.88rem] max-[600px]:font-bold max-[600px]:tracking-[0.06em]" href="#contact">
             {messages.navigation.projectCta}<span aria-hidden="true">↗</span>
           </ButtonLink>
         </div>

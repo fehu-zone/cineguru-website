@@ -4,7 +4,7 @@
   --color-canvas: #0b0b0c;
   --color-surface: #141414;
   --color-foreground: #f1f1f1;
-  --color-accent: #e33326;
+  --color-accent: #ff3d00;
 
   --container-site: 105rem;
   --spacing-page: clamp(1.1rem, 3.35vw, 4.5rem);
