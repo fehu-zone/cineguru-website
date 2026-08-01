@@ -848,7 +848,8 @@
   .hero-copy {
     position: relative;
     z-index: 5;
-    width: min(58%, 760px);
+    width: min(58vw, 760px);
+    margin-left: max(var(--page-x), calc((100vw - var(--max-width)) / 2 + 2rem));
     padding-top: clamp(3rem, 14vh, 10rem);
   }
   .hero-visual {
@@ -874,7 +875,7 @@
     z-index: 5;
     right: var(--page-x);
     bottom: 1.25rem;
-    left: var(--page-x);
+    left: max(var(--page-x), calc((100vw - var(--max-width)) / 2 + 2rem));
   }
   .hero-reference-strip {
     position: absolute;
@@ -883,7 +884,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    padding: .95rem var(--page-x);
+    padding: 1.1rem var(--page-x);
     border-top: 1px solid rgba(241, 241, 241, .14);
     background: rgba(11, 11, 12, .94);
     backdrop-filter: blur(12px);
@@ -898,15 +899,16 @@
   }
   .hero-reference-track img {
     width: 100%;
-    max-height: 24px;
+    height: 42px;
     object-fit: contain;
     opacity: .76;
   }
 
   @media (max-width: 900px) {
-    .hero-copy { width: min(78%, 680px); padding-top: 5rem; }
+    .hero-copy { width: min(78%, 680px); margin-left: var(--page-x); padding-top: 5rem; }
+    .hero-foot { left: var(--page-x); }
     .hero-reference-track { grid-template-columns: repeat(7, minmax(0, 1fr)); row-gap: .7rem; }
-    .hero-reference-track img { max-height: 20px; }
+    .hero-reference-track img { height: 34px; }
   }
 
   @media (max-width: 600px) {
@@ -915,6 +917,6 @@
     .hero-production-frame::after { background: linear-gradient(180deg, rgba(11, 11, 12, .62), rgba(11, 11, 12, .2) 38%, rgba(11, 11, 12, .7)); }
     .hero-reference-strip { padding: .7rem var(--page-x); }
     .hero-reference-track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
-    .hero-reference-track img { max-height: 17px; }
+    .hero-reference-track img { height: 28px; }
   }
 }
