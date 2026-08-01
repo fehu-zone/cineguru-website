@@ -4,7 +4,8 @@
     "description": "An Istanbul production studio creating commercials, brand films, event films and social content with live action, AI and post-production.",
     "ogDescription": "We bring human creativity and artificial intelligence into one production discipline.",
     "locale": "en_US",
-    "imageAlt": "Cineguru Studio — AI-powered video production"
+    "imageAlt": "Cineguru Studio — AI-powered video production",
+    "keywords": ["AI video production", "commercial film", "brand film", "video production", "Cineguru Studio", "Istanbul production company"]
   },
   "navigation": {
     "items": {

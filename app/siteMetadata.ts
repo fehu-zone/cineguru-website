@@ -15,14 +15,7 @@ export const baseMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: siteConfig.name,
   description: getMessages("tr").metadata.description,
-  keywords: [
-    "AI video production",
-    "reklam filmi",
-    "tanıtım filmi",
-    "video prodüksiyon",
-    "Cineguru Studio",
-    "İstanbul prodüksiyon şirketi",
-  ],
+  keywords: getMessages("tr").metadata.keywords,
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
 };
 
@@ -33,6 +26,7 @@ export function getLocalizedMetadata(lang: Locale): Metadata {
     ...baseMetadata,
     title: { absolute: content.title },
     description: content.description,
+    keywords: content.keywords,
     alternates: {
       canonical: path,
       languages: { "tr-TR": "/tr", "en-US": "/en", "x-default": "/tr" },
