@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
+import { useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from "react";
 
-import { brands, projects } from "@/data/site";
+import { projects } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import type { ActiveVideo } from "@/components/ui/VideoModal";
-import { ClientLogo } from "@/components/ui/ClientLogo";
 import { ProjectPoster } from "@/components/ui/ResponsiveMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ReferenceCarousel } from "@/components/ui/ReferenceCarousel";
+import { useAutoAdvance } from "@/hooks/useMotion";
 import { cn } from "@/lib/classNames";
 
 function TypewriterText({ text, startDelay = 0 }: { text: string; startDelay?: number }) {
@@ -31,45 +32,83 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
   const work = messages.work;
   const featuredProjects = projects.filter((project) => project.featured);
   const archiveProjects = projects.filter((project) => !project.featured);
-  const referenceBrands = brands.slice(0, 7);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const autoplayRef = useRef<HTMLDivElement>(null);
   const tabsScrollerRef = useRef<HTMLDivElement>(null);
-  const dragRef = useRef({ pointerId: -1, startX: 0, startScrollLeft: 0, moved: false });
+  const dragRef = useRef({
+    pointerId: -1,
+    mode: "idle" as "idle" | "pending" | "horizontal",
+    startX: 0,
+    startY: 0,
+    startScrollLeft: 0,
+    moved: false,
+  });
   const activeProject = featuredProjects[activeIndex] ?? featuredProjects[0];
   const activeContent = work.projects[activeProject.id];
 
   const handleTabsPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     if (event.pointerType === "mouse" && event.button !== 0) return;
-    if (event.target instanceof HTMLElement && event.target.closest("button")) {
-      dragRef.current = { pointerId: -1, startX: 0, startScrollLeft: 0, moved: false };
-      return;
-    }
     const scroller = event.currentTarget;
-    dragRef.current = { pointerId: event.pointerId, startX: event.clientX, startScrollLeft: scroller.scrollLeft, moved: false };
+    dragRef.current = {
+      pointerId: event.pointerId,
+      mode: "pending",
+      startX: event.clientX,
+      startY: event.clientY,
+      startScrollLeft: scroller.scrollLeft,
+      moved: false,
+    };
+
   };
 
   const handleTabsPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (dragRef.current.pointerId !== event.pointerId) return;
+    if (dragRef.current.pointerId !== event.pointerId || dragRef.current.mode === "idle") return;
     const distance = event.clientX - dragRef.current.startX;
-    if (Math.abs(distance) > 5) dragRef.current.moved = true;
+    const verticalDistance = event.clientY - dragRef.current.startY;
+
+    if (dragRef.current.mode === "pending") {
+      if (Math.max(Math.abs(distance), Math.abs(verticalDistance)) < 7) return;
+      if (Math.abs(verticalDistance) >= Math.abs(distance)) {
+        dragRef.current.pointerId = -1;
+        dragRef.current.mode = "idle";
+        return;
+      }
+      dragRef.current.mode = "horizontal";
+      event.currentTarget.classList.add("is-dragging");
+      dragRef.current.moved = true;
+      try {
+        event.currentTarget.setPointerCapture(event.pointerId);
+      } catch {
+        // Pointer capture is optional.
+      }
+    }
+
+    event.preventDefault();
     event.currentTarget.scrollLeft = dragRef.current.startScrollLeft - distance;
   };
 
   const handleTabsPointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    event.currentTarget.classList.remove("is-dragging");
     if (dragRef.current.pointerId !== event.pointerId) return;
     const dragged = dragRef.current.moved;
     dragRef.current.pointerId = -1;
+    dragRef.current.mode = "idle";
+    try {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    } catch {
+      // Pointer capture may already be released.
+    }
     if (dragged) window.setTimeout(() => { dragRef.current.moved = false; }, 0);
   };
 
-  useEffect(() => {
-    if (isPaused || featuredProjects.length < 2) return;
-    const interval = window.setInterval(() => {
+  useAutoAdvance({
+    containerRef: autoplayRef,
+    delay: 5600,
+    enabled: !isPaused && featuredProjects.length > 1,
+    onAdvance: () => {
       setActiveIndex((index) => (index + 1) % featuredProjects.length);
-    }, 5600);
-    return () => window.clearInterval(interval);
-  }, [isPaused, featuredProjects.length]);
+    },
+  });
 
   return (
     <section className="bg-canvas text-foreground" id="work">
@@ -81,7 +120,7 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
 
       <div className="page-shell pb-section pt-[clamp(2.5rem,3.5vw,3.5rem)]">
 
-      <div className="reveal-on-scroll mt-0">
+      <div className="reveal-on-scroll mt-0" ref={autoplayRef}>
         <div className="mb-5 flex items-center justify-between gap-4 border-b border-foreground/15 pb-3">
           <p className="font-mono text-[0.61rem] font-semibold tracking-[0.1em] text-foreground/55">{work.caseStudiesLabel}</p>
           <span className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent">{work.referenceLabel}</span>
@@ -90,12 +129,13 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
         <div className="overflow-hidden border border-foreground/15 bg-surface">
           <div className="flex items-center border-b border-foreground/15" role="tablist" aria-label={work.referenceTabsLabel}>
             <div
-              className="case-tabs-scroller flex min-w-0 flex-1 cursor-grab select-none touch-pan-x overflow-x-auto active:cursor-grabbing"
+              className="horizontal-drag-surface case-tabs-scroller flex min-w-0 flex-1 cursor-grab select-none touch-pan-y overflow-x-auto"
               ref={tabsScrollerRef}
               onPointerDown={handleTabsPointerDown}
               onPointerMove={handleTabsPointerMove}
               onPointerUp={handleTabsPointerUp}
               onPointerCancel={handleTabsPointerUp}
+              onLostPointerCapture={handleTabsPointerUp}
             >
               {featuredProjects.map((project, index) => {
                 const content = work.projects[project.id];
@@ -168,18 +208,14 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
             >
               <ProjectPoster slug={activeProject.slug} alt={activeContent.alt} sizes="(max-width: 760px) 100vw, 42vw" />
               <span className="absolute inset-0 bg-gradient-to-t from-canvas/75 via-transparent to-canvas/10 opacity-70 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
-              <span className="absolute bottom-4 right-4 translate-y-2 rounded-full bg-foreground/90 px-4 py-2.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-canvas opacity-0 shadow-[0_5px_20px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">{work.watchLabel}</span>
+              <span className="pointer-events-none absolute bottom-4 right-4 translate-y-2 rounded-full bg-foreground/90 px-4 py-2.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-canvas opacity-0 shadow-[0_5px_20px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">{work.watchLabel}</span>
             </a>
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-[minmax(8rem,0.65fr)_minmax(0,2fr)] items-center gap-grid border-y border-foreground/15 py-6 max-[760px]:grid-cols-1 max-[760px]:gap-5">
-          <p className="font-mono text-[0.61rem] font-semibold uppercase tracking-[0.1em] text-foreground/55">{work.referenceBrandsLabel}</p>
-          <div className="grid grid-cols-7 items-center gap-4 max-[1180px]:grid-cols-4 max-[640px]:grid-cols-2">
-            {referenceBrands.map((brand) => (
-              <ClientLogo className="h-10 w-full opacity-75 grayscale transition-[filter,opacity] duration-300 hover:grayscale-0 hover:opacity-100" scale={brand.scale} src={brand.logo} alt={brand.label} width={140} height={40} loading="lazy" key={brand.id} />
-            ))}
-          </div>
+        <div className="mt-8 border-y border-foreground/15 py-6">
+          <p className="mb-5 font-mono text-[0.61rem] font-semibold uppercase tracking-[0.1em] text-foreground/55">{work.referenceBrandsLabel}</p>
+          <ReferenceCarousel />
         </div>
       </div>
 
@@ -198,7 +234,7 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
               >
                 <div className="relative aspect-video overflow-hidden bg-surface">
                   <ProjectPoster slug={project.slug} alt={content.alt} sizes="(max-width: 640px) 100vw, (max-width: 1180px) 50vw, 25vw" />
-                  <span className="absolute bottom-4 right-4 translate-y-2 rounded-full bg-foreground/90 px-4 py-2.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-canvas opacity-0 shadow-[0_5px_20px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">{work.watchLabel}</span>
+                  <span className="pointer-events-none absolute bottom-4 right-4 translate-y-2 rounded-full bg-foreground/90 px-4 py-2.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-canvas opacity-0 shadow-[0_5px_20px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">{work.watchLabel}</span>
                 </div>
                 <div className="flex min-h-24 items-start justify-between gap-3 border-b border-foreground/15 py-4">
                   <div><p className="font-mono text-[0.53rem] uppercase tracking-[0.08em] text-foreground/50">{content.type}</p><h3 className="mt-1 font-display text-[clamp(1.25rem,1.5vw,1.8rem)] [font-weight:560] leading-[1.04] tracking-[-0.035em]">{content.title}</h3></div>

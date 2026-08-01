@@ -1,25 +1,27 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 
 import { methodPhases } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import { cn } from "@/lib/classNames";
 import { Eyebrow } from "@/components/ui/SectionHeading";
+import { useAutoAdvance } from "@/hooks/useMotion";
 
 export function MethodSection({ messages }: { messages: Messages }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const autoplayRef = useRef<HTMLElement>(null);
   const method = messages.method;
   const phaseConfig = methodPhases[activeIndex];
   const phase = method.phases[activeIndex];
 
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) return;
-    const interval = window.setInterval(() => setActiveIndex((index) => (index + 1) % methodPhases.length), 6200);
-    return () => window.clearInterval(interval);
-  }, []);
+  useAutoAdvance({
+    containerRef: autoplayRef,
+    delay: 6200,
+    enabled: methodPhases.length > 1,
+    onAdvance: () => setActiveIndex((index) => (index + 1) % methodPhases.length),
+  });
 
   const selectPhase = (index: number) => setActiveIndex((index + methodPhases.length) % methodPhases.length);
   const handleKeys = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -32,7 +34,7 @@ export function MethodSection({ messages }: { messages: Messages }) {
   };
 
   return (
-    <section className="page-shell grid grid-cols-12 gap-grid bg-surface py-section max-[940px]:grid-cols-6 max-[940px]:gap-y-16" id="method">
+    <section ref={autoplayRef} className="page-shell grid grid-cols-12 gap-grid bg-surface py-section max-[940px]:grid-cols-6 max-[940px]:gap-y-16" id="method">
       <div className="reveal-on-scroll col-span-5 max-[1180px]:col-span-5 max-[940px]:col-span-full">
         <Eyebrow>{method.eyebrow}</Eyebrow>
         <h2 className="mt-6 max-w-[9ch] font-display text-[clamp(3.4rem,5.5vw,6.4rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] max-[940px]:max-w-[10ch] max-[640px]:text-[clamp(3.1rem,13vw,4.8rem)]">{method.title}</h2>

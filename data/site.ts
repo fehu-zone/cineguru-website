@@ -62,6 +62,7 @@ export const brands = [
   { label: "Vodafone", id: "vodafone", logo: "/assets/references/Vodafone.webp", scale: 1.25 },
   { label: "World Ethnosport", id: "world-ethnosport", logo: "/assets/references/World-Ethnosport.webp", scale: 1.35 },
   { label: "World Nomad Games", id: "world-nomad-games", logo: "/assets/references/World-Nomad-Games.webp", scale: 1.35 },
+  { label: "İGA İstanbul Havalimanı", id: "iga", logo: "/assets/references/iga.webp", scale: 1.6 },
 ] as const;
 
 export const methodPhases = [

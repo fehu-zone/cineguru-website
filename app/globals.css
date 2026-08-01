@@ -126,6 +126,11 @@
     display: none;
   }
 
+  .horizontal-drag-surface.is-dragging,
+  .horizontal-drag-surface.is-dragging * {
+    cursor: grabbing !important;
+  }
+
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
@@ -147,6 +152,10 @@
     color: var(--color-accent);
     opacity: 0;
     animation: typewriter-character 420ms ease-out var(--typewriter-delay, 0ms) both;
+  }
+
+  .channel-tab-panel {
+    animation: channel-tab-in 420ms var(--ease-cinematic) both;
   }
 
   .custom-cursor {
@@ -178,15 +187,15 @@
   }
 }
 
-@keyframes reference-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
 @keyframes typewriter-character {
   0% { color: var(--color-accent); opacity: 0; }
   35% { color: var(--color-accent); opacity: 1; }
   100% { color: var(--color-foreground); opacity: 1; }
+}
+
+@keyframes channel-tab-in {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 .no-scrollbar {
@@ -201,6 +210,14 @@
 }
 
 @media (max-width: 600px) {
+  body::before {
+    display: none;
+  }
+
+  .hero-responsive-logo {
+    transform: scale(var(--mobile-logo-scale)) !important;
+  }
+
   .custom-cursor { display: none; }
 
   .hero-cinematic-overlay {
@@ -225,5 +242,4 @@
   .typewriter-character { animation: none; color: var(--color-foreground); opacity: 1; }
   .custom-cursor { display: none !important; }
   [data-magnetic] { transform: none !important; }
-  .hero-reference-track { animation: none; }
 }

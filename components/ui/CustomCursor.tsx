@@ -6,18 +6,23 @@ export function CustomCursor({ label }: { label: string }) {
   const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
     if (!finePointer.matches) return;
 
     let frame = 0;
+    let latestEvent: PointerEvent | null = null;
     const cursor = cursorRef.current;
     const onPointerMove = (event: PointerEvent) => {
-      if (frame) window.cancelAnimationFrame(frame);
+      latestEvent = event;
+      if (frame) return;
       frame = window.requestAnimationFrame(() => {
-        cursor?.style.setProperty("--cursor-x", `${event.clientX}px`);
-        cursor?.style.setProperty("--cursor-y", `${event.clientY}px`);
-        const target = event.target as Element | null;
+        const pointerEvent = latestEvent;
+        if (!pointerEvent) return;
+        cursor?.style.setProperty("--cursor-x", `${pointerEvent.clientX}px`);
+        cursor?.style.setProperty("--cursor-y", `${pointerEvent.clientY}px`);
+        const target = pointerEvent.target as Element | null;
         cursor?.classList.toggle("is-watch", Boolean(target?.closest("[data-cursor-label]")));
+        frame = 0;
       });
     };
 

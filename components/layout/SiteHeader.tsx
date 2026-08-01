@@ -10,19 +10,13 @@ import { cn } from "@/lib/classNames";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { ButtonLink } from "@/components/ui/Button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import { useMotionPolicy } from "@/hooks/useMotion";
 
 export function SiteHeader({ locale, messages }: { locale: Locale; messages: Messages }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const { headerCompact: scrolled } = useMotionPolicy();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const navRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -49,7 +43,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[1000] mx-auto grid h-[4.875rem] w-full max-w-site grid-cols-[3fr_6fr_3fr] items-center gap-grid border-b border-foreground/10 bg-gradient-to-b from-canvas/90 via-canvas/60 to-transparent px-page backdrop-blur-md transition-[height,background-color,border-color] duration-300 max-[1180px]:grid-cols-[2fr_5fr_3fr] max-[940px]:grid-cols-[1fr_auto]",
+          "fixed inset-x-0 top-0 z-[1000] mx-auto grid h-[4.875rem] w-full max-w-site grid-cols-[3fr_6fr_3fr] items-center gap-grid border-b border-foreground/10 bg-gradient-to-b from-canvas/90 via-canvas/60 to-transparent px-page backdrop-blur-md transition-[height,background-color,border-color] duration-300 max-[1180px]:grid-cols-[2fr_5fr_3fr] max-[940px]:grid-cols-[1fr_auto] max-[640px]:backdrop-blur-none",
           scrolled && "h-16 border-foreground/15 bg-canvas/90",
           "max-[640px]:h-16",
         )}

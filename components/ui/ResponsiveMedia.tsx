@@ -18,6 +18,7 @@ export function ProjectPoster({ slug, alt, sizes }: { slug: string; alt: string;
         height="720"
         loading="lazy"
         decoding="async"
+        draggable={false}
         alt={alt}
       />
     </picture>
@@ -44,6 +45,7 @@ export function ReelPoster({ slug, alt, sizes }: { slug: string; alt: string; si
         height="1920"
         loading="lazy"
         decoding="async"
+        draggable={false}
         alt={alt}
       />
     </picture>
