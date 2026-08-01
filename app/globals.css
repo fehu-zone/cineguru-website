@@ -272,7 +272,6 @@
     border-radius: 12px;
     color: var(--white);
     background: var(--ink);
-    cursor: pointer;
   }
   .hero-production-frame video {
     display: block;
