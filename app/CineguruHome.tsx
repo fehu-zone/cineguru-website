@@ -686,10 +686,10 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
       <header ref={headerRef} className="site-header">
         <a className="brand-link" href="#top" aria-label={copy.homeLabel}><span className="brand-logo" aria-hidden="true" /></a>
         <nav ref={navRef} className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label={copy.navLabel}>
-          <a href="#work" onClick={() => setMenuOpen(false)}>{copy.nav[0]}</a>
-          <a href="#services" onClick={() => setMenuOpen(false)}>{copy.nav[1]}</a>
-          <a href="#method" onClick={() => setMenuOpen(false)}>{copy.nav[2]}</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)}>{copy.nav[3]}</a>
+          <a href="#work" data-step="01" onClick={() => setMenuOpen(false)}>{copy.nav[0]}</a>
+          <a href="#services" data-step="02" onClick={() => setMenuOpen(false)}>{copy.nav[1]}</a>
+          <a href="#method" data-step="03" onClick={() => setMenuOpen(false)}>{copy.nav[2]}</a>
+          <a href="#contact" data-step="04" onClick={() => setMenuOpen(false)}>{copy.nav[3]}</a>
         </nav>
         <div className="header-actions">
           <nav className="language-toggle" aria-label={copy.languageLabel}>
