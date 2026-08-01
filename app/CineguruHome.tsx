@@ -342,7 +342,7 @@ const translations = {
 };
 
 const brandNames: { label: string; id: string; logo: string }[] = [
-  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "" },
+  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp" },
   { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp" },
   { label: "BiBOYA", id: "biboya", logo: "/assets/references/BiBOYA-1.webp" },
   { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp" },
@@ -745,6 +745,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
         <div className="hero-reference-strip" aria-label={language === "tr" ? "Referans markalar" : "Selected clients"}>
           <div className="hero-reference-track">
             {brandNames.map((brand) => brand.logo ? <img key={brand.id} src={brand.logo} alt={brand.label} loading="eager" decoding="async" /> : <span className="hero-reference-text" key={brand.id}>{brand.label}</span>)}
+            {brandNames.map((brand) => brand.logo ? <img className="hero-reference-duplicate" key={`${brand.id}-duplicate`} src={brand.logo} alt="" aria-hidden="true" loading="eager" decoding="async" /> : <span className="hero-reference-text hero-reference-duplicate" key={`${brand.id}-duplicate`} aria-hidden="true">{brand.label}</span>)}
           </div>
         </div>
 

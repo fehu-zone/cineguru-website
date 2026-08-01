@@ -859,6 +859,7 @@
     object-fit: contain;
     opacity: .76;
   }
+  .hero-reference-duplicate { display: none; }
   .hero-reference-text {
     display: grid;
     place-items: center;
@@ -872,6 +873,10 @@
     text-align: center;
     text-transform: uppercase;
   }
+  @keyframes reference-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 
   @media (max-width: 900px) {
     .hero-copy { width: min(78%, 680px); margin-left: var(--page-x); padding-top: 5rem; }
@@ -882,12 +887,41 @@
   }
 
   @media (max-width: 600px) {
-    .hero-copy { width: 100%; padding-top: 2rem; }
+    .hero-copy {
+      width: auto;
+      margin-right: var(--page-x);
+      margin-left: var(--page-x);
+      padding-top: 2rem;
+    }
+    .hero-title {
+      font-size: clamp(1.9rem, 9vw, 3rem);
+      letter-spacing: -.055em;
+      line-height: .96;
+    }
+    .hero-title-line { white-space: normal; }
+    .hero-description { max-width: none; margin-top: 1rem; font-size: .84rem; line-height: 1.45; }
+    .hero-actions { flex-direction: row; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; margin-top: 1.35rem; }
+    .hero-actions .button { min-height: 42px; padding: .68rem .8rem .68rem 1rem; font-size: .56rem; gap: .7rem; }
+    .hero-actions .button-arrow { width: 21px; height: 21px; }
+    .hero-actions .text-link { font-size: .56rem; }
     .hero-production-frame video { filter: blur(1.3px) brightness(.5) contrast(1.04) saturate(1.08); }
     .hero-production-frame::after { background: linear-gradient(180deg, rgba(11, 11, 12, .62), rgba(11, 11, 12, .2) 38%, rgba(11, 11, 12, .7)); }
-    .hero-reference-strip { padding: .7rem var(--page-x); }
-    .hero-reference-track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
+    .hero-reference-strip { padding: .45rem 0; }
+    .hero-reference-track {
+      display: flex;
+      width: max-content;
+      margin: 0;
+      gap: 1.2rem;
+      animation: reference-marquee 34s linear infinite;
+      will-change: transform;
+    }
+    .hero-reference-track > * { flex: 0 0 112px; }
+    .hero-reference-track > .hero-reference-duplicate { display: block; }
     .hero-reference-track img { height: 46px; }
     .hero-reference-text { min-height: 46px; font-size: .48rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-reference-track { animation: none; }
   }
 }
