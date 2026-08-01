@@ -25,7 +25,7 @@ export function AboutSection({ messages }: { messages: Messages }) {
           {brands.map((brand) => (
             <div className="group relative grid min-h-28 place-items-center overflow-hidden border-b border-r border-foreground/20 transition-colors hover:bg-surface" key={brand.id}>
               <i className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-              <ClientLogo className="h-8 w-[min(52%,10rem)] opacity-85" src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} width={160} height={32} loading="lazy" />
+              <ClientLogo className="h-8 w-[min(52%,10rem)] opacity-85" scale={brand.scale} src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} width={160} height={32} loading="lazy" />
             </div>
           ))}
         </div>

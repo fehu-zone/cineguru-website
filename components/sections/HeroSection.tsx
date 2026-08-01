@@ -63,10 +63,10 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
         <a className="flex items-center gap-2 text-foreground" href="#work">{hero.discover}<span aria-hidden="true">↓</span></a>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 overflow-hidden border-t border-foreground/15 bg-canvas/95 px-page py-[1.35rem] backdrop-blur-md max-[600px]:px-0 max-[600px]:py-3" aria-label={hero.clientsLabel}>
-        <div className="hero-reference-track mx-auto grid w-full max-w-site grid-cols-[repeat(13,minmax(0,1fr))] items-center gap-[clamp(.8rem,1.8vw,2.1rem)] max-[900px]:grid-cols-[repeat(7,minmax(0,1fr))] max-[900px]:gap-y-2 max-[600px]:flex max-[600px]:w-max max-[600px]:max-w-none max-[600px]:gap-7">
-          {brands.map((brand) => <ClientLogo className="h-[5.125rem] w-full opacity-90 max-[900px]:h-[3.875rem] max-[600px]:h-16 max-[600px]:w-32 max-[600px]:shrink-0 max-[600px]:opacity-100" key={brand.id} src={brand.logo} alt={brand.label} loading="eager" />)}
-          {brands.map((brand) => <ClientLogo className="hidden h-16 w-32 shrink-0 max-[600px]:block" key={`${brand.id}-duplicate`} src={brand.logo} alt="" aria-hidden="true" width={128} height={64} loading="eager" />)}
+      <div className="absolute inset-x-0 bottom-0 z-20 overflow-hidden border-t border-foreground/15 bg-canvas/95 px-page py-[1.5rem] backdrop-blur-md max-[600px]:px-0 max-[600px]:py-3.5" aria-label={hero.clientsLabel}>
+        <div className="hero-reference-track mx-auto grid w-full max-w-site grid-cols-[repeat(13,minmax(0,1fr))] items-center gap-[clamp(1.4rem,2.8vw,3.2rem)] max-[900px]:grid-cols-[repeat(7,minmax(0,1fr))] max-[900px]:gap-y-4 max-[600px]:flex max-[600px]:w-max max-[600px]:max-w-none max-[600px]:gap-10">
+          {brands.map((brand) => <ClientLogo className="h-[5.125rem] w-full opacity-90 max-[900px]:h-[3.875rem] max-[600px]:h-16 max-[600px]:w-32 max-[600px]:shrink-0 max-[600px]:opacity-100" scale={brand.scale} key={brand.id} src={brand.logo} alt={brand.label} loading="eager" />)}
+          {brands.map((brand) => <ClientLogo className="hidden h-16 w-32 shrink-0 max-[600px]:block" scale={brand.scale} key={`${brand.id}-duplicate`} src={brand.logo} alt="" aria-hidden="true" width={128} height={64} loading="eager" />)}
         </div>
       </div>
     </section>

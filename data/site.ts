@@ -45,19 +45,19 @@ export const reels = [
 ] as const;
 
 export const brands = [
-  { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp" },
-  { label: "BiBOYA", id: "biboya", logo: "/assets/references/BiBOYA-1.webp" },
-  { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp" },
-  { label: "Farmasi", id: "farmasi", logo: "/assets/references/farmasi-1.webp" },
-  { label: "Kalekim", id: "kalekim", logo: "/assets/references/Kalekim.webp" },
-  { label: "Pasha Bank", id: "pasha-bank", logo: "/assets/references/Pasha-Bank.webp" },
-  { label: "RTA", id: "rta", logo: "/assets/references/RTA-1-1.webp" },
-  { label: "Vasso", id: "vasso", logo: "/assets/references/Vasso.webp" },
-  { label: "Vialand", id: "vialand", logo: "/assets/references/Vialand.webp" },
-  { label: "Vodafone", id: "vodafone", logo: "/assets/references/Vodafone.webp" },
-  { label: "World Ethnosport", id: "world-ethnosport", logo: "/assets/references/World-Ethnosport.webp" },
-  { label: "World Nomad Games", id: "world-nomad-games", logo: "/assets/references/World-Nomad-Games.webp" },
-  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp" },
+  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp", scale: 1.3 },
+  { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp", scale: 0.9 },
+  { label: "BiBOYA", id: "biboya", logo: "/assets/references/BiBOYA-1.webp", scale: 0.95 },
+  { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp", scale: 1.35 },
+  { label: "Farmasi", id: "farmasi", logo: "/assets/references/farmasi-1.webp", scale: 1.0 },
+  { label: "Kalekim", id: "kalekim", logo: "/assets/references/Kalekim.webp", scale: 1.05 },
+  { label: "Pasha Bank", id: "pasha-bank", logo: "/assets/references/Pasha-Bank.webp", scale: 1.3 },
+  { label: "RTA", id: "rta", logo: "/assets/references/RTA-1-1.webp", scale: 0.95 },
+  { label: "Vasso", id: "vasso", logo: "/assets/references/Vasso.webp", scale: 1.35 },
+  { label: "Vialand", id: "vialand", logo: "/assets/references/Vialand.webp", scale: 0.85 },
+  { label: "Vodafone", id: "vodafone", logo: "/assets/references/Vodafone.webp", scale: 1.25 },
+  { label: "World Ethnosport", id: "world-ethnosport", logo: "/assets/references/World-Ethnosport.webp", scale: 1.35 },
+  { label: "World Nomad Games", id: "world-nomad-games", logo: "/assets/references/World-Nomad-Games.webp", scale: 1.35 },
 ] as const;
 
 export const methodPhases = [
