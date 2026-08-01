@@ -159,7 +159,7 @@ const translations = {
     nav: ["İşler", "Hizmetler", "Yöntem", "İletişim"],
     project: "Projeni Anlat",
     eyebrow: "AI DESTEKLİ VİDEO PRODÜKSİYON · İSTANBUL",
-    heroTitle: "Fikri, iz bırakan filme dönüştürüyoruz.",
+    heroTitle: "Fikri, iz bırakan\nfilme dönüştürüyoruz.",
     heroText:
       "Reklam, tanıtım ve sosyal içeriklerde yapay zekâ ile insan yaratıcılığını aynı prodüksiyon disiplininde buluşturuyoruz.",
     heroPrimary: "İşleri keşfet",
@@ -251,7 +251,7 @@ const translations = {
     nav: ["Work", "Services", "Method", "Contact"],
     project: "Start a Project",
     eyebrow: "AI-POWERED VIDEO PRODUCTION · ISTANBUL",
-    heroTitle: "We turn ideas into films that leave a mark.",
+    heroTitle: "We turn ideas into films\nthat leave a mark.",
     heroText:
       "We bring artificial intelligence and human creativity into one production discipline for commercials, brand films and social content.",
     heroPrimary: "Explore the work",
@@ -743,7 +743,6 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
             <video autoPlay muted loop playsInline preload="auto" poster="/assets/showreel-poster-1280.webp" aria-hidden="true">
               <source src="/assets/Cineguru-Production-Showreel.mp4" type="video/mp4" />
             </video>
-            <div className="production-playhead" />
             <div className="hero-hud" aria-hidden="true">
               <i className="hud-corner hud-tl" /><i className="hud-corner hud-tr" />
               <i className="hud-corner hud-bl" /><i className="hud-corner hud-br" />

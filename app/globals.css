@@ -327,7 +327,6 @@
     background: var(--accent);
     box-shadow: 0 0 20px rgba(227, 51, 38, .75);
   }
-  .production-playhead { position: absolute; z-index: 3; inset: 0 auto 0 22%; width: 1px; background: linear-gradient(transparent, var(--accent) 16% 84%, transparent); opacity: .58; }
   .hero-showreel-label {
     position: absolute;
     z-index: 6;
@@ -852,6 +851,7 @@
     margin-left: max(var(--page-x), calc((100vw - var(--max-width)) / 2 + 2rem));
     padding-top: clamp(3rem, 14vh, 10rem);
   }
+  .hero-title { max-width: none; white-space: pre-line; }
   .hero-visual {
     position: absolute;
     z-index: 0;
@@ -884,7 +884,7 @@
     bottom: 0;
     left: 0;
     overflow: hidden;
-    padding: 1.1rem var(--page-x);
+    padding: 1.35rem var(--page-x);
     border-top: 1px solid rgba(241, 241, 241, .14);
     background: rgba(11, 11, 12, .94);
     backdrop-filter: blur(12px);
@@ -899,7 +899,7 @@
   }
   .hero-reference-track img {
     width: 100%;
-    height: 42px;
+    height: 68px;
     object-fit: contain;
     opacity: .76;
   }
@@ -908,7 +908,7 @@
     .hero-copy { width: min(78%, 680px); margin-left: var(--page-x); padding-top: 5rem; }
     .hero-foot { left: var(--page-x); }
     .hero-reference-track { grid-template-columns: repeat(7, minmax(0, 1fr)); row-gap: .7rem; }
-    .hero-reference-track img { height: 34px; }
+    .hero-reference-track img { height: 52px; }
   }
 
   @media (max-width: 600px) {
@@ -917,6 +917,6 @@
     .hero-production-frame::after { background: linear-gradient(180deg, rgba(11, 11, 12, .62), rgba(11, 11, 12, .2) 38%, rgba(11, 11, 12, .7)); }
     .hero-reference-strip { padding: .7rem var(--page-x); }
     .hero-reference-track { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; }
-    .hero-reference-track img { height: 28px; }
+    .hero-reference-track img { height: 40px; }
   }
 }
