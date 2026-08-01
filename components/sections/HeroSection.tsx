@@ -1,10 +1,8 @@
-/* eslint-disable @next/next/no-img-element -- reference logos are pre-optimized static assets */
-
 import type { Ref } from "react";
+import Image from "next/image";
 
 import { brands, siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
-import { BrandLogo } from "@/components/ui/BrandLogo";
 import { ButtonLink, TextLink } from "@/components/ui/Button";
 import { CameraHud } from "@/components/ui/CameraHud";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -59,8 +57,8 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
 
       <div className="absolute inset-x-0 bottom-0 z-20 overflow-hidden border-t border-foreground/15 bg-canvas/95 px-page py-4 backdrop-blur-md max-[600px]:px-0 max-[600px]:py-2" aria-label={hero.clientsLabel}>
         <div className="hero-reference-track mx-auto grid w-full max-w-site grid-cols-[repeat(13,minmax(0,1fr))] items-center gap-[clamp(.8rem,1.8vw,2.1rem)] max-[900px]:grid-cols-[repeat(7,minmax(0,1fr))] max-[900px]:gap-y-2 max-[600px]:flex max-[600px]:w-max max-[600px]:max-w-none max-[600px]:gap-5">
-          {brands.map((brand) => <img className="h-[4.5rem] w-full object-contain opacity-75 max-[900px]:h-[3.5rem] max-[600px]:h-11 max-[600px]:w-28 max-[600px]:shrink-0" key={brand.id} src={brand.logo} alt={brand.label} loading="eager" decoding="async" />)}
-          {brands.map((brand) => <img className="hidden h-11 w-28 shrink-0 object-contain opacity-75 max-[600px]:block" key={`${brand.id}-duplicate`} src={brand.logo} alt="" aria-hidden="true" loading="eager" decoding="async" />)}
+          {brands.map((brand) => <Image className="h-[4.5rem] w-full object-contain opacity-75 max-[900px]:h-[3.5rem] max-[600px]:h-11 max-[600px]:w-28 max-[600px]:shrink-0" key={brand.id} src={brand.logo} alt={brand.label} width={180} height={72} priority unoptimized />)}
+          {brands.map((brand) => <Image className="hidden h-11 w-28 shrink-0 object-contain opacity-75 max-[600px]:block" key={`${brand.id}-duplicate`} src={brand.logo} alt="" aria-hidden="true" width={112} height={44} priority unoptimized />)}
         </div>
       </div>
     </section>

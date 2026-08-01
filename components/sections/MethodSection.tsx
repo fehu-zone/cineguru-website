@@ -1,8 +1,7 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element -- method artwork is a pre-optimized static asset */
-
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { methodPhases } from "@/data/site";
 import type { Messages } from "@/i18n/config";
@@ -47,7 +46,7 @@ export function MethodSection({ messages }: { messages: Messages }) {
           <div className="absolute -left-20 top-8 size-64 rounded-full bg-accent/15 blur-3xl" />
           <div className="absolute -right-24 bottom-6 size-72 rounded-full bg-foreground/10 blur-3xl" />
           <div className="absolute inset-[9%_7%_14%] overflow-hidden border border-foreground/20 bg-surface shadow-2xl max-[640px]:inset-[9%_5%_12%]">
-            <img className="size-full object-cover" key={phaseConfig.image + activeIndex} src={phaseConfig.image} width="1600" height="960" loading="lazy" decoding="async" alt={phase.alt} />
+            <Image className="object-cover" key={phaseConfig.image + activeIndex} src={phaseConfig.image} fill sizes="(max-width: 940px) 90vw, 48vw" alt={phase.alt} unoptimized />
             <div className="absolute inset-0 bg-gradient-to-t from-canvas/90 via-transparent to-canvas/15" />
             <div className="absolute bottom-3 left-3 right-3 border border-foreground/20 bg-canvas/75 p-3 font-mono text-[0.54rem] uppercase tracking-[0.08em] backdrop-blur-md">
               <div className="flex items-center justify-between gap-3"><span className="text-accent">{phase.name}</span><strong className="font-medium text-foreground/75">{phase.semantic}</strong></div>

@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "cineguru-studio",
       cwd: __dirname,
-      script: "./node_modules/.bin/vinext",
+      script: "./node_modules/.bin/next",
       args: "start --hostname 127.0.0.1 --port 3000",
       interpreter: "none",
       instances: 1,

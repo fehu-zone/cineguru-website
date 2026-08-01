@@ -91,7 +91,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
         </nav>
 
         <div className="relative z-[1010] flex items-center justify-end gap-3">
-          <nav className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-foreground/30 bg-foreground/5 px-3 font-mono text-[0.67rem] font-semibold tracking-[0.08em] text-foreground/70 shadow-[inset_0_1px_0_rgb(241_241_241/0.08)]" aria-label={nav.languageLabel}>
+          <nav className="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-foreground/30 bg-foreground/5 px-3 font-mono text-[0.67rem] font-semibold tracking-[0.08em] text-foreground/70" aria-label={nav.languageLabel}>
             <Link href="/tr" lang="tr" hrefLang="tr" className={cn("transition-colors hover:text-foreground", locale === "tr" && "text-foreground")} aria-current={locale === "tr" ? "page" : undefined} onClick={() => trackEvent("language_select", { language: "tr" })}>TR</Link>
             <span className="text-accent">·</span>
             <Link href="/en" lang="en" hrefLang="en" className={cn("transition-colors hover:text-foreground", locale === "en" && "text-foreground")} aria-current={locale === "en" ? "page" : undefined} onClick={() => trackEvent("language_select", { language: "en" })}>EN</Link>

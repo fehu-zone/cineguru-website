@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- art-directed AVIF/WebP sources are intentional */
-
 export function ProjectPoster({ slug, alt, sizes }: { slug: string; alt: string; sizes: string }) {
   return (
     <picture>

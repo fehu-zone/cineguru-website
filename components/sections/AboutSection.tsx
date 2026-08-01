@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element -- client logos are pre-optimized static assets */
-
 import type { CSSProperties } from "react";
+import Image from "next/image";
 
 import { brands } from "@/data/site";
 import type { Messages } from "@/i18n/config";
@@ -26,7 +25,7 @@ export function AboutSection({ messages }: { messages: Messages }) {
           {brands.map((brand) => (
             <div className="group relative grid min-h-28 place-items-center overflow-hidden border-b border-r border-foreground/20 transition-colors hover:bg-surface" key={brand.id}>
               <i className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-              <img className="max-h-8 w-[min(52%,10rem)] object-contain opacity-85" src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} loading="lazy" decoding="async" />
+              <Image className="max-h-8 w-[min(52%,10rem)] object-contain opacity-85" src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} width={160} height={32} unoptimized />
             </div>
           ))}
         </div>

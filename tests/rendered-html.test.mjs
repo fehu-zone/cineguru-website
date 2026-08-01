@@ -5,7 +5,7 @@ import test from "node:test";
 const port = 3137;
 const server = spawn(
   process.execPath,
-  ["node_modules/vinext/dist/cli.js", "start", "--hostname", "127.0.0.1", "--port", String(port)],
+  ["node_modules/next/dist/bin/next", "start", "--hostname", "127.0.0.1", "--port", String(port)],
   { cwd: new URL("..", import.meta.url), stdio: "ignore" },
 );
 
@@ -17,7 +17,7 @@ async function waitForServer() {
     } catch {}
     await new Promise((resolve) => setTimeout(resolve, 250));
   }
-  throw new Error("Vinext production server did not start");
+  throw new Error("Next.js production server did not start");
 }
 
 async function renderPath(path) {
@@ -67,7 +67,7 @@ test("keeps real portfolio video identifiers in rendered output", async () => {
 test("renders the two unique vertical Shorts in the current feed", async () => {
   const response = await renderPath("/tr");
   const html = await response.text();
-  const channelSection = html.match(/<section class=["']channel-section["'][\s\S]*?<\/section>/i)?.[0] ?? "";
+  const channelSection = html.match(/<section class=["'][^"']*\bchannel-section\b[^"']*["'][\s\S]*?<\/section>/i)?.[0] ?? "";
 
   assert.match(channelSection, /zgHJxbfs27o/);
   assert.match(channelSection, /t7DJjnegikA/);

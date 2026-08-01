@@ -1,5 +1,5 @@
-import CineguruHome from "../../CineguruHome";
+import CineguruHome from "@/components/home/CineguruHome";
 
 export default function TurkishPage() {
-  return <CineguruHome initialLanguage="tr" />;
+  return <CineguruHome locale="tr" />;
 }

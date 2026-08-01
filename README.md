@@ -8,8 +8,7 @@ Bu sürüm local geliştirme ve doğrudan Node.js üzerinde çalışacak şekild
 
 - React 19
 - TypeScript
-- Next App Router uyumlu Vinext
-- Vite
+- Next.js 16 App Router
 - Tailwind CSS 4
 - Node.js 22.13 veya üzeri
 
@@ -20,7 +19,7 @@ npm ci
 npm run dev
 ```
 
-Ardından `http://localhost:5173/tr` adresini açın.
+Ardından `http://localhost:3000/tr` adresini açın.
 
 ## Production build ve test
 
@@ -44,6 +43,18 @@ Uygulama varsayılan olarak `http://127.0.0.1:3000` üzerinde çalışır.
 - `/en` İngilizce sürüm
 - `/robots.txt` arama motoru yönergeleri
 - `/sitemap.xml` site haritası
+
+## Kaynak kod mimarisi
+
+- `app/`: route, layout, metadata, robots ve sitemap dosyaları
+- `components/ui/`: tekrar kullanılabilir temel arayüz parçaları
+- `components/layout/`: site header, footer ve sayfa ilerleme göstergesi
+- `components/sections/`: ana sayfanın bağımsız bölümleri
+- `components/home/`: sayfa bileşimi ve ortak etkileşim state'i
+- `i18n/locales/`: Türkçe ve İngilizce JSON içerikleri
+- `data/`: dilden bağımsız video, marka ve site sabitleri
+- `hooks/`: tarayıcı davranışları ve sayfa efektleri
+- `lib/`: analytics, structured data ve küçük yardımcılar
 
 ## Sunucuya geçiş
 

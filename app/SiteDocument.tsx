@@ -2,19 +2,19 @@ import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
-  variable: "--font-display",
+  variable: "--font-cine-display",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
 const inter = Inter({
-  variable: "--font-body",
+  variable: "--font-cine-body",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
 
 const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+  variable: "--font-cine-mono",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });

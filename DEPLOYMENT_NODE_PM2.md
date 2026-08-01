@@ -16,7 +16,7 @@ Node sürümü en az `22.13.0` olmalıdır.
 ## 2. Bağımlılık ve üretim build’i
 
 ```bash
-cd /var/www/Cineguru_Studio_Server_Handoff_v17
+cd /var/www/cineguru-website
 npm ci
 npm run build
 ```
@@ -55,15 +55,4 @@ npm ci
 npm run build
 pm2 reload ecosystem.config.cjs --env production
 bash scripts/verify-server.sh https://www.wearecineguru.com
-```
-
-## Systemd alternatifi
-
-PM2 kullanılmayacaksa `systemd/cineguru-studio.service` içindeki `User` ve `WorkingDirectory` değerlerini sunucuya göre düzenleyin. Ardından:
-
-```bash
-sudo cp systemd/cineguru-studio.service /etc/systemd/system/cineguru-studio.service
-sudo systemctl daemon-reload
-sudo systemctl enable --now cineguru-studio
-sudo systemctl status cineguru-studio
 ```

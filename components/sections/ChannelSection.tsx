@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- art-directed AVIF/WebP sources are intentional */
-
 import { reels, siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import type { ActiveVideo } from "@/components/ui/VideoModal";

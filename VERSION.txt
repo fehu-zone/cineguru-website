@@ -3,5 +3,5 @@ Release: v17
 Prepared: 2026-08-01
 Routes: /tr, /en
 Runtime: Node.js >= 22.13.0
-Production entry: vinext start
+Production entry: next start
 Canonical domain: https://www.wearecineguru.com
