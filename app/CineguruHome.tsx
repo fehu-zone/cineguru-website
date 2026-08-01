@@ -246,6 +246,11 @@ const translations = {
     footerLine: "AI Destekli Video Prodüksiyon",
     close: "Kapat",
     caseStudyLabel: "Case Study",
+    contactInfoTitle: "İletişim Bilgileri",
+    phoneLabel: "TELEFON",
+    phoneVal: "+90 (531) 844 62 06",
+    officeLabel: "OFİS KONUM",
+    followUsTitle: "Bizi Takip Edin",
   },
   en: {
     nav: ["Work", "Services", "Method", "Contact"],
@@ -338,6 +343,11 @@ const translations = {
     footerLine: "AI-Powered Video Production",
     close: "Close",
     caseStudyLabel: "Case Study",
+    contactInfoTitle: "Contact Details",
+    phoneLabel: "PHONE",
+    phoneVal: "+90 (531) 844 62 06",
+    officeLabel: "OFFICE LOCATION",
+    followUsTitle: "Follow Us",
   },
 };
 
@@ -487,9 +497,9 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
         const totalFrames = Math.floor(progress * 90 * 24);
         const seconds = Math.floor(totalFrames / 24);
         const frames = totalFrames % 24;
-        if (timecodeRef.current) {
-          timecodeRef.current.textContent = `TC 00:${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}:${String(frames).padStart(2, "0")}`;
-        }
+        const tcString = `TC 00:${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}:${String(frames).padStart(2, "0")}`;
+        if (timecodeRef.current) timecodeRef.current.textContent = tcString;
+        document.querySelectorAll(".tc-display").forEach((el) => { el.textContent = tcString; });
         const service = serviceRef.current;
         if (service) {
           const start = service.offsetTop - window.innerHeight * 0.72;
@@ -686,10 +696,45 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
       <header ref={headerRef} className="site-header">
         <a className="brand-link" href="#top" aria-label={copy.homeLabel}><span className="brand-logo" aria-hidden="true" /></a>
         <nav ref={navRef} className={`main-nav ${menuOpen ? "is-open" : ""}`} aria-label={copy.navLabel}>
-          <a href="#work" data-step="01" onClick={() => setMenuOpen(false)}>{copy.nav[0]}</a>
-          <a href="#services" data-step="02" onClick={() => setMenuOpen(false)}>{copy.nav[1]}</a>
-          <a href="#method" data-step="03" onClick={() => setMenuOpen(false)}>{copy.nav[2]}</a>
-          <a href="#contact" data-step="04" onClick={() => setMenuOpen(false)}>{copy.nav[3]}</a>
+          <div className="mobile-nav-links">
+            <a href="#work" onClick={() => setMenuOpen(false)}>{copy.nav[0]}</a>
+            <a href="#services" onClick={() => setMenuOpen(false)}>{copy.nav[1]}</a>
+            <a href="#method" onClick={() => setMenuOpen(false)}>{copy.nav[2]}</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>{copy.nav[3]}</a>
+          </div>
+
+          <div className="mobile-menu-extra">
+            <div className="mobile-menu-section">
+              <h4 className="mobile-menu-heading">{copy.contactInfoTitle}</h4>
+              <div className="mobile-menu-info-item">
+                <span className="mobile-menu-label">{copy.phoneLabel}</span>
+                <a href="tel:+905318446206" className="mobile-menu-val">{copy.phoneVal}</a>
+              </div>
+              <div className="mobile-menu-info-item">
+                <span className="mobile-menu-label">{copy.emailLabel.toUpperCase()}</span>
+                <a href="mailto:info@wearecineguru.com" className="mobile-menu-val">info@wearecineguru.com</a>
+              </div>
+              <div className="mobile-menu-info-item">
+                <span className="mobile-menu-label">{copy.officeLabel}</span>
+                <span className="mobile-menu-val">{copy.address}</span>
+              </div>
+            </div>
+
+            <div className="mobile-menu-section">
+              <h4 className="mobile-menu-heading">{copy.followUsTitle}</h4>
+              <div className="mobile-menu-socials">
+                <a href="https://www.instagram.com/cinegurustudio/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="mobile-social-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/thecineguru" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="mobile-social-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@CineguruStudio" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="mobile-social-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
         </nav>
         <div className="header-actions">
           <nav className="language-toggle" aria-label={copy.languageLabel}>
@@ -716,6 +761,13 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
       </div>
 
       <section className="hero" id="top">
+        <div className="hero-camera-hud" aria-hidden="true">
+          <i className="hud-corner hud-tl" /><i className="hud-corner hud-tr" />
+          <i className="hud-corner hud-bl" /><i className="hud-corner hud-br" />
+          <div className="hud-top"><span className="hud-rec"><i /> REC</span><span>4K / DCI</span></div>
+          <div className="hud-bottom"><span className="tc-display">TC 00:00:00:00</span><span>CG / SHOWREEL</span></div>
+        </div>
+
         <div className="hero-copy">
           <p className="eyebrow">{copy.eyebrow}</p>
           <h1 className="hero-title">
@@ -738,7 +790,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
               <i className="hud-corner hud-tl" /><i className="hud-corner hud-tr" />
               <i className="hud-corner hud-bl" /><i className="hud-corner hud-br" />
               <div className="hud-top"><span className="hud-rec"><i /> REC</span><span>4K / DCI</span></div>
-              <div className="hud-bottom"><span ref={timecodeRef}>TC 00:00:00:00</span><span>CG / SHOWREEL</span></div>
+              <div className="hud-bottom"><span ref={timecodeRef} className="tc-display">TC 00:00:00:00</span><span>CG / SHOWREEL</span></div>
             </div>
           </div>
         </div>
