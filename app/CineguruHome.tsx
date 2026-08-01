@@ -391,10 +391,6 @@ const methodPhases = [
   },
 ];
 
-function PlayIcon() {
-  return <span className="play-icon" aria-hidden="true">▶</span>;
-}
-
 function ProjectPoster({ slug, alt, sizes }: { slug: string; alt: string; sizes: string }) {
   return (
     <picture>
@@ -735,13 +731,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
 
         <div className="hero-visual">
           <div className="visual-glow" />
-          <a
-            href="https://www.youtube.com/watch?v=C9U3RJX1c0k"
-            className="hero-production-frame"
-            onClick={(event) => { event.preventDefault(); openVideo("C9U3RJX1c0k", copy.showreelModalTitle); }}
-            aria-label={copy.showreel}
-            data-cursor-label={copy.cursor}
-          >
+          <div className="hero-production-frame">
             <video autoPlay muted loop playsInline preload="auto" poster="/assets/showreel-poster-1280.webp" aria-hidden="true">
               <source src="/assets/Cineguru-Production-Showreel.mp4" type="video/mp4" />
             </video>
@@ -751,8 +741,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
               <div className="hud-top"><span className="hud-rec"><i /> REC</span><span>4K / DCI</span></div>
               <div className="hud-bottom"><span ref={timecodeRef}>TC 00:00:00:00</span><span>CG / SHOWREEL</span></div>
             </div>
-            <span className="hero-showreel-label"><PlayIcon /></span>
-          </a>
+          </div>
         </div>
 
         <div className="hero-reference-strip" aria-label={language === "tr" ? "Referans markalar" : "Selected clients"}>
