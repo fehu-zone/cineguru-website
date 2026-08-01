@@ -198,6 +198,236 @@
   to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
+/* ─── Services 3D Section ─── */
+.services-canvas-wrap {
+  position: relative;
+}
+
+.services-canvas-container {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
+  background: var(--color-canvas);
+}
+
+.services-canvas-container--full {
+  aspect-ratio: 16 / 9;
+  min-height: 28rem;
+  max-height: 38rem;
+}
+
+.services-canvas-fallback {
+  width: 100%;
+  height: 100%;
+  background: var(--color-canvas);
+}
+
+.services-canvas-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* HUD corners */
+.services-canvas-hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 3D Hotspot Cards */
+.services-hotspot-card {
+  width: 210px !important;
+  max-width: 210px !important;
+  padding: 12px 14px !important;
+  border-radius: 8px !important;
+  background: rgba(20, 20, 24, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+  transition: transform 300ms var(--ease-cinematic), border-color 300ms ease, box-shadow 300ms ease !important;
+  user-select: none !important;
+  cursor: pointer !important;
+  white-space: normal !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.services-hotspot-card:hover,
+.services-hotspot-card.is-hovered {
+  transform: translateY(-3px) scale(1.03) !important;
+  border-color: rgba(255, 61, 0, 0.65) !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 18px rgba(255, 61, 0, 0.3) !important;
+}
+
+.hotspot-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.hotspot-badge {
+  font-family: var(--font-mono), monospace !important;
+  font-size: 0.58rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--color-accent) !important;
+}
+
+.hotspot-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: var(--color-accent) !important;
+  box-shadow: 0 0 8px var(--color-accent) !important;
+  animation: pulse-dot 2s infinite ease-in-out !important;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.hotspot-title {
+  font-family: var(--font-display), sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.hotspot-desc {
+  margin-top: 0.3rem !important;
+  font-size: 0.68rem !important;
+  line-height: 1.4 !important;
+  color: rgba(241, 241, 241, 0.7) !important;
+}
+
+@media (max-width: 768px) {
+  .services-hotspot-card {
+    width: 170px !important;
+    max-width: 170px !important;
+    padding: 9px 11px !important;
+  }
+  .hotspot-title {
+    font-size: 0.75rem !important;
+  }
+  .hotspot-desc {
+    font-size: 0.62rem !important;
+  }
+}
+
+.services-hud-corner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+}
+
+.services-hud-tl {
+  top: 14px; left: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+}
+
+.services-hud-tr {
+  top: 14px; right: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+}
+
+.services-hud-bl {
+  bottom: 14px; left: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+}
+
+.services-hud-br {
+  bottom: 14px; right: 14px;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+  border-right: 1px solid color-mix(in srgb, var(--color-foreground) 20%, transparent);
+}
+
+.services-hud-label {
+  position: absolute;
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-foreground) 40%, transparent);
+}
+
+.services-hud-label-top {
+  top: 18px;
+  left: 40px;
+}
+
+.services-hud-label-bottom {
+  bottom: 18px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.services-hud-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent);
+}
+
+/* Detail panel enter animation */
+.services-detail-panel {
+  animation: services-detail-in 480ms var(--ease-cinematic) both;
+}
+
+@keyframes services-detail-in {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Tab active indicator */
+.services-tab {
+  position: relative;
+}
+
+.services-tab::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(var(--tab-progress, 0));
+  transform-origin: left;
+  transition: transform 360ms var(--ease-cinematic);
+}
+
+.services-tab-active::before {
+  transform: scaleX(1);
+}
+
+/* Mobile: stack vertically, smaller canvas */
+@media (max-width: 640px) {
+  .services-canvas-container,
+  .services-canvas-container--full {
+    aspect-ratio: 4 / 3;
+    min-height: 16rem;
+    max-height: 22rem;
+  }
+}
+
 .no-scrollbar {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
@@ -242,4 +472,6 @@
   .typewriter-character { animation: none; color: var(--color-foreground); opacity: 1; }
   .custom-cursor { display: none !important; }
   [data-magnetic] { transform: none !important; }
+  .services-canvas-container canvas { display: none !important; }
+  .services-detail-panel { animation: none; }
 }

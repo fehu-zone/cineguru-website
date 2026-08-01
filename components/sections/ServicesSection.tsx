@@ -1,33 +1,188 @@
-import { forwardRef, type CSSProperties } from "react";
+"use client";
+
+import { forwardRef, useCallback, useRef, useState, type CSSProperties, Suspense, lazy } from "react";
 
 import type { Messages } from "@/i18n/config";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { cn } from "@/lib/classNames";
+import { Eyebrow } from "@/components/ui/SectionHeading";
+import { useAutoAdvance, useElementInView } from "@/hooks/useMotion";
+
+const ServicesScene = lazy(() =>
+  import("./ServicesScene").then((m) => ({ default: m.ServicesScene })),
+);
 
 export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }>(function ServicesSection({ messages }, ref) {
   const services = messages.services;
+  const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const autoplayRef = useRef<HTMLDivElement>(null);
+  const inView = useElementInView(sectionRef, { rootMargin: "200px 0px" });
+
+  useAutoAdvance({
+    containerRef: autoplayRef as React.RefObject<HTMLElement>,
+    delay: 5500,
+    enabled: services.items.length > 1,
+    onAdvance: () => setActiveIndex((i) => (i + 1) % services.items.length),
+  });
+
+  const selectService = useCallback((index: number) => {
+    setActiveIndex((index + services.items.length) % services.items.length);
+  }, [services.items.length]);
+
+  const handleKeys = useCallback((event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const count = services.items.length;
+    const next = event.key === "Home" ? 0 : event.key === "End" ? count - 1 : index + (event.key === "ArrowRight" ? 1 : -1);
+    const normalized = (next + count) % count;
+    selectService(normalized);
+    document.getElementById(`service-tab-${normalized}`)?.focus();
+  }, [services.items.length, selectService]);
+
+  const active = services.items[activeIndex];
 
   return (
-    <section className="page-shell py-section text-surface bg-foreground" id="services">
-      <SectionHeading eyebrow={services.eyebrow} title={services.title} compact />
-      <div className="relative mt-[clamp(2.5rem,3.5vw,3.5rem)]" ref={ref}>
-        <div className="absolute bottom-0 left-[calc(8.333%-0.5px)] top-0 w-px bg-surface/15 max-[940px]:hidden" aria-hidden="true">
-          <i className="block w-px bg-accent [height:calc(var(--service-progress,0)*100%)]" />
+    <section
+      ref={(el) => {
+        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        if (typeof ref === "function") ref(el as HTMLDivElement);
+        else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = el as HTMLDivElement;
+      }}
+      className="page-shell py-section text-foreground"
+      id="services"
+    >
+      {/* ─── Heading ─── */}
+      <div className="reveal-on-scroll">
+        <Eyebrow>{services.eyebrow}</Eyebrow>
+        <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(3.2rem,5.5vw,6.2rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] max-[640px]:text-[clamp(2.8rem,11vw,4rem)]">
+          {services.title}
+        </h2>
+      </div>
+
+      {/* ─── Tabs ─── */}
+      <div
+        className="reveal-on-scroll mt-[clamp(2.5rem,4vw,4rem)]"
+        role="tablist"
+        aria-label={services.eyebrow}
+      >
+        <div className="grid gap-0 max-[640px]:grid-cols-2" style={{ gridTemplateColumns: `repeat(${services.items.length}, 1fr)` }}>
+          {services.items.map((service, index) => (
+            <button
+              key={service.title}
+              id={`service-tab-${index}`}
+              className={cn(
+                "services-tab border-t border-foreground/10 px-2 pb-4 pt-5 text-left font-mono text-[0.58rem] uppercase tracking-[0.08em] text-foreground/35 transition-colors duration-300 hover:text-foreground/65 max-[640px]:pb-3 max-[640px]:pt-4",
+                index === activeIndex && "services-tab-active text-foreground",
+              )}
+              style={{ "--tab-progress": index === activeIndex ? 1 : 0 } as CSSProperties}
+              onClick={() => selectService(index)}
+              onKeyDown={(e) => handleKeys(e, index)}
+              role="tab"
+              aria-selected={index === activeIndex}
+              tabIndex={index === activeIndex ? 0 : -1}
+            >
+              <span className="text-accent mr-1.5">{String(index + 1).padStart(2, "0")}</span>
+              {service.title}
+            </button>
+          ))}
         </div>
-        {services.items.map((service, index) => (
-          <article
-            className="reveal-on-scroll grid min-h-44 grid-cols-12 items-start gap-grid border-t border-surface/20 py-7 max-[940px]:grid-cols-6 max-[640px]:min-h-0 max-[640px]:grid-cols-[2.625rem_1fr] max-[640px]:gap-y-4"
-            style={{ "--stagger": index } as CSSProperties}
-            key={service.title}
-          >
-            <span className="col-span-1 font-mono text-[0.59rem] text-accent">{String(index + 1).padStart(2, "0")}</span>
-            <h3 className="col-start-3 col-span-3 font-display text-[clamp(1.8rem,3vw,3.4rem)] [font-weight:560] leading-none tracking-[-0.04em] max-[1180px]:col-span-3 max-[940px]:col-start-2 max-[940px]:col-span-2 max-[640px]:col-start-2 max-[640px]:col-span-1">{service.title}</h3>
-            <p className="col-start-6 col-span-4 max-w-[38ch] text-[0.96rem] leading-[1.58] text-surface/65 max-[1180px]:col-start-6 max-[940px]:col-start-4 max-[940px]:col-span-3 max-[640px]:col-start-2 max-[640px]:col-span-1">{service.description}</p>
-            <div className="col-start-10 col-span-2 flex flex-wrap gap-2 max-[940px]:col-start-2 max-[940px]:col-span-5 max-[940px]:mt-4 max-[640px]:col-start-2 max-[640px]:col-span-1 max-[640px]:mt-1">
-              {service.tags.map((tag) => <span className="rounded-full border border-surface/20 px-3 py-1.5 font-mono text-[0.51rem] uppercase tracking-[0.06em] text-surface/65" key={tag}>{tag}</span>)}
+      </div>
+
+      {/* ─── Active service info row ─── */}
+      <div className="services-detail-panel reveal-on-scroll mt-[clamp(2rem,3vw,3rem)] grid grid-cols-12 items-start gap-grid max-[940px]:grid-cols-6 max-[640px]:grid-cols-1 max-[640px]:gap-y-4" key={activeIndex}>
+        <div className="col-span-1 max-[640px]:col-span-1">
+          <span className="font-mono text-[0.58rem] uppercase tracking-[0.08em] text-accent">
+            {String(activeIndex + 1).padStart(2, "0")} / {String(services.items.length).padStart(2, "0")}
+          </span>
+        </div>
+        <h3 className="col-start-2 col-span-3 font-display text-[clamp(1.8rem,2.8vw,3.2rem)] [font-weight:560] leading-[1.02] tracking-[-0.035em] max-[940px]:col-start-2 max-[940px]:col-span-2 max-[640px]:col-start-1 max-[640px]:col-span-1">
+          {active.title}
+        </h3>
+        <p className="col-start-6 col-span-4 max-w-[42ch] text-[0.96rem] leading-[1.62] text-foreground/55 max-[940px]:col-start-4 max-[940px]:col-span-3 max-[640px]:col-start-1 max-[640px]:col-span-1">
+          {active.description}
+        </p>
+        <div className="col-start-10 col-span-3 flex flex-wrap gap-2 max-[940px]:col-start-1 max-[940px]:col-span-6 max-[940px]:mt-3 max-[640px]:col-start-1 max-[640px]:col-span-1 max-[640px]:mt-1">
+          {active.tags.map((tag) => (
+            <span
+              className="rounded-full border border-foreground/15 px-3.5 py-1.5 font-mono text-[0.52rem] uppercase tracking-[0.06em] text-foreground/50"
+              key={tag}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ─── 3D Canvas — full width, large ─── */}
+      <div
+        ref={autoplayRef}
+        className="reveal-on-scroll mt-[clamp(2rem,3vw,3rem)]"
+      >
+        {/* ─── 3D Canvas — full width, large ─── */}
+        <div className="services-canvas-container services-canvas-container--full" ref={ref}>
+          {inView ? (
+            <Suspense fallback={<div className="services-canvas-fallback" />}>
+              <ServicesScene activeIndex={activeIndex} />
+            </Suspense>
+          ) : (
+            <div className="services-canvas-fallback" />
+          )}
+          {/* ─── Cinematic HUD overlay ─── */}
+          <div className="services-canvas-hud">
+            <span className="services-hud-corner services-hud-tl" />
+            <span className="services-hud-corner services-hud-tr" />
+            <span className="services-hud-corner services-hud-bl" />
+            <span className="services-hud-corner services-hud-br" />
+            <span className="services-hud-label services-hud-label-top">CG / PRODÜKSIYON SİSTEMİ</span>
+            <span className="services-hud-label services-hud-label-bottom">
+              <i className="services-hud-dot" /> AKTİF · {String(activeIndex + 1).padStart(2, "0")}
+            </span>
+          </div>
+        </div>
+
+        {/* ─── 3 Feature Cards Grid below Canvas ─── */}
+        <div className="mt-6 grid grid-cols-3 gap-grid max-[940px]:grid-cols-1 max-[940px]:gap-4" key={`feature-grid-${activeIndex}`}>
+          {[
+            [
+              { code: "01", label: "HEDEF & ANALİZ", desc: "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
+              { code: "02", label: "YARATICI KONSEPT", desc: "İzleyicinin hafızasında yer edecek özgün ana fikir." },
+              { code: "03", label: "KAMPANYA KURGUSU", desc: "Tüm mecralarda çalışan yayın kurgusu." },
+            ],
+            [
+              { code: "01", label: "AI STORYBOARD", desc: "Senaryoyu kare kare üretken yapay zekâ ile görselleştiririz." },
+              { code: "02", label: "CHARACTER LOCK", desc: "Karakterlerin yüz ve stil devamlılığını koruruz." },
+              { code: "03", label: "PRODÜKSİYON PLANI", desc: "Kamera açıları, mekan ve çekim takvimi haritası." },
+            ],
+            [
+              { code: "01", label: "CANLI ÇEKİM", desc: "Deneyimli yönetmen ve görüntü ekibiyle çekim." },
+              { code: "02", label: "AI VIDEO DÜNYASI", desc: "Fiziksel mekan sınırlarını aşan üretken video sentezi." },
+              { code: "03", label: "OPTİK & HAREKET", desc: "Sinematik camera lensleri ve akıcı hareket dili." },
+            ],
+            [
+              { code: "01", label: "DİNAMİK KURGU", desc: "Kurgu masasında hikayenin ritmini ve hissini işleriz." },
+              { code: "02", label: "VFX & COMPOSITING", desc: "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
+              { code: "03", label: "RENK & SES TASARIMI", desc: "Sinematik renk derecelendirmesi ve ses tasarımı." },
+            ],
+          ][activeIndex].map((card, i) => (
+            <div
+              key={card.label}
+              className="group border border-foreground/10 bg-canvas/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-canvas/90"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[0.56rem] font-bold tracking-[0.08em] text-accent">
+                  {card.code}
+                </span>
+                <i className="size-1.5 rounded-full bg-foreground/20 transition-colors group-hover:bg-accent" />
+              </div>
+              <h4 className="mt-3 font-display text-[1.05rem] font-semibold leading-tight tracking-[-0.02em]">
+                {card.label}
+              </h4>
+              <p className="mt-2 text-[0.85rem] leading-relaxed text-foreground/60">
+                {card.desc}
+              </p>
             </div>
-            <span className="col-start-12 justify-self-end text-xl text-accent max-[940px]:hidden" aria-hidden="true">↗</span>
-          </article>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
