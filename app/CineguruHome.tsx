@@ -341,17 +341,21 @@ const translations = {
   },
 };
 
-const brandNames: { label: string; id: string; logo?: string }[] = [
-  { label: "KALEKİM", id: "kalekim" },
-  { label: "VODAFONE", id: "vodafone" },
-  { label: "ETNOSPOR", id: "etnospor" },
-  { label: "ASFAT", id: "asfat" },
-  { label: "FARMASI", id: "farmasi" },
-  { label: "VIALAND", id: "vialand" },
-  { label: "SIFIR ATIK", id: "sifir-atik" },
-  { label: "İGA", id: "iga" },
-  { label: "TURKNET", id: "turknet" },
-  { label: "HESAP.COM", id: "hesap" },
+const brandNames: { label: string; id: string; logo: string }[] = [
+  { label: "3N Aydınlatma", id: "3n-aydinlatma", logo: "/assets/references/3n-Aydinlatma-1.webp" },
+  { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp" },
+  { label: "BiBOYA", id: "biboya", logo: "/assets/references/BiBOYA-1.webp" },
+  { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp" },
+  { label: "Farmasi", id: "farmasi", logo: "/assets/references/farmasi-1.webp" },
+  { label: "Gürsoy Grup", id: "gursoy", logo: "/assets/references/Gursoy-Grup.webp" },
+  { label: "Kalekim", id: "kalekim", logo: "/assets/references/Kalekim.webp" },
+  { label: "Pasha Bank", id: "pasha-bank", logo: "/assets/references/Pasha-Bank.webp" },
+  { label: "RTA", id: "rta", logo: "/assets/references/RTA-1-1.webp" },
+  { label: "Vasso", id: "vasso", logo: "/assets/references/Vasso.webp" },
+  { label: "Vialand", id: "vialand", logo: "/assets/references/Vialand.webp" },
+  { label: "Vodafone", id: "vodafone", logo: "/assets/references/Vodafone.webp" },
+  { label: "World Ethnosport", id: "world-ethnosport", logo: "/assets/references/World-Ethnosport.webp" },
+  { label: "World Nomad Games", id: "world-nomad-games", logo: "/assets/references/World-Nomad-Games.webp" },
 ];
 
 const methodPhases = [
@@ -736,26 +740,9 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
             aria-label={copy.showreel}
             data-cursor-label={copy.cursor}
           >
-            <picture>
-              <source
-                type="image/avif"
-                srcSet="/assets/showreel-poster-768.avif 768w, /assets/showreel-poster-1280.avif 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-              <source
-                type="image/webp"
-                srcSet="/assets/showreel-poster-768.webp 768w, /assets/showreel-poster-1280.webp 1280w"
-                sizes="(max-width: 900px) 100vw, 50vw"
-              />
-              <img
-                src="/assets/showreel-poster-1280.webp"
-                width="1280"
-                height="640"
-                fetchPriority="high"
-                decoding="async"
-                alt={language === "tr" ? "Cineguru Showreel için siyah krom, optik yüzeyler ve kırmızı ışık hattından oluşan sinematik kompozisyon" : "Cinematic black-chrome composition with optical surfaces and a red light line for the Cineguru Showreel"}
-              />
-            </picture>
+            <video autoPlay muted loop playsInline preload="metadata" poster="/assets/showreel-poster-1280.webp" aria-hidden="true">
+              <source src="/assets/Cineguru-Production-Showreel.mp4" type="video/mp4" />
+            </video>
             <div className="production-playhead" />
             <div className="hero-hud" aria-hidden="true">
               <i className="hud-corner hud-tl" /><i className="hud-corner hud-tr" />
