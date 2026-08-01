@@ -740,7 +740,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
             aria-label={copy.showreel}
             data-cursor-label={copy.cursor}
           >
-            <video autoPlay muted loop playsInline preload="metadata" poster="/assets/showreel-poster-1280.webp" aria-hidden="true">
+            <video autoPlay muted loop playsInline preload="auto" poster="/assets/showreel-poster-1280.webp" aria-hidden="true">
               <source src="/assets/Cineguru-Production-Showreel.mp4" type="video/mp4" />
             </video>
             <div className="production-playhead" />
