@@ -852,6 +852,7 @@
     padding-top: clamp(3rem, 14vh, 10rem);
   }
   .hero-title { max-width: none; white-space: pre-line; }
+  .hero-title-line { display: block; white-space: nowrap; }
   .hero-visual {
     position: absolute;
     z-index: 0;

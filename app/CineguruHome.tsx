@@ -723,7 +723,9 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
       <section className="hero" id="top">
         <div className="hero-copy">
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h1 className="hero-title">{copy.heroTitle}</h1>
+          <h1 className="hero-title">
+            {copy.heroTitle.split("\n").map((line) => <span className="hero-title-line" key={line}>{line}</span>)}
+          </h1>
           <p className="hero-description">{copy.heroText}</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#work" data-magnetic>{copy.heroPrimary}<span className="button-arrow" aria-hidden="true">↓</span></a>
@@ -748,9 +750,8 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
               <i className="hud-corner hud-bl" /><i className="hud-corner hud-br" />
               <div className="hud-top"><span className="hud-rec"><i /> REC</span><span>4K / DCI</span></div>
               <div className="hud-bottom"><span ref={timecodeRef}>TC 00:00:00:00</span><span>CG / SHOWREEL</span></div>
-              <span className="hero-ember" />
             </div>
-            <span className="hero-showreel-label"><PlayIcon /> {copy.showreel}</span>
+            <span className="hero-showreel-label"><PlayIcon /></span>
           </a>
         </div>
 
