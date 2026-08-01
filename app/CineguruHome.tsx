@@ -342,12 +342,11 @@ const translations = {
 };
 
 const brandNames: { label: string; id: string; logo: string }[] = [
-  { label: "3N Aydınlatma", id: "3n-aydinlatma", logo: "/assets/references/3n-Aydinlatma-1.webp" },
+  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "" },
   { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp" },
   { label: "BiBOYA", id: "biboya", logo: "/assets/references/BiBOYA-1.webp" },
   { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp" },
   { label: "Farmasi", id: "farmasi", logo: "/assets/references/farmasi-1.webp" },
-  { label: "Gürsoy Grup", id: "gursoy", logo: "/assets/references/Gursoy-Grup.webp" },
   { label: "Kalekim", id: "kalekim", logo: "/assets/references/Kalekim.webp" },
   { label: "Pasha Bank", id: "pasha-bank", logo: "/assets/references/Pasha-Bank.webp" },
   { label: "RTA", id: "rta", logo: "/assets/references/RTA-1-1.webp" },
@@ -682,7 +681,6 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <a className="skip-link" href="#main-content">{copy.skipLink}</a>
       <main id="main-content" tabIndex={-1} aria-hidden={video ? true : undefined} inert={video ? true : undefined}>
       <div className="custom-cursor" ref={cursorRef} aria-hidden="true"><span>{copy.cursor}</span></div>
       <header ref={headerRef} className="site-header">
@@ -746,7 +744,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
 
         <div className="hero-reference-strip" aria-label={language === "tr" ? "Referans markalar" : "Selected clients"}>
           <div className="hero-reference-track">
-            {brandNames.map((brand) => <img key={brand.id} src={brand.logo} alt={brand.label} loading="eager" decoding="async" />)}
+            {brandNames.map((brand) => brand.logo ? <img key={brand.id} src={brand.logo} alt={brand.label} loading="eager" decoding="async" /> : <span className="hero-reference-text" key={brand.id}>{brand.label}</span>)}
           </div>
         </div>
 
