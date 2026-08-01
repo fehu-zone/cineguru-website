@@ -8,11 +8,16 @@ import { Eyebrow } from "@/components/ui/SectionHeading";
 import { useAutoAdvance, useElementInView } from "@/hooks/useMotion";
 
 const ServicesScene = lazy(() =>
-  import("./ServicesScene").then((m) => ({ default: m.ServicesScene })),
+  import("./ServicesScene").then((module) => ({ default: module.ServicesScene })),
+);
+
+const ServicesSplineScene = lazy(() =>
+  import("./ServicesSplineScene").then((module) => ({ default: module.ServicesSplineScene })),
 );
 
 export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }>(function ServicesSection({ messages }, ref) {
   const services = messages.services;
+  // The services section must always enter on 01 / Strategy.
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const autoplayRef = useRef<HTMLDivElement>(null);
@@ -21,7 +26,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
   useAutoAdvance({
     containerRef: autoplayRef as React.RefObject<HTMLElement>,
     delay: 5500,
-    enabled: services.items.length > 1,
+    enabled: false, // Disabled auto-advance for manual 3D testing
     onAdvance: () => setActiveIndex((i) => (i + 1) % services.items.length),
   });
 
@@ -122,13 +127,17 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
         <div className="services-canvas-container services-canvas-container--full" ref={ref}>
           {inView ? (
             <Suspense fallback={<div className="services-canvas-fallback" />}>
-              <ServicesScene activeIndex={activeIndex} />
+              {activeIndex === 3 ? (
+                <ServicesSplineScene activeIndex={activeIndex} />
+              ) : (
+                <ServicesScene activeIndex={activeIndex} />
+              )}
             </Suspense>
           ) : (
             <div className="services-canvas-fallback" />
           )}
-          {/* ─── Cinematic HUD overlay ─── */}
-          <div className="services-canvas-hud">
+          {/* ─── Cinematic HUD overlay + 3 Floating Glassmorphism Info Boxes ─── */}
+          <div className={`services-canvas-hud services-canvas-hud-${activeIndex}`} key={`hud-cards-${activeIndex}`}>
             <span className="services-hud-corner services-hud-tl" />
             <span className="services-hud-corner services-hud-tr" />
             <span className="services-hud-corner services-hud-bl" />
@@ -137,11 +146,60 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
             <span className="services-hud-label services-hud-label-bottom">
               <i className="services-hud-dot" /> AKTİF · {String(activeIndex + 1).padStart(2, "0")}
             </span>
+
+            {/* 3 Floating Info Boxes around 3D scene */}
+            {[
+              // 01 Strateji
+              [
+                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · STRATEJİ", title: "HEDEF & ANALİZ", desc: "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
+                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · ANLATI", title: "YARATICI KONSEPT", desc: "İzleyicinin hafızasında kalacak özgün fikir." },
+                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · MİMARİ", title: "KAMPANYA KURGUSU", desc: "Tüm mecralarda çalışan yayın haritası." },
+              ],
+              // 02 Pre Production
+              [
+                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · ÇİZİM", title: "AI STORYBOARD", desc: "Senaryoyu kare kare üretken yapay zekâ ile görselleştiririz." },
+                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · TUTARLILIK", title: "CHARACTER LOCK", desc: "Karakterlerin stil devamlılığını tüm sahnelerde koruruz." },
+                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · TEKNİK", title: "PRODÜKSİYON PLANI", desc: "Kamera açıları ve detaylı çekim takvimi." },
+              ],
+              // 03 Production + AI Video
+              [
+                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · SET", title: "CANLI ÇEKİM", desc: "Deneyimli yönetmen ve görüntü ekibiyle çekim." },
+                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · SENTEZ", title: "AI VIDEO DÜNYASI", desc: "Fiziksel mekan sınırlarını aşan üretken video sentezi." },
+                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · DİL", title: "OPTİK & MOVEMENT", desc: "Sinematik camera lensleri ve akıcı hareket dili." },
+              ],
+              // 04 Post Production (The iconic 3D Robot Scene!)
+              [
+                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · TEMPO", title: "DİNAMİK KURGU", desc: "Kurgu masasında hikayenin ritmini ve hissini işleriz." },
+                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · EFEKT", title: "VFX & COMPOSITING", desc: "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
+                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · FİNAL", title: "RENK & SES TASARIMI", desc: "Sinematik renk derecelendirmesi ve atmosferik ses dünyası." },
+              ],
+            ][activeIndex].map((box) => (
+              <div
+                key={box.title}
+                className={cn(
+                  "services-overlay-box absolute pointer-events-auto",
+                  box.posClass
+                )}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-mono text-[0.54rem] font-bold uppercase tracking-[0.08em] text-accent">
+                    {box.code}
+                  </span>
+                  <i className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
+                </div>
+                <h4 className="mt-1 font-display text-[0.88rem] font-semibold tracking-[-0.02em] text-foreground">
+                  {box.title}
+                </h4>
+                <p className="mt-1 text-[0.72rem] leading-relaxed text-foreground/65 max-w-[24ch]">
+                  {box.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* ─── 3 Feature Cards Grid below Canvas ─── */}
-        <div className="mt-6 grid grid-cols-3 gap-grid max-[940px]:grid-cols-1 max-[940px]:gap-4" key={`feature-grid-${activeIndex}`}>
+        <div className="services-feature-grid mt-6 grid grid-cols-3 gap-grid max-[940px]:grid-cols-1 max-[940px]:gap-4" key={`feature-grid-${activeIndex}`}>
           {[
             [
               { code: "01", label: "HEDEF & ANALİZ", desc: "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
@@ -163,7 +221,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
               { code: "02", label: "VFX & COMPOSITING", desc: "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
               { code: "03", label: "RENK & SES TASARIMI", desc: "Sinematik renk derecelendirmesi ve ses tasarımı." },
             ],
-          ][activeIndex].map((card, i) => (
+          ][activeIndex].map((card) => (
             <div
               key={card.label}
               className="group border border-foreground/10 bg-canvas/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-canvas/90"

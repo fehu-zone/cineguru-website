@@ -7,7 +7,9 @@ import {
   OrbitControls,
   Center,
   RoundedBox,
+  Line,
   Html,
+  useGLTF,
 } from "@react-three/drei";
 import * as THREE from "three";
 
@@ -265,6 +267,132 @@ function CreativeBrief() {
   );
 }
 
+function StrategyCore() {
+  const nodes = [
+    [-1.15, 0.65, 0.12],
+    [1.15, 0.65, 0.12],
+    [-1.15, -0.65, 0.12],
+    [1.15, -0.65, 0.12],
+  ] as const;
+
+  return (
+    <EntranceWrap>
+      <group rotation={[0.12, -0.18, 0.04]}>
+        <mesh position={[0, 0, 0.08]}>
+          <icosahedronGeometry args={[0.48, 2]} />
+          <meshStandardMaterial
+            color="#33105f"
+            emissive="#8b2cff"
+            emissiveIntensity={0.65}
+            metalness={0.7}
+            roughness={0.22}
+          />
+        </mesh>
+
+        <Html center position={[0, 0, 0.58]} distanceFactor={4}>
+          <div style={{
+            color: "#ffffff",
+            fontFamily: "monospace",
+            fontSize: "11px",
+            fontWeight: 700,
+            letterSpacing: "0.18em",
+            textShadow: "0 0 12px #8b2cff",
+            whiteSpace: "nowrap",
+          }}>
+            STRATEGY
+          </div>
+        </Html>
+
+        {nodes.map((position, index) => (
+          <group key={`strategy-node-${index}`} position={position}>
+            <mesh>
+              <sphereGeometry args={[0.13, 20, 20]} />
+              <meshStandardMaterial
+                color={index % 2 === 0 ? "#ff3d00" : "#2e9bff"}
+                emissive={index % 2 === 0 ? "#ff3d00" : "#2e9bff"}
+                emissiveIntensity={0.45}
+                metalness={0.35}
+                roughness={0.28}
+              />
+            </mesh>
+            <mesh position={[0, -0.27, 0]}>
+              <boxGeometry args={[0.38, 0.22, 0.04]} />
+              <meshStandardMaterial color="#222228" metalness={0.25} roughness={0.6} />
+            </mesh>
+          </group>
+        ))}
+
+        {nodes.map((position, index) => (
+          <Line
+            key={`strategy-line-${index}`}
+            points={[[0, 0, 0.08], position]}
+            color={index % 2 === 0 ? "#ff3d00" : "#2e9bff"}
+            lineWidth={1.4}
+            transparent
+            opacity={0.72}
+          />
+        ))}
+
+        <Line
+          points={[nodes[0], nodes[1], nodes[3], nodes[2], nodes[0]]}
+          color="#696070"
+          lineWidth={0.8}
+          transparent
+          opacity={0.55}
+        />
+      </group>
+    </EntranceWrap>
+  );
+}
+
+function StrategyClipboard() {
+  const { scene } = useGLTF("/assets/strategy-clipboard/clipboard_1k.glb");
+
+  return (
+    <EntranceWrap>
+      <group position={[0, -0.05, 0]} rotation={[0.08, -0.28, 0.08]}>
+        <primitive object={scene} scale={4.5} />
+        <Html center position={[0, 0.78, 0.12]} distanceFactor={4}>
+          <div style={{
+            color: "#ff3d00",
+            fontFamily: "monospace",
+            fontSize: "10px",
+            fontWeight: 700,
+            letterSpacing: "0.16em",
+            whiteSpace: "nowrap",
+          }}>
+            CREATIVE DIRECTION
+          </div>
+        </Html>
+      </group>
+    </EntranceWrap>
+  );
+}
+
+function StrategyChessSet() {
+  const { scene } = useGLTF("/assets/strategy-chess-set/chess_set_1k.glb");
+
+  return (
+    <EntranceWrap>
+      <group position={[0, -0.25, 0]} rotation={[0.08, -0.32, 0.06]}>
+        <primitive object={scene} scale={4.1} />
+        <Html center position={[0, 0.68, 0.15]} distanceFactor={4}>
+          <div style={{
+            color: "#ff3d00",
+            fontFamily: "monospace",
+            fontSize: "10px",
+            fontWeight: 700,
+            letterSpacing: "0.16em",
+            whiteSpace: "nowrap",
+          }}>
+            STRATEGY BOARD
+          </div>
+        </Html>
+      </group>
+    </EntranceWrap>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════
    02 · PRE PRODUCTION — Film Clapperboard / Slate
    ═══════════════════════════════════════════════════════════ */
@@ -426,103 +554,241 @@ function CameraLens() {
   );
 }
 
+function SteampunkCamera() {
+  const { scene } = useGLTF("/assets/steampunk_camera.glb");
+
+  return (
+    <group position={[0, -0.25, 0]} rotation={[0.03, -0.12, 0]}>
+      <primitive object={scene} scale={1.05} />
+    </group>
+  );
+}
+
+function PreProductionCamera() {
+  const { scene } = useGLTF("/assets/preproduction-camera/Camera_01_1k.glb");
+
+  return (
+    <group position={[0, -0.2, 0]} rotation={[0.08, -0.4, 0.08]}>
+      <primitive object={scene} scale={4.2} />
+    </group>
+  );
+}
+
 /* ═══════════════════════════════════════════════════════════
-   04 · POST PRODUCTION — Film Reel
+/* ═══════════════════════════════════════════════════════════
+   04 · POST PRODUCTION — Studio Editing Suite & VFX Console
    ═══════════════════════════════════════════════════════════ */
-function FilmReel() {
-  const groupRef = useRef<THREE.Group>(null);
+function PostProductionStudio() {
+  const timeRef = useRef(0);
+  const playheadRef = useRef<THREE.Mesh>(null);
 
-  useFrame(({ clock }) => {
-    if (!groupRef.current) return;
-    groupRef.current.rotation.z = clock.getElapsedTime() * 0.15;
+  useFrame((_, delta) => {
+    timeRef.current += delta;
+    if (playheadRef.current) {
+      // Playhead moves smoothly across the timeline
+      playheadRef.current.position.x = -0.6 + ((timeRef.current * 0.4) % 1.2);
+    }
   });
-
-  const spokeCount = 6;
-  const cutoutCount = 6;
 
   return (
     <EntranceWrap>
-      <group rotation={[0.35, -0.25, 0]}>
-        <group ref={groupRef}>
+      <group rotation={[0.15, -0.25, 0.02]} position={[0, -0.05, 0]}>
+        {/* Widescreen Monitor Chassis */}
+        <RoundedBox args={[2.1, 1.25, 0.08]} radius={0.025}>
+          <meshStandardMaterial color={BODY_DARK} metalness={0.7} roughness={0.25} />
+        </RoundedBox>
+
+        {/* Display Glass Screen */}
+        <mesh position={[0, 0, 0.042]}>
+          <planeGeometry args={[1.98, 1.15]} />
+          <meshStandardMaterial color="#0c0d12" metalness={0.9} roughness={0.1} />
+        </mesh>
+
+        {/* --- TIMELINE SUITE UI ON SCREEN --- */}
+        {/* Main Video Viewport Window (Top Left) */}
+        <mesh position={[-0.45, 0.22, 0.044]}>
+          <planeGeometry args={[0.95, 0.58]} />
+          <meshStandardMaterial color="#141620" emissive="#181a28" emissiveIntensity={0.3} roughness={0.8} />
+        </mesh>
+
+        {/* Video Viewport Frame Border */}
+        <lineSegments position={[-0.45, 0.22, 0.045]}>
+          <edgesGeometry args={[new THREE.PlaneGeometry(0.95, 0.58)]} />
+          <lineBasicMaterial color={METAL_DARK} />
+        </lineSegments>
+
+        {/* Color Grading Wheel Panel (Top Right) */}
+        <group position={[0.52, 0.22, 0.045]}>
+          {/* Color Wheel Outer Ring */}
           <mesh>
-            <torusGeometry args={[1.15, 0.065, 24, 80]} />
-            <meshStandardMaterial color={METAL_MID} metalness={0.9} roughness={0.08} />
+            <ringGeometry args={[0.18, 0.22, 32]} />
+            <meshStandardMaterial color="#1a1c28" emissive={ACCENT} emissiveIntensity={0.2} />
           </mesh>
-          <mesh>
-            <torusGeometry args={[0.95, 0.045, 20, 72]} />
-            <meshStandardMaterial color={METAL_DARK} metalness={0.85} roughness={0.12} />
+          {/* Color Wheel Center Dot */}
+          <mesh position={[0.04, -0.03, 0]}>
+            <circleGeometry args={[0.025, 16]} />
+            <meshBasicMaterial color={ACCENT} />
           </mesh>
-          <mesh>
-            <cylinderGeometry args={[0.22, 0.22, 0.14, 32]} />
-            <meshStandardMaterial color={METAL_BRIGHT} metalness={0.92} roughness={0.06} />
-          </mesh>
-          <mesh>
-            <torusGeometry args={[0.13, 0.022, 12, 32]} />
-            <meshStandardMaterial color={METAL_MID} metalness={0.88} roughness={0.1} />
-          </mesh>
-          {Array.from({ length: spokeCount }).map((_, i) => {
-            const angle = (i / spokeCount) * Math.PI * 2;
-            return (
-              <mesh key={`sp-${i}`} position={[Math.cos(angle) * 0.55, Math.sin(angle) * 0.55, 0]} rotation={[Math.PI / 2, 0, angle]}>
-                <boxGeometry args={[0.045, 0.12, 0.72]} />
-                <meshStandardMaterial color={METAL_DARK} metalness={0.84} roughness={0.15} />
-              </mesh>
-            );
-          })}
-          <mesh>
-            <cylinderGeometry args={[1.08, 1.08, 0.09, 64, 1, true]} />
-            <meshStandardMaterial color={BODY_DARK} metalness={0.15} roughness={0.8} side={THREE.DoubleSide} />
-          </mesh>
-          {[0.85, 0.7, 0.55, 0.4].map((r, i) => (
-            <mesh key={`fl-${i}`}>
-              <cylinderGeometry args={[r, r, 0.09 + i * 0.005, 48, 1, true]} />
-              <meshStandardMaterial color={i % 2 === 0 ? BODY_MID : BODY_DARK} metalness={0.12} roughness={0.85} side={THREE.DoubleSide} transparent opacity={0.7} />
-            </mesh>
-          ))}
-          <mesh position={[0, 0, 0.065]}>
-            <ringGeometry args={[0.24, 1.14, 64]} />
-            <meshStandardMaterial color={METAL_DARK} metalness={0.78} roughness={0.18} />
-          </mesh>
-          {Array.from({ length: cutoutCount }).map((_, i) => {
-            const angle = (i / cutoutCount) * Math.PI * 2 + Math.PI / cutoutCount;
-            const r = 0.62;
-            return (
-              <mesh key={`cut-${i}`} position={[Math.cos(angle) * r, Math.sin(angle) * r, 0.07]}>
-                <circleGeometry args={[0.13, 24]} />
-                <meshStandardMaterial color="#0e0e12" metalness={0.2} roughness={0.85} />
-              </mesh>
-            );
-          })}
-          <mesh>
-            <torusGeometry args={[0.24, 0.014, 12, 32]} />
-            <meshStandardMaterial color={ACCENT} metalness={0.72} roughness={0.18} emissive={ACCENT} emissiveIntensity={0.3} />
+          {/* Secondary scopes/meters */}
+          <mesh position={[0, -0.18, 0]}>
+            <planeGeometry args={[0.6, 0.08]} />
+            <meshBasicMaterial color="#1a202c" />
           </mesh>
         </group>
 
-        <group position={[1.0, -0.6, 0]} rotation={[0, 0, -0.3]}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <group key={`fs-${i}`} position={[i * 0.2, -i * 0.15, i * 0.02]} rotation={[0, 0, -i * 0.05]}>
-              <RoundedBox args={[0.18, 0.12, 0.006]} radius={0.003}>
-                <meshStandardMaterial color={BODY_MID} metalness={0.12} roughness={0.8} />
-              </RoundedBox>
-              <mesh position={[0, 0.05, 0.004]}>
-                <planeGeometry args={[0.022, 0.016]} />
-                <meshBasicMaterial color="#0a0a0e" />
+        {/* Timeline Tracks (Bottom Panel) */}
+        <group position={[0, -0.28, 0.045]}>
+          {/* Timeline Background */}
+          <mesh>
+            <planeGeometry args={[1.85, 0.35]} />
+            <meshBasicMaterial color="#0a0c12" />
+          </mesh>
+
+          {/* Track 1: Video Track V1 (Accent Color block) */}
+          <mesh position={[-0.2, 0.1, 0.001]}>
+            <planeGeometry args={[1.2, 0.06]} />
+            <meshStandardMaterial color={ACCENT} emissive={ACCENT} emissiveIntensity={0.3} />
+          </mesh>
+
+          {/* Track 2: VFX Track V2 (Cyan/Blue block) */}
+          <mesh position={[0.1, 0.02, 0.001]}>
+            <planeGeometry args={[0.9, 0.05]} />
+            <meshStandardMaterial color="#00a8ff" emissive="#00a8ff" emissiveIntensity={0.3} />
+          </mesh>
+
+          {/* Track 3: Audio Waveform Track A1 */}
+          <mesh position={[-0.1, -0.06, 0.001]}>
+            <planeGeometry args={[1.3, 0.05]} />
+            <meshStandardMaterial color="#22c55e" emissive="#22c55e" emissiveIntensity={0.25} />
+          </mesh>
+
+          {/* Audio Waveforms bars */}
+          {Array.from({ length: 24 }).map((_, i) => {
+            const h = 0.015 + Math.sin(i * 0.8) * 0.012;
+            return (
+              <mesh key={`wave-${i}`} position={[-0.7 + i * 0.055, -0.06, 0.002]}>
+                <planeGeometry args={[0.025, h]} />
+                <meshBasicMaterial color="#4ade80" />
               </mesh>
-              <mesh position={[0, -0.05, 0.004]}>
-                <planeGeometry args={[0.022, 0.016]} />
-                <meshBasicMaterial color="#0a0a0e" />
-              </mesh>
-            </group>
-          ))}
+            );
+          })}
+
+          {/* Playhead Vertical Line */}
+          <mesh ref={playheadRef} position={[-0.6, 0.02, 0.003]}>
+            <planeGeometry args={[0.015, 0.33]} />
+            <meshBasicMaterial color="#ffffff" />
+          </mesh>
         </group>
+
+        {/* Monitor Base Stand */}
+        <group position={[0, -0.72, -0.05]}>
+          {/* Stem */}
+          <mesh position={[0, 0.12, 0]}>
+            <cylinderGeometry args={[0.06, 0.08, 0.35, 16]} />
+            <meshStandardMaterial color={METAL_MID} metalness={0.9} roughness={0.1} />
+          </mesh>
+
+          {/* Oval Base */}
+          <mesh position={[0, -0.05, 0.1]}>
+            <cylinderGeometry args={[0.45, 0.48, 0.04, 32]} />
+            <meshStandardMaterial color={METAL_BRIGHT} metalness={0.92} roughness={0.08} />
+          </mesh>
+        </group>
+
+        {/* Power LED Indicator Dot */}
+        <mesh position={[0.9, -0.56, 0.043]}>
+          <circleGeometry args={[0.015, 12]} />
+          <meshBasicMaterial color={ACCENT} />
+        </mesh>
+      </group>
+    </EntranceWrap>
+  );
+}
+
+function PostProductionRobot() {
+  const headRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (!headRef.current) return;
+    headRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.12;
+    headRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.55) * 0.025;
+  });
+
+  return (
+    <EntranceWrap>
+      <group position={[0, -0.2, 0]} rotation={[0.05, -0.18, 0]}>
+        <group ref={headRef} position={[0, 1.28, 0]}>
+          <RoundedBox args={[1.15, 0.78, 0.52]} radius={0.12}>
+            <meshStandardMaterial color="#24104f" emissive="#6d00ff" emissiveIntensity={0.18} metalness={0.7} roughness={0.24} />
+          </RoundedBox>
+          <mesh position={[-0.22, 0.08, 0.28]}>
+            <sphereGeometry args={[0.1, 20, 20]} />
+            <meshStandardMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.25} />
+          </mesh>
+          <mesh position={[0.22, 0.08, 0.28]}>
+            <sphereGeometry args={[0.1, 20, 20]} />
+            <meshStandardMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.25} />
+          </mesh>
+          <mesh position={[0, -0.22, 0.27]}>
+            <planeGeometry args={[0.44, 0.045]} />
+            <meshBasicMaterial color={ACCENT} />
+          </mesh>
+        </group>
+
+        <group position={[0, 0.74, 0]}>
+          <RoundedBox args={[0.38, 0.22, 0.32]} radius={0.06}>
+            <meshStandardMaterial color={METAL_MID} metalness={0.85} roughness={0.18} />
+          </RoundedBox>
+          <mesh position={[0, 0.2, 0]}>
+            <cylinderGeometry args={[0.035, 0.035, 0.24, 12]} />
+            <meshStandardMaterial color={METAL_BRIGHT} metalness={0.9} roughness={0.12} />
+          </mesh>
+        </group>
+
+        <RoundedBox args={[1.05, 1.2, 0.72]} radius={0.12} position={[0, 0, 0]}>
+          <meshStandardMaterial color="#111a3b" emissive="#18004d" emissiveIntensity={0.16} metalness={0.65} roughness={0.28} />
+        </RoundedBox>
+        <mesh position={[0, 0.05, 0.38]}>
+          <planeGeometry args={[0.58, 0.28]} />
+          <meshStandardMaterial color="#160f2f" emissive="#5b00ff" emissiveIntensity={0.35} />
+        </mesh>
+
+        <group position={[-0.7, 0.05, 0]} rotation={[0, 0, -0.18]}>
+          <RoundedBox args={[0.22, 0.92, 0.22]} radius={0.08}>
+            <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.22} />
+          </RoundedBox>
+          <mesh position={[0, -0.52, 0]}>
+            <sphereGeometry args={[0.14, 16, 16]} />
+            <meshStandardMaterial color={METAL_LIGHT} metalness={0.8} roughness={0.2} />
+          </mesh>
+        </group>
+        <group position={[0.7, 0.05, 0]} rotation={[0, 0, 0.18]}>
+          <RoundedBox args={[0.22, 0.92, 0.22]} radius={0.08}>
+            <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.22} />
+          </RoundedBox>
+          <mesh position={[0, -0.52, 0]}>
+            <sphereGeometry args={[0.14, 16, 16]} />
+            <meshStandardMaterial color={METAL_LIGHT} metalness={0.8} roughness={0.2} />
+          </mesh>
+        </group>
+
+        <RoundedBox args={[0.27, 0.72, 0.3]} radius={0.08} position={[-0.3, -0.98, 0]}>
+          <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.2} />
+        </RoundedBox>
+        <RoundedBox args={[0.27, 0.72, 0.3]} radius={0.08} position={[0.3, -0.98, 0]}>
+          <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.2} />
+        </RoundedBox>
+        <mesh position={[0, -1.35, 0.04]}>
+          <boxGeometry args={[1.15, 0.06, 0.45]} />
+          <meshStandardMaterial color="#120a2c" emissive="#5b00ff" emissiveIntensity={0.2} />
+        </mesh>
       </group>
     </EntranceWrap>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════ */
-const SCENE_OBJECTS = [CreativeBrief, Clapperboard, CameraLens, FilmReel];
+const SCENE_OBJECTS = [StrategyChessSet, SteampunkCamera, PreProductionCamera, PostProductionRobot];
 
 /* ═══════════════════════════════════════════════════════════
    Main Inner Scene with 3D Hotspot Cards
@@ -532,12 +798,11 @@ function ServicesSceneInner({ activeIndex }: { activeIndex: number }) {
 
   useEffect(() => {
     if (controlsRef.current) {
-      (controlsRef.current as any).reset();
+      controlsRef.current.reset();
     }
   }, [activeIndex]);
 
   const ActiveObject = SCENE_OBJECTS[activeIndex] ?? SCENE_OBJECTS[0];
-  const activeHotspots = HOTSPOTS_PER_SERVICE[activeIndex] ?? HOTSPOTS_PER_SERVICE[0];
 
   return (
     <>
@@ -567,13 +832,6 @@ function ServicesSceneInner({ activeIndex }: { activeIndex: number }) {
         <ActiveObject key={activeIndex} />
       </Center>
 
-      {/* Render 3D Hotspots around the centered object */}
-      <group key={`hotspots-${activeIndex}`}>
-        {activeHotspots.map((hs, i) => (
-          <HotspotCard key={i} data={hs} />
-        ))}
-      </group>
-
       <ContactShadows
         position={[0, -1.8, 0]}
         opacity={0.3}
@@ -594,6 +852,10 @@ export function ServicesScene({ activeIndex }: { activeIndex: number }) {
       camera={{ position: [0, 0, 4.8], fov: 36 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+      onCreated={({ gl, scene }) => {
+        gl.setClearColor("#0b0b0c", 1);
+        scene.background = new THREE.Color("#0b0b0c");
+      }}
       style={{ background: "transparent", cursor: "grab" }}
       onPointerDown={(e) => { (e.target as HTMLElement).style.cursor = "grabbing"; }}
       onPointerUp={(e) => { (e.target as HTMLElement).style.cursor = "grab"; }}
