@@ -707,6 +707,7 @@ export default function CineguruHome({ initialLanguage = "tr" }: { initialLangua
           ><span /><span /></button>
         </div>
       </header>
+      <button className={`menu-backdrop ${menuOpen ? "is-open" : ""}`} type="button" aria-label={copy.menuCloseLabel} onClick={() => setMenuOpen(false)} />
 
       <div className="scroll-filmline" aria-hidden="true">
         <span ref={stageLabelRef} className="scroll-filmline-stage">01 · {copy.stages[0]}</span>
