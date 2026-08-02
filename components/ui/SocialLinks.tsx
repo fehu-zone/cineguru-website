@@ -37,7 +37,7 @@ export function SocialLinks({ iconOnly = false, className }: { iconOnly?: boolea
         <a
           key={social.label}
           className={cn(
-            "transition-colors hover:text-foreground",
+            "transition-colors hover:text-accent",
             iconOnly && "grid size-10 place-items-center rounded-full border border-foreground/20 bg-foreground/5",
           )}
           href={social.href}

@@ -16,7 +16,7 @@ import * as THREE from "three";
 import { useMotionPolicy } from "@/hooks/useMotion";
 
 /* ─── palette (brighter for visibility) ─── */
-const ACCENT = "#ff3d00";
+const ACCENT = "#e33326";
 const BODY_DARK = "#2e2e32";
 const BODY_MID = "#3e3e44";
 const METAL_DARK = "#505058";
@@ -310,8 +310,8 @@ function StrategyCore() {
             <mesh>
               <sphereGeometry args={[0.13, 20, 20]} />
               <meshStandardMaterial
-                color={index % 2 === 0 ? "#ff3d00" : "#2e9bff"}
-                emissive={index % 2 === 0 ? "#ff3d00" : "#2e9bff"}
+                color={index % 2 === 0 ? "#e33326" : "#2e9bff"}
+                emissive={index % 2 === 0 ? "#e33326" : "#2e9bff"}
                 emissiveIntensity={0.45}
                 metalness={0.35}
                 roughness={0.28}
@@ -328,7 +328,7 @@ function StrategyCore() {
           <Line
             key={`strategy-line-${index}`}
             points={[[0, 0, 0.08], position]}
-            color={index % 2 === 0 ? "#ff3d00" : "#2e9bff"}
+            color={index % 2 === 0 ? "#e33326" : "#2e9bff"}
             lineWidth={1.4}
             transparent
             opacity={0.72}
@@ -356,7 +356,7 @@ function StrategyClipboard() {
         <primitive object={scene} scale={4.5} />
         <Html center position={[0, 0.78, 0.12]} distanceFactor={4}>
           <div style={{
-            color: "#ff3d00",
+            color: "#e33326",
             fontFamily: "monospace",
             fontSize: "10px",
             fontWeight: 700,
@@ -380,7 +380,7 @@ function StrategyChessSet() {
         <primitive object={scene} scale={4.1} />
         <Html center position={[0, 0.68, 0.15]} distanceFactor={4}>
           <div style={{
-            color: "#ff3d00",
+            color: "#e33326",
             fontFamily: "monospace",
             fontSize: "10px",
             fontWeight: 700,
@@ -863,8 +863,8 @@ export function ServicesScene({ activeIndex }: { activeIndex: number }) {
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onCreated={({ gl, scene }) => {
-        gl.setClearColor("#0b0b0c", 1);
-        scene.background = new THREE.Color("#0b0b0c");
+        gl.setClearColor("#141414", 1);
+        scene.background = new THREE.Color("#141414");
       }}
       style={{ background: "transparent", cursor: "grab" }}
       onPointerDown={(e) => { (e.target as HTMLElement).style.cursor = "grabbing"; }}

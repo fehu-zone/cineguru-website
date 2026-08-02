@@ -10,7 +10,7 @@ export const siteConfig = {
     region: "İstanbul",
     country: "TR",
   },
-  themeColor: "#0b0b0c",
+  themeColor: "#141414",
   showreel: {
     id: "C9U3RJX1c0k",
     video: "/assets/Cineguru-Production-Showreel.mp4",
