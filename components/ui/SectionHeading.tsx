@@ -13,6 +13,8 @@ export function SectionHeading({
   titleId,
   compact = false,
   wideTitle = false,
+  titleClassName,
+  descriptionClassName,
   className,
 }: {
   eyebrow: string;
@@ -21,6 +23,8 @@ export function SectionHeading({
   titleId?: string;
   compact?: boolean;
   wideTitle?: boolean;
+  titleClassName?: string;
+  descriptionClassName?: string;
   className?: string;
 }) {
   return (
@@ -42,6 +46,7 @@ export function SectionHeading({
           wideTitle
             ? "max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]"
             : "max-[640px]:text-[clamp(3rem,13.7vw,4.8rem)]",
+          titleClassName,
         )}
       >
         {wideTitle && title.includes("\n")
@@ -56,6 +61,7 @@ export function SectionHeading({
           wideTitle
             ? "col-start-10 col-end-[-1] self-start mt-96 max-w-[38ch] justify-self-start"
             : "col-start-10 col-end-[-1]",
+          descriptionClassName,
         )}>
           {description}
         </p>
