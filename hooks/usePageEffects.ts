@@ -1,20 +1,19 @@
 "use client";
 
-import { useEffect, useRef, type RefObject } from "react";
+import { useEffect, useRef } from "react";
 
 import type { Locale } from "@/i18n/config";
 
 export function usePageProgress({
   locale,
   stages,
-  serviceRef,
 }: {
   locale: Locale;
   stages: string[];
-  serviceRef: RefObject<HTMLDivElement | null>;
 }) {
   const stageLabelRef = useRef<HTMLSpanElement>(null);
   const timecodeRef = useRef<HTMLSpanElement>(null);
+  const progressBarRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -24,45 +23,45 @@ export function usePageProgress({
     let frame = 0;
     const root = document.documentElement;
     const timecodeDisplays = Array.from(document.querySelectorAll<HTMLElement>(".tc-display"));
-    const services = serviceRef.current;
     let maxScroll = 1;
-    let serviceStart = 0;
-    let serviceEnd = 1;
+    let previousStage = -1;
+    let previousTimecode = "";
 
     const measurePage = () => {
       maxScroll = Math.max(1, root.scrollHeight - window.innerHeight);
-      if (!services) return;
-      serviceStart = services.offsetTop - window.innerHeight * 0.72;
-      serviceEnd = services.offsetTop + services.offsetHeight - window.innerHeight * 0.32;
     };
 
     const onScroll = () => {
       if (frame) return;
       frame = window.requestAnimationFrame(() => {
         const progress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
-        root.style.setProperty("--page-progress", String(progress));
+        if (progressBarRef.current) {
+          progressBarRef.current.style.transform = `scaleY(${progress})`;
+        }
 
         const totalFrames = Math.floor(progress * 90 * 24);
         const seconds = Math.floor(totalFrames / 24);
         const frames = totalFrames % 24;
         const timecode = `TC 00:${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}:${String(frames).padStart(2, "0")}`;
-        if (timecodeRef.current) timecodeRef.current.textContent = timecode;
-        timecodeDisplays.forEach((element) => { element.textContent = timecode; });
-
-        if (services) {
-          const serviceProgress = Math.min(1, Math.max(0, (window.scrollY - serviceStart) / Math.max(1, serviceEnd - serviceStart)));
-          services.style.setProperty("--service-progress", String(serviceProgress));
+        if (timecode !== previousTimecode) {
+          previousTimecode = timecode;
+          if (timecodeRef.current) timecodeRef.current.textContent = timecode;
+          timecodeDisplays.forEach((element) => {
+            if (element !== timecodeRef.current) element.textContent = timecode;
+          });
         }
 
         const nextStage = Math.min(stages.length - 1, Math.floor(progress * stages.length));
-        if (stageLabelRef.current) stageLabelRef.current.textContent = `0${nextStage + 1} · ${stages[nextStage]}`;
+        if (nextStage !== previousStage && stageLabelRef.current) {
+          previousStage = nextStage;
+          stageLabelRef.current.textContent = `0${nextStage + 1} · ${stages[nextStage]}`;
+        }
         frame = 0;
       });
     };
 
     const resizeObserver = new ResizeObserver(measurePage);
     resizeObserver.observe(root);
-    if (services) resizeObserver.observe(services);
     window.addEventListener("resize", measurePage, { passive: true });
     measurePage();
     onScroll();
@@ -73,9 +72,9 @@ export function usePageProgress({
       resizeObserver.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
     };
-  }, [serviceRef, stages]);
+  }, [stages]);
 
-  return { stageLabelRef, timecodeRef };
+  return { stageLabelRef, timecodeRef, progressBarRef };
 }
 
 export function useRevealOnScroll(): void {

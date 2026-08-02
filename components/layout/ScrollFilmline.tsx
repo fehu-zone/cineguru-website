@@ -3,7 +3,17 @@
 import type { Ref } from "react";
 import { useCallback } from "react";
 
-export function ScrollFilmline({ stageRef, initialStage, hint }: { stageRef: Ref<HTMLSpanElement>; initialStage: string; hint: string }) {
+export function ScrollFilmline({
+  stageRef,
+  progressRef,
+  initialStage,
+  hint,
+}: {
+  stageRef: Ref<HTMLSpanElement>;
+  progressRef: Ref<HTMLSpanElement>;
+  initialStage: string;
+  hint: string;
+}) {
   const scrollToNextSection = useCallback(() => {
     const sectionIds = ["top", "work", "services", "method", "process", "about", "contact"];
     const scrollPosition = window.scrollY + 120;
@@ -36,7 +46,7 @@ export function ScrollFilmline({ stageRef, initialStage, hint }: { stageRef: Ref
         01 · {initialStage}
       </span>
       <div className="relative h-20 w-[0.125rem] overflow-hidden rounded-full bg-foreground/20 group-hover:bg-foreground/30">
-        <i className="block size-full origin-top scale-y-[var(--page-progress,0)] bg-accent transition-transform duration-150 ease-out" />
+        <span ref={progressRef} className="block size-full origin-top scale-y-0 bg-accent transition-transform duration-150 ease-out will-change-transform" />
       </div>
       <span className="grid size-5 place-items-center rounded-full bg-foreground/10 text-[0.6rem] text-foreground/80 transition-all duration-300 group-hover:bg-accent group-hover:text-canvas group-hover:translate-y-0.5" aria-hidden="true">
         ↓

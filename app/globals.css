@@ -21,8 +21,6 @@
 
 @layer base {
   :root {
-    --page-progress: 0;
-    --service-progress: 0;
     color-scheme: dark;
   }
 

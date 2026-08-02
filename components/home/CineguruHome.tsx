@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 
 import type { Locale } from "@/i18n/config";
 import { getMessages } from "@/i18n/config";
@@ -22,8 +22,7 @@ import { VideoModal, type ActiveVideo } from "@/components/ui/VideoModal";
 export default function CineguruHome({ locale }: { locale: Locale }) {
   const messages = getMessages(locale);
   const [video, setVideo] = useState<ActiveVideo | null>(null);
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const { stageLabelRef, timecodeRef } = usePageProgress({ locale, stages: messages.global.stages, serviceRef: servicesRef });
+  const { stageLabelRef, timecodeRef, progressBarRef } = usePageProgress({ locale, stages: messages.global.stages });
   useRevealOnScroll();
 
   const openVideo = useCallback((nextVideo: ActiveVideo) => {
@@ -39,11 +38,11 @@ export default function CineguruHome({ locale }: { locale: Locale }) {
       <main id="main-content" tabIndex={-1} aria-hidden={video ? true : undefined} inert={video ? true : undefined}>
         <CustomCursor label={messages.global.cursor} />
         <SiteHeader locale={locale} messages={messages} />
-        <ScrollFilmline stageRef={stageLabelRef} initialStage={messages.global.stages[0]} hint={messages.global.scrollHint} />
+        <ScrollFilmline stageRef={stageLabelRef} progressRef={progressBarRef} initialStage={messages.global.stages[0]} hint={messages.global.scrollHint} />
         <HeroSection messages={messages} timecodeRef={timecodeRef} />
         <WorkSection messages={messages} onOpenVideo={openVideo} />
         <ChannelSection messages={messages} onOpenVideo={openVideo} />
-        <ServicesSection ref={servicesRef} messages={messages} />
+        <ServicesSection messages={messages} />
         <AboutSection messages={messages} />
         <ContactSection messages={messages} />
         <SiteFooter messages={messages} />

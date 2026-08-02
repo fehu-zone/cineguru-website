@@ -6,6 +6,7 @@ import { ButtonLink, TextLink } from "@/components/ui/Button";
 import { CameraHud } from "@/components/ui/CameraHud";
 import { ReferenceCarousel } from "@/components/ui/ReferenceCarousel";
 import { Eyebrow } from "@/components/ui/SectionHeading";
+import { ViewportVideo } from "@/components/ui/ViewportVideo";
 
 export function HeroSection({ messages, timecodeRef }: { messages: Messages; timecodeRef: Ref<HTMLSpanElement> }) {
   const hero = messages.hero;
@@ -17,18 +18,11 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
       </div>
 
       <div className="absolute inset-0 z-0 overflow-hidden bg-surface">
-        <video
+        <ViewportVideo
           className="size-full scale-[1.025] object-cover [filter:blur(1.8px)_brightness(.56)_contrast(1.05)_saturate(1.08)] max-[600px]:[filter:blur(1.3px)_brightness(.5)_contrast(1.04)_saturate(1.08)]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
           poster={siteConfig.showreel.poster}
-          aria-hidden="true"
-        >
-          <source src={siteConfig.showreel.video} type="video/mp4" />
-        </video>
+          src={siteConfig.showreel.video}
+        />
         <div className="hero-cinematic-overlay absolute inset-0" />
         <div className="absolute inset-3 max-[640px]:hidden"><CameraHud timecodeRef={timecodeRef} /></div>
       </div>
@@ -69,4 +63,3 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
     </section>
   );
 }
-
