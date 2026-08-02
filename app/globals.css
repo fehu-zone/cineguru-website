@@ -345,6 +345,8 @@
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
+  contain: layout paint;
+  isolation: isolate;
   border: 1px solid color-mix(in srgb, var(--color-foreground) 10%, transparent);
   background: var(--color-canvas);
 }

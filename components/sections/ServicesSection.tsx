@@ -60,17 +60,21 @@ export function ServicesSection({ messages }: { messages: Messages }) {
 
   useEffect(() => {
     let cancelled = false;
+    const idleWindow = window as unknown as {
+      requestIdleCallback?: (callback: IdleRequestCallback, options?: IdleRequestOptions) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
     const preload = () => {
       void import("./ServicesScene").then((module) => {
         if (!cancelled) module.preloadServicesScene(0);
       });
     };
 
-    if ("requestIdleCallback" in window) {
-      const idleId = window.requestIdleCallback(preload, { timeout: 1800 });
+    if (idleWindow.requestIdleCallback && idleWindow.cancelIdleCallback) {
+      const idleId = idleWindow.requestIdleCallback(preload, { timeout: 1800 });
       return () => {
         cancelled = true;
-        window.cancelIdleCallback(idleId);
+        idleWindow.cancelIdleCallback?.(idleId);
       };
     }
 

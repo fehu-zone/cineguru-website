@@ -1,11 +1,12 @@
 import { spawn } from "node:child_process";
 import { once } from "node:events";
 import { existsSync } from "node:fs";
-import { mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-const targetUrl = process.argv[2] ?? "http://127.0.0.1:3111/tr";
+const targetUrl = process.argv[2] ?? "http://127.0.0.1:3000/tr";
+const screenshotPath = process.argv[3];
 const chromeCandidates = [
   process.env.CHROME_PATH,
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -145,13 +146,14 @@ try {
 
   await client.command("Runtime.evaluate", {
     expression: `(() => {
-      window.__scrollProfile = { longTasks: [] };
+      window.__scrollProfile = { longTasks: [], phase: "idle" };
       if ("PerformanceObserver" in window) {
         const observer = new PerformanceObserver((list) => {
           for (const entry of list.getEntries()) {
             window.__scrollProfile.longTasks.push({
               startTime: entry.startTime,
               duration: entry.duration,
+              phase: window.__scrollProfile.phase,
             });
           }
         });
@@ -160,7 +162,7 @@ try {
     })()`,
   });
 
-  async function measureDirection(targetExpression, duration = 3200) {
+  async function measureDirection(targetExpression, duration = 3200, phase = "scroll") {
     const result = await client.command("Runtime.evaluate", {
       expression: `(async () => {
         const destination = ${targetExpression};
@@ -169,6 +171,7 @@ try {
         const gaps = [];
         let previous;
         const started = performance.now();
+        window.__scrollProfile.phase = ${JSON.stringify(phase)};
 
         await new Promise((resolve) => {
           const frame = (now) => {
@@ -185,6 +188,7 @@ try {
           requestAnimationFrame(frame);
         });
 
+        window.__scrollProfile.phase = "idle";
         return gaps;
       })()`,
       awaitPromise: true,
@@ -196,13 +200,17 @@ try {
   const servicePosition = `document.getElementById("services").offsetTop
     + document.getElementById("services").offsetHeight * 0.58
     - innerHeight * 0.5`;
-  const downToServices = await measureDirection(servicePosition);
+  const downToServices = await measureDirection(servicePosition, 3200, "down-to-services");
   await delay(2200);
-  const downToBottom = await measureDirection("document.documentElement.scrollHeight - innerHeight", 2200);
+  if (screenshotPath) {
+    const screenshot = await client.command("Page.captureScreenshot", { format: "png" });
+    await writeFile(screenshotPath, Buffer.from(screenshot.data, "base64"));
+  }
+  const downToBottom = await measureDirection("document.documentElement.scrollHeight - innerHeight", 2200, "down-to-bottom");
   await delay(800);
-  const upToServices = await measureDirection(servicePosition, 2200);
+  const upToServices = await measureDirection(servicePosition, 2200, "up-to-services");
   await delay(2200);
-  const upToTop = await measureDirection("0");
+  const upToTop = await measureDirection("0", 3200, "up-to-top");
   await delay(800);
   const downFrames = [...downToServices, ...downToBottom];
   const upFrames = [...upToServices, ...upToTop];
@@ -221,6 +229,7 @@ try {
   });
   const pageMetrics = pageResult.result.value;
   const longTasks = pageMetrics.longTasks;
+  const scrollingLongTasks = longTasks.filter((task) => task.phase !== "idle");
   const resourceBytes = pageMetrics.resources.reduce((total, resource) => total + resource.transferSize, 0);
 
   console.log(JSON.stringify({
@@ -233,6 +242,8 @@ try {
       count: longTasks.length,
       totalMs: Number(longTasks.reduce((total, task) => total + task.duration, 0).toFixed(1)),
       maxMs: Number(Math.max(0, ...longTasks.map((task) => task.duration)).toFixed(1)),
+      duringScrollCount: scrollingLongTasks.length,
+      duringScrollMs: Number(scrollingLongTasks.reduce((total, task) => total + task.duration, 0).toFixed(1)),
     },
     transferredMB: Number((resourceBytes / 1024 / 1024).toFixed(2)),
   }, null, 2));

@@ -10,6 +10,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "perf:scroll": "node scripts/measure-scroll-performance.mjs",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint ."
   },
