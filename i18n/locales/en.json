@@ -11,7 +11,7 @@
     "items": {
       "work": "Work",
       "services": "Services",
-      "method": "Method",
+      "about": "About",
       "contact": "Contact"
     },
     "projectCta": "Start a Project",

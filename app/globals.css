@@ -152,6 +152,13 @@
   .about-journey-step {
     position: absolute;
     width: min(18rem, 28%);
+    z-index: 1;
+    transition: z-index 0s linear 300ms;
+  }
+
+  .about-journey-step.is-active {
+    z-index: 4;
+    transition-delay: 0s;
   }
 
   .about-journey-step-1 { top: 58%; left: 2%; }
@@ -170,7 +177,8 @@
     background: var(--color-canvas);
     font-family: var(--font-cine-mono), monospace;
     font-size: 0.58rem;
-    transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease, transform 300ms var(--ease-cinematic);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent);
+    transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease, transform 300ms var(--ease-cinematic), box-shadow 400ms ease;
   }
 
   .about-journey-node:not(:disabled) { cursor: pointer; }
@@ -180,6 +188,7 @@
     color: var(--color-canvas);
     background: var(--color-accent);
     transform: scale(1.12);
+    box-shadow: 0 0 0 0.65rem color-mix(in srgb, var(--color-accent) 14%, transparent), 0 0 1.8rem color-mix(in srgb, var(--color-accent) 32%, transparent);
   }
 
   .about-journey-card {
@@ -190,15 +199,16 @@
     padding: 1.25rem;
     border: 1px solid color-mix(in srgb, var(--color-foreground) 18%, transparent);
     background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+    box-shadow: 0 1.5rem 3rem color-mix(in srgb, #000 22%, transparent);
     opacity: 0;
-    transform: translateY(0.75rem);
+    transform: translateY(0.75rem) scale(0.97);
     pointer-events: none;
     transition: opacity 400ms ease, transform 500ms var(--ease-cinematic), border-color 300ms ease;
   }
 
   .about-journey-card.is-open {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1.04);
     pointer-events: auto;
     border-color: color-mix(in srgb, var(--color-accent) 48%, transparent);
   }

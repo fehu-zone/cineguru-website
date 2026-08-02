@@ -35,21 +35,26 @@ export function SectionHeading({
         id={titleId}
         className={cn(
           wideTitle
-            ? "col-span-9 whitespace-pre-line font-display text-[clamp(3.2rem,5.8vw,6.8rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] text-balance"
+            ? "col-span-6 -translate-x-40 whitespace-pre-line font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[1.02] tracking-[-0.045em] text-balance max-[640px]:translate-x-0"
             : "col-span-6 whitespace-pre-line font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] text-balance",
           compact && "col-span-8",
-          "max-[940px]:col-start-3 max-[940px]:col-end-[-1] max-[640px]:col-span-1 max-[640px]:mt-5 max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]",
+          "max-[940px]:col-start-3 max-[940px]:col-end-[-1] max-[640px]:col-span-1 max-[640px]:mt-5",
+          wideTitle
+            ? "max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]"
+            : "max-[640px]:text-[clamp(3rem,13.7vw,4.8rem)]",
         )}
       >
-        {title.split("\n").map((line) => (
-          <span className="block whitespace-nowrap" key={line}>{line}</span>
-        ))}
+        {wideTitle
+          ? title.split("\n").map((line) => (
+              <span className="block whitespace-nowrap" key={line}>{line}</span>
+            ))
+          : title}
       </h2>
       {description ? (
         <p className={cn(
           "self-end text-[0.98rem] leading-[1.6] text-current/60 max-[940px]:col-start-3 max-[940px]:col-end-[-1] max-[940px]:mt-6 max-[940px]:max-w-[45ch] max-[640px]:col-span-1 max-[640px]:mt-5",
           wideTitle
-            ? "col-start-4 col-end-[-1] mt-12 max-w-[52ch] justify-self-start"
+            ? "col-start-10 col-end-[-1] self-start mt-96 max-w-[38ch] justify-self-start"
             : "col-start-10 col-end-[-1]",
         )}>
           {description}

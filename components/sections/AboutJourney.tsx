@@ -35,16 +35,19 @@ export function AboutJourney({ principles }: { principles: Principle[] }) {
 
       {principles.map((principle, index) => {
         const isAvailable = index <= revealedUntil;
-        const isOpen = index <= activeIndex;
+        const isOpen = index === activeIndex;
         return (
-          <div className={`about-journey-step about-journey-step-${index + 1} ${isAvailable ? "is-available" : ""}`} key={principle.title}>
+          <div className={`about-journey-step about-journey-step-${index + 1} ${isAvailable ? "is-available" : ""} ${isOpen ? "is-active" : ""}`} key={principle.title}>
             <button
               className="about-journey-node"
               type="button"
               disabled={!isAvailable}
               aria-expanded={isOpen}
               aria-label={`${String(index + 1).padStart(2, "0")} ${principle.title}`}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setActiveIndex(index);
+                if (index < revealedUntil) setRevealedUntil(index);
+              }}
             >
               <span>{String(index + 1).padStart(2, "0")}</span>
             </button>
