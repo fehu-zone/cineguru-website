@@ -13,8 +13,6 @@ import {
 } from "@react-three/drei";
 import * as THREE from "three";
 
-import { useMotionPolicy } from "@/hooks/useMotion";
-
 /* ─── palette (brighter for visibility) ─── */
 const ACCENT = "#e33326";
 const BODY_DARK = "#2e2e32";
@@ -791,14 +789,26 @@ function PostProductionRobot() {
 
 /* ═══════════════════════════════════════════════════════════ */
 const SCENE_OBJECTS = [StrategyChessSet, SteampunkCamera, PreProductionCamera, PostProductionRobot];
+const MODEL_URLS: Partial<Record<number, string>> = {
+  0: "/assets/strategy-chess-set/chess_set_1k.glb",
+  1: "/assets/steampunk_camera.glb",
+  2: "/assets/preproduction-camera/Camera_01_1k.glb",
+};
+
+export function preloadServicesScene(activeIndex = 0) {
+  const modelUrl = MODEL_URLS[activeIndex];
+  if (modelUrl) useGLTF.preload(modelUrl);
+}
 
 /* ═══════════════════════════════════════════════════════════
    Main Inner Scene with 3D Hotspot Cards
    ═══════════════════════════════════════════════════════════ */
 function ServicesSceneInner({
+  active,
   activeIndex,
   reducedMotion,
 }: {
+  active: boolean;
   activeIndex: number;
   reducedMotion: boolean;
 }) {
@@ -825,7 +835,7 @@ function ServicesSceneInner({
 
       <OrbitControls
         ref={controlsRef}
-        autoRotate={!reducedMotion}
+        autoRotate={active && !reducedMotion}
         autoRotateSpeed={1.2}
         enableZoom={false}
         enablePan={false}
@@ -846,6 +856,8 @@ function ServicesSceneInner({
         blur={2.5}
         far={5}
         color="#000000"
+        frames={40}
+        resolution={256}
       />
     </>
   );
@@ -854,13 +866,20 @@ function ServicesSceneInner({
 /* ═══════════════════════════════════════════════════════════
    Exported Canvas Wrapper
    ═══════════════════════════════════════════════════════════ */
-export function ServicesScene({ activeIndex }: { activeIndex: number }) {
-  const { reducedMotion } = useMotionPolicy();
-
+export function ServicesScene({
+  active,
+  activeIndex,
+  reducedMotion,
+}: {
+  active: boolean;
+  activeIndex: number;
+  reducedMotion: boolean;
+}) {
   return (
     <Canvas
       camera={{ position: [0, 0, 4.8], fov: 36 }}
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
+      frameloop={active ? "always" : "demand"}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onCreated={({ gl, scene }) => {
         gl.setClearColor("#141414", 1);
@@ -870,7 +889,7 @@ export function ServicesScene({ activeIndex }: { activeIndex: number }) {
       onPointerDown={(e) => { (e.target as HTMLElement).style.cursor = "grabbing"; }}
       onPointerUp={(e) => { (e.target as HTMLElement).style.cursor = "grab"; }}
     >
-      <ServicesSceneInner activeIndex={activeIndex} reducedMotion={reducedMotion} />
+      <ServicesSceneInner active={active} activeIndex={activeIndex} reducedMotion={reducedMotion} />
     </Canvas>
   );
 }

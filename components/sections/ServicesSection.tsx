@@ -2,10 +2,10 @@
 
 import {
   Component,
-  forwardRef,
   lazy,
   Suspense,
   useCallback,
+  useEffect,
   useRef,
   useState,
   type CSSProperties,
@@ -15,15 +15,17 @@ import {
 import type { Messages } from "@/i18n/config";
 import { cn } from "@/lib/classNames";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { useAutoAdvance, useElementInView } from "@/hooks/useMotion";
+import { useElementInView, useMotionPolicy } from "@/hooks/useMotion";
 
-const ServicesScene = lazy(() =>
-  import("./ServicesScene").then((module) => ({ default: module.ServicesScene })),
-);
+const loadServicesScene = () =>
+  import("./ServicesScene").then((module) => ({ default: module.ServicesScene }));
 
-const ServicesSplineScene = lazy(() =>
-  import("./ServicesSplineScene").then((module) => ({ default: module.ServicesSplineScene })),
-);
+const ServicesScene = lazy(loadServicesScene);
+
+const loadServicesSplineScene = () =>
+  import("./ServicesSplineScene").then((module) => ({ default: module.ServicesSplineScene }));
+
+const ServicesSplineScene = lazy(loadServicesSplineScene);
 
 class ServicesSceneErrorBoundary extends Component<
   { children: ReactNode },
@@ -44,24 +46,63 @@ class ServicesSceneErrorBoundary extends Component<
   }
 }
 
-export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }>(function ServicesSection({ messages }, ref) {
+export function ServicesSection({ messages }: { messages: Messages }) {
   const services = messages.services;
   // The services section must always enter on 01 / Strategy.
   const [activeIndex, setActiveIndex] = useState(0);
+  const [threeIndex, setThreeIndex] = useState(0);
+  const [sceneMounted, setSceneMounted] = useState(false);
+  const [splineMounted, setSplineMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-  const autoplayRef = useRef<HTMLDivElement>(null);
   const inView = useElementInView(sectionRef, { rootMargin: "200px 0px" });
+  const { documentVisible, pageScrolling, reducedMotion } = useMotionPolicy();
+  const sceneActive = inView && documentVisible && !pageScrolling;
 
-  useAutoAdvance({
-    containerRef: autoplayRef as React.RefObject<HTMLElement>,
-    delay: 5500,
-    enabled: false, // Disabled auto-advance for manual 3D testing
-    onAdvance: () => setActiveIndex((i) => (i + 1) % services.items.length),
-  });
+  useEffect(() => {
+    let cancelled = false;
+    const preload = () => {
+      void import("./ServicesScene").then((module) => {
+        if (!cancelled) module.preloadServicesScene(0);
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(preload, { timeout: 1800 });
+      return () => {
+        cancelled = true;
+        window.cancelIdleCallback(idleId);
+      };
+    }
+
+    const timer = window.setTimeout(preload, 900);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (sceneMounted || !sceneActive) return;
+    const frame = window.requestAnimationFrame(() => setSceneMounted(true));
+    return () => window.cancelAnimationFrame(frame);
+  }, [sceneActive, sceneMounted]);
+
+  const preloadService = useCallback((index: number) => {
+    if (index === 3) {
+      void loadServicesSplineScene();
+      return;
+    }
+
+    void import("./ServicesScene").then((module) => module.preloadServicesScene(index));
+  }, []);
 
   const selectService = useCallback((index: number) => {
-    setActiveIndex((index + services.items.length) % services.items.length);
-  }, [services.items.length]);
+    const normalized = (index + services.items.length) % services.items.length;
+    preloadService(normalized);
+    if (normalized < 3) setThreeIndex(normalized);
+    else setSplineMounted(true);
+    setActiveIndex(normalized);
+  }, [preloadService, services.items.length]);
 
   const handleKeys = useCallback((event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
@@ -77,11 +118,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
 
   return (
     <section
-      ref={(el) => {
-        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
-        if (typeof ref === "function") ref(el as HTMLDivElement);
-        else if (ref) (ref as React.MutableRefObject<HTMLDivElement | null>).current = el as HTMLDivElement;
-      }}
+      ref={sectionRef}
       className="page-shell py-section text-foreground"
       id="services"
     >
@@ -110,6 +147,8 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
               )}
               style={{ "--tab-progress": index === activeIndex ? 1 : 0 } as CSSProperties}
               onClick={() => selectService(index)}
+              onPointerEnter={() => preloadService(index)}
+              onFocus={() => preloadService(index)}
               onKeyDown={(e) => handleKeys(e, index)}
               role="tab"
               aria-selected={index === activeIndex}
@@ -149,25 +188,31 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
 
       {/* ─── 3D Canvas — full width, large ─── */}
       <div
-        ref={autoplayRef}
         className="reveal-on-scroll mt-[clamp(2rem,3vw,3rem)]"
       >
         {/* ─── 3D Canvas — full width, large ─── */}
-        <div className="services-canvas-container services-canvas-container--full" ref={ref}>
+        <div className="services-canvas-container services-canvas-container--full">
           <div className="services-scene-layer">
-            <ServicesSceneErrorBoundary key={`services-scene-${activeIndex}`}>
-              {inView ? (
-                <Suspense fallback={<div className="services-canvas-fallback" />}>
-                  {activeIndex === 3 ? (
-                    <ServicesSplineScene activeIndex={activeIndex} />
-                  ) : (
-                    <ServicesScene activeIndex={activeIndex} />
-                  )}
-                </Suspense>
-              ) : (
-                <div className="services-canvas-fallback" />
-              )}
-            </ServicesSceneErrorBoundary>
+            {sceneMounted ? (
+              <>
+                <div className={cn("absolute inset-0", activeIndex === 3 && "invisible pointer-events-none")}>
+                  <ServicesSceneErrorBoundary>
+                    <Suspense fallback={<div className="services-canvas-fallback" />}>
+                      <ServicesScene active={sceneActive && activeIndex !== 3} activeIndex={threeIndex} reducedMotion={reducedMotion} />
+                    </Suspense>
+                  </ServicesSceneErrorBoundary>
+                </div>
+                {splineMounted ? (
+                  <div className={cn("absolute inset-0", activeIndex !== 3 && "invisible pointer-events-none")}>
+                    <Suspense fallback={<div className="services-canvas-fallback" />}>
+                      <ServicesSplineScene active={sceneActive && activeIndex === 3} activeIndex={3} />
+                    </Suspense>
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <div className="services-canvas-fallback" />
+            )}
           </div>
           {/* ─── Cinematic HUD overlay + 3 Floating Glassmorphism Info Boxes ─── */}
           <div className={`services-canvas-hud services-canvas-hud-${activeIndex}`} key={`hud-cards-${activeIndex}`}>
@@ -277,4 +322,4 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
       </div>
     </section>
   );
-});
+}

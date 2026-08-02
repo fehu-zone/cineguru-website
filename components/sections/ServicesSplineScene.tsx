@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Spline from "@splinetool/react-spline";
+import type { Application } from "@splinetool/runtime";
 
 /* ─── Spline 3D Scene URLs for each Service ─── */
 const SPLINE_SCENES: Record<number, string> = {
@@ -49,12 +50,22 @@ class SplineErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBound
 }
 
 export function ServicesSplineScene({
+  active,
   activeIndex,
 }: {
+  active: boolean;
   activeIndex: number;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const splineRef = useRef<Application | null>(null);
   const currentScene = SPLINE_SCENES[activeIndex] ?? SPLINE_SCENES[0];
+
+  useEffect(() => {
+    const spline = splineRef.current;
+    if (!spline) return;
+    if (active) spline.play();
+    else spline.stop();
+  }, [active, loaded]);
 
   return (
     <div className="relative size-full overflow-hidden bg-canvas">
@@ -77,7 +88,12 @@ export function ServicesSplineScene({
           <Spline
             key={currentScene}
             scene={currentScene}
-            onLoad={() => setLoaded(true)}
+            renderOnDemand
+            onLoad={(spline) => {
+              splineRef.current = spline;
+              if (!active) spline.stop();
+              setLoaded(true);
+            }}
             style={{ width: "100%", height: "100%" }}
           />
         </SplineErrorBoundary>
