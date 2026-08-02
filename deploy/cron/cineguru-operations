@@ -1,0 +1,5 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+25 2 * * * root nice -n 15 ionice -c2 -n7 timeout 1800 /usr/local/sbin/cineguru-backup.sh >/dev/null 2>&1
+*/10 * * * * root timeout 240 /usr/local/sbin/cineguru-integrity-watch.sh >/dev/null 2>&1

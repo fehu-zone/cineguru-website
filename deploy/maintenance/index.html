@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta name="theme-color" content="#0b0b0b" />
+    <title>Cineguru Studio — Yenileniyoruz</title>
+    <style>
+      :root { color-scheme: dark; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; overflow: hidden; color: #f5f3ef; background: #0b0b0b; }
+      body::before { content: ""; position: fixed; inset: -30%; background: radial-gradient(circle at 72% 24%, rgba(209, 255, 67, .14), transparent 25%), radial-gradient(circle at 15% 80%, rgba(255,255,255,.07), transparent 28%); filter: blur(18px); }
+      main { position: relative; width: min(92vw, 1100px); min-height: 78vh; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(28px, 5vw, 70px) 0; }
+      .brand { font-size: clamp(.78rem, 1.2vw, .95rem); font-weight: 750; letter-spacing: .24em; text-transform: uppercase; }
+      .eyebrow { display: flex; align-items: center; gap: 12px; color: #d1ff43; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; }
+      .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; box-shadow: 0 0 20px currentColor; animation: pulse 1.8s ease-in-out infinite; }
+      h1 { max-width: 900px; margin: 18px 0 20px; font-size: clamp(3.4rem, 10vw, 8.8rem); font-weight: 650; line-height: .86; letter-spacing: -.075em; }
+      p { max-width: 600px; margin: 0; color: #aaa7a1; font-size: clamp(1rem, 1.6vw, 1.25rem); line-height: 1.55; }
+      footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; padding-top: 36px; border-top: 1px solid #292929; color: #77736d; font-size: .82rem; }
+      a { color: #f5f3ef; text-decoration: none; border-bottom: 1px solid #4a4a4a; }
+      a:hover, a:focus-visible { color: #d1ff43; border-color: #d1ff43; }
+      @keyframes pulse { 50% { opacity: .35; transform: scale(.75); } }
+      @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">Cineguru Studio</div>
+      <section aria-labelledby="title">
+        <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Yeni bir hikâye hazırlanıyor</div>
+        <h1 id="title">Yenileniyoruz.</h1>
+        <p>Yeni dijital deneyimimiz üzerinde çalışıyoruz. Çok yakında yeniden buradayız.</p>
+      </section>
+      <footer>
+        <span>Film · Creative · Production</span>
+        <a href="mailto:info@wearecineguru.com">info@wearecineguru.com</a>
+      </footer>
+    </main>
+  </body>
+</html>
