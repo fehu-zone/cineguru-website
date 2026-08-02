@@ -1,16 +1,11 @@
 "use client";
 
 import {
-  useEffect,
   useRef,
   type CSSProperties,
-  type KeyboardEvent as ReactKeyboardEvent,
-  type PointerEvent as ReactPointerEvent,
-  type Ref,
 } from "react";
 
 import { brands } from "@/data/site";
-import { useElementInView, useMotionPolicy } from "@/hooks/useMotion";
 import { ClientLogo } from "@/components/ui/ClientLogo";
 
 const temporaryBrands = [
@@ -20,7 +15,7 @@ const temporaryBrands = [
 ] as const;
 
 const carouselBrands = [...brands, ...temporaryBrands];
-const carouselSpeed = 72;
+const carouselStep = 320;
 
 function getBrandScale(brand: (typeof carouselBrands)[number]) {
   return brand.id === "vialand" ? 1.05 : brand.scale;
@@ -33,16 +28,13 @@ function getMobileBrandScale(brand: (typeof carouselBrands)[number]) {
 
 function BrandGroup({
   duplicateKey,
-  groupRef,
   desktopOnly = false,
 }: {
   duplicateKey?: string;
-  groupRef?: Ref<HTMLDivElement>;
   desktopOnly?: boolean;
 }) {
   return (
     <div
-      ref={groupRef}
       className={`${desktopOnly ? "hidden min-[601px]:flex" : "flex"} shrink-0 items-center gap-[clamp(1.75rem,2.6vw,2.75rem)] pr-[clamp(1.75rem,2.6vw,2.75rem)] max-[600px]:gap-8 max-[600px]:pr-8`}
       aria-hidden={duplicateKey ? true : undefined}
     >
@@ -81,250 +73,42 @@ function BrandGroup({
 
 export function ReferenceCarousel() {
   const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const firstGroupRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<Animation | null>(null);
-  const animationDurationRef = useRef(0);
-  const desktopGroupWidthRef = useRef(0);
-  const canAutoPlayRef = useRef(false);
-  const isDraggingRef = useRef(false);
-  const dragRef = useRef({
-    pointerId: -1,
-    mode: "idle" as "idle" | "pending" | "horizontal",
-    isMobile: false,
-    startX: 0,
-    startY: 0,
-    startAnimationTime: 0,
-    startScrollLeft: 0,
-  });
-  const { documentVisible, pageScrolling, reducedMotion } = useMotionPolicy();
-  const inView = useElementInView(viewportRef);
-  const canAutoPlay = inView && documentVisible && !pageScrolling && !reducedMotion;
 
-  useEffect(() => {
-    canAutoPlayRef.current = canAutoPlay;
-  }, [canAutoPlay]);
-
-  useEffect(() => {
+  const move = (direction: 1 | -1) => {
     const viewport = viewportRef.current;
-    const track = trackRef.current;
-    const firstGroup = firstGroupRef.current;
-    if (!viewport || !track || !firstGroup) return;
-
-    const mobileQuery = window.matchMedia("(max-width: 600px)");
-    const buildAnimation = () => {
-      const previousAnimation = animationRef.current;
-      const previousDuration = animationDurationRef.current;
-      const previousTime = Number(previousAnimation?.currentTime ?? 0);
-      const progress = previousDuration > 0
-        ? ((previousTime % previousDuration) + previousDuration) % previousDuration / previousDuration
-        : 0;
-
-      previousAnimation?.cancel();
-      animationRef.current = null;
-      animationDurationRef.current = 0;
-
-      const groupWidth = firstGroup.getBoundingClientRect().width;
-      desktopGroupWidthRef.current = groupWidth;
-
-      if (!mobileQuery.matches) {
-        track.style.transform = "none";
-        track.style.willChange = "auto";
-        if (groupWidth > 0) viewport.scrollLeft = groupWidth;
-        return;
-      }
-
-      viewport.scrollLeft = 0;
-      if (groupWidth <= 0 || typeof track.animate !== "function") return;
-
-      const duration = groupWidth / carouselSpeed * 1000;
-      const animation = track.animate(
-        [
-          { transform: "translate3d(0, 0, 0)" },
-          { transform: `translate3d(${-groupWidth}px, 0, 0)` },
-        ],
-        { duration, iterations: Infinity, easing: "linear" },
-      );
-      animation.currentTime = progress * duration;
-      animationDurationRef.current = duration;
-      animationRef.current = animation;
-      track.style.willChange = canAutoPlayRef.current ? "transform" : "auto";
-      if (!canAutoPlayRef.current) animation.pause();
-    };
-
-    const resizeObserver = new ResizeObserver(buildAnimation);
-    resizeObserver.observe(firstGroup);
-    mobileQuery.addEventListener("change", buildAnimation);
-    buildAnimation();
-
-    return () => {
-      resizeObserver.disconnect();
-      mobileQuery.removeEventListener("change", buildAnimation);
-      animationRef.current?.cancel();
-      animationRef.current = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    const animation = animationRef.current;
-    const track = trackRef.current;
-    if (!animation || !track) return;
-
-    if (canAutoPlay && !isDraggingRef.current) {
-      track.style.willChange = "transform";
-      animation.play();
-    } else {
-      animation.pause();
-      track.style.willChange = "auto";
-    }
-  }, [canAutoPlay]);
-
-  const normalizeDesktopScroll = (viewport: HTMLDivElement, keepDragOrigin: boolean) => {
-    if (window.matchMedia("(max-width: 600px)").matches) return;
-    const groupWidth = desktopGroupWidthRef.current;
-    if (groupWidth <= 0) return;
-
-    let nextScrollLeft = viewport.scrollLeft;
-    let correction = 0;
-    while (nextScrollLeft < groupWidth * 0.5) {
-      nextScrollLeft += groupWidth;
-      correction += groupWidth;
-    }
-    while (nextScrollLeft > groupWidth * 1.5) {
-      nextScrollLeft -= groupWidth;
-      correction -= groupWidth;
-    }
-
-    if (correction === 0) return;
-    viewport.scrollLeft = nextScrollLeft;
-    if (keepDragOrigin && dragRef.current.pointerId >= 0 && !dragRef.current.isMobile) {
-      dragRef.current.startScrollLeft += correction;
-    }
+    if (!viewport) return;
+    viewport.scrollBy({ left: direction * carouselStep, behavior: "smooth" });
   };
 
-  const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
-
-    const isMobile = window.matchMedia("(max-width: 600px)").matches;
-    dragRef.current = {
-      pointerId: event.pointerId,
-      mode: isMobile && event.pointerType !== "mouse" ? "pending" : "horizontal",
-      isMobile,
-      startX: event.clientX,
-      startY: event.clientY,
-      startAnimationTime: Number(animationRef.current?.currentTime ?? 0),
-      startScrollLeft: event.currentTarget.scrollLeft,
-    };
-
-    if (dragRef.current.mode === "horizontal") {
-      isDraggingRef.current = true;
-      animationRef.current?.pause();
-      event.currentTarget.classList.add("is-dragging");
-    }
-
-    if (dragRef.current.mode === "horizontal" || dragRef.current.mode === "pending") {
-      try {
-        event.currentTarget.setPointerCapture(event.pointerId);
-      } catch {
-        // Pointer capture is optional.
-      }
-    }
-  };
-
-  const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    const drag = dragRef.current;
-    if (drag.pointerId !== event.pointerId || drag.mode === "idle") return;
-
-    const deltaX = event.clientX - drag.startX;
-    const deltaY = event.clientY - drag.startY;
-
-    if (drag.mode === "pending") {
-      if (Math.max(Math.abs(deltaX), Math.abs(deltaY)) < 7) return;
-      if (Math.abs(deltaY) >= Math.abs(deltaX)) {
-        dragRef.current.mode = "idle";
-        dragRef.current.pointerId = -1;
-        try {
-          event.currentTarget.releasePointerCapture(event.pointerId);
-        } catch {
-          // Pointer capture may already be released.
-        }
-        return;
-      }
-
-      dragRef.current.mode = "horizontal";
-      isDraggingRef.current = true;
-      animationRef.current?.pause();
-      const animationTime = Number(animationRef.current?.currentTime ?? 0);
-      dragRef.current.startAnimationTime = animationTime + deltaX / carouselSpeed * 1000;
-      event.currentTarget.classList.add("is-dragging");
-      try {
-        event.currentTarget.setPointerCapture(event.pointerId);
-      } catch {
-        // Pointer capture is optional.
-      }
-    }
-
-    event.preventDefault();
-    if (!drag.isMobile) {
-      event.currentTarget.scrollLeft = drag.startScrollLeft - deltaX;
-      normalizeDesktopScroll(event.currentTarget, true);
-      return;
-    }
-
-    const animation = animationRef.current;
-    const duration = animationDurationRef.current;
-    if (!animation || duration <= 0) return;
-
-    const nextTime = drag.startAnimationTime - deltaX / carouselSpeed * 1000;
-    animation.currentTime = ((nextTime % duration) + duration) % duration;
-  };
-
-  const handlePointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
-    event.currentTarget.classList.remove("is-dragging");
-    if (dragRef.current.pointerId !== event.pointerId) return;
-
-    dragRef.current.pointerId = -1;
-    dragRef.current.mode = "idle";
-    isDraggingRef.current = false;
-    if (canAutoPlayRef.current) animationRef.current?.play();
-    try {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    } catch {
-      // Pointer capture may already be released.
-    }
-  };
-
-  const handleKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
-    const direction = event.key === "ArrowRight" ? 1 : -1;
-    event.currentTarget.scrollBy({
-      left: direction * Math.max(280, event.currentTarget.clientWidth * 0.55),
-      behavior: reducedMotion ? "auto" : "smooth",
-    });
-  };
-
-  const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
-    normalizeDesktopScroll(event.currentTarget, true);
+    move(event.key === "ArrowRight" ? 1 : -1);
   };
 
   return (
     <div
-      ref={viewportRef}
-      className="horizontal-drag-surface no-scrollbar mx-auto w-full max-w-site cursor-grab select-none overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-y max-[600px]:overflow-hidden"
-      tabIndex={0}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-      onLostPointerCapture={handlePointerUp}
-      onKeyDown={handleKeyDown}
-      onScroll={handleScroll}
+      className="relative mx-auto w-full max-w-site"
     >
-      <div ref={trackRef} className="flex w-max items-center">
-        <BrandGroup groupRef={firstGroupRef} />
-        <BrandGroup duplicateKey="-duplicate-1" />
-        <BrandGroup duplicateKey="-duplicate-2" desktopOnly />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-canvas via-canvas/85 to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-canvas via-canvas/85 to-transparent" aria-hidden="true" />
+      <button type="button" aria-label="Önceki markalar" onClick={() => move(-1)} className="group absolute left-0 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center text-foreground/70 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+        <svg className="size-5 transition-transform duration-300 group-hover:-translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg>
+      </button>
+      <button type="button" aria-label="Sonraki markalar" onClick={() => move(1)} className="group absolute right-0 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center text-foreground/70 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+        <svg className="size-5 transition-transform duration-300 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+      </button>
+      <div
+        ref={viewportRef}
+        className="no-scrollbar w-full overflow-hidden overscroll-x-contain scroll-smooth select-none"
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+      >
+        <div className="flex w-max items-center">
+          <BrandGroup />
+          <BrandGroup duplicateKey="-duplicate-1" />
+          <BrandGroup duplicateKey="-duplicate-2" desktopOnly />
+        </div>
       </div>
     </div>
   );
