@@ -88,7 +88,7 @@ export const ServicesSection = forwardRef<HTMLDivElement, { messages: Messages }
       {/* ─── Heading ─── */}
       <div className="reveal-on-scroll">
         <Eyebrow>{services.eyebrow}</Eyebrow>
-        <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(3.2rem,5.5vw,6.2rem)] [font-weight:580] leading-[0.94] tracking-[-0.045em] max-[640px]:text-[clamp(2.8rem,11vw,4rem)]">
+        <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[1.02] tracking-[-0.045em] max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]">
           {services.title}
         </h2>
       </div>

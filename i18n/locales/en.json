@@ -22,6 +22,7 @@
     "languageLabel": "Language selection",
     "contactInfoTitle": "Contact Details",
     "phoneLabel": "PHONE",
+    "phoneCta": "Call us",
     "officeLabel": "OFFICE LOCATION",
     "followUsTitle": "Follow Us"
   },
@@ -225,7 +226,7 @@
   },
   "contact": {
     "eyebrow": "A NEW FILM · 06",
-    "title": "Let’s make the next story together.",
+    "title": "Let’s make the next story\ntogether.",
     "description": "Tell us briefly about the idea, timing and what you need. We will shape the rest together.",
     "mailCta": "Talk about the project",
     "phoneCta": "Call us",

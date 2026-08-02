@@ -22,6 +22,7 @@
     "languageLabel": "Dil seçimi",
     "contactInfoTitle": "İletişim Bilgileri",
     "phoneLabel": "TELEFON",
+    "phoneCta": "Tıkla ara",
     "officeLabel": "OFİS KONUM",
     "followUsTitle": "Bizi Takip Edin"
   },
@@ -225,7 +226,7 @@
   },
   "contact": {
     "eyebrow": "YENİ BİR FİLM · 06",
-    "title": "Sıradaki hikâyeyi birlikte çekelim.",
+    "title": "Sıradaki hikâyeyi\nbirlikte çekelim.",
     "description": "Kısaca fikrinden, teslim tarihinden ve ihtiyacından bahset. Gerisini birlikte şekillendirelim.",
     "mailCta": "Projeyi konuşalım",
     "phoneCta": "Bizi ara",

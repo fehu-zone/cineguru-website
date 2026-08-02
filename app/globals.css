@@ -30,11 +30,14 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     background: var(--color-canvas);
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
   }
 
   body {
     min-width: 20rem;
-    overflow-x: clip;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
     color: var(--color-foreground);
     background: var(--color-canvas);
     font-family: var(--font-body), "Inter", sans-serif;

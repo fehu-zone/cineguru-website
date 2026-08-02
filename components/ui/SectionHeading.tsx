@@ -44,7 +44,7 @@ export function SectionHeading({
             : "max-[640px]:text-[clamp(3rem,13.7vw,4.8rem)]",
         )}
       >
-        {wideTitle
+        {wideTitle && title.includes("\n")
           ? title.split("\n").map((line) => (
               <span className="block whitespace-nowrap" key={line}>{line}</span>
             ))

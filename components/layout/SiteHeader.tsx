@@ -72,7 +72,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
             <div>
               <h4 className="eyebrow mb-6">{nav.contactInfoTitle}</h4>
               <div className="grid gap-5 text-sm text-foreground/75">
-                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.phoneLabel}</span><a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a></p>
+                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.phoneLabel}</span><a href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>{nav.phoneCta}</a></p>
                 <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{messages.contact.emailLabel.toUpperCase()}</span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
                 <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.officeLabel}</span><span>{messages.contact.address}</span></p>
               </div>

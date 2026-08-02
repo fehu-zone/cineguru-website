@@ -11,8 +11,10 @@ export function ContactSection({ messages }: { messages: Messages }) {
     <section className="page-shell pb-[clamp(4rem,7vw,7rem)] pt-section" id="contact">
       <div className="reveal-on-scroll mx-auto max-w-[52rem] text-center">
         <Eyebrow>{contact.eyebrow}</Eyebrow>
-        <h2 className="mt-6 font-display text-[clamp(3.5rem,7vw,7rem)] [font-weight:580] leading-[0.92] tracking-[-0.05em] max-[640px]:text-[clamp(3rem,13vw,5rem)]">{contact.title}</h2>
-        <p className="mx-auto mt-7 max-w-[46ch] text-[clamp(1rem,calc(.23vw+.96rem),1.15rem)] leading-[1.58] text-foreground/65">{contact.description}</p>
+        <h2 className="mt-6 font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[1.02] tracking-[-0.045em] max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]">
+          {contact.title.split("\n").map((line) => <span className="block whitespace-nowrap" key={line}>{line}</span>)}
+        </h2>
+        <p className="mx-auto mt-7 max-w-[46ch] text-[0.98rem] leading-[1.6] text-foreground/65">{contact.description}</p>
       </div>
 
       <div className="contact-cta-group reveal-on-scroll mt-[clamp(3.5rem,6vw,6rem)] flex gap-grid max-[640px]:flex-col">
@@ -28,6 +30,10 @@ export function ContactSection({ messages }: { messages: Messages }) {
         <a className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent" href={`mailto:${siteConfig.email}`}>
           <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.emailLabel}</span>
           <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{siteConfig.email}</strong>
+        </a>
+        <a className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent" href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>
+          <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{messages.navigation.phoneLabel}</span>
+          <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{messages.navigation.phoneCta}</strong>
         </a>
         <address className="flex flex-col gap-3 not-italic">
           <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.location}</span>
