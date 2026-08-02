@@ -26,7 +26,6 @@ export const siteConfig = {
 export const navigationItems = [
   { key: "work", href: "#work" },
   { key: "services", href: "#services" },
-  { key: "method", href: "#method" },
   { key: "contact", href: "#contact" },
 ] as const;
 

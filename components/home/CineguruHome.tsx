@@ -14,7 +14,6 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ChannelSection } from "@/components/sections/ChannelSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { MethodSection } from "@/components/sections/MethodSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WorkSection } from "@/components/sections/WorkSection";
@@ -46,7 +45,6 @@ export default function CineguruHome({ locale }: { locale: Locale }) {
         <WorkSection messages={messages} onOpenVideo={openVideo} />
         <ChannelSection messages={messages} onOpenVideo={openVideo} />
         <ServicesSection ref={servicesRef} messages={messages} />
-        <MethodSection messages={messages} />
         <ProcessSection messages={messages} />
         <AboutSection messages={messages} />
         <ContactSection messages={messages} />

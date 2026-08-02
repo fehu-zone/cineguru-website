@@ -212,12 +212,13 @@
   },
   "about": {
     "eyebrow": "BİZ KİMİZ · 05",
-    "title": "Set kültüründen gelen, geleceğe çalışan bir stüdyoyuz.",
+    "title": "Set kültüründen gelen,\ngeleceğe çalışan\nbir stüdyoyuz.",
     "description": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosu. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle birleştiriyoruz.",
     "principles": [
       { "title": "Tek yaratıcı yön", "description": "Strateji, yönetmenlik ve final aynı fikir etrafında çalışır." },
       { "title": "Hibrit üretim", "description": "Canlı çekim, AI ve 3D yalnızca hikâye ihtiyaç duyduğunda birleşir." },
-      { "title": "Her ekrana hazır", "description": "Ana filmden dikey sosyal kurgulara kadar tek sistemde teslim ederiz." }
+      { "title": "Her ekrana hazır", "description": "Ana filmden dikey sosyal kurgulara kadar tek sistemde teslim ederiz." },
+      { "title": "İz bırakan final", "description": "Her filmi markanın hafızasında yer edecek net ve güçlü bir sonla tamamlarız." }
     ],
     "brandsLabel": "Birlikte ürettiklerimiz",
     "brandLogoSuffix": "logosu"
