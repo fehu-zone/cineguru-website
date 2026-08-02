@@ -161,7 +161,7 @@ export function ChannelSection({ messages, onOpenVideo }: { messages: Messages; 
   return (
     <section className="channel-section page-shell py-section" aria-labelledby="channel-title">
       <SectionHeading eyebrow={channel.eyebrow} title={channel.title} description={channel.description} titleId="channel-title" wideTitle titleClassName="!translate-x-8 translate-y-8" descriptionClassName="!mt-96" />
-      <div className="mt-[clamp(2.5rem,3.5vw,3.5rem)]">
+      <div className="reveal-on-scroll mt-[clamp(2.5rem,3.5vw,3.5rem)]" data-reveal="panel">
         <div className="mb-8 flex flex-wrap items-end justify-between gap-5 border-b border-foreground/20 pb-3" role="tablist" aria-label={channel.tabsLabel}>
           <div className="flex gap-1 rounded-full border border-foreground/20 bg-surface/70 p-1">
             {tabs.map((tab, index) => {

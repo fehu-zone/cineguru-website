@@ -127,7 +127,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
       id="services"
     >
       {/* ─── Heading ─── */}
-      <div className="reveal-on-scroll">
+      <div className="reveal-on-scroll" data-reveal="heading">
         <Eyebrow>{services.eyebrow}</Eyebrow>
         <h2 className="mt-6 max-w-[14ch] font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[1.02] tracking-[-0.045em] max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]">
           {services.title}
@@ -193,6 +193,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
       {/* ─── 3D Canvas — full width, large ─── */}
       <div
         className="reveal-on-scroll mt-[clamp(2rem,3vw,3rem)]"
+        data-reveal="panel"
       >
         {/* ─── 3D Canvas — full width, large ─── */}
         <div className="services-canvas-container services-canvas-container--full">

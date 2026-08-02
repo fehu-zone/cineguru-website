@@ -120,7 +120,7 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
 
       <div className="page-shell pb-section pt-[clamp(2.5rem,3.5vw,3.5rem)]">
 
-      <div className="reveal-on-scroll mt-0" ref={autoplayRef}>
+      <div className="reveal-on-scroll mt-0" data-reveal="panel" ref={autoplayRef}>
         <div className="mb-5 flex items-center justify-between gap-4 border-b border-foreground/15 pb-3">
           <p className="font-mono text-[0.61rem] font-semibold tracking-[0.1em] text-foreground/55">{work.caseStudiesLabel}</p>
           <span className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.12em] text-accent">{work.referenceLabel}</span>

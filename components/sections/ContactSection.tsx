@@ -9,7 +9,7 @@ export function ContactSection({ messages }: { messages: Messages }) {
 
   return (
     <section className="page-shell pb-[clamp(4rem,7vw,7rem)] pt-section" id="contact">
-      <div className="reveal-on-scroll mx-auto max-w-[52rem] text-center">
+      <div className="reveal-on-scroll mx-auto max-w-[52rem] text-center" data-reveal="heading">
         <Eyebrow>{contact.eyebrow}</Eyebrow>
         <h2 className="mt-6 font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[1.02] tracking-[-0.045em] max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]">
           {contact.title.split("\n").map((line) => <span className="block whitespace-nowrap" key={line}>{line}</span>)}
@@ -17,7 +17,7 @@ export function ContactSection({ messages }: { messages: Messages }) {
         <p className="mx-auto mt-7 max-w-[46ch] text-[0.98rem] leading-[1.6] text-foreground/65">{contact.description}</p>
       </div>
 
-      <div className="contact-cta-group reveal-on-scroll mt-[clamp(3.5rem,6vw,6rem)] flex gap-grid max-[640px]:flex-col">
+      <div className="contact-cta-group reveal-on-scroll mt-[clamp(3.5rem,6vw,6rem)] flex gap-grid max-[640px]:flex-col" data-reveal="split">
         <ButtonLink className="group contact-cta-primary" size="display" href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(contact.form.subject)}`}>
           {contact.mailCta}<span className="inline-block transition-transform duration-300 ease-out group-hover:rotate-45" aria-hidden="true">↗</span>
         </ButtonLink>
@@ -26,7 +26,7 @@ export function ContactSection({ messages }: { messages: Messages }) {
         </ButtonLink>
       </div>
 
-      <div className="mt-[clamp(5rem,8vw,8rem)] grid grid-cols-3 gap-grid border-t border-foreground/15 pt-5 max-[640px]:grid-cols-1 max-[640px]:gap-y-8">
+      <div className="reveal-on-scroll mt-[clamp(5rem,8vw,8rem)] grid grid-cols-3 gap-grid border-t border-foreground/15 pt-5 max-[640px]:grid-cols-1 max-[640px]:gap-y-8" data-reveal="panel">
         <a className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent" href={`mailto:${siteConfig.email}`}>
           <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.emailLabel}</span>
           <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{siteConfig.email}</strong>

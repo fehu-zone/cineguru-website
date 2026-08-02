@@ -12,7 +12,7 @@ export function AboutSection({ messages }: { messages: Messages }) {
       <div className="page-shell relative z-10">
         <SectionHeading eyebrow={about.eyebrow} title={about.title} description={about.description} wideTitle />
         <AboutJourney principles={about.principles} />
-        <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-surface px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground">
+        <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-surface px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
           <p className="mb-5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-foreground/78">{about.brandsLabel}</p>
           <div className="grid grid-cols-5 border-l border-t border-foreground/20 max-[940px]:grid-cols-2">
             {brands.map((brand) => (

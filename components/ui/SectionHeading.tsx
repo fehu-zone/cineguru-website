@@ -29,6 +29,7 @@ export function SectionHeading({
 }) {
   return (
     <div
+      data-reveal="heading"
       className={cn(
         "reveal-on-scroll grid grid-cols-12 gap-x-grid max-[640px]:grid-cols-1",
         className,

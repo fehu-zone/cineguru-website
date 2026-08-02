@@ -100,10 +100,8 @@ export function useRevealOnScroll(): void {
     );
 
     nodes.forEach((node) => observer.observe(node));
-    const fallback = window.setTimeout(revealAll, 1400);
     return () => {
       observer.disconnect();
-      window.clearTimeout(fallback);
       document.documentElement.classList.remove("motion-ready");
     };
   }, []);

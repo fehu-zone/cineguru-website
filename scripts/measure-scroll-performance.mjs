@@ -162,6 +162,20 @@ try {
     })()`,
   });
 
+  const initialRevealResult = await client.command("Runtime.evaluate", {
+    expression: `(() => {
+      const reveals = [...document.querySelectorAll(".reveal-on-scroll")];
+      const transitions = reveals.filter((element) => element.dataset.reveal === "transition");
+      return {
+        total: reveals.length,
+        visible: reveals.filter((element) => element.classList.contains("is-visible")).length,
+        transitions: transitions.length,
+        visibleTransitions: transitions.filter((element) => element.classList.contains("is-visible")).length,
+      };
+    })()`,
+    returnByValue: true,
+  });
+
   async function measureDirection(targetExpression, duration = 3200, phase = "scroll") {
     const result = await client.command("Runtime.evaluate", {
       expression: `(async () => {
@@ -224,6 +238,16 @@ try {
         duration: entry.duration,
       })),
       pageHeight: document.documentElement.scrollHeight,
+      reveals: (() => {
+        const reveals = [...document.querySelectorAll(".reveal-on-scroll")];
+        const transitions = reveals.filter((element) => element.dataset.reveal === "transition");
+        return {
+          total: reveals.length,
+          visible: reveals.filter((element) => element.classList.contains("is-visible")).length,
+          transitions: transitions.length,
+          visibleTransitions: transitions.filter((element) => element.classList.contains("is-visible")).length,
+        };
+      })(),
     }))()`,
     returnByValue: true,
   });
@@ -236,6 +260,10 @@ try {
     url: targetUrl,
     viewport: "1440x900@2x",
     pageHeight: pageMetrics.pageHeight,
+    reveals: {
+      initial: initialRevealResult.result.value,
+      afterRoundTrip: pageMetrics.reveals,
+    },
     down: summarizeFrames(downFrames),
     up: summarizeFrames(upFrames),
     longTasks: {

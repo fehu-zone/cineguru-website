@@ -51,7 +51,12 @@ test("renders localized Turkish and English experiences", async () => {
   assert.match(enHtml, /\/en/);
   assert.match(trHtml, /Sıfır Atık Haftası/);
   assert.match(trHtml, /VEX Robotics Türkiye/);
-  assert.match(trHtml, /Karmaşıklığı biz yönetiriz\./);
+  assert.match(trHtml, /Tek ekip\. Uçtan uca prodüksiyon\./);
+  assert.match(enHtml, /One team\. End-to-end production\./);
+  assert.equal((trHtml.match(/data-reveal="transition"/g) ?? []).length, 5);
+  assert.equal((enHtml.match(/data-reveal="transition"/g) ?? []).length, 5);
+  assert.match(trHtml, /FİKİR/);
+  assert.match(enHtml, /IDEA/);
 });
 
 test("keeps real portfolio video identifiers in rendered output", async () => {
