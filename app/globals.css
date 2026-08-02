@@ -118,56 +118,64 @@
 
   .about-journey {
     position: relative;
-    min-height: 34rem;
-    margin-top: clamp(2.5rem, 4vw, 4rem);
+    margin-top: clamp(3rem, 6vw, 6rem);
+    padding: 0;
+    list-style: none;
   }
 
-  .about-journey-map {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    color: color-mix(in srgb, var(--color-foreground) 13%, transparent);
-    pointer-events: none;
+  .about-timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 5rem minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 2rem);
+    width: min(100%, 72rem);
+    min-height: clamp(20rem, 42vh, 31rem);
+    margin: 0 auto;
+    padding-bottom: clamp(2.5rem, 5vw, 5rem);
   }
 
-  .about-journey-path {
-    fill: none;
-    stroke: var(--color-accent);
-    stroke-width: 2;
-    stroke-dasharray: 320;
-    stroke-dashoffset: 320;
+  .motion-ready .about-timeline-item.reveal-on-scroll {
     opacity: 0;
-    transition: stroke-dashoffset 900ms var(--ease-cinematic), opacity 300ms ease;
+    transform: translate3d(0, 2rem, 0) scale(0.975);
+    transition: opacity 760ms var(--ease-cinematic), transform 900ms var(--ease-cinematic);
+    transition-delay: calc(var(--stagger, 0) * 90ms);
   }
 
-  .about-journey-path.is-revealed {
-    stroke-dashoffset: 0;
+  .motion-ready .about-timeline-item.reveal-on-scroll.is-visible {
     opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
-  .about-journey-nodes {
-    color: color-mix(in srgb, var(--color-foreground) 35%, transparent);
-  }
-
-  .about-journey-step {
+  .about-timeline-item::before {
     position: absolute;
-    width: min(18rem, 28%);
+    top: 2.5rem;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 58%, transparent), color-mix(in srgb, var(--color-foreground) 14%, transparent) 22%, color-mix(in srgb, var(--color-foreground) 14%, transparent));
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  .about-timeline-item:last-child {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+
+  .about-timeline-item:last-child::before {
+    display: none;
+  }
+
+  .about-timeline-marker-wrap {
+    position: relative;
     z-index: 1;
-    transition: z-index 0s linear 300ms;
+    display: flex;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
   }
 
-  .about-journey-step.is-active {
-    z-index: 4;
-    transition-delay: 0s;
-  }
-
-  .about-journey-step-1 { top: 58%; left: 2%; }
-  .about-journey-step-2 { top: 8%; left: 25%; }
-  .about-journey-step-3 { top: 62%; left: 50%; }
-  .about-journey-step-4 { top: 8%; left: 76%; }
-
-  .about-journey-node {
+  .about-timeline-marker {
     display: grid;
     width: 2.25rem;
     height: 2.25rem;
@@ -179,12 +187,10 @@
     font-family: var(--font-cine-mono), monospace;
     font-size: 0.58rem;
     box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent);
-    transition: color 300ms ease, background-color 300ms ease, border-color 300ms ease, transform 300ms var(--ease-cinematic), box-shadow 400ms ease;
+    transition: color 350ms ease, background-color 350ms ease, border-color 350ms ease, transform 500ms var(--ease-cinematic), box-shadow 500ms ease;
   }
 
-  .about-journey-node:not(:disabled) { cursor: pointer; }
-  .about-journey-node:not(:disabled):hover,
-  .about-journey-node[aria-expanded="true"] {
+  .about-timeline-item.is-visible .about-timeline-marker {
     border-color: var(--color-accent);
     color: var(--color-canvas);
     background: var(--color-accent);
@@ -192,41 +198,138 @@
     box-shadow: 0 0 0 0.65rem color-mix(in srgb, var(--color-accent) 14%, transparent), 0 0 1.8rem color-mix(in srgb, var(--color-accent) 32%, transparent);
   }
 
-  .about-journey-card {
-    position: absolute;
-    top: 3.25rem;
-    left: 0;
-    width: 100%;
-    padding: 1.25rem;
-    border: 1px solid color-mix(in srgb, var(--color-foreground) 18%, transparent);
-    background: color-mix(in srgb, var(--color-surface) 94%, transparent);
-    box-shadow: 0 1.5rem 3rem color-mix(in srgb, #000 22%, transparent);
-    opacity: 0;
-    transform: translateY(0.75rem) scale(0.97);
-    pointer-events: none;
-    transition: opacity 400ms ease, transform 500ms var(--ease-cinematic), border-color 300ms ease;
+  .about-timeline-card {
+    position: relative;
+    grid-row: 1;
+    align-self: start;
+    overflow: hidden;
+    padding: clamp(1.3rem, 2.3vw, 2.2rem);
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
+    background: radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 42%), color-mix(in srgb, var(--color-surface) 78%, transparent);
+    box-shadow: 0 1.5rem 3rem color-mix(in srgb, #000 16%, transparent);
+    transition: border-color 450ms ease, background-color 450ms ease, transform 700ms var(--ease-cinematic), box-shadow 500ms ease;
   }
 
-  .about-journey-card.is-open {
-    opacity: 1;
-    transform: translateY(0) scale(1.04);
-    pointer-events: auto;
-    border-color: color-mix(in srgb, var(--color-accent) 48%, transparent);
+  .about-timeline-card::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    height: 4rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-accent) 70%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--color-accent) 70%, transparent);
+    content: "";
+    opacity: 0.65;
+  }
+
+  .about-timeline-item:nth-child(odd) .about-timeline-card {
+    grid-column: 1;
+    text-align: right;
+  }
+
+  .about-timeline-item:nth-child(even) .about-timeline-card {
+    grid-column: 3;
+  }
+
+  .about-timeline-item:nth-child(odd) .about-timeline-card::after {
+    right: auto;
+    left: 0;
+    border-right: 0;
+    border-left: 1px solid color-mix(in srgb, var(--color-accent) 70%, transparent);
+  }
+
+  .about-timeline-index {
+    position: relative;
+    z-index: 1;
+    color: var(--color-accent);
+    font-family: var(--font-cine-mono), monospace;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .about-timeline-card h3 {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.8rem;
+    color: var(--color-foreground);
+    font-family: var(--font-display), sans-serif;
+    font-size: clamp(1.65rem, 3vw, 3.2rem);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+  }
+
+  .about-timeline-description {
+    position: relative;
+    z-index: 1;
+    max-width: 38rem;
+    margin-top: 1rem;
+    color: color-mix(in srgb, var(--color-foreground) 62%, transparent);
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .about-timeline-card::before {
+    position: absolute;
+    right: 1.25rem;
+    bottom: -1rem;
+    color: color-mix(in srgb, var(--color-foreground) 7%, transparent);
+    content: attr(data-index);
+    font-family: var(--font-display), sans-serif;
+    font-size: clamp(5rem, 10vw, 10rem);
+    font-weight: 700;
+    letter-spacing: -0.1em;
+    line-height: 0.8;
+    pointer-events: none;
+  }
+
+  .about-timeline-item:nth-child(odd) .about-timeline-card::before {
+    right: auto;
+    left: 1.25rem;
   }
 
   @media (max-width: 640px) {
-    .about-journey {
-      min-height: 62rem;
+    .about-timeline-item {
+      grid-template-columns: 3rem minmax(0, 1fr);
+      gap: 1rem;
+      min-height: 24rem;
+      padding-bottom: 3rem;
     }
 
-    .about-journey-step {
-      width: min(18rem, 72%);
+    .about-timeline-item::before {
+      left: 1.45rem;
+      top: 2.25rem;
+      transform: none;
     }
 
-    .about-journey-step-1 { top: 2%; left: 0; }
-    .about-journey-step-2 { top: 25%; left: 15%; }
-    .about-journey-step-3 { top: 49%; left: 30%; }
-    .about-journey-step-4 { top: 25%; left: 45%; }
+    .about-timeline-marker {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .about-timeline-marker-wrap {
+      grid-column: 1;
+    }
+
+    .about-timeline-item:nth-child(odd) .about-timeline-card,
+    .about-timeline-item:nth-child(even) .about-timeline-card {
+      grid-column: 2;
+      text-align: left;
+    }
+
+    .about-timeline-item:nth-child(odd) .about-timeline-card::after {
+      right: 0;
+      left: auto;
+      border-right: 1px solid color-mix(in srgb, var(--color-accent) 70%, transparent);
+      border-left: 0;
+    }
+
+    .about-timeline-item:nth-child(odd) .about-timeline-card::before {
+      right: 1.25rem;
+      left: auto;
+    }
+
   }
 
   .hero-cinematic-overlay {
