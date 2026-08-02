@@ -56,7 +56,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
           ref={navRef}
           className={cn(
             "flex justify-center max-[940px]:fixed max-[940px]:inset-0 max-[940px]:z-[1000] max-[940px]:block max-[940px]:overflow-y-auto max-[940px]:bg-canvas max-[940px]:px-page max-[940px]:pb-12 max-[940px]:pt-28 max-[940px]:opacity-0 max-[940px]:pointer-events-none max-[940px]:translate-x-full max-[940px]:transition-[opacity,transform] max-[940px]:duration-300",
-            menuOpen && "max-[940px]:translate-x-0 max-[940px]:opacity-100 max-[940px]:pointer-events-auto",
+            menuOpen && "max-[940px]:!translate-x-0 max-[940px]:!opacity-100 max-[940px]:!pointer-events-auto",
           )}
           aria-label={nav.mainLabel}
         >
@@ -95,6 +95,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
           </ButtonLink>
           <button
             ref={menuButtonRef}
+            type="button"
             className="relative hidden size-10 place-items-center rounded-full border border-foreground/25 max-[940px]:grid max-[640px]:size-9"
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
