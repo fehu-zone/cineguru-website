@@ -17,7 +17,6 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
 import { WorkSection } from "@/components/sections/WorkSection";
 import { CustomCursor } from "@/components/ui/CustomCursor";
-import { SectionTransition } from "@/components/ui/SectionTransition";
 import { VideoModal, type ActiveVideo } from "@/components/ui/VideoModal";
 
 export default function CineguruHome({ locale }: { locale: Locale }) {
@@ -41,15 +40,10 @@ export default function CineguruHome({ locale }: { locale: Locale }) {
         <SiteHeader locale={locale} messages={messages} />
         <ScrollFilmline stageRef={stageLabelRef} progressRef={progressBarRef} initialStage={messages.global.stages[0]} hint={messages.global.scrollHint} />
         <HeroSection messages={messages} timecodeRef={timecodeRef} />
-        <SectionTransition fromIndex={1} fromStage={messages.global.stages[0]} toStage={messages.global.stages[1]} />
         <WorkSection messages={messages} onOpenVideo={openVideo} />
-        <SectionTransition direction="reverse" fromIndex={2} fromStage={messages.global.stages[1]} toStage={messages.global.stages[2]} />
         <ChannelSection messages={messages} onOpenVideo={openVideo} />
-        <SectionTransition fromIndex={3} fromStage={messages.global.stages[2]} toStage={messages.global.stages[3]} />
         <ServicesSection messages={messages} />
-        <SectionTransition direction="reverse" fromIndex={4} fromStage={messages.global.stages[3]} toStage={messages.global.stages[4]} />
         <AboutSection messages={messages} />
-        <SectionTransition fromIndex={5} fromStage={messages.global.stages[4]} toStage={messages.global.stages[5]} />
         <ContactSection messages={messages} />
         <SiteFooter messages={messages} />
       </main>

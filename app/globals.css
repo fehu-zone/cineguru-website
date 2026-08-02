@@ -255,19 +255,6 @@
     cursor: grabbing !important;
   }
 
-  .section-transition-fill {
-    transform: scaleX(1);
-  }
-
-  .section-transition[data-direction="reverse"] .section-transition-fill {
-    transform-origin: right;
-  }
-
-  .section-transition[data-direction="reverse"] .section-transition-marker {
-    right: auto;
-    left: 0;
-  }
-
   .reveal-on-scroll {
     opacity: 1;
     transform: none;
@@ -306,7 +293,6 @@
   }
 
   .motion-ready .reveal-on-scroll[data-reveal="heading"] > .eyebrow,
-  .motion-ready .reveal-on-scroll[data-reveal="heading"] > h2,
   .motion-ready .reveal-on-scroll[data-reveal="heading"] > p:not(.eyebrow) {
     opacity: 0;
     translate: 0 1rem;
@@ -314,7 +300,9 @@
   }
 
   .motion-ready .reveal-on-scroll[data-reveal="heading"] > h2 {
-    translate: 0 1.75rem;
+    opacity: 0;
+    scale: 0.985;
+    transition: opacity 680ms var(--ease-cinematic), scale 760ms var(--ease-cinematic);
     transition-delay: 70ms;
   }
 
@@ -323,10 +311,14 @@
   }
 
   .motion-ready .reveal-on-scroll[data-reveal="heading"].is-visible > .eyebrow,
-  .motion-ready .reveal-on-scroll[data-reveal="heading"].is-visible > h2,
   .motion-ready .reveal-on-scroll[data-reveal="heading"].is-visible > p:not(.eyebrow) {
     opacity: 1;
     translate: 0 0;
+  }
+
+  .motion-ready .reveal-on-scroll[data-reveal="heading"].is-visible > h2 {
+    opacity: 1;
+    scale: 1;
   }
 
   .motion-ready .reveal-on-scroll[data-reveal="panel"] {
@@ -360,52 +352,6 @@
   .motion-ready .reveal-on-scroll[data-reveal="split"].is-visible > * {
     opacity: 1;
     translate: 0 0;
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-label {
-    opacity: 0;
-    translate: 0 0.5rem;
-    transition: opacity 520ms ease, translate 680ms var(--ease-cinematic);
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-track {
-    opacity: 0.35;
-    transition: opacity 700ms ease;
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-fill {
-    transform: scaleX(0);
-    transition: transform 1050ms var(--ease-cinematic);
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-marker {
-    opacity: 0;
-    transform: translateY(-50%) scale(0.35);
-    transition: opacity 280ms ease 620ms, transform 520ms var(--ease-cinematic) 620ms;
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"].is-visible .section-transition-label {
-    opacity: 1;
-    translate: 0 0;
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"].is-visible .section-transition-track {
-    opacity: 1;
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"].is-visible .section-transition-fill {
-    transform: scaleX(1);
-  }
-
-  .motion-ready .reveal-on-scroll[data-reveal="transition"].is-visible .section-transition-marker {
-    opacity: 1;
-    transform: translateY(-50%) scale(1);
   }
 
   .typewriter-character {
@@ -813,20 +759,17 @@
   .motion-ready .reveal-on-scroll,
   .reveal-on-scroll { opacity: 1 !important; transform: none !important; }
   .motion-ready .reveal-on-scroll[data-reveal="heading"] > *,
-  .motion-ready .reveal-on-scroll[data-reveal="split"] > *,
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-label,
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-marker {
+  .motion-ready .reveal-on-scroll[data-reveal="split"] > * {
     opacity: 1 !important;
+    transition: none !important;
+  }
+  .motion-ready .reveal-on-scroll[data-reveal="heading"] > .eyebrow,
+  .motion-ready .reveal-on-scroll[data-reveal="heading"] > p:not(.eyebrow),
+  .motion-ready .reveal-on-scroll[data-reveal="split"] > * {
     translate: 0 0 !important;
-    transform: none !important;
-    transition: none !important;
   }
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-fill {
-    transform: scaleX(1) !important;
-    transition: none !important;
-  }
-  .motion-ready .reveal-on-scroll[data-reveal="transition"] .section-transition-marker {
-    transform: translateY(-50%) scale(1) !important;
+  .motion-ready .reveal-on-scroll[data-reveal="heading"] > h2 {
+    scale: 1 !important;
   }
   .typewriter-character { animation: none; color: var(--color-foreground); opacity: 1; }
   .custom-cursor { display: none !important; }

@@ -10,7 +10,14 @@ export function AboutSection({ messages }: { messages: Messages }) {
   return (
     <section className="relative isolate overflow-hidden bg-canvas py-section text-foreground" id="about">
       <div className="page-shell relative z-10">
-        <SectionHeading eyebrow={about.eyebrow} title={about.title} description={about.description} wideTitle />
+        <SectionHeading
+          eyebrow={about.eyebrow}
+          title={about.title}
+          description={about.description}
+          wideTitle
+          titleClassName="!-translate-x-50 max-[940px]:!-translate-x-24 max-[640px]:!translate-x-0"
+          descriptionClassName="!mt-[25rem] max-[940px]:!mt-8 max-[640px]:!mt-6"
+        />
         <AboutJourney principles={about.principles} />
         <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-surface px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
           <p className="mb-5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-foreground/78">{about.brandsLabel}</p>
