@@ -41,8 +41,8 @@ jobs:
       - name: Test rendered output
         run: node --test tests/rendered-html.test.mjs
 
-      - name: Reject critical production dependency vulnerabilities
-        run: npm audit --omit=dev --audit-level=critical
+      - name: Reject high or critical production dependency vulnerabilities
+        run: npm audit --omit=dev --audit-level=high
 
       - name: Create minimal deployment archive
         shell: bash
