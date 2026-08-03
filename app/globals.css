@@ -345,6 +345,41 @@
     background-size: 2.5rem 2.5rem;
   }
 
+  .about-section-atmosphere {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 34rem 19rem at 51% -2%, color-mix(in srgb, var(--color-accent) 48%, transparent), transparent 72%),
+      radial-gradient(ellipse 31rem 22rem at 10% 15%, color-mix(in srgb, var(--color-foreground) 10%, transparent), transparent 74%),
+      radial-gradient(ellipse 40rem 27rem at 51% 36%, color-mix(in srgb, var(--color-foreground) 12%, transparent), transparent 76%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 84%, var(--color-foreground)) 0%, var(--color-canvas) 42%, color-mix(in srgb, var(--color-canvas) 90%, #000) 100%);
+    opacity: 0.96;
+  }
+
+  .about-section-atmosphere::before {
+    position: absolute;
+    inset: -12%;
+    content: "";
+    background:
+      radial-gradient(ellipse 26rem 17rem at 47% 8%, color-mix(in srgb, var(--color-accent) 34%, transparent), transparent 72%),
+      radial-gradient(ellipse 28rem 22rem at 23% 29%, color-mix(in srgb, var(--color-foreground) 9%, transparent), transparent 75%);
+    filter: blur(3rem);
+    opacity: 0.72;
+    mix-blend-mode: screen;
+  }
+
+  .about-section-atmosphere::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='.16'/%3E%3C/svg%3E");
+    opacity: 0.2;
+    mix-blend-mode: soft-light;
+  }
+
   .case-tabs-scroller {
     scrollbar-width: none;
   }

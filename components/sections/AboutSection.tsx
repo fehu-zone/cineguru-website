@@ -18,6 +18,7 @@ export function AboutSection({ messages }: { messages: Messages }) {
 
   return (
     <section className="relative isolate overflow-hidden bg-canvas py-section text-foreground" id="about">
+      <div className="about-section-atmosphere" aria-hidden="true" />
       <div className="page-shell relative z-10">
         <SectionHeading
           eyebrow={about.eyebrow}
