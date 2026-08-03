@@ -6,6 +6,7 @@ APP_ROOT=/srv/cineguru/app
 INCOMING="$APP_ROOT/.incoming"
 RELEASES="$APP_ROOT/releases"
 CURRENT="$APP_ROOT/current"
+MAINTENANCE_ROOT=/srv/cineguru/maintenance
 LOG=/var/log/cineguru-deploy.log
 WORK_DIR="$(mktemp -d "$APP_ROOT/.deploy.XXXXXX")"
 PREVIOUS_TARGET=""
@@ -89,6 +90,17 @@ if [[ "$HEALTHY" -ne 1 ]]; then
     systemctl stop cineguru.service || true
   fi
   fail 'health check failed; previous release restored when available'
+fi
+
+if [[ -f "$NEW_RELEASE/deploy/maintenance/index.html" ]]; then
+  grep -Fq 'Yenileniyoruz' "$NEW_RELEASE/deploy/maintenance/index.html" ||
+    fail 'maintenance page marker is missing'
+  install -d -o root -g root -m 0755 "$MAINTENANCE_ROOT"
+  install -o root -g root -m 0644 \
+    "$NEW_RELEASE/deploy/maintenance/index.html" \
+    "$MAINTENANCE_ROOT/index.html.new"
+  mv -f "$MAINTENANCE_ROOT/index.html.new" "$MAINTENANCE_ROOT/index.html"
+  log "MAINTENANCE_PAGE_UPDATED release=$NEW_RELEASE"
 fi
 
 rm -f -- "$PACKAGE"

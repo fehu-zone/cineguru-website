@@ -54,6 +54,8 @@ jobs:
           cp -a .next/standalone/. "$package_root/"
           cp -a .next/static "$package_root/.next/static"
           cp -a public "$package_root/public"
+          mkdir -p "$package_root/deploy/maintenance"
+          cp -a deploy/maintenance/index.html "$package_root/deploy/maintenance/index.html"
           printf 'commit=%s\nrun_id=%s\ncreated_utc=%s\n' \
             "$GITHUB_SHA" "$GITHUB_RUN_ID" "$(date -u +%FT%TZ)" \
             > "$package_root/DEPLOY-METADATA"
