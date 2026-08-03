@@ -19,15 +19,17 @@ export function AboutSection({ messages }: { messages: Messages }) {
           descriptionClassName="!mt-[25rem] max-[940px]:!mt-8 max-[640px]:!mt-6"
         />
         <AboutJourney principles={about.principles} />
-        <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-surface px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
-          <p className="mb-5 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-foreground/78">{about.brandsLabel}</p>
-          <div className="grid grid-cols-5 border-l border-t border-foreground/20 max-[940px]:grid-cols-2">
-            {brands.map((brand) => (
-              <div className="group relative grid min-h-28 place-items-center overflow-hidden border-b border-r border-foreground/20 transition-colors hover:bg-canvas" key={brand.id}>
-                <i className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-                <ClientLogo className="h-14 w-[min(72%,14rem)] opacity-100 brightness-125 contrast-125 drop-shadow-[0_0_0.7rem_rgba(255,255,255,0.08)] transition-[filter] duration-300 group-hover:brightness-150 group-hover:contrast-150" scale={brand.scale} src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} title={brand.label} width={224} height={56} loading="lazy" />
-              </div>
-            ))}
+        <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-canvas px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
+          <p className="mb-7 text-center font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent max-[640px]:mb-5 max-[640px]:text-[0.58rem]">{about.brandsLabel}</p>
+          <div className="relative overflow-hidden border border-dotted border-foreground/30 bg-[radial-gradient(circle,rgba(255,255,255,0.18)_1px,transparent_1px)] bg-[length:0.5rem_0.5rem]">
+            <div className="grid grid-cols-7 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
+              {brands.map((brand) => (
+                <div className="group relative grid min-h-[7.25rem] place-items-center overflow-hidden border-b border-r border-dotted border-foreground/25 bg-canvas/95 px-4 transition-colors hover:bg-surface max-[640px]:min-h-24" key={brand.id}>
+                  <i className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+                  <ClientLogo className="h-12 w-[min(86%,12rem)] opacity-100 brightness-125 contrast-125 drop-shadow-[0_0_0.7rem_rgba(255,255,255,0.08)] transition-[filter] duration-300 group-hover:brightness-150 group-hover:contrast-150 max-[640px]:h-10" scale={brand.scale} src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} title={brand.label} width={224} height={56} loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
