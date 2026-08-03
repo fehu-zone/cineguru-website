@@ -1,6 +1,7 @@
 import { siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import { ButtonLink } from "@/components/ui/Button";
+import { HoverVideoButtonLink } from "@/components/ui/HoverVideoButtonLink";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 
@@ -18,11 +19,16 @@ export function ContactSection({ messages }: { messages: Messages }) {
       </div>
 
       <div className="contact-cta-group reveal-on-scroll mt-[clamp(3.5rem,6vw,6rem)] flex gap-grid max-[640px]:flex-col" data-reveal="split">
-        <ButtonLink className="group contact-cta-primary" size="display" href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(contact.form.subject)}`}>
-          {contact.mailCta}<span className="inline-block transition-transform duration-300 ease-out group-hover:rotate-45" aria-hidden="true">↗</span>
-        </ButtonLink>
-        <ButtonLink className="group contact-cta-secondary" size="display" variant="light" href={siteConfig.phoneHref}>
-          {contact.phoneCta}<span className="inline-block transition-transform duration-300 ease-out group-hover:rotate-45" aria-hidden="true">↗</span>
+        <HoverVideoButtonLink
+          className="contact-cta-primary !bg-accent/92"
+          href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(contact.form.subject)}`}
+          poster={siteConfig.showreel.poster}
+          videoSrc={siteConfig.showreel.video}
+        >
+          {contact.mailCta}
+        </HoverVideoButtonLink>
+        <ButtonLink className="contact-cta-secondary !bg-foreground/92" size="display" variant="light" href={siteConfig.phoneHref}>
+          {contact.phoneCta}
         </ButtonLink>
       </div>
 

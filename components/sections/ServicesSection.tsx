@@ -27,6 +27,12 @@ const loadServicesSplineScene = () =>
 
 const ServicesSplineScene = lazy(loadServicesSplineScene);
 
+const hudCardPositions = [
+  "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3",
+  "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3",
+  "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3",
+] as const;
+
 class ServicesSceneErrorBoundary extends Component<
   { children: ReactNode },
   { hasError: boolean }
@@ -203,7 +209,12 @@ export function ServicesSection({ messages }: { messages: Messages }) {
                 <div className={cn("absolute inset-0", activeIndex === 3 && "invisible pointer-events-none")}>
                   <ServicesSceneErrorBoundary>
                     <Suspense fallback={<div className="services-canvas-fallback" />}>
-                      <ServicesScene active={sceneActive && activeIndex !== 3} activeIndex={threeIndex} reducedMotion={reducedMotion} />
+                      <ServicesScene
+                        active={sceneActive && activeIndex !== 3}
+                        activeIndex={threeIndex}
+                        reducedMotion={reducedMotion}
+                        sceneLabel={services.sceneLabels[threeIndex]}
+                      />
                     </Suspense>
                   </ServicesSceneErrorBoundary>
                 </div>
@@ -225,48 +236,23 @@ export function ServicesSection({ messages }: { messages: Messages }) {
             <span className="services-hud-corner services-hud-tr" />
             <span className="services-hud-corner services-hud-bl" />
             <span className="services-hud-corner services-hud-br" />
-            <span className="services-hud-label services-hud-label-top">CG / PRODÜKSIYON SİSTEMİ</span>
+            <span className="services-hud-label services-hud-label-top">{services.systemLabel}</span>
             <span className="services-hud-label services-hud-label-bottom">
-              <i className="services-hud-dot" /> AKTİF · {String(activeIndex + 1).padStart(2, "0")}
+              <i className="services-hud-dot" /> {services.activeLabel} · {String(activeIndex + 1).padStart(2, "0")}
             </span>
 
             {/* 3 Floating Info Boxes around 3D scene */}
-            {[
-              // 01 Strateji
-              [
-                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · STRATEJİ", title: "HEDEF & ANALİZ", desc: "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
-                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · ANLATI", title: "YARATICI KONSEPT", desc: "İzleyicinin hafızasında kalacak özgün fikir." },
-                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · MİMARİ", title: "KAMPANYA KURGUSU", desc: "Tüm mecralarda çalışan yayın haritası." },
-              ],
-              // 02 Pre Production
-              [
-                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · ÇİZİM", title: "AI STORYBOARD", desc: "Senaryoyu kare kare üretken yapay zekâ ile görselleştiririz." },
-                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · TUTARLILIK", title: "CHARACTER LOCK", desc: "Karakterlerin stil devamlılığını tüm sahnelerde koruruz." },
-                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · TEKNİK", title: "PRODÜKSİYON PLANI", desc: "Kamera açıları ve detaylı çekim takvimi." },
-              ],
-              // 03 Production + AI Video
-              [
-                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · SET", title: "CANLI ÇEKİM", desc: "Deneyimli yönetmen ve görüntü ekibiyle çekim." },
-                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · SENTEZ", title: "AI VIDEO DÜNYASI", desc: "Fiziksel mekan sınırlarını aşan üretken video sentezi." },
-                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · DİL", title: "OPTİK & MOVEMENT", desc: "Sinematik camera lensleri ve akıcı hareket dili." },
-              ],
-              // 04 Post Production (The iconic 3D Robot Scene!)
-              [
-                { posClass: "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3", code: "01 · TEMPO", title: "DİNAMİK KURGU", desc: "Kurgu masasında hikayenin ritmini ve hissini işleriz." },
-                { posClass: "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3", code: "02 · EFEKT", title: "VFX & COMPOSITING", desc: "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
-                { posClass: "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3", code: "03 · FİNAL", title: "RENK & SES TASARIMI", desc: "Sinematik renk derecelendirmesi ve atmosferik ses dünyası." },
-              ],
-            ][activeIndex].map((box) => (
+            {services.details[activeIndex].map((box, boxIndex) => (
               <div
                 key={box.title}
                 className={cn(
                   "services-overlay-box absolute pointer-events-auto",
-                  box.posClass
+                  hudCardPositions[boxIndex],
                 )}
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-mono text-[0.54rem] font-bold uppercase tracking-[0.08em] text-accent">
-                    {box.code}
+                    {String(boxIndex + 1).padStart(2, "0")} · {box.tag}
                   </span>
                   <i className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
                 </div>
@@ -274,7 +260,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
                   {box.title}
                 </h4>
                 <p className="mt-1 text-[0.72rem] leading-relaxed text-foreground/65 max-w-[24ch]">
-                  {box.desc}
+                  {box.description}
                 </p>
               </div>
             ))}
@@ -283,43 +269,22 @@ export function ServicesSection({ messages }: { messages: Messages }) {
 
         {/* ─── 3 Feature Cards Grid below Canvas ─── */}
         <div className="services-feature-grid mt-6 grid grid-cols-3 gap-grid max-[940px]:grid-cols-1 max-[940px]:gap-4" key={`feature-grid-${activeIndex}`}>
-          {[
-            [
-              { code: "01", label: "HEDEF & ANALİZ", desc: "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
-              { code: "02", label: "YARATICI KONSEPT", desc: "İzleyicinin hafızasında yer edecek özgün ana fikir." },
-              { code: "03", label: "KAMPANYA KURGUSU", desc: "Tüm mecralarda çalışan yayın kurgusu." },
-            ],
-            [
-              { code: "01", label: "AI STORYBOARD", desc: "Senaryoyu kare kare üretken yapay zekâ ile görselleştiririz." },
-              { code: "02", label: "CHARACTER LOCK", desc: "Karakterlerin yüz ve stil devamlılığını koruruz." },
-              { code: "03", label: "PRODÜKSİYON PLANI", desc: "Kamera açıları, mekan ve çekim takvimi haritası." },
-            ],
-            [
-              { code: "01", label: "CANLI ÇEKİM", desc: "Deneyimli yönetmen ve görüntü ekibiyle çekim." },
-              { code: "02", label: "AI VIDEO DÜNYASI", desc: "Fiziksel mekan sınırlarını aşan üretken video sentezi." },
-              { code: "03", label: "OPTİK & HAREKET", desc: "Sinematik camera lensleri ve akıcı hareket dili." },
-            ],
-            [
-              { code: "01", label: "DİNAMİK KURGU", desc: "Kurgu masasında hikayenin ritmini ve hissini işleriz." },
-              { code: "02", label: "VFX & COMPOSITING", desc: "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
-              { code: "03", label: "RENK & SES TASARIMI", desc: "Sinematik renk derecelendirmesi ve ses tasarımı." },
-            ],
-          ][activeIndex].map((card) => (
+          {services.details[activeIndex].map((card, cardIndex) => (
             <div
-              key={card.label}
+              key={card.title}
               className="group border border-foreground/10 bg-canvas/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-canvas/90"
             >
               <div className="flex items-center justify-between">
                 <span className="font-mono text-[0.56rem] font-bold tracking-[0.08em] text-accent">
-                  {card.code}
+                  {String(cardIndex + 1).padStart(2, "0")}
                 </span>
                 <i className="size-1.5 rounded-full bg-foreground/20 transition-colors group-hover:bg-accent" />
               </div>
               <h4 className="mt-3 font-display text-[1.05rem] font-semibold leading-tight tracking-[-0.02em]">
-                {card.label}
+                {card.title}
               </h4>
               <p className="mt-2 text-[0.85rem] leading-relaxed text-foreground/60">
-                {card.desc}
+                {card.description}
               </p>
             </div>
           ))}

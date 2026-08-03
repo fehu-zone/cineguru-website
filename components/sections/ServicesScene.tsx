@@ -369,7 +369,7 @@ function StrategyClipboard() {
   );
 }
 
-function StrategyChessSet() {
+function StrategyChessSet({ label }: { label: string }) {
   const { scene } = useGLTF("/assets/strategy-chess-set/chess_set_1k.glb");
 
   return (
@@ -385,7 +385,7 @@ function StrategyChessSet() {
             letterSpacing: "0.16em",
             whiteSpace: "nowrap",
           }}>
-            STRATEGY BOARD
+            {label}
           </div>
         </Html>
       </group>
@@ -788,7 +788,6 @@ function PostProductionRobot() {
 }
 
 /* ═══════════════════════════════════════════════════════════ */
-const SCENE_OBJECTS = [StrategyChessSet, SteampunkCamera, PreProductionCamera, PostProductionRobot];
 const MODEL_URLS: Partial<Record<number, string>> = {
   0: "/assets/strategy-chess-set/chess_set_1k.glb",
   1: "/assets/steampunk_camera.glb",
@@ -807,10 +806,12 @@ function ServicesSceneInner({
   active,
   activeIndex,
   reducedMotion,
+  sceneLabel,
 }: {
   active: boolean;
   activeIndex: number;
   reducedMotion: boolean;
+  sceneLabel: string;
 }) {
   const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
 
@@ -819,8 +820,6 @@ function ServicesSceneInner({
       controlsRef.current.reset();
     }
   }, [activeIndex]);
-
-  const ActiveObject = SCENE_OBJECTS[activeIndex] ?? SCENE_OBJECTS[0];
 
   return (
     <>
@@ -847,7 +846,10 @@ function ServicesSceneInner({
       />
 
       <Center>
-        <ActiveObject key={activeIndex} />
+        {activeIndex === 0 ? <StrategyChessSet key={activeIndex} label={sceneLabel} /> : null}
+        {activeIndex === 1 ? <SteampunkCamera key={activeIndex} /> : null}
+        {activeIndex === 2 ? <PreProductionCamera key={activeIndex} /> : null}
+        {activeIndex === 3 ? <PostProductionRobot key={activeIndex} /> : null}
       </Center>
 
       <ContactShadows
@@ -870,10 +872,12 @@ export function ServicesScene({
   active,
   activeIndex,
   reducedMotion,
+  sceneLabel,
 }: {
   active: boolean;
   activeIndex: number;
   reducedMotion: boolean;
+  sceneLabel: string;
 }) {
   return (
     <Canvas
@@ -889,7 +893,7 @@ export function ServicesScene({
       onPointerDown={(e) => { (e.target as HTMLElement).style.cursor = "grabbing"; }}
       onPointerUp={(e) => { (e.target as HTMLElement).style.cursor = "grab"; }}
     >
-      <ServicesSceneInner active={active} activeIndex={activeIndex} reducedMotion={reducedMotion} />
+      <ServicesSceneInner active={active} activeIndex={activeIndex} reducedMotion={reducedMotion} sceneLabel={sceneLabel} />
     </Canvas>
   );
 }

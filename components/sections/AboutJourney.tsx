@@ -49,8 +49,10 @@ export function AboutJourney({
                 <div className="about-timeline-card-meta">
                   <p className="about-timeline-index">{chapterLabel} {chapter}</p>
                 </div>
-                <h3>{principle.title}</h3>
-                <p className="about-timeline-description">{principle.description}</p>
+                <div className="about-timeline-card-copy">
+                  <h3>{principle.title}</h3>
+                  <p className="about-timeline-description">{principle.description}</p>
+                </div>
               </div>
             </article>
           </li>

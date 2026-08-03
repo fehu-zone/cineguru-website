@@ -181,11 +181,36 @@
   "services": {
     "eyebrow": "CAPABILITIES · 02",
     "title": "One team. End-to-end production.",
+    "systemLabel": "CG / PRODUCTION SYSTEM",
+    "activeLabel": "ACTIVE",
+    "sceneLabels": ["STRATEGY BOARD", "CREATIVE DIRECTION", "PRODUCTION", "POST PRODUCTION"],
     "items": [
       { "title": "Strategy", "description": "We find the brand's real challenge and turn the idea into a story audiences remember.", "tags": ["Creative Direction", "Campaign", "Concept"] },
       { "title": "Pre Production", "description": "We accelerate scripts, visual worlds, character continuity and storyboards with AI.", "tags": ["Script", "AI Visuals", "Storyboard"] },
       { "title": "Production + AI Video", "description": "We unite live action and generative AI under one directing and cinematography language.", "tags": ["Live Action", "AI Film", "Studio"] },
       { "title": "Post Production", "description": "Editing, VFX, color, sound and format adaptations create a final that works everywhere.", "tags": ["Editing", "VFX", "Color"] }
+    ],
+    "details": [
+      [
+        { "tag": "STRATEGY", "title": "GOAL & ANALYSIS", "description": "We build a message framework aligned with the brand's objectives." },
+        { "tag": "NARRATIVE", "title": "CREATIVE CONCEPT", "description": "An original idea designed to stay with the audience." },
+        { "tag": "ARCHITECTURE", "title": "CAMPAIGN STRUCTURE", "description": "A release map built to work across every channel." }
+      ],
+      [
+        { "tag": "VISUALIZATION", "title": "AI STORYBOARD", "description": "We visualize the script frame by frame with generative AI." },
+        { "tag": "CONTINUITY", "title": "CHARACTER LOCK", "description": "We maintain character style continuity across every scene." },
+        { "tag": "TECHNICAL", "title": "PRODUCTION PLAN", "description": "A detailed map of camera angles, locations and the shooting schedule." }
+      ],
+      [
+        { "tag": "SET", "title": "LIVE ACTION", "description": "Production with an experienced director and camera crew." },
+        { "tag": "SYNTHESIS", "title": "AI VIDEO WORLD", "description": "Generative video synthesis that moves beyond physical locations." },
+        { "tag": "LANGUAGE", "title": "OPTICS & MOVEMENT", "description": "Cinematic lenses and a fluid language of movement." }
+      ],
+      [
+        { "tag": "TEMPO", "title": "DYNAMIC EDITING", "description": "We shape the story's rhythm and feeling in the edit." },
+        { "tag": "EFFECTS", "title": "VFX & COMPOSITING", "description": "We bring AI and classic VFX techniques together in a single frame." },
+        { "tag": "FINAL", "title": "COLOR & SOUND DESIGN", "description": "Cinematic color grading and an atmospheric sound world." }
+      ]
     ]
   },
   "method": {
@@ -230,8 +255,8 @@
     "eyebrow": "A NEW FILM · 06",
     "title": "Let’s make the next story\ntogether.",
     "description": "Tell us briefly about the idea, timing and what you need. We will shape the rest together.",
-    "mailCta": "Talk about the project",
-    "phoneCta": "Call us",
+    "mailCta": "Get Started Now",
+    "phoneCta": "Call Us",
     "location": "Address",
     "address": "Caferağa Mah. Şifa Sk. No: 19 Kadıköy / Istanbul",
     "emailLabel": "Email",

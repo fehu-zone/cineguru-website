@@ -53,6 +53,17 @@ test("renders localized Turkish and English experiences", async () => {
   assert.match(trHtml, /VEX Robotics Türkiye/);
   assert.match(trHtml, /Tek ekip\. Uçtan uca prodüksiyon\./);
   assert.match(enHtml, /One team\. End-to-end production\./);
+  assert.match(trHtml, /Hemen Başlayalım/);
+  assert.match(enHtml, /Get Started Now/);
+  assert.match(trHtml, /Bizi Arayın/);
+  assert.match(enHtml, /Call Us/);
+  assert.doesNotMatch(trHtml, /Get Started Now|Call Us/);
+  assert.match(enHtml, /GOAL &amp; ANALYSIS/);
+  assert.match(enHtml, /CAMPAIGN STRUCTURE/);
+  assert.doesNotMatch(enHtml, /HEDEF &amp; ANALİZ|KAMPANYA KURGUSU|AKTİF/);
+  assert.match(enHtml, /Cineguru-Production-Showreel\.mp4/);
+  assert.doesNotMatch(trHtml, /data-magnetic/);
+  assert.doesNotMatch(enHtml, /data-magnetic/);
 });
 
 test("keeps real portfolio video identifiers in rendered output", async () => {

@@ -181,11 +181,36 @@
   "services": {
     "eyebrow": "YETENEKLER · 02",
     "title": "Tek ekip. Uçtan uca prodüksiyon.",
+    "systemLabel": "CG / PRODÜKSİYON SİSTEMİ",
+    "activeLabel": "AKTİF",
+    "sceneLabels": ["STRATEJİ PANOSU", "YARATICI YÖN", "PRODÜKSİYON", "POST PRODÜKSİYON"],
     "items": [
       { "title": "Strateji", "description": "Markanın asıl meselesini bulur, fikri izleyicinin hatırlayacağı bir anlatıya dönüştürürüz.", "tags": ["Yaratıcı Yönetmenlik", "Kampanya", "Konsept"] },
       { "title": "Pre Production", "description": "Senaryo, görsel dünya, karakter devamlılığı ve storyboard sürecini yapay zekâ ile hızlandırırız.", "tags": ["Senaryo", "AI Görsel", "Storyboard"] },
       { "title": "Production + AI Video", "description": "Canlı çekim ile üretken yapay zekâyı tek bir yönetmenlik ve görüntü dili altında buluştururuz.", "tags": ["Canlı Çekim", "AI Film", "Stüdyo"] },
       { "title": "Post Production", "description": "Kurgu, VFX, renk, ses ve format adaptasyonlarıyla her kanalda çalışan finali üretiriz.", "tags": ["Kurgu", "VFX", "Renk"] }
+    ],
+    "details": [
+      [
+        { "tag": "STRATEJİ", "title": "HEDEF & ANALİZ", "description": "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
+        { "tag": "ANLATI", "title": "YARATICI KONSEPT", "description": "İzleyicinin hafızasında yer edecek özgün ana fikir." },
+        { "tag": "MİMARİ", "title": "KAMPANYA KURGUSU", "description": "Tüm mecralarda çalışan yayın haritası." }
+      ],
+      [
+        { "tag": "ÇİZİM", "title": "AI STORYBOARD", "description": "Senaryoyu kare kare üretken yapay zekâ ile görselleştiririz." },
+        { "tag": "TUTARLILIK", "title": "KARAKTER TUTARLILIĞI", "description": "Karakterlerin stil devamlılığını tüm sahnelerde koruruz." },
+        { "tag": "TEKNİK", "title": "PRODÜKSİYON PLANI", "description": "Kamera açıları, mekânlar ve çekim takvimi için detaylı bir harita." }
+      ],
+      [
+        { "tag": "SET", "title": "CANLI ÇEKİM", "description": "Deneyimli yönetmen ve görüntü ekibiyle çekim." },
+        { "tag": "SENTEZ", "title": "AI VİDEO DÜNYASI", "description": "Fiziksel mekân sınırlarını aşan üretken video sentezi." },
+        { "tag": "DİL", "title": "OPTİK & HAREKET", "description": "Sinematik kamera lensleri ve akıcı hareket dili." }
+      ],
+      [
+        { "tag": "TEMPO", "title": "DİNAMİK KURGU", "description": "Kurgu masasında hikâyenin ritmini ve hissini işleriz." },
+        { "tag": "EFEKT", "title": "VFX & COMPOSITING", "description": "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
+        { "tag": "FİNAL", "title": "RENK & SES TASARIMI", "description": "Sinematik renk derecelendirmesi ve atmosferik ses dünyası." }
+      ]
     ]
   },
   "method": {
@@ -230,8 +255,8 @@
     "eyebrow": "YENİ BİR FİLM · 06",
     "title": "Sıradaki hikâyeyi\nbirlikte çekelim.",
     "description": "Kısaca fikrinden, teslim tarihinden ve ihtiyacından bahset. Gerisini birlikte şekillendirelim.",
-    "mailCta": "Projeyi konuşalım",
-    "phoneCta": "Bizi ara",
+    "mailCta": "Hemen Başlayalım",
+    "phoneCta": "Bizi Arayın",
     "location": "Adres",
     "address": "Caferağa Mah. Şifa Sk. No: 19 Kadıköy / İstanbul",
     "emailLabel": "E-posta",
