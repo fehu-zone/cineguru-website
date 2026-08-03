@@ -68,7 +68,7 @@ export function HoverVideoButtonLink({
     <a
       className={buttonStyles({
         size: "display",
-        className: cn("group relative isolate overflow-hidden", className),
+        className: cn("group relative isolate overflow-hidden !border-0", className),
       })}
       onBlur={handleBlur}
       onFocus={handleFocus}

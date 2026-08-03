@@ -9,7 +9,7 @@ export function ContactSection({ messages }: { messages: Messages }) {
   const contact = messages.contact;
 
   return (
-    <section className="page-shell pb-[clamp(4rem,7vw,7rem)] pt-section" id="contact">
+    <section className="page-shell pb-[clamp(2.25rem,3.5vw,3.75rem)] pt-section" id="contact">
       <div className="reveal-on-scroll mx-auto max-w-[52rem] text-center" data-reveal="heading">
         <Eyebrow>{contact.eyebrow}</Eyebrow>
         <h2 className="mt-6 font-display text-[clamp(3.4rem,6.6vw,7.8rem)] [font-weight:580] leading-[1.02] tracking-[-0.045em] max-[640px]:text-[clamp(2rem,8.8vw,4.8rem)]">

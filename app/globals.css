@@ -410,7 +410,6 @@
 
   .contact-cta-group:has(.contact-cta-primary:hover) .contact-cta-primary,
   .contact-cta-group:has(.contact-cta-primary:focus-visible) .contact-cta-primary {
-    border-color: var(--color-accent);
     color: var(--color-canvas);
     background: var(--color-accent);
   }
@@ -427,13 +426,6 @@
     border-color: var(--color-foreground) !important;
     color: var(--color-foreground) !important;
     background: transparent !important;
-  }
-
-  .contact-cta-primary:hover,
-  .contact-cta-primary:focus-visible,
-  .contact-cta-secondary:hover,
-  .contact-cta-secondary:focus-visible {
-    border-color: transparent !important;
   }
 
   .contact-cta-group:has(.contact-cta-primary:hover) .contact-cta-secondary,
