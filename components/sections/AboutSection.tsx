@@ -28,7 +28,11 @@ export function AboutSection({ messages }: { messages: Messages }) {
           titleClassName="!-translate-x-50 max-[940px]:!-translate-x-24 max-[640px]:!translate-x-0"
           descriptionClassName="!mt-[25rem] max-[940px]:!mt-8 max-[640px]:!mt-6"
         />
-        <AboutJourney principles={about.principles} />
+        <AboutJourney
+          principles={about.principles}
+          chapterLabel={about.chapterLabel}
+          mediaPlaceholder={about.mediaPlaceholder}
+        />
         <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-canvas px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
           <p className="mb-7 text-center font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent max-[640px]:mb-5 max-[640px]:text-[0.58rem]">{about.brandsLabel}</p>
           <div className="relative overflow-hidden border border-dotted border-foreground/30 bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:0.5rem_0.5rem]">

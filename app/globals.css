@@ -129,9 +129,9 @@
     grid-template-columns: minmax(0, 1fr) 5rem minmax(0, 1fr);
     gap: clamp(1rem, 2vw, 2rem);
     width: min(100%, 72rem);
-    min-height: clamp(20rem, 42vh, 31rem);
+    min-height: clamp(25rem, 38vw, 34rem);
     margin: 0 auto;
-    padding-bottom: clamp(2.5rem, 5vw, 5rem);
+    padding-bottom: clamp(4rem, 7vw, 7rem);
   }
 
   .motion-ready .about-timeline-item.reveal-on-scroll {
@@ -200,14 +200,130 @@
 
   .about-timeline-card {
     position: relative;
+    display: grid;
+    grid-template-columns: minmax(8rem, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(1.1rem, 2vw, 2rem);
     grid-row: 1;
     align-self: start;
+    isolation: isolate;
     overflow: hidden;
-    padding: clamp(1.3rem, 2.3vw, 2.2rem);
+    min-height: clamp(18rem, 22vw, 22rem);
+    padding: clamp(1rem, 1.7vw, 1.7rem);
     border: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-    background: radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 42%), color-mix(in srgb, var(--color-surface) 78%, transparent);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-surface) 88%, transparent), color-mix(in srgb, var(--color-canvas) 92%, transparent)), radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 42%);
     box-shadow: 0 1.5rem 3rem color-mix(in srgb, #000 16%, transparent);
     transition: border-color 450ms ease, background-color 450ms ease, transform 700ms var(--ease-cinematic), box-shadow 500ms ease;
+  }
+
+  .about-timeline-card-body,
+  .about-timeline-card-media {
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-timeline-card-body {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-block: 0.25rem;
+  }
+
+  .about-timeline-card-media {
+    display: flex;
+    min-height: 14rem;
+    align-items: flex-end;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 18%, transparent);
+    background:
+      radial-gradient(circle at 58% 38%, color-mix(in srgb, var(--color-accent) 42%, transparent), transparent 29%),
+      linear-gradient(145deg, color-mix(in srgb, var(--color-canvas) 76%, var(--color-foreground)) 0%, color-mix(in srgb, var(--color-canvas) 98%, #000) 72%);
+  }
+
+  .about-timeline-card-media::before {
+    position: absolute;
+    inset: 0.8rem;
+    border: 1px dotted color-mix(in srgb, var(--color-foreground) 24%, transparent);
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--color-foreground) 9%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-foreground) 9%, transparent) 1px, transparent 1px);
+    background-size: 1.25rem 1.25rem;
+    content: "";
+    opacity: 0.58;
+  }
+
+  .about-timeline-card-media::after {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.8rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 70%, transparent);
+    border-radius: 999px;
+    content: "";
+    opacity: 0.9;
+  }
+
+  .about-timeline-media-code,
+  .about-timeline-media-caption {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-cine-mono), monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .about-timeline-media-code {
+    position: absolute;
+    top: 1.05rem;
+    left: 1rem;
+    color: color-mix(in srgb, var(--color-foreground) 68%, transparent);
+  }
+
+  .about-timeline-media-caption {
+    margin: 0 0 1rem 1rem;
+    color: var(--color-accent);
+  }
+
+  .about-timeline-media-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(3.8rem, 7vw, 6rem);
+    height: clamp(3.8rem, 7vw, 6rem);
+    border: 1px solid color-mix(in srgb, var(--color-foreground) 58%, transparent);
+    border-radius: 999px;
+    box-shadow: 0 0 0 0.7rem color-mix(in srgb, var(--color-accent) 7%, transparent), inset 0 0 2rem color-mix(in srgb, var(--color-accent) 18%, transparent);
+    transform: translate(-50%, -50%);
+  }
+
+  .about-timeline-media-cross {
+    position: absolute;
+    z-index: 1;
+    background: color-mix(in srgb, var(--color-foreground) 42%, transparent);
+  }
+
+  .about-timeline-media-cross-x {
+    top: 50%;
+    right: 1rem;
+    left: 1rem;
+    height: 1px;
+  }
+
+  .about-timeline-media-cross-y {
+    top: 1rem;
+    bottom: 1rem;
+    left: 50%;
+    width: 1px;
+  }
+
+  .about-timeline-card-meta,
+  .about-timeline-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
   }
 
   .about-timeline-card::after {
@@ -224,7 +340,16 @@
 
   .about-timeline-item:nth-child(odd) .about-timeline-card {
     grid-column: 1;
+    grid-template-columns: minmax(0, 1.18fr) minmax(8rem, 0.82fr);
     text-align: right;
+  }
+
+  .about-timeline-item:nth-child(odd) .about-timeline-card-media {
+    order: 2;
+  }
+
+  .about-timeline-item:nth-child(odd) .about-timeline-card-body {
+    order: 1;
   }
 
   .about-timeline-item:nth-child(even) .about-timeline-card {
@@ -249,13 +374,20 @@
     text-transform: uppercase;
   }
 
+  .about-timeline-card-count {
+    color: color-mix(in srgb, var(--color-foreground) 42%, transparent);
+    font-family: var(--font-cine-mono), monospace;
+    font-size: 0.53rem;
+    letter-spacing: 0.08em;
+  }
+
   .about-timeline-card h3 {
     position: relative;
     z-index: 1;
-    margin-top: 0.8rem;
+    margin-top: 1.4rem;
     color: var(--color-foreground);
     font-family: var(--font-display), sans-serif;
-    font-size: clamp(1.65rem, 3vw, 3.2rem);
+    font-size: clamp(1.7rem, 3.2vw, 3.4rem);
     letter-spacing: -0.045em;
     line-height: 0.98;
   }
@@ -264,10 +396,26 @@
     position: relative;
     z-index: 1;
     max-width: 38rem;
-    margin-top: 1rem;
+    margin-top: 0.9rem;
     color: color-mix(in srgb, var(--color-foreground) 62%, transparent);
     font-size: 0.94rem;
     line-height: 1.6;
+  }
+
+  .about-timeline-card-footer {
+    margin-top: 2rem;
+    color: color-mix(in srgb, var(--color-foreground) 42%, transparent);
+    font-family: var(--font-cine-mono), monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .about-timeline-footer-line {
+    display: block;
+    width: 3rem;
+    height: 1px;
+    background: color-mix(in srgb, var(--color-accent) 66%, transparent);
   }
 
   .about-timeline-card::before {
@@ -293,7 +441,7 @@
     .about-timeline-item {
       grid-template-columns: 3rem minmax(0, 1fr);
       gap: 1rem;
-      min-height: 24rem;
+      min-height: 0;
       padding-bottom: 3rem;
     }
 
@@ -315,7 +463,24 @@
     .about-timeline-item:nth-child(odd) .about-timeline-card,
     .about-timeline-item:nth-child(even) .about-timeline-card {
       grid-column: 2;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.15rem;
+      min-height: 0;
       text-align: left;
+    }
+
+    .about-timeline-item:nth-child(odd) .about-timeline-card-media,
+    .about-timeline-item:nth-child(odd) .about-timeline-card-body {
+      order: initial;
+    }
+
+    .about-timeline-card-media {
+      min-height: 11rem;
+    }
+
+    .about-timeline-card-footer {
+      justify-content: flex-start;
     }
 
     .about-timeline-item:nth-child(odd) .about-timeline-card::after {
@@ -360,17 +525,16 @@
     height: clamp(30rem, 48vw, 46rem);
     content: "";
     background: url("/assets/about-section-atmosphere.webp") center top / cover no-repeat;
-    filter: blur(0.35rem) saturate(0.84);
-    opacity: 0.82;
-    -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 28%, #000 28%, rgb(0 0 0 / 0.92) 52%, transparent 100%);
-    mask-image: radial-gradient(ellipse 78% 72% at 50% 28%, #000 28%, rgb(0 0 0 / 0.92) 52%, transparent 100%);
+    opacity: 0.96;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 64%, rgb(0 0 0 / 0.9) 76%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 64%, rgb(0 0 0 / 0.9) 76%, transparent 100%);
   }
 
   .about-section-atmosphere::after {
     position: absolute;
     inset: 0;
     content: "";
-    background: linear-gradient(180deg, transparent 0%, transparent 38%, color-mix(in srgb, var(--color-canvas) 18%, transparent) 54%, color-mix(in srgb, var(--color-canvas) 72%, transparent) 76%, var(--color-canvas) 92%);
+    background: linear-gradient(180deg, transparent 0%, transparent 52%, color-mix(in srgb, var(--color-canvas) 8%, transparent) 68%, color-mix(in srgb, var(--color-canvas) 44%, transparent) 86%, var(--color-canvas) 100%);
   }
 
   .case-tabs-scroller {
