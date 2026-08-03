@@ -356,18 +356,21 @@
 
   .about-section-atmosphere::before {
     position: absolute;
-    inset: 0 0 auto;
-    height: clamp(38rem, 72vw, 62rem);
+    inset: -3rem -8% auto;
+    height: clamp(30rem, 48vw, 46rem);
     content: "";
     background: url("/assets/about-section-atmosphere.webp") center top / cover no-repeat;
-    opacity: 0.9;
+    filter: blur(0.35rem) saturate(0.84);
+    opacity: 0.82;
+    -webkit-mask-image: radial-gradient(ellipse 78% 72% at 50% 28%, #000 28%, rgb(0 0 0 / 0.92) 52%, transparent 100%);
+    mask-image: radial-gradient(ellipse 78% 72% at 50% 28%, #000 28%, rgb(0 0 0 / 0.92) 52%, transparent 100%);
   }
 
   .about-section-atmosphere::after {
     position: absolute;
     inset: 0;
     content: "";
-    background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--color-canvas) 8%, transparent) 46%, color-mix(in srgb, var(--color-canvas) 72%, transparent) 82%, var(--color-canvas) 100%);
+    background: linear-gradient(180deg, transparent 0%, transparent 38%, color-mix(in srgb, var(--color-canvas) 18%, transparent) 54%, color-mix(in srgb, var(--color-canvas) 72%, transparent) 76%, var(--color-canvas) 92%);
   }
 
   .case-tabs-scroller {
