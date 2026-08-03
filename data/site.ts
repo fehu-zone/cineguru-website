@@ -43,6 +43,8 @@ export const projects = [
   { id: "asfat", slug: "asfat", youtubeId: "bct_ERqomNI", year: "2024", featured: false },
 ] as const;
 
+export const aboutVideos = projects.filter((project) => !project.featured).slice(0, 4);
+
 export const reels = [
   { id: "alfemo-masko", slug: "alfemo-masko", youtubeId: "zgHJxbfs27o", year: "2026" },
   { id: "sifir-atik-festival", slug: "sifir-atik-festival", youtubeId: "t7DJjnegikA", year: "2026" },

@@ -1,4 +1,4 @@
-import { brands } from "@/data/site";
+import { aboutVideos, brands } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import { ClientLogo } from "@/components/ui/ClientLogo";
 import { AboutJourney } from "@/components/sections/AboutJourney";
@@ -18,7 +18,6 @@ export function AboutSection({ messages }: { messages: Messages }) {
 
   return (
     <section className="relative isolate overflow-hidden bg-canvas py-section text-foreground" id="about">
-      <div className="about-section-atmosphere" aria-hidden="true" />
       <div className="page-shell relative z-10">
         <SectionHeading
           eyebrow={about.eyebrow}
@@ -30,8 +29,9 @@ export function AboutSection({ messages }: { messages: Messages }) {
         />
         <AboutJourney
           principles={about.principles}
+          videos={aboutVideos}
           chapterLabel={about.chapterLabel}
-          mediaPlaceholder={about.mediaPlaceholder}
+          mediaLabel={about.mediaLabel}
         />
         <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-canvas px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
           <p className="mb-7 text-center font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent max-[640px]:mb-5 max-[640px]:text-[0.58rem]">{about.brandsLabel}</p>
