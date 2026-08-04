@@ -1,23 +1,11 @@
 import { getMessages } from "@/i18n/config";
-import { brands } from "@/data/site";
-import { ClientLogo } from "@/components/ui/ClientLogo";
-import { SubpageLayout, SubpageSection, SubpageGrid } from "@/components/layout/SubpageLayout";
+import { SubpageLayout, SubpageSection, SubpageGrid, BrandGridSection } from "@/components/layout/SubpageLayout";
 
 export default function AboutPage() {
   const locale = "en";
   const messages = getMessages(locale);
   const about = messages.about;
   const f = messages.footer;
-
-  const firstBrandRow = brands.slice(0, 8);
-  const secondBrandRow = brands.slice(8);
-
-  const renderBrand = (brand: (typeof brands)[number]) => (
-    <div className="group relative grid min-h-[8rem] place-items-center overflow-hidden border-b border-r border-dotted border-foreground/25 bg-canvas/90 px-5 transition-colors hover:bg-surface max-[640px]:min-h-24" key={brand.id}>
-      <i className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-      <ClientLogo className="h-12 w-[min(92%,15rem)] opacity-100 brightness-125 contrast-125 drop-shadow-[0_0_0.8rem_rgba(255,255,255,0.1)] transition-[filter] duration-300 group-hover:brightness-150 group-hover:contrast-150 max-[640px]:h-10" scale={brand.scale} src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} title={brand.label} width={256} height={64} loading="lazy" />
-    </div>
-  );
 
   return (
     <SubpageLayout
@@ -26,11 +14,17 @@ export default function AboutPage() {
       title={f.aboutTitle}
       subtitle={about.title}
       description={about.description}
+      fullWidthContent={
+        <BrandGridSection
+          brandsLabel={about.brandsLabel}
+          brandLogoSuffix={about.brandLogoSuffix}
+        />
+      }
     >
       {/* Our Clients & Stories */}
       <SubpageSection title="OUR CLIENTS & STORIES">
         <p className="text-[1.125rem] md:text-[1.2rem] leading-[1.8] text-foreground/80 font-normal">
-          We produce a wide range of video content from commercial films and digital campaigns to brand stories, events, and launch films. We design high-aesthetic, result-driven projects tailored to each brand&apos;s corporate identity and target audience by combining traditional film discipline with generative AI technologies.
+          To date, we have collaborated with leading local and global brands, including Vodafone, Zero Waste Foundation, TurkNet, Hesap.com, World Ethnosport Confederation, Kalekim, Farmasi, Vasso, ASFAT, Pasha Bank, Vialand, BOSAD, and RTA Laboratories. Additionally, we have delivered high-standard video production projects for numerous government institutions and private sector organizations whose names we cannot publicly disclose due to non-disclosure agreements (NDAs).
         </p>
       </SubpageSection>
 
@@ -38,23 +32,6 @@ export default function AboutPage() {
       <SubpageSection title="PRODUCTION APPROACH">
         <SubpageGrid items={about.principles} />
       </SubpageSection>
-
-      {/* Brands Section */}
-      <div className="border-t border-foreground/15 pt-16 mt-16 mb-12">
-        <p className="mb-8 text-center font-mono text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-accent max-[640px]:mb-6">
-          {about.brandsLabel}
-        </p>
-        <div className="relative overflow-hidden border border-dotted border-foreground/30 bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:0.5rem_0.5rem]">
-          <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
-            {firstBrandRow.map(renderBrand)}
-          </div>
-          <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
-            <div aria-hidden="true" className="min-h-[8rem] border-b border-r border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
-            {secondBrandRow.map(renderBrand)}
-            <div aria-hidden="true" className="min-h-[8rem] border-b border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
-          </div>
-        </div>
-      </div>
     </SubpageLayout>
   );
 }
