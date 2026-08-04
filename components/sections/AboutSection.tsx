@@ -10,9 +10,9 @@ export function AboutSection({ messages }: { messages: Messages }) {
   const secondBrandRow = brands.slice(8);
 
   const renderBrand = (brand: (typeof brands)[number]) => (
-    <div className="group relative grid min-h-[7rem] place-items-center overflow-hidden border-b border-r border-dotted border-foreground/25 bg-canvas/90 px-4 transition-colors hover:bg-surface max-[640px]:min-h-24" key={brand.id}>
+    <div className="group relative grid min-h-[9rem] place-items-center overflow-hidden border-b border-r border-dotted border-foreground/25 bg-canvas/90 px-5 transition-colors hover:bg-surface max-[640px]:min-h-28" key={brand.id}>
       <i className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 group-hover:scale-x-100" />
-      <ClientLogo className="h-12 w-[min(88%,13rem)] opacity-100 brightness-125 contrast-125 drop-shadow-[0_0_0.7rem_rgba(255,255,255,0.08)] transition-[filter] duration-300 group-hover:brightness-150 group-hover:contrast-150 max-[640px]:h-10" scale={brand.scale} src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} title={brand.label} width={224} height={56} loading="lazy" />
+      <ClientLogo className="h-16 w-[min(92%,15rem)] opacity-100 brightness-125 contrast-125 drop-shadow-[0_0_0.8rem_rgba(255,255,255,0.1)] transition-[filter] duration-300 group-hover:brightness-150 group-hover:contrast-150 max-[640px]:h-12" scale={brand.scale} src={brand.logo} alt={`${brand.label} ${about.brandLogoSuffix}`} title={brand.label} width={256} height={64} loading="lazy" />
     </div>
   );
 
@@ -33,14 +33,16 @@ export function AboutSection({ messages }: { messages: Messages }) {
           chapterLabel={about.chapterLabel}
           mediaLabel={about.mediaLabel}
         />
-        <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-canvas px-page py-[clamp(2.5rem,5vw,5rem)] text-foreground" data-reveal="panel">
-          <p className="mb-7 text-center font-mono text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-accent max-[640px]:mb-5 max-[640px]:text-[0.58rem]">{about.brandsLabel}</p>
+        <div className="reveal-on-scroll -mx-page mt-[clamp(5rem,9vw,9rem)] bg-canvas px-page py-[clamp(3.5rem,6vw,6.5rem)] text-foreground" data-reveal="panel">
+          <p className="mb-8 text-center font-mono text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-accent max-[640px]:mb-6 max-[640px]:text-[0.62rem]">{about.brandsLabel}</p>
           <div className="relative overflow-hidden border border-dotted border-foreground/30 bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:0.5rem_0.5rem]">
-            <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">{firstBrandRow.map(renderBrand)}</div>
             <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
-              <div aria-hidden="true" className="min-h-[7rem] border-b border-r border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
+              {firstBrandRow.map(renderBrand)}
+            </div>
+            <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
+              <div aria-hidden="true" className="min-h-[9rem] border-b border-r border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
               {secondBrandRow.map(renderBrand)}
-              <div aria-hidden="true" className="min-h-[7rem] border-b border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
+              <div aria-hidden="true" className="min-h-[9rem] border-b border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
             </div>
           </div>
         </div>

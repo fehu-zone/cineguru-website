@@ -73,11 +73,54 @@ function BrandGroup({
 
 export function ReferenceCarousel() {
   const viewportRef = useRef<HTMLDivElement>(null);
+  const firstGroupRef = useRef<HTMLDivElement>(null);
+
+  const getGroupWidth = () => firstGroupRef.current?.offsetWidth || 0;
 
   const move = (direction: 1 | -1) => {
     const viewport = viewportRef.current;
-    if (!viewport) return;
-    viewport.scrollBy({ left: direction * carouselStep, behavior: "smooth" });
+    const groupWidth = getGroupWidth();
+    if (!viewport || !groupWidth) return;
+
+    const currentScroll = viewport.scrollLeft;
+
+    if (direction === 1) {
+      // If we are reaching near the end of group 2, wrap back seamlessly to group 1
+      if (currentScroll >= groupWidth * 2) {
+        viewport.classList.remove("scroll-smooth");
+        viewport.scrollLeft = currentScroll - groupWidth;
+        void viewport.offsetWidth; // force reflow
+        viewport.classList.add("scroll-smooth");
+      }
+      viewport.scrollBy({ left: carouselStep, behavior: "smooth" });
+    } else {
+      // If we are near the start of group 1, wrap forward seamlessly to group 2
+      if (currentScroll <= carouselStep / 2) {
+        viewport.classList.remove("scroll-smooth");
+        viewport.scrollLeft = currentScroll + groupWidth;
+        void viewport.offsetWidth; // force reflow
+        viewport.classList.add("scroll-smooth");
+      }
+      viewport.scrollBy({ left: -carouselStep, behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = () => {
+    const viewport = viewportRef.current;
+    const groupWidth = getGroupWidth();
+    if (!viewport || !groupWidth) return;
+
+    if (viewport.scrollLeft >= groupWidth * 2.5) {
+      viewport.classList.remove("scroll-smooth");
+      viewport.scrollLeft -= groupWidth;
+      void viewport.offsetWidth;
+      viewport.classList.add("scroll-smooth");
+    } else if (viewport.scrollLeft <= 5) {
+      viewport.classList.remove("scroll-smooth");
+      viewport.scrollLeft += groupWidth;
+      void viewport.offsetWidth;
+      viewport.classList.add("scroll-smooth");
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -87,9 +130,7 @@ export function ReferenceCarousel() {
   };
 
   return (
-    <div
-      className="relative mx-auto w-full max-w-site"
-    >
+    <div className="relative mx-auto w-full max-w-site">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-canvas via-canvas/85 to-transparent" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-canvas via-canvas/85 to-transparent" aria-hidden="true" />
       <button type="button" aria-label="Önceki markalar" onClick={() => move(-1)} className="group absolute left-0 top-1/2 z-20 grid size-10 -translate-y-1/2 place-items-center text-foreground/70 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
@@ -103,11 +144,15 @@ export function ReferenceCarousel() {
         className="no-scrollbar w-full overflow-hidden overscroll-x-contain scroll-smooth select-none"
         tabIndex={0}
         onKeyDown={handleKeyDown}
+        onScroll={handleScroll}
       >
         <div className="flex w-max items-center">
-          <BrandGroup />
+          <div ref={firstGroupRef} className="flex items-center">
+            <BrandGroup />
+          </div>
           <BrandGroup duplicateKey="-duplicate-1" />
-          <BrandGroup duplicateKey="-duplicate-2" desktopOnly />
+          <BrandGroup duplicateKey="-duplicate-2" />
+          <BrandGroup duplicateKey="-duplicate-3" />
         </div>
       </div>
     </div>
