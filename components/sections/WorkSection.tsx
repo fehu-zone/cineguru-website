@@ -7,7 +7,7 @@ import type { Messages } from "@/i18n/config";
 import type { ActiveVideo } from "@/components/ui/VideoModal";
 import { ProjectPoster } from "@/components/ui/ResponsiveMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ReferenceCarousel } from "@/components/ui/ReferenceCarousel";
+
 import { useAutoAdvance } from "@/hooks/useMotion";
 import { cn } from "@/lib/classNames";
 
@@ -213,10 +213,7 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
           </div>
         </div>
 
-        <div className="mt-8 border-y border-foreground/15 py-6">
-          <p className="mb-5 font-mono text-[0.61rem] font-semibold uppercase tracking-[0.1em] text-foreground/55">{work.referenceBrandsLabel}</p>
-          <ReferenceCarousel />
-        </div>
+
       </div>
 
       <p className="reveal-on-scroll mb-5 mt-[clamp(5rem,8vw,8rem)] border-b border-foreground/15 pb-3 font-mono text-[0.61rem] font-semibold tracking-[0.1em] text-foreground/55">{work.archiveLabel}</p>

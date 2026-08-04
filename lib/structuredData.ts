@@ -27,8 +27,19 @@ export function createStructuredData(locale: Locale, messages: Messages) {
         name: messages.hero.showreelModalTitle,
         description: messages.hero.showreelTitle,
         thumbnailUrl: `${siteConfig.url}/assets/showreel-poster-1280.webp`,
+        uploadDate: "2026-01-15",
+        duration: "PT1M30S",
+        contentUrl: `${siteConfig.url}${siteConfig.showreel.video}`,
         embedUrl: `https://www.youtube-nocookie.com/embed/${siteConfig.showreel.id}`,
-        contentUrl: `https://www.youtube.com/watch?v=${siteConfig.showreel.id}`,
+        publisher: {
+          "@type": "Organization",
+          "@id": `${siteConfig.url}/#organization`,
+          name: siteConfig.name,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteConfig.url}/assets/og-cineguru-v7.jpg`,
+          },
+        },
       },
     ],
   };
