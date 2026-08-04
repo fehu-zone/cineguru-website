@@ -45,7 +45,7 @@ export default function CineguruHome({ locale }: { locale: Locale }) {
         <ServicesSection messages={messages} />
         <AboutSection messages={messages} />
         <ContactSection messages={messages} locale={locale} />
-        <SiteFooter messages={messages} locale={locale} />
+        <SiteFooter messages={messages} />
       </main>
       {video ? <VideoModal video={video} closeLabel={messages.global.close} onClose={closeVideo} /> : null}
     </>

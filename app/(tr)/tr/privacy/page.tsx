@@ -15,11 +15,13 @@ export default function PrivacyPage() {
             {messages.footer.privacyTitle}
           </h1>
           <div className="text-[1.05rem] leading-[1.75] text-foreground/75 space-y-6">
-            <p>{messages.footer.privacyText}</p>
+            {messages.footer.privacyParagraphs.map((para, idx) => (
+              <p key={idx}>{para}</p>
+            ))}
           </div>
         </div>
       </main>
-      <SiteFooter messages={messages} locale={locale} />
+      <SiteFooter messages={messages} />
     </>
   );
 }

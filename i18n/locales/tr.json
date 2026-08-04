@@ -280,7 +280,11 @@
     "aboutTitle": "BİZ KİMİZ",
     "aboutText": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosudur. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle ve yapay zekâ ölçeğiyle birleştiriyoruz.",
     "privacyTitle": "GİZLİLİK VE SÖZLEŞMELER",
-    "privacyText": "Müşterilerimizle yaptığımız gizlilik sözleşmeleri (NDA) gereği, ürettiğimiz tüm projeleri ve marka iş birliklerini web sitemizde referans olarak paylaşamıyoruz. Gösterdiğimiz hassasiyet, kurumsal güvenliğin bir parçasıdır.",
+    "privacyParagraphs": [
+      "Müşterilerimizle imzaladığımız gizlilik ve rekabet sözleşmeleri (NDA) gereği, ürettiğimiz veya katkı sağladığımız bazı projeleri, marka ortaklıklarını ve set arkası detayları web sitemizde açıkça yayınlayamıyoruz. Kurumsal güvenliğinize ve iş sözleşmelerine göstermiş olduğumuz bu hassasiyet, Cineguru Studio olarak çalışma disiplinimizin en temel taşıdır.",
+      "Web sitemiz ziyaretçilerinden herhangi bir kişisel veri toplamaz, reklam hedeflemesi amacıyla çerez (cookies) kullanmaz veya tarayıcı geçmişinizi kaydetmez. Sitemiz tamamen şeffaf, çerezsiz ve izleyicisini takip etmeyen güvenli bir altyapı üzerine kurulmuştur.",
+      "Bizimle paylaştığınız briefler, proje talepleri, e-posta veya telefon üzerinden kurduğunuz iletişimler, yalnızca projenizin değerlendirilmesi ve planlanması amacıyla stüdyomuz bünyesinde gizli tutulur. Üçüncü şahıslarla asla paylaşılmaz."
+    ],
     "socialTitle": "TAKİP EDİN"
   }
 }

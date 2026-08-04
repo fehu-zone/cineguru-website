@@ -280,7 +280,11 @@
     "aboutTitle": "ABOUT US",
     "aboutText": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. We combine traditional filmmaking discipline with next-generation production technology and AI scale.",
     "privacyTitle": "PRIVACY & CONTRACTS",
-    "privacyText": "Due to confidentiality agreements (NDAs) with our clients, we cannot publicly display all of our produced projects and brand collaborations on our website. This sensitivity is an essential part of our corporate security standards.",
+    "privacyParagraphs": [
+      "Due to strict confidentiality and non-disclosure agreements (NDAs) with our clients, we cannot publicly display or write about all the projects we produce, co-create, or provide services for on our website. This commitment to your corporate safety and compliance is a cornerstone of our production discipline at Cineguru Studio.",
+      "Our website does not collect any personal data, does not use advertising or tracking cookies, and does not record browser history. We believe in absolute transparency, which is why our digital experience is completely cookie-free and secure.",
+      "The briefs, project request files, and communication details you share with us through email or phone are used exclusively for evaluating and planning your production. These details are stored securely and never shared with third parties."
+    ],
     "socialTitle": "FOLLOW US"
   }
 }

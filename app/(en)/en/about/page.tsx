@@ -19,7 +19,7 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
-      <SiteFooter messages={messages} locale={locale} />
+      <SiteFooter messages={messages} />
     </>
   );
 }
