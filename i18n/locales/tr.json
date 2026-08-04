@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Cineguru Studio | AI Destekli Video Prodüksiyon",
     "description": "Reklam filmleri, marka hikâyeleri, etkinlik filmleri ve sosyal medya içerikleri için AI destekli video prodüksiyon stüdyosu.",
-    "ogDescription": "İnsan yaratıcılığı ile yapay zekâyı aynı prodüksiyon disiplininde buluşturuyoruz.",
+    "ogDescription": "İnsan yaratıcılığı ile yapay zekâyı aynı prodüksiyon disiplininde buluşturur.",
     "locale": "tr_TR",
     "imageAlt": "Cineguru Studio — AI destekli video prodüksiyon",
     "keywords": ["AI video prodüksiyon", "reklam filmi", "tanıtım filmi", "video prodüksiyon", "Cineguru Studio", "İstanbul prodüksiyon şirketi"]
@@ -34,9 +34,9 @@
   },
   "hero": {
     "eyebrow": "AI DESTEKLİ VİDEO PRODÜKSİYON · İSTANBUL",
-    "titleLines": ["Fikri, iz bırakan", "filme dönüştürüyoruz."],
-    "mobileTitleLines": ["Fikirden filme,", "iz bırakan işler", "üretiyoruz."],
-    "description": "Reklam, tanıtım ve sosyal içeriklerde yapay zekâ ile insan yaratıcılığını aynı prodüksiyon disiplininde buluşturuyoruz.",
+    "titleLines": ["Fikri, iz bırakan", "filme dönüştürüyor."],
+    "mobileTitleLines": ["Fikirden filme,", "iz bırakan işler", "üretiyor."],
+    "description": "Reklam, tanıtım ve sosyal içeriklerde yapay zekâ ile insan yaratıcılığını aynı prodüksiyon disiplininde buluşturuyor.",
     "primaryCta": "İşleri keşfet",
     "foot": "FİKİR → PRODÜKSİYON → FİNAL",
     "discover": "Keşfet",
@@ -48,7 +48,7 @@
   "work": {
     "eyebrow": "SEÇİLİ İŞLER · 01",
     "title": "Her marka için yeni bir görsel dil.",
-    "description": "Fikrin ihtiyacına göre kamera, yapay zekâ, 3D ve post-prodüksiyon araçlarını aynı anlatıda birleştiriyoruz.",
+    "description": "Fikrin ihtiyacına göre kamera, yapay zekâ, 3D ve post-prodüksiyon araçlarını aynı anlatıda birleştiriyor.",
     "caseStudiesLabel": "GÜNCEL CASE STUDIES",
     "archiveLabel": "SEÇKİ / ARŞİV",
     "watchLabel": "Filmi izle",
@@ -153,10 +153,10 @@
     "instagramTab": "Instagram / Reels",
     "youtubeTab": "YouTube / Shorts",
     "instagramPanelTitle": "Setten yayına, stüdyodan hikâyeye.",
-    "instagramPanelDescription": "Reels, set arkası ve günlük üretim notlarımızı Instagram akışımızda paylaşıyoruz.",
+    "instagramPanelDescription": "Reels, set arkası ve günlük üretim notları Instagram akışında paylaşılıyor.",
     "instagramFeatures": ["Set arkası", "Reels", "Üretim günlüğü"],
     "youtubePanelTitle": "Kısa formatta güncel işler.",
-    "youtubePanelDescription": "Yeni filmlerimizi, denemelerimizi ve dikey anlatılarımızı YouTube Shorts kanalımızda izleyin.",
+    "youtubePanelDescription": "Yeni filmler, denemeler ve dikey anlatılar YouTube Shorts kanalında yayınlanıyor.",
     "youtubeChannel": "Kanala git",
     "youtubeOverline": "YOUTUBE SHORTS / GÜNCEL",
     "watchReel": "Reels’i izle",
@@ -185,20 +185,20 @@
     "activeLabel": "AKTİF",
     "sceneLabels": ["STRATEJİ PANOSU", "YARATICI YÖN", "PRODÜKSİYON", "POST PRODÜKSİYON"],
     "items": [
-      { "title": "Strateji", "description": "Markanın asıl meselesini bulur, fikri izleyicinin hatırlayacağı bir anlatıya dönüştürürüz.", "tags": ["Yaratıcı Yönetmenlik", "Kampanya", "Konsept"] },
-      { "title": "Pre Production", "description": "Senaryo, görsel dünya, karakter devamlılığı ve storyboard sürecini yapay zekâ ile hızlandırırız.", "tags": ["Senaryo", "AI Görsel", "Storyboard"] },
-      { "title": "Production + AI Video", "description": "Canlı çekim ile üretken yapay zekâyı tek bir yönetmenlik ve görüntü dili altında buluştururuz.", "tags": ["Canlı Çekim", "AI Film", "Stüdyo"] },
-      { "title": "Post Production", "description": "Kurgu, VFX, renk, ses ve format adaptasyonlarıyla her kanalda çalışan finali üretiriz.", "tags": ["Kurgu", "VFX", "Renk"] }
+      { "title": "Strateji", "description": "Markanın asıl meselesini bulur, fikri izleyicinin hatırlayacağı bir anlatıya dönüştürür.", "tags": ["Yaratıcı Yönetmenlik", "Kampanya", "Konsept"] },
+      { "title": "Pre Production", "description": "Senaryo, görsel dünya, karakter devamlılığı ve storyboard sürecini yapay zekâ ile hızlandırır.", "tags": ["Senaryo", "AI Görsel", "Storyboard"] },
+      { "title": "Production + AI Video", "description": "Canlı çekim ile üretken yapay zekâyı tek bir yönetmenlik ve görüntü dili altında buluşturur.", "tags": ["Canlı Çekim", "AI Film", "Stüdyo"] },
+      { "title": "Post Production", "description": "Kurgu, VFX, renk, ses ve format adaptasyonlarıyla her kanalda çalışan finali üretir.", "tags": ["Kurgu", "VFX", "Renk"] }
     ],
     "details": [
       [
-        { "tag": "STRATEJİ", "title": "HEDEF & ANALİZ", "description": "Markanın hedeflerine uygun mesaj omurgasını oluştururuz." },
+        { "tag": "STRATEJİ", "title": "HEDEF & ANALİZ", "description": "Markanın hedeflerine uygun mesaj omurgasını oluşturur." },
         { "tag": "ANLATI", "title": "YARATICI KONSEPT", "description": "İzleyicinin hafızasında yer edecek özgün ana fikir." },
         { "tag": "MİMARİ", "title": "KAMPANYA KURGUSU", "description": "Tüm mecralarda çalışan yayın haritası." }
       ],
       [
-        { "tag": "ÇİZİM", "title": "AI STORYBOARD", "description": "Senaryoyu kare kare üretken yapay zekâ ile görselleştiririz." },
-        { "tag": "TUTARLILIK", "title": "KARAKTER TUTARLILIĞI", "description": "Karakterlerin stil devamlılığını tüm sahnelerde koruruz." },
+        { "tag": "ÇİZİM", "title": "AI STORYBOARD", "description": "Senaryoyu kare kare üretken yapay zekâ ile görselleştirir." },
+        { "tag": "TUTARLILIK", "title": "KARAKTER TUTARLILIĞI", "description": "Karakterlerin stil devamlılığını tüm sahnelerde korur." },
         { "tag": "TEKNİK", "title": "PRODÜKSİYON PLANI", "description": "Kamera açıları, mekânlar ve çekim takvimi için detaylı bir harita." }
       ],
       [
@@ -207,8 +207,8 @@
         { "tag": "DİL", "title": "OPTİK & HAREKET", "description": "Sinematik kamera lensleri ve akıcı hareket dili." }
       ],
       [
-        { "tag": "TEMPO", "title": "DİNAMİK KURGU", "description": "Kurgu masasında hikâyenin ritmini ve hissini işleriz." },
-        { "tag": "EFEKT", "title": "VFX & COMPOSITING", "description": "AI ve klasik VFX tekniklerini tek karede buluştururuz." },
+        { "tag": "TEMPO", "title": "DİNAMİK KURGU", "description": "Kurgu masasında hikâyenin ritmini ve hissini işler." },
+        { "tag": "EFEKT", "title": "VFX & COMPOSITING", "description": "AI ve klasik VFX tekniklerini tek karede buluşturur." },
         { "tag": "FİNAL", "title": "RENK & SES TASARIMI", "description": "Sinematik renk derecelendirmesi ve atmosferik ses dünyası." }
       ]
     ]
@@ -216,7 +216,7 @@
   "method": {
     "eyebrow": "CINEGURU YÖNTEMİ · 03",
     "title": "İnsan sezgisi, yapay zekâ ölçeği.",
-    "description": "Bizim için AI bir efekt değil; fikirden finale kadar yaratıcı kontrolü büyüten yeni bir prodüksiyon katmanı.",
+    "description": "Cineguru için AI bir efekt değil; fikirden finale kadar yaratıcı kontrolü büyüten yeni bir prodüksiyon katmanı.",
     "systemLabel": "CG / YARATICI SİSTEM",
     "liveLabel": "CANLI YÖN",
     "tabsLabel": "Cineguru üretim sistemi",
@@ -228,25 +228,25 @@
   },
   "process": {
     "eyebrow": "SÜREÇ · 04",
-    "title": "Karmaşıklığı biz yönetiriz.",
+    "title": "Karmaşıklığı tek merkezden yönetir.",
     "steps": [
-      { "title": "Keşif", "description": "Hedefi, izleyiciyi ve gerçek iletişim problemini birlikte tanımlarız." },
-      { "title": "Yaratıcı Sistem", "description": "Konsept, senaryo ve görsel dünyayı tek bir yaratıcı sistemde kurarız." },
-      { "title": "Üretim", "description": "Canlı çekim, AI ve 3D üretimi aynı kalite standardında yönetiriz." },
-      { "title": "Final & Adaptasyon", "description": "Filmi tamamlar, tüm platformlar için güçlü varyasyonlarını üretiriz." }
+      { "title": "Keşif", "description": "Hedefi, izleyiciyi ve gerçek iletişim problemini tanımlar." },
+      { "title": "Yaratıcı Sistem", "description": "Konsept, senaryo ve görsel dünyayı tek bir yaratıcı sistemde kurar." },
+      { "title": "Üretim", "description": "Canlı çekim, AI ve 3D üretimi aynı kalite standardında yönetir." },
+      { "title": "Final & Adaptasyon", "description": "Filmi tamamlar, tüm platformlar için güçlü varyasyonlarını üretir." }
     ]
   },
   "about": {
     "eyebrow": "BİZ KİMİZ · 03",
-    "title": "Set kültüründen gelen,\ngeleceğe çalışan\nbir stüdyoyuz.",
-    "description": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosu. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle birleştiriyoruz.",
+    "title": "Set kültüründen gelen,\ngeleceğe çalışan\nbir stüdyo.",
+    "description": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosu. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle birleştiriyor.",
     "chapterLabel": "BÖLÜM",
     "mediaLabel": "YOUTUBE · CİNEGURU",
     "principles": [
       { "title": "Tek yaratıcı yön", "description": "Strateji, yönetmenlik ve final aynı fikir etrafında çalışır." },
       { "title": "Hibrit üretim", "description": "Canlı çekim, AI ve 3D yalnızca hikâye ihtiyaç duyduğunda birleşir." },
-      { "title": "Her ekrana hazır", "description": "Ana filmden dikey sosyal kurgulara kadar tek sistemde teslim ederiz." },
-      { "title": "İz bırakan final", "description": "Her filmi markanın hafızasında yer edecek net ve güçlü bir sonla tamamlarız." }
+      { "title": "Her ekrana hazır", "description": "Ana filmden dikey sosyal kurgulara kadar tek sistemde teslim eder." },
+      { "title": "İz bırakan final", "description": "Her filmi markanın hafızasında yer edecek net ve güçlü bir sonla tamamlar." }
     ],
     "brandsLabel": "Birlikte ürettiklerimiz",
     "brandLogoSuffix": "logosu"
@@ -254,7 +254,7 @@
   "contact": {
     "eyebrow": "YENİ BİR FİLM · 04",
     "title": "Sıradaki hikâyeyi\nbirlikte çekelim.",
-    "description": "Kısaca fikrinden, teslim tarihinden ve ihtiyacından bahset. Gerisini birlikte şekillendirelim.",
+    "description": "Projenden, teslim tarihinden ve beklentinden bahset; gerisi Cineguru stüdyosunda şekillensin.",
     "mailCta": "Hemen Başlayalım",
     "phoneCta": "Bizi Arayın",
     "location": "Adres",
@@ -278,12 +278,12 @@
   "footer": {
     "line": "AI Destekli Video Prodüksiyon",
     "aboutTitle": "BİZ KİMİZ",
-    "aboutText": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosudur. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle ve yapay zekâ ölçeğiyle birleştiriyoruz.",
+    "aboutText": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosudur. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle ve yapay zekâ ölçeğiyle birleştiriyor.",
     "privacyTitle": "GİZLİLİK VE SÖZLEŞMELER",
     "privacyParagraphs": [
-      "Müşterilerimizle imzaladığımız gizlilik ve rekabet sözleşmeleri (NDA) gereği, ürettiğimiz veya katkı sağladığımız bazı projeleri, marka ortaklıklarını ve set arkası detayları web sitemizde açıkça yayınlayamıyoruz. Kurumsal güvenliğinize ve iş sözleşmelerine göstermiş olduğumuz bu hassasiyet, Cineguru Studio olarak çalışma disiplinimizin en temel taşıdır.",
+      "Müşterilerimizle imzaladığımız gizlilik ve rekabet sözleşmeleri (NDA) gereği, ürettiğimiz veya katkı sağladığımız bazı projeleri, marka ortaklıklarını ve set arkası detayları web sitemizde açıkça yayınlayamıyoruz. Kurumsal güvenliğinize ve iş sözleşmelerine gösterilen bu hassasiyet, Cineguru Studio’nun çalışma disiplininin en temel taşıdır.",
       "Web sitemiz ziyaretçilerinden herhangi bir kişisel veri toplamaz, reklam hedeflemesi amacıyla çerez (cookies) kullanmaz veya tarayıcı geçmişinizi kaydetmez. Sitemiz tamamen şeffaf, çerezsiz ve izleyicisini takip etmeyen güvenli bir altyapı üzerine kurulmuştur.",
-      "Bizimle paylaştığınız briefler, proje talepleri, e-posta veya telefon üzerinden kurduğunuz iletişimler, yalnızca projenizin değerlendirilmesi ve planlanması amacıyla stüdyomuz bünyesinde gizli tutulur. Üçüncü şahıslarla asla paylaşılmaz."
+      "Bizimle paylaştığınız briefler, proje talepleri, e-posta veya telefon üzerinden kurduğunuz iletişimler, yalnızca projenizin değerlendirilmesi ve planlanması amacıyla stüdyo bünyesinde gizli tutulur. Üçüncü şahıslarla asla paylaşılmaz."
     ],
     "socialTitle": "TAKİP EDİN"
   }

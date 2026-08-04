@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Cineguru Studio | AI-Powered Video Production",
     "description": "An Istanbul production studio creating commercials, brand films, event films and social content with live action, AI and post-production.",
-    "ogDescription": "We bring human creativity and artificial intelligence into one production discipline.",
+    "ogDescription": "Brings human creativity and artificial intelligence into one production discipline.",
     "locale": "en_US",
     "imageAlt": "Cineguru Studio — AI-powered video production",
     "keywords": ["AI video production", "commercial film", "brand film", "video production", "Cineguru Studio", "Istanbul production company"]
@@ -34,9 +34,9 @@
   },
   "hero": {
     "eyebrow": "AI-POWERED VIDEO PRODUCTION · ISTANBUL",
-    "titleLines": ["We turn ideas into films", "that leave a mark."],
-    "mobileTitleLines": ["From idea to film,", "we make work", "that leaves a mark."],
-    "description": "We bring artificial intelligence and human creativity into one production discipline for commercials, brand films and social content.",
+    "titleLines": ["Turning ideas into films", "that leave a mark."],
+    "mobileTitleLines": ["From idea to film,", "creating work", "that leaves a mark."],
+    "description": "Combines artificial intelligence and human creativity into one production discipline for commercials, brand films and social content.",
     "primaryCta": "Explore the work",
     "foot": "IDEA → PRODUCTION → FINAL",
     "discover": "Discover",
@@ -48,7 +48,7 @@
   "work": {
     "eyebrow": "SELECTED WORK · 01",
     "title": "A new visual language for every brand.",
-    "description": "We combine camera, AI, 3D and post-production tools in one story, shaped around what the idea needs.",
+    "description": "Combines camera, AI, 3D and post-production tools in one story, shaped around what the idea needs.",
     "caseStudiesLabel": "LATEST CASE STUDIES",
     "archiveLabel": "SELECTED ARCHIVE",
     "watchLabel": "Watch film",
@@ -153,10 +153,10 @@
     "instagramTab": "Instagram / Reels",
     "youtubeTab": "YouTube / Shorts",
     "instagramPanelTitle": "From set to feed, from studio to story.",
-    "instagramPanelDescription": "We share Reels, behind-the-scenes moments and daily production notes on our Instagram feed.",
+    "instagramPanelDescription": "Reels, behind-the-scenes moments and daily production notes shared on the Instagram feed.",
     "instagramFeatures": ["Behind the scenes", "Reels", "Production notes"],
     "youtubePanelTitle": "Fresh work in short form.",
-    "youtubePanelDescription": "Watch our new films, experiments and vertical stories on the Cineguru YouTube Shorts channel.",
+    "youtubePanelDescription": "Watch new films, experiments and vertical stories on the Cineguru YouTube Shorts channel.",
     "youtubeChannel": "Open channel",
     "youtubeOverline": "YOUTUBE SHORTS / LATEST",
     "watchReel": "Watch Reel",
@@ -185,20 +185,20 @@
     "activeLabel": "ACTIVE",
     "sceneLabels": ["STRATEGY BOARD", "CREATIVE DIRECTION", "PRODUCTION", "POST PRODUCTION"],
     "items": [
-      { "title": "Strategy", "description": "We find the brand's real challenge and turn the idea into a story audiences remember.", "tags": ["Creative Direction", "Campaign", "Concept"] },
-      { "title": "Pre Production", "description": "We accelerate scripts, visual worlds, character continuity and storyboards with AI.", "tags": ["Script", "AI Visuals", "Storyboard"] },
-      { "title": "Production + AI Video", "description": "We unite live action and generative AI under one directing and cinematography language.", "tags": ["Live Action", "AI Film", "Studio"] },
+      { "title": "Strategy", "description": "Finds the brand's core message and turns the idea into a story audiences remember.", "tags": ["Creative Direction", "Campaign", "Concept"] },
+      { "title": "Pre Production", "description": "Accelerates scripts, visual worlds, character continuity and storyboards with AI.", "tags": ["Script", "AI Visuals", "Storyboard"] },
+      { "title": "Production + AI Video", "description": "Unites live action and generative AI under one directing and cinematography language.", "tags": ["Live Action", "AI Film", "Studio"] },
       { "title": "Post Production", "description": "Editing, VFX, color, sound and format adaptations create a final that works everywhere.", "tags": ["Editing", "VFX", "Color"] }
     ],
     "details": [
       [
-        { "tag": "STRATEGY", "title": "GOAL & ANALYSIS", "description": "We build a message framework aligned with the brand's objectives." },
+        { "tag": "STRATEGY", "title": "GOAL & ANALYSIS", "description": "Builds a message framework aligned with the brand's objectives." },
         { "tag": "NARRATIVE", "title": "CREATIVE CONCEPT", "description": "An original idea designed to stay with the audience." },
         { "tag": "ARCHITECTURE", "title": "CAMPAIGN STRUCTURE", "description": "A release map built to work across every channel." }
       ],
       [
-        { "tag": "VISUALIZATION", "title": "AI STORYBOARD", "description": "We visualize the script frame by frame with generative AI." },
-        { "tag": "CONTINUITY", "title": "CHARACTER LOCK", "description": "We maintain character style continuity across every scene." },
+        { "tag": "VISUALIZATION", "title": "AI STORYBOARD", "description": "Visualizes the script frame by frame with generative AI." },
+        { "tag": "CONTINUITY", "title": "CHARACTER LOCK", "description": "Maintains character style continuity across every scene." },
         { "tag": "TECHNICAL", "title": "PRODUCTION PLAN", "description": "A detailed map of camera angles, locations and the shooting schedule." }
       ],
       [
@@ -207,8 +207,8 @@
         { "tag": "LANGUAGE", "title": "OPTICS & MOVEMENT", "description": "Cinematic lenses and a fluid language of movement." }
       ],
       [
-        { "tag": "TEMPO", "title": "DYNAMIC EDITING", "description": "We shape the story's rhythm and feeling in the edit." },
-        { "tag": "EFFECTS", "title": "VFX & COMPOSITING", "description": "We bring AI and classic VFX techniques together in a single frame." },
+        { "tag": "TEMPO", "title": "DYNAMIC EDITING", "description": "Shapes the story's rhythm and feeling in the edit." },
+        { "tag": "EFFECTS", "title": "VFX & COMPOSITING", "description": "Brings AI and classic VFX techniques together in a single frame." },
         { "tag": "FINAL", "title": "COLOR & SOUND DESIGN", "description": "Cinematic color grading and an atmospheric sound world." }
       ]
     ]
@@ -216,7 +216,7 @@
   "method": {
     "eyebrow": "CINEGURU METHOD · 03",
     "title": "Human instinct, AI scale.",
-    "description": "For us, AI is not an effect. It is a new production layer that expands creative control from first idea to final delivery.",
+    "description": "For Cineguru, AI is not an effect. It is a new production layer that expands creative control from first idea to final delivery.",
     "systemLabel": "CG / CREATIVE SYSTEM",
     "liveLabel": "LIVE DIRECTION",
     "tabsLabel": "Cineguru production system",
@@ -228,25 +228,25 @@
   },
   "process": {
     "eyebrow": "PROCESS · 04",
-    "title": "We manage the complexity.",
+    "title": "Manages complexity end-to-end.",
     "steps": [
-      { "title": "Discovery", "description": "Together, we define the goal, the audience and the real communication problem." },
-      { "title": "Creative System", "description": "We build the concept, script and visual world as one coherent creative system." },
-      { "title": "Production", "description": "We direct live action, AI and 3D production to the same quality standard." },
-      { "title": "Final & Adaptation", "description": "We finish the film and create strong variations for every platform." }
+      { "title": "Discovery", "description": "Defines the goal, the audience and the real communication problem." },
+      { "title": "Creative System", "description": "Builds the concept, script and visual world as one coherent creative system." },
+      { "title": "Production", "description": "Directs live action, AI and 3D production to the same quality standard." },
+      { "title": "Final & Adaptation", "description": "Finishes the film and creates strong variations for every platform." }
     ]
   },
   "about": {
     "eyebrow": "ABOUT US · 03",
     "title": "Born from set culture.\nBuilt for what comes next.",
-    "description": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. We combine traditional filmmaking discipline with next-generation production technology.",
+    "description": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. It combines traditional filmmaking discipline with next-generation production technology.",
     "chapterLabel": "CHAPTER",
     "mediaLabel": "YOUTUBE · CINEGURU",
     "principles": [
       { "title": "One creative direction", "description": "Strategy, direction and final delivery work around the same idea." },
       { "title": "Hybrid production", "description": "Live action, AI and 3D come together only when the story calls for them." },
-      { "title": "Ready for every screen", "description": "From the master film to vertical social edits, we deliver one coherent system." },
-      { "title": "A final that stays", "description": "We finish every film with a clear, memorable ending that stays with the audience." }
+      { "title": "Ready for every screen", "description": "From the master film to vertical social edits, delivers one coherent system." },
+      { "title": "A final that stays", "description": "Finishes every film with a clear, memorable ending that stays with the audience." }
     ],
     "brandsLabel": "Brands we create with",
     "brandLogoSuffix": "logo"
@@ -254,11 +254,11 @@
   "contact": {
     "eyebrow": "A NEW FILM · 04",
     "title": "Let’s make the next story\ntogether.",
-    "description": "Tell us briefly about the idea, timing and what you need. We will shape the rest together.",
+    "description": "Tell us briefly about the idea, timing and what you need. The rest will be shaped at Cineguru Studio.",
     "mailCta": "Get Started Now",
     "phoneCta": "Call Us",
     "location": "Address",
-    "address": "Caferağa Mah. Şifa Sk. No: 19 Kadıköy / Istanbul",
+    "address": "Caferağa Mah. Shifa Sk. No: 19 Kadikoy / Istanbul",
     "emailLabel": "Email",
     "socialLabel": "Social",
     "form": {
@@ -278,12 +278,12 @@
   "footer": {
     "line": "AI-Powered Video Production",
     "aboutTitle": "ABOUT US",
-    "aboutText": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. We combine traditional filmmaking discipline with next-generation production technology and AI scale.",
+    "aboutText": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. It combines traditional filmmaking discipline with next-generation production technology and AI scale.",
     "privacyTitle": "PRIVACY & CONTRACTS",
     "privacyParagraphs": [
-      "Due to strict confidentiality and non-disclosure agreements (NDAs) with our clients, we cannot publicly display or write about all the projects we produce, co-create, or provide services for on our website. This commitment to your corporate safety and compliance is a cornerstone of our production discipline at Cineguru Studio.",
-      "Our website does not collect any personal data, does not use advertising or tracking cookies, and does not record browser history. We believe in absolute transparency, which is why our digital experience is completely cookie-free and secure.",
-      "The briefs, project request files, and communication details you share with us through email or phone are used exclusively for evaluating and planning your production. These details are stored securely and never shared with third parties."
+      "Due to strict confidentiality and non-disclosure agreements (NDAs) with clients, not all produced projects or partner details are publicly displayed on the website. This commitment to corporate safety and compliance is a cornerstone of the production discipline at Cineguru Studio.",
+      "The website does not collect personal data, use advertising cookies, or record browser history. The digital experience is completely cookie-free and secure.",
+      "Briefs, project request files, and communication details shared via email or phone are used exclusively for evaluating and planning production within the studio and are never shared with third parties."
     ],
     "socialTitle": "FOLLOW US"
   }

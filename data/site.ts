@@ -4,6 +4,7 @@ export const siteConfig = {
   email: "info@wearecineguru.com",
   phoneDisplay: "+90 531 844 62 06",
   phoneHref: "tel:+905318446206",
+  whatsappHref: "https://wa.me/905318446206",
   address: {
     street: "Caferağa Mah. Şifa Sk. No: 19",
     locality: "Kadıköy",

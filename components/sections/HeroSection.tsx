@@ -59,14 +59,16 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
               ↓
             </span>
           </ButtonLink>
-          <TextLink className="max-[600px]:hidden" href="#contact">
+          <TextLink className="max-[600px]:hidden" href={siteConfig.whatsappHref} target="_blank" rel="noopener noreferrer">
             {messages.navigation.projectCta}
             <span aria-hidden="true">↗</span>
           </TextLink>
           <ButtonLink
             variant="light"
             className="min-[601px]:!hidden max-[600px]:flex max-[600px]:min-h-[3.75rem] max-[600px]:w-full max-[600px]:justify-center max-[600px]:text-[0.88rem] max-[600px]:font-bold max-[600px]:tracking-[0.06em]"
-            href="#contact"
+            href={siteConfig.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {messages.navigation.projectCta}
             <span aria-hidden="true">↗</span>

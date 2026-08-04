@@ -21,7 +21,9 @@ export function ContactSection({ messages, locale }: { messages: Messages; local
       <div className="contact-cta-group reveal-on-scroll mt-[clamp(3.5rem,6vw,6rem)] flex gap-grid max-[640px]:flex-col" data-reveal="split">
         <HoverVideoButtonLink
           className="contact-cta-primary !bg-accent/92"
-          href={`mailto:${siteConfig.email}?subject=${encodeURIComponent(contact.form.subject)}`}
+          href={siteConfig.whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
           poster={siteConfig.showreel.poster}
           videoSrc={siteConfig.showreel.video}
         >
