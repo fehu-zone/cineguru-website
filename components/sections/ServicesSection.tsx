@@ -216,6 +216,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
                         activeIndex={threeIndex}
                         reducedMotion={reducedMotion}
                         sceneLabel={services.sceneLabels[threeIndex]}
+                        details={services.details}
                       />
                     </Suspense>
                   </ServicesSceneErrorBoundary>
