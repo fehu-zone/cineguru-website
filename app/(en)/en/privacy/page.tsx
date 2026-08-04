@@ -1,31 +1,21 @@
 import { getMessages } from "@/i18n/config";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
-import { ContactPanel } from "@/components/layout/ContactPanel";
+import { SubpageLayout } from "@/components/layout/SubpageLayout";
 
 export default function PrivacyPage() {
   const locale = "en";
   const messages = getMessages(locale);
 
   return (
-    <>
-      <SiteHeader locale={locale} messages={messages} />
-      <main className="page-shell pt-32 pb-24 text-foreground">
-        <div className="max-w-[70ch] mx-auto mt-8">
-          <h1 className="font-display text-[clamp(2.2rem,4.5vw,4rem)] [font-weight:580] leading-[1.05] tracking-[-0.04em] mb-8">
-            {messages.footer.privacyTitle}
-          </h1>
-          <div className="text-[1.05rem] leading-[1.75] text-foreground/75 space-y-6">
-            {messages.footer.privacyParagraphs.map((para, idx) => (
-              <p key={idx}>{para}</p>
-            ))}
-          </div>
-        </div>
-        <div className="mt-32">
-          <ContactPanel messages={messages} locale={locale} />
-        </div>
-      </main>
-      <SiteFooter messages={messages} />
-    </>
+    <SubpageLayout
+      locale={locale}
+      messages={messages}
+      title={messages.footer.privacyTitle}
+    >
+      <div className="text-[1.125rem] md:text-[1.2rem] leading-[1.85] text-foreground/80 space-y-8 font-normal">
+        {messages.footer.privacyParagraphs.map((para, idx) => (
+          <p key={idx}>{para}</p>
+        ))}
+      </div>
+    </SubpageLayout>
   );
 }

@@ -1,9 +1,7 @@
 import { getMessages } from "@/i18n/config";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
-import { ContactPanel } from "@/components/layout/ContactPanel";
 import { brands } from "@/data/site";
 import { ClientLogo } from "@/components/ui/ClientLogo";
+import { SubpageLayout, SubpageSection, SubpageGrid } from "@/components/layout/SubpageLayout";
 
 export default function AboutPage() {
   const locale = "en";
@@ -22,72 +20,41 @@ export default function AboutPage() {
   );
 
   return (
-    <>
-      <SiteHeader locale={locale} messages={messages} />
-      <main className="page-shell pt-32 pb-24 text-foreground">
-        <div className="max-w-[70ch] mx-auto mt-8 mb-20">
-          <h1 className="font-display text-[clamp(2.2rem,4.5vw,4rem)] [font-weight:580] leading-[1.05] tracking-[-0.04em] mb-8">
-            {f.aboutTitle}
-          </h1>
-          <p className="text-[1.25rem] leading-[1.6] text-foreground/90 font-normal mb-8 whitespace-pre-line">
-            {about.title}
-          </p>
-          <p className="text-[1.05rem] leading-[1.75] text-foreground/70 mb-12">
-            {about.description}
-          </p>
+    <SubpageLayout
+      locale={locale}
+      messages={messages}
+      title={f.aboutTitle}
+      subtitle={about.title}
+      description={about.description}
+    >
+      {/* Our Clients & Stories */}
+      <SubpageSection title="OUR CLIENTS & STORIES">
+        <p className="text-[1.125rem] md:text-[1.2rem] leading-[1.8] text-foreground/80 font-normal">
+          We produce a wide range of video content from commercial films and digital campaigns to brand stories, events, and launch films. We design high-aesthetic, result-driven projects tailored to each brand&apos;s corporate identity and target audience by combining traditional film discipline with generative AI technologies.
+        </p>
+      </SubpageSection>
 
-          {/* Written References Section */}
-          <div className="border-t border-foreground/10 pt-10 mt-10 mb-12">
-            <h3 className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.16em] text-accent mb-6">
-              OUR CLIENTS & STORIES
-            </h3>
-            <p className="text-[1.05rem] leading-[1.75] text-foreground/75">
-              To date, we have collaborated with leading local and global brands. Our signature works include commercial campaigns for Alfemo, technology-focused brand films for Siemens, digital campaigns for e-commerce giants like Boyner, Hepsiburada, and Sahibinden, and high-impact vision projects for large-scale events like the Zero Waste Festival. We produce high-aesthetic, result-oriented video content tailored specifically to each brand's corporate identity and target audience.
-            </p>
+      {/* Production Approach */}
+      <SubpageSection title="PRODUCTION APPROACH">
+        <SubpageGrid items={about.principles} />
+      </SubpageSection>
+
+      {/* Brands Section */}
+      <div className="border-t border-foreground/15 pt-16 mt-16 mb-12">
+        <p className="mb-8 text-center font-mono text-xs md:text-sm font-bold uppercase tracking-[0.18em] text-accent max-[640px]:mb-6">
+          {about.brandsLabel}
+        </p>
+        <div className="relative overflow-hidden border border-dotted border-foreground/30 bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:0.5rem_0.5rem]">
+          <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
+            {firstBrandRow.map(renderBrand)}
           </div>
-
-          {/* Principles Grid */}
-          <div className="border-t border-foreground/10 pt-10 mt-12">
-            <h3 className="font-mono text-[0.68rem] font-bold uppercase tracking-[0.16em] text-accent mb-8">
-              PRODUCTION APPROACH
-            </h3>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-10 max-[640px]:grid-cols-1">
-              {about.principles.map((p, idx) => (
-                <div key={idx} className="flex flex-col gap-2">
-                  <span className="font-mono text-[0.58rem] text-foreground/45 uppercase tracking-wider">
-                    0{idx + 1} · {p.title}
-                  </span>
-                  <p className="text-[0.92rem] leading-relaxed text-foreground/75">
-                    {p.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
+            <div aria-hidden="true" className="min-h-[8rem] border-b border-r border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
+            {secondBrandRow.map(renderBrand)}
+            <div aria-hidden="true" className="min-h-[8rem] border-b border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
           </div>
         </div>
-
-        {/* Brands Section (Birlikte Ürettiklerimiz) */}
-        <div className="border-t border-foreground/10 pt-16 mb-20">
-          <p className="mb-8 text-center font-mono text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-accent max-[640px]:mb-6 max-[640px]:text-[0.62rem]">
-            {about.brandsLabel}
-          </p>
-          <div className="relative overflow-hidden border border-dotted border-foreground/30 bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-[length:0.5rem_0.5rem]">
-            <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
-              {firstBrandRow.map(renderBrand)}
-            </div>
-            <div className="grid grid-cols-8 max-[1100px]:grid-cols-4 max-[640px]:grid-cols-2">
-              <div aria-hidden="true" className="min-h-[8rem] border-b border-r border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
-              {secondBrandRow.map(renderBrand)}
-              <div aria-hidden="true" className="min-h-[8rem] border-b border-dotted border-foreground/25 bg-transparent max-[1100px]:hidden" />
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-32">
-          <ContactPanel messages={messages} locale={locale} />
-        </div>
-      </main>
-      <SiteFooter messages={messages} />
-    </>
+      </div>
+    </SubpageLayout>
   );
 }
