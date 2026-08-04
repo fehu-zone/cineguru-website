@@ -762,16 +762,23 @@
 
 /* 3D Hotspot Cards */
 .services-hotspot-card {
-  width: 210px !important;
-  max-width: 210px !important;
-  padding: 12px 14px !important;
+  width: 220px !important;
+  max-width: 220px !important;
+  padding: 14px 16px !important;
   border-radius: 8px !important;
-  background: rgba(20, 20, 24, 0.92) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
-  transition: transform 300ms var(--ease-cinematic), border-color 300ms ease, box-shadow 300ms ease !important;
+  background: rgba(10, 10, 12, 0.75) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-left: 3px solid var(--color-accent) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  transition: 
+    transform 400ms var(--ease-cinematic), 
+    border-color 400ms ease, 
+    background-color 400ms ease,
+    box-shadow 400ms ease !important;
   user-select: none !important;
   cursor: pointer !important;
   white-space: normal !important;
@@ -781,69 +788,74 @@
 
 .services-hotspot-card:hover,
 .services-hotspot-card.is-hovered {
-  transform: translateY(-3px) scale(1.03) !important;
-  border-color: rgba(227, 51, 38, 0.65) !important;
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.8), 0 0 18px rgba(227, 51, 38, 0.3) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  background: rgba(14, 14, 18, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  border-left: 3px solid var(--color-accent) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.85), 
+    0 0 25px rgba(227, 51, 38, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
 }
 
 .hotspot-header {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  margin-bottom: 0.35rem !important;
+  margin-bottom: 0.45rem !important;
 }
 
 .hotspot-badge {
   font-family: var(--font-mono), monospace !important;
-  font-size: 0.58rem !important;
+  font-size: 0.56rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   color: var(--color-accent) !important;
 }
 
 .hotspot-dot {
-  width: 6px !important;
-  height: 6px !important;
+  width: 5px !important;
+  height: 5px !important;
   border-radius: 50% !important;
   background: var(--color-accent) !important;
-  box-shadow: 0 0 8px var(--color-accent) !important;
-  animation: pulse-dot 2s infinite ease-in-out !important;
+  box-shadow: 0 0 10px var(--color-accent) !important;
+  animation: pulse-dot 2.5s infinite ease-in-out !important;
 }
 
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
+  50% { transform: scale(1.5); opacity: 0.5; }
 }
 
 .hotspot-title {
   font-family: var(--font-display), sans-serif !important;
-  font-size: 0.82rem !important;
-  font-weight: 600 !important;
-  line-height: 1.2 !important;
-  letter-spacing: -0.02em !important;
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.01em !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
 
 .hotspot-desc {
-  margin-top: 0.3rem !important;
-  font-size: 0.68rem !important;
-  line-height: 1.4 !important;
-  color: rgba(241, 241, 241, 0.7) !important;
+  margin-top: 0.35rem !important;
+  font-size: 0.72rem !important;
+  line-height: 1.45 !important;
+  color: rgba(241, 241, 241, 0.6) !important;
 }
 
 @media (max-width: 768px) {
   .services-hotspot-card {
-    width: 170px !important;
-    max-width: 170px !important;
-    padding: 9px 11px !important;
+    width: 180px !important;
+    max-width: 180px !important;
+    padding: 10px 12px !important;
   }
   .hotspot-title {
-    font-size: 0.75rem !important;
+    font-size: 0.78rem !important;
   }
   .hotspot-desc {
-    font-size: 0.62rem !important;
+    font-size: 0.66rem !important;
   }
 }
 

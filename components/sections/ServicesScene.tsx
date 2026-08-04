@@ -315,12 +315,22 @@ function ServicesSceneInner({
   details?: DetailItem[][];
 }) {
   const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (controlsRef.current) {
       controlsRef.current.reset();
     }
   }, [activeIndex]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 940);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const serviceDetails = details?.[activeIndex];
   const positions = HOTSPOT_POSITIONS[activeIndex] ?? HOTSPOT_POSITIONS[0];
@@ -379,7 +389,7 @@ function ServicesSceneInner({
       </Center>
 
       {/* Render Localized 3D Hotspots */}
-      {hotspotsData.map((hotspot, idx) => (
+      {!isMobile && hotspotsData.map((hotspot, idx) => (
         <HotspotCard key={`${activeIndex}-hotspot-${idx}-${hotspot.title}`} data={hotspot} />
       ))}
 
