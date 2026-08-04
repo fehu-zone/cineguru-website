@@ -162,25 +162,81 @@ function HotspotCard({ data }: { data: HotspotData }) {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   Entrance animation wrapper
+   4 Complementary Stage Entrance Animations (Spatial Journey)
    ═══════════════════════════════════════════════════════════ */
-function EntranceWrap({ children }: { children: React.ReactNode }) {
+
+/* 01 · STRATEJİ — Drop & Spin from Above (TOP -> CENTER) */
+function StrategyEntranceWrap({ children }: { children: React.ReactNode }) {
   const ref = useRef<THREE.Group>(null);
   const progress = useRef(0);
 
   useFrame((_, delta) => {
     if (!ref.current) return;
-    progress.current = Math.min(1, progress.current + delta * 2.2);
+    progress.current = Math.min(1, progress.current + delta * 2.0);
     const t = 1 - Math.pow(1 - progress.current, 3);
     ref.current.scale.setScalar(t);
-    ref.current.rotation.y = (1 - t) * 0.8;
+    ref.current.position.y = (1 - t) * 1.5;
+    ref.current.rotation.y = (1 - t) * (Math.PI * 0.75);
   });
 
-  return (
-    <group ref={ref} scale={0}>
-      {children}
-    </group>
-  );
+  return <group ref={ref} scale={0}>{children}</group>;
+}
+
+/* 02 · PRE PRODUCTION — Slide & Twist from Left (LEFT -> CENTER) */
+function PreProdEntranceWrap({ children }: { children: React.ReactNode }) {
+  const ref = useRef<THREE.Group>(null);
+  const progress = useRef(0);
+
+  useFrame((_, delta) => {
+    if (!ref.current) return;
+    progress.current = Math.min(1, progress.current + delta * 2.0);
+    const t = 1 - Math.pow(1 - progress.current, 3);
+    ref.current.scale.setScalar(t);
+    ref.current.position.x = (1 - t) * -1.8;
+    ref.current.rotation.z = (1 - t) * -0.4;
+    ref.current.rotation.y = (1 - t) * 0.5;
+  });
+
+  return <group ref={ref} scale={0}>{children}</group>;
+}
+
+/* 03 · PRODUCTION + AI VIDEO — Optical Lens Zoom Out from Depth (DEPTH Z -> CENTER) */
+function ProdEntranceWrap({ children }: { children: React.ReactNode }) {
+  const ref = useRef<THREE.Group>(null);
+  const progress = useRef(0);
+
+  useFrame((_, delta) => {
+    if (!ref.current) return;
+    progress.current = Math.min(1, progress.current + delta * 1.9);
+    const t = 1 - Math.pow(1 - progress.current, 3);
+    ref.current.scale.setScalar(0.25 + t * 0.75);
+    ref.current.position.z = (1 - t) * 1.6;
+    ref.current.rotation.y = (1 - t) * -0.6;
+  });
+
+  return <group ref={ref} scale={0.25}>{children}</group>;
+}
+
+/* 04 · POST PRODUCTION — Rise & Tilt from Below (BOTTOM -> CENTER) */
+function PostProdEntranceWrap({ children }: { children: React.ReactNode }) {
+  const ref = useRef<THREE.Group>(null);
+  const progress = useRef(0);
+
+  useFrame((_, delta) => {
+    if (!ref.current) return;
+    progress.current = Math.min(1, progress.current + delta * 2.0);
+    const t = 1 - Math.pow(1 - progress.current, 3);
+    ref.current.scale.setScalar(t);
+    ref.current.position.y = (1 - t) * -1.5;
+    ref.current.rotation.x = (1 - t) * 0.35;
+    ref.current.rotation.y = (1 - t) * -0.5;
+  });
+
+  return <group ref={ref} scale={0}>{children}</group>;
+}
+
+function EntranceWrap({ children }: { children: React.ReactNode }) {
+  return <group>{children}</group>;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -373,23 +429,21 @@ function StrategyChessSet({ label }: { label: string }) {
   const { scene } = useGLTF("/assets/strategy-chess-set/chess_set_1k.glb");
 
   return (
-    <EntranceWrap>
-      <group position={[0, -0.25, 0]} rotation={[0.08, -0.32, 0.06]}>
-        <primitive object={scene} scale={4.1} />
-        <Html center position={[0, 0.68, 0.15]} distanceFactor={4}>
-          <div style={{
-            color: "#e33326",
-            fontFamily: "monospace",
-            fontSize: "10px",
-            fontWeight: 700,
-            letterSpacing: "0.16em",
-            whiteSpace: "nowrap",
-          }}>
-            {label}
-          </div>
-        </Html>
-      </group>
-    </EntranceWrap>
+    <group position={[0, -0.25, 0]} rotation={[0.08, -0.32, 0.06]}>
+      <primitive object={scene} scale={4.1} />
+      <Html center position={[0, 0.68, 0.15]} distanceFactor={4}>
+        <div style={{
+          color: "#e33326",
+          fontFamily: "monospace",
+          fontSize: "10px",
+          fontWeight: 700,
+          letterSpacing: "0.16em",
+          whiteSpace: "nowrap",
+        }}>
+          {label}
+        </div>
+      </Html>
+    </group>
   );
 }
 
@@ -715,75 +769,73 @@ function PostProductionRobot() {
   });
 
   return (
-    <EntranceWrap>
-      <group position={[0, -0.2, 0]} rotation={[0.05, -0.18, 0]}>
-        <group ref={headRef} position={[0, 1.28, 0]}>
-          <RoundedBox args={[1.15, 0.78, 0.52]} radius={0.12}>
-            <meshStandardMaterial color="#24104f" emissive="#6d00ff" emissiveIntensity={0.18} metalness={0.7} roughness={0.24} />
-          </RoundedBox>
-          <mesh position={[-0.22, 0.08, 0.28]}>
-            <sphereGeometry args={[0.1, 20, 20]} />
-            <meshStandardMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.25} />
-          </mesh>
-          <mesh position={[0.22, 0.08, 0.28]}>
-            <sphereGeometry args={[0.1, 20, 20]} />
-            <meshStandardMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.25} />
-          </mesh>
-          <mesh position={[0, -0.22, 0.27]}>
-            <planeGeometry args={[0.44, 0.045]} />
-            <meshBasicMaterial color={ACCENT} />
-          </mesh>
-        </group>
-
-        <group position={[0, 0.74, 0]}>
-          <RoundedBox args={[0.38, 0.22, 0.32]} radius={0.06}>
-            <meshStandardMaterial color={METAL_MID} metalness={0.85} roughness={0.18} />
-          </RoundedBox>
-          <mesh position={[0, 0.2, 0]}>
-            <cylinderGeometry args={[0.035, 0.035, 0.24, 12]} />
-            <meshStandardMaterial color={METAL_BRIGHT} metalness={0.9} roughness={0.12} />
-          </mesh>
-        </group>
-
-        <RoundedBox args={[1.05, 1.2, 0.72]} radius={0.12} position={[0, 0, 0]}>
-          <meshStandardMaterial color="#111a3b" emissive="#18004d" emissiveIntensity={0.16} metalness={0.65} roughness={0.28} />
+    <group position={[0, -0.2, 0]} rotation={[0.05, -0.18, 0]}>
+      <group ref={headRef} position={[0, 1.28, 0]}>
+        <RoundedBox args={[1.15, 0.78, 0.52]} radius={0.12}>
+          <meshStandardMaterial color="#24104f" emissive="#6d00ff" emissiveIntensity={0.18} metalness={0.7} roughness={0.24} />
         </RoundedBox>
-        <mesh position={[0, 0.05, 0.38]}>
-          <planeGeometry args={[0.58, 0.28]} />
-          <meshStandardMaterial color="#160f2f" emissive="#5b00ff" emissiveIntensity={0.35} />
+        <mesh position={[-0.22, 0.08, 0.28]}>
+          <sphereGeometry args={[0.1, 20, 20]} />
+          <meshStandardMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.25} />
         </mesh>
-
-        <group position={[-0.7, 0.05, 0]} rotation={[0, 0, -0.18]}>
-          <RoundedBox args={[0.22, 0.92, 0.22]} radius={0.08}>
-            <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.22} />
-          </RoundedBox>
-          <mesh position={[0, -0.52, 0]}>
-            <sphereGeometry args={[0.14, 16, 16]} />
-            <meshStandardMaterial color={METAL_LIGHT} metalness={0.8} roughness={0.2} />
-          </mesh>
-        </group>
-        <group position={[0.7, 0.05, 0]} rotation={[0, 0, 0.18]}>
-          <RoundedBox args={[0.22, 0.92, 0.22]} radius={0.08}>
-            <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.22} />
-          </RoundedBox>
-          <mesh position={[0, -0.52, 0]}>
-            <sphereGeometry args={[0.14, 16, 16]} />
-            <meshStandardMaterial color={METAL_LIGHT} metalness={0.8} roughness={0.2} />
-          </mesh>
-        </group>
-
-        <RoundedBox args={[0.27, 0.72, 0.3]} radius={0.08} position={[-0.3, -0.98, 0]}>
-          <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.2} />
-        </RoundedBox>
-        <RoundedBox args={[0.27, 0.72, 0.3]} radius={0.08} position={[0.3, -0.98, 0]}>
-          <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.2} />
-        </RoundedBox>
-        <mesh position={[0, -1.35, 0.04]}>
-          <boxGeometry args={[1.15, 0.06, 0.45]} />
-          <meshStandardMaterial color="#120a2c" emissive="#5b00ff" emissiveIntensity={0.2} />
+        <mesh position={[0.22, 0.08, 0.28]}>
+          <sphereGeometry args={[0.1, 20, 20]} />
+          <meshStandardMaterial color="#f5f5f5" emissive="#ffffff" emissiveIntensity={0.25} />
+        </mesh>
+        <mesh position={[0, -0.22, 0.27]}>
+          <planeGeometry args={[0.44, 0.045]} />
+          <meshBasicMaterial color={ACCENT} />
         </mesh>
       </group>
-    </EntranceWrap>
+
+      <group position={[0, 0.74, 0]}>
+        <RoundedBox args={[0.38, 0.22, 0.32]} radius={0.06}>
+          <meshStandardMaterial color={METAL_MID} metalness={0.85} roughness={0.18} />
+        </RoundedBox>
+        <mesh position={[0, 0.2, 0]}>
+          <cylinderGeometry args={[0.035, 0.035, 0.24, 12]} />
+          <meshStandardMaterial color={METAL_BRIGHT} metalness={0.9} roughness={0.12} />
+        </mesh>
+      </group>
+
+      <RoundedBox args={[1.05, 1.2, 0.72]} radius={0.12} position={[0, 0, 0]}>
+        <meshStandardMaterial color="#111a3b" emissive="#18004d" emissiveIntensity={0.16} metalness={0.65} roughness={0.28} />
+      </RoundedBox>
+      <mesh position={[0, 0.05, 0.38]}>
+        <planeGeometry args={[0.58, 0.28]} />
+        <meshStandardMaterial color="#160f2f" emissive="#5b00ff" emissiveIntensity={0.35} />
+      </mesh>
+
+      <group position={[-0.7, 0.05, 0]} rotation={[0, 0, -0.18]}>
+        <RoundedBox args={[0.22, 0.92, 0.22]} radius={0.08}>
+          <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.22} />
+        </RoundedBox>
+        <mesh position={[0, -0.52, 0]}>
+          <sphereGeometry args={[0.14, 16, 16]} />
+          <meshStandardMaterial color={METAL_LIGHT} metalness={0.8} roughness={0.2} />
+        </mesh>
+      </group>
+      <group position={[0.7, 0.05, 0]} rotation={[0, 0, 0.18]}>
+        <RoundedBox args={[0.22, 0.92, 0.22]} radius={0.08}>
+          <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.22} />
+        </RoundedBox>
+        <mesh position={[0, -0.52, 0]}>
+          <sphereGeometry args={[0.14, 16, 16]} />
+          <meshStandardMaterial color={METAL_LIGHT} metalness={0.8} roughness={0.2} />
+        </mesh>
+      </group>
+
+      <RoundedBox args={[0.27, 0.72, 0.3]} radius={0.08} position={[-0.3, -0.98, 0]}>
+        <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.2} />
+      </RoundedBox>
+      <RoundedBox args={[0.27, 0.72, 0.3]} radius={0.08} position={[0.3, -0.98, 0]}>
+        <meshStandardMaterial color={METAL_DARK} metalness={0.8} roughness={0.2} />
+      </RoundedBox>
+      <mesh position={[0, -1.35, 0.04]}>
+        <boxGeometry args={[1.15, 0.06, 0.45]} />
+        <meshStandardMaterial color="#120a2c" emissive="#5b00ff" emissiveIntensity={0.2} />
+      </mesh>
+    </group>
   );
 }
 
@@ -846,10 +898,26 @@ function ServicesSceneInner({
       />
 
       <Center>
-        {activeIndex === 0 ? <StrategyChessSet key={activeIndex} label={sceneLabel} /> : null}
-        {activeIndex === 1 ? <SteampunkCamera key={activeIndex} /> : null}
-        {activeIndex === 2 ? <PreProductionCamera key={activeIndex} /> : null}
-        {activeIndex === 3 ? <PostProductionRobot key={activeIndex} /> : null}
+        {activeIndex === 0 ? (
+          <StrategyEntranceWrap key={`stage-0-${activeIndex}`}>
+            <StrategyChessSet label={sceneLabel} />
+          </StrategyEntranceWrap>
+        ) : null}
+        {activeIndex === 1 ? (
+          <PreProdEntranceWrap key={`stage-1-${activeIndex}`}>
+            <SteampunkCamera />
+          </PreProdEntranceWrap>
+        ) : null}
+        {activeIndex === 2 ? (
+          <ProdEntranceWrap key={`stage-2-${activeIndex}`}>
+            <PreProductionCamera />
+          </ProdEntranceWrap>
+        ) : null}
+        {activeIndex === 3 ? (
+          <PostProdEntranceWrap key={`stage-3-${activeIndex}`}>
+            <PostProductionRobot />
+          </PostProdEntranceWrap>
+        ) : null}
       </Center>
 
       <ContactShadows
