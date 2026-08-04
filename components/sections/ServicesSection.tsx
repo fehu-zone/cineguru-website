@@ -26,7 +26,11 @@ const loadServicesSplineScene = () =>
   import("./ServicesSplineScene").then((module) => ({ default: module.ServicesSplineScene }));
 
 const ServicesSplineScene = lazy(loadServicesSplineScene);
-
+const hudCardPositions = [
+  "top-10 left-10 max-[768px]:top-10 max-[768px]:left-3",
+  "top-10 right-10 max-[768px]:top-10 max-[768px]:right-3",
+  "bottom-10 left-10 max-[768px]:bottom-10 max-[768px]:left-3",
+] as const;
 
 class ServicesSceneErrorBoundary extends Component<
   { children: ReactNode },
@@ -238,6 +242,30 @@ export function ServicesSection({ messages }: { messages: Messages }) {
             <span className="services-hud-label services-hud-label-bottom">
               <i className="services-hud-dot" /> {services.activeLabel} · {String(activeIndex + 1).padStart(2, "0")}
             </span>
+
+            {/* 3 Floating Info Boxes around 3D scene (Only for activeIndex === 3 since Spline doesn't have 3D hotspots) */}
+            {activeIndex === 3 && services.details[activeIndex].map((box, boxIndex) => (
+              <div
+                key={box.title}
+                className={cn(
+                  "services-overlay-box absolute pointer-events-auto",
+                  hudCardPositions[boxIndex],
+                )}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-mono text-[0.54rem] font-bold uppercase tracking-[0.08em] text-accent">
+                    {String(boxIndex + 1).padStart(2, "0")} · {box.tag}
+                  </span>
+                  <i className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
+                </div>
+                <h4 className="mt-1 font-display text-[0.88rem] font-semibold tracking-[-0.02em] text-foreground">
+                  {box.title}
+                </h4>
+                <p className="mt-1 text-[0.72rem] leading-relaxed text-foreground/65 max-w-[24ch]">
+                  {box.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 

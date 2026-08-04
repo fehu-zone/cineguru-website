@@ -706,26 +706,7 @@
   z-index: 2;
 }
 
-.services-overlay-box {
-  width: 15.5rem;
-  padding: 0.95rem 1.15rem;
-  border-radius: 0.65rem;
-  background: rgba(16, 16, 20, 0.86);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  transition: transform 300ms var(--ease-cinematic), border-color 300ms ease, box-shadow 300ms ease;
-  z-index: 10;
-  user-select: none;
-}
-
-.services-overlay-box:hover {
-  transform: translateY(-4px) scale(1.03);
-  border-color: rgba(227, 51, 38, 0.65);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.8), 0 0 20px rgba(227, 51, 38, 0.3);
-}
-
+/* Overlay boxes share the same styling as hotspot cards now */
 .services-canvas-hud-2 .services-overlay-box:nth-of-type(3) {
   left: 50%;
   bottom: 2rem;
@@ -743,12 +724,6 @@
   pointer-events: none;
 }
 
-@media (min-width: 1920px) {
-  .services-overlay-box {
-    width: 17.5rem;
-    padding: 1.15rem 1.35rem;
-  }
-}
 
 @media (max-width: 940px) {
   .services-overlay-box {
@@ -760,20 +735,21 @@
   }
 }
 
-/* 3D Hotspot Cards */
+/* 3D Hotspot Cards & Static HUD Overlay Boxes */
+.services-overlay-box,
 .services-hotspot-card {
-  width: 220px !important;
-  max-width: 220px !important;
-  padding: 14px 16px !important;
-  border-radius: 8px !important;
-  background: rgba(10, 10, 12, 0.75) !important;
-  border: 1px solid rgba(255, 255, 255, 0.07) !important;
-  border-left: 3px solid var(--color-accent) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
+  width: 235px !important;
+  max-width: 235px !important;
+  padding: 18px 20px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, rgba(20, 20, 25, 0.72) 0%, rgba(10, 10, 12, 0.45) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-left: 2px solid var(--color-accent) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
   box-shadow: 
-    0 15px 35px rgba(0, 0, 0, 0.6), 
-    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    0 30px 60px rgba(0, 0, 0, 0.75), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
   transition: 
     transform 400ms var(--ease-cinematic), 
     border-color 400ms ease, 
@@ -786,32 +762,33 @@
   text-align: left !important;
 }
 
+.services-overlay-box:hover,
 .services-hotspot-card:hover,
 .services-hotspot-card.is-hovered {
-  transform: translateY(-4px) scale(1.02) !important;
-  background: rgba(14, 14, 18, 0.85) !important;
-  border-color: rgba(255, 255, 255, 0.12) !important;
-  border-left: 3px solid var(--color-accent) !important;
+  transform: translateY(-5px) scale(1.01) !important;
+  background: linear-gradient(135deg, rgba(24, 24, 30, 0.85) 0%, rgba(14, 14, 18, 0.65) 100%) !important;
+  border-color: rgba(227, 51, 38, 0.35) !important;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.85), 
-    0 0 25px rgba(227, 51, 38, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+    0 35px 70px rgba(0, 0, 0, 0.9), 
+    0 0 30px rgba(227, 51, 38, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 }
 
 .hotspot-header {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  margin-bottom: 0.45rem !important;
+  margin-bottom: 0.55rem !important;
 }
 
 .hotspot-badge {
   font-family: var(--font-mono), monospace !important;
-  font-size: 0.56rem !important;
+  font-size: 0.54rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.16em !important;
   text-transform: uppercase !important;
   color: var(--color-accent) !important;
+  opacity: 0.9;
 }
 
 .hotspot-dot {
@@ -830,32 +807,24 @@
 
 .hotspot-title {
   font-family: var(--font-display), sans-serif !important;
-  font-size: 0.88rem !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
-  letter-spacing: -0.01em !important;
+  font-size: 0.94rem !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
 
 .hotspot-desc {
-  margin-top: 0.35rem !important;
-  font-size: 0.72rem !important;
-  line-height: 1.45 !important;
-  color: rgba(241, 241, 241, 0.6) !important;
+  margin-top: 0.4rem !important;
+  font-size: 0.74rem !important;
+  line-height: 1.5 !important;
+  color: rgba(241, 241, 241, 0.55) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 940px) {
   .services-hotspot-card {
-    width: 180px !important;
-    max-width: 180px !important;
-    padding: 10px 12px !important;
-  }
-  .hotspot-title {
-    font-size: 0.78rem !important;
-  }
-  .hotspot-desc {
-    font-size: 0.66rem !important;
+    display: none !important;
   }
 }
 

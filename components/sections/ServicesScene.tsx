@@ -19,10 +19,10 @@ const METAL_LIGHT = "#9a9aa2";
 
 /* ─── Hotspot Position Definitions per Service ─── */
 const HOTSPOT_POSITIONS: Record<number, [number, number, number][]> = {
-  0: [[-1.45, 0.6, 0.2], [1.45, 0.15, 0.3], [-1.35, -0.65, 0.3]],
-  1: [[-1.45, 0.65, 0.3], [1.45, 0.15, 0.2], [-1.35, -0.6, 0.4]],
-  2: [[-1.45, 0.65, 0.2], [1.45, 0.2, 0.3], [-1.35, -0.65, 0.4]],
-  3: [[-1.45, 0.65, 0.3], [1.45, 0.15, 0.2], [-1.35, -0.6, 0.4]],
+  0: [[-1.85, 0.6, 0.2], [1.85, 0.15, 0.3], [-1.75, -0.65, 0.3]],
+  1: [[-1.85, 0.65, 0.3], [1.85, 0.15, 0.2], [-1.75, -0.6, 0.4]],
+  2: [[-1.85, 0.65, 0.2], [1.85, 0.2, 0.3], [-1.75, -0.65, 0.4]],
+  3: [[-1.85, 0.65, 0.3], [1.85, 0.15, 0.2], [-1.75, -0.6, 0.4]],
 };
 
 type HotspotData = {
@@ -46,16 +46,6 @@ function HotspotCard({ data }: { data: HotspotData }) {
 
   return (
     <group position={data.position}>
-      {/* 3D Pulsing Pin */}
-      <mesh>
-        <sphereGeometry args={[0.04, 16, 16]} />
-        <meshBasicMaterial color={ACCENT} />
-      </mesh>
-      <mesh scale={hovered ? 1.5 : 1.1}>
-        <sphereGeometry args={[0.07, 16, 16]} />
-        <meshBasicMaterial color={ACCENT} transparent opacity={0.25} />
-      </mesh>
-
       {/* HTML overlay callout card */}
       <Html
         center
@@ -69,7 +59,6 @@ function HotspotCard({ data }: { data: HotspotData }) {
         >
           <div className="hotspot-header">
             <span className="hotspot-badge">{data.tag}</span>
-            <span className="hotspot-dot" />
           </div>
           <h4 className="hotspot-title">{data.title}</h4>
           <p className="hotspot-desc">{data.desc}</p>
