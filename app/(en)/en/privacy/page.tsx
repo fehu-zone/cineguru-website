@@ -1,6 +1,7 @@
 import { getMessages } from "@/i18n/config";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { ContactPanel } from "@/components/layout/ContactPanel";
 
 export default function PrivacyPage() {
   const locale = "en";
@@ -19,6 +20,9 @@ export default function PrivacyPage() {
               <p key={idx}>{para}</p>
             ))}
           </div>
+        </div>
+        <div className="mt-32">
+          <ContactPanel messages={messages} locale={locale} />
         </div>
       </main>
       <SiteFooter messages={messages} />

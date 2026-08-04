@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { navigationItems, siteConfig } from "@/data/site";
 import type { Locale, Messages } from "@/i18n/config";
@@ -17,6 +18,9 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
   const { headerCompact: scrolled } = useMotionPolicy();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const pathname = usePathname();
+
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/` || pathname === "/";
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -48,9 +52,9 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
           "max-[640px]:h-16",
         )}
       >
-        <a className="relative z-[1010] inline-flex w-fit" href="#top" aria-label={nav.homeLabel}>
+        <Link className="relative z-[1010] inline-flex w-fit" href={isHomePage ? "#top" : `/${locale}`} aria-label={nav.homeLabel}>
           <BrandLogo className="max-[640px]:h-6 max-[640px]:w-[7.25rem]" />
-        </a>
+        </Link>
 
         <nav
           ref={navRef}
@@ -61,11 +65,14 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
           aria-label={nav.mainLabel}
         >
           <div className="flex justify-center gap-[clamp(1.1rem,2.4vw,2.8rem)] font-mono text-[0.63rem] font-semibold uppercase tracking-[0.09em] max-[940px]:flex-col max-[940px]:items-start max-[940px]:gap-1 max-[940px]:font-display max-[940px]:text-[clamp(2.75rem,11vw,5rem)] max-[940px]:font-semibold max-[940px]:normal-case max-[940px]:tracking-[-0.04em]">
-            {navigationItems.map((item) => (
-              <a key={item.key} className="text-foreground/65 transition-colors hover:text-foreground max-[940px]:text-foreground" href={item.href} onClick={closeMenu}>
-                {nav.items[item.key]}
-              </a>
-            ))}
+            {navigationItems.map((item) => {
+              const href = isHomePage ? item.href : `/${locale}${item.href}`;
+              return (
+                <Link key={item.key} className="text-foreground/65 transition-colors hover:text-foreground max-[940px]:text-foreground" href={href} onClick={closeMenu}>
+                  {nav.items[item.key]}
+                </Link>
+              );
+            })}
           </div>
 
           <div className="mt-12 hidden grid-cols-2 gap-10 border-t border-foreground/15 pt-8 max-[940px]:grid max-[640px]:grid-cols-1">
@@ -90,7 +97,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
             <span className="text-accent">·</span>
             <Link href="/en" lang="en" hrefLang="en" className={cn("transition-colors hover:text-foreground", locale === "en" && "text-foreground")} aria-current={locale === "en" ? "page" : undefined} onClick={() => trackEvent("language_select", { language: "en" })}>EN</Link>
           </nav>
-          <ButtonLink variant="outline" size="compact" className="max-[940px]:hidden" href="#contact" onClick={() => trackEvent("contact_cta", { placement: "header", language: locale })}>
+          <ButtonLink variant="outline" size="compact" className="max-[940px]:hidden" href={isHomePage ? "#contact" : `/${locale}#contact`} onClick={() => trackEvent("contact_cta", { placement: "header", language: locale })}>
             {nav.projectCta}
           </ButtonLink>
           <button
