@@ -412,6 +412,7 @@ export function ServicesScene({
   return (
     <Canvas
       frameloop={active ? "always" : "never"}
+      style={{ touchAction: "pan-y" }}
       camera={{ position: [0, 0, 4.5], fov: 45 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
     >
