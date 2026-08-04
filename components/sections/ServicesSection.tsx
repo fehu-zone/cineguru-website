@@ -62,8 +62,8 @@ export function ServicesSection({ messages }: { messages: Messages }) {
   const [splineMounted, setSplineMounted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useElementInView(sectionRef, { rootMargin: "200px 0px" });
-  const { documentVisible, pageScrolling, reducedMotion } = useMotionPolicy();
-  const sceneActive = inView && documentVisible && !pageScrolling;
+  const { documentVisible, reducedMotion } = useMotionPolicy();
+  const sceneActive = inView && documentVisible;
 
   useEffect(() => {
     let cancelled = false;
