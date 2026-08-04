@@ -327,33 +327,51 @@
   }
 
   @media (max-width: 640px) {
+    .about-journey {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
     .about-timeline-item {
-      grid-template-columns: 3rem minmax(0, 1fr);
-      gap: 1rem;
+      position: sticky;
+      top: calc(4.5rem + var(--stagger, 0) * 0.75rem);
+      z-index: calc(10 + var(--stagger, 0));
+      display: block;
+      width: 100%;
       min-height: 0;
-      padding-bottom: 3rem;
+      padding-bottom: 1.5rem;
     }
 
     .about-timeline-item::before {
-      left: 1.45rem;
-      top: 2.25rem;
-      transform: none;
+      display: none;
     }
 
     .about-timeline-item:nth-child(odd) .about-timeline-card,
     .about-timeline-item:nth-child(even) .about-timeline-card {
-      grid-column: 2;
+      grid-column: 1;
       display: block;
-      min-height: 22rem;
+      width: 100%;
+      min-height: 18.5rem;
+      border: 1px solid color-mix(in srgb, var(--color-foreground) 22%, transparent);
+      border-left: 3px solid var(--color-accent);
+      border-radius: 0.875rem;
+      background: var(--color-canvas);
+      box-shadow:
+        0 -0.5rem 1.5rem color-mix(in srgb, #000 50%, transparent),
+        0 1rem 2.5rem color-mix(in srgb, #000 70%, transparent);
       text-align: left;
+      overflow: hidden;
     }
 
     .about-timeline-item:nth-child(odd) .about-timeline-card-body,
     .about-timeline-item:nth-child(even) .about-timeline-card-body {
       width: 100%;
-      min-height: 22rem;
+      min-height: 18.5rem;
       margin: 0;
-      padding: 1.25rem;
+      padding: 1.5rem 1.25rem;
     }
 
     .about-timeline-media-video {
@@ -371,10 +389,9 @@
     .about-timeline-media-shield,
     .about-timeline-item:nth-child(even) .about-timeline-media-shield {
       background:
-        linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 58%, transparent), color-mix(in srgb, var(--color-canvas) 42%, transparent) 45%, color-mix(in srgb, var(--color-canvas) 88%, transparent) 100%),
-        linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 72%, transparent), color-mix(in srgb, var(--color-canvas) 32%, transparent));
+        linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 65%, transparent), color-mix(in srgb, var(--color-canvas) 48%, transparent) 45%, color-mix(in srgb, var(--color-canvas) 92%, transparent) 100%),
+        linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 78%, transparent), color-mix(in srgb, var(--color-canvas) 38%, transparent));
     }
-
   }
 
   .hero-cinematic-overlay {
