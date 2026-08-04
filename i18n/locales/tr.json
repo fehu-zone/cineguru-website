@@ -237,7 +237,7 @@
     ]
   },
   "about": {
-    "eyebrow": "BİZ KİMİZ · 05",
+    "eyebrow": "BİZ KİMİZ · 03",
     "title": "Set kültüründen gelen,\ngeleceğe çalışan\nbir stüdyoyuz.",
     "description": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosu. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle birleştiriyoruz.",
     "chapterLabel": "BÖLÜM",
@@ -252,7 +252,7 @@
     "brandLogoSuffix": "logosu"
   },
   "contact": {
-    "eyebrow": "YENİ BİR FİLM · 06",
+    "eyebrow": "YENİ BİR FİLM · 04",
     "title": "Sıradaki hikâyeyi\nbirlikte çekelim.",
     "description": "Kısaca fikrinden, teslim tarihinden ve ihtiyacından bahset. Gerisini birlikte şekillendirelim.",
     "mailCta": "Hemen Başlayalım",
@@ -276,6 +276,11 @@
     }
   },
   "footer": {
-    "line": "AI Destekli Video Prodüksiyon"
+    "line": "AI Destekli Video Prodüksiyon",
+    "aboutTitle": "BİZ KİMİZ",
+    "aboutText": "Cineguru, 2017’den beri reklam, etkinlik ve marka hikâyeleri üreten İstanbul merkezli bağımsız bir prodüksiyon stüdyosudur. Geleneksel film disiplinini yeni nesil üretim teknolojileriyle ve yapay zekâ ölçeğiyle birleştiriyoruz.",
+    "privacyTitle": "GİZLİLİK VE SÖZLEŞMELER",
+    "privacyText": "Müşterilerimizle yaptığımız gizlilik sözleşmeleri (NDA) gereği, ürettiğimiz tüm projeleri ve marka iş birliklerini web sitemizde referans olarak paylaşamıyoruz. Gösterdiğimiz hassasiyet, kurumsal güvenliğin bir parçasıdır.",
+    "socialTitle": "TAKİP EDİN"
   }
 }

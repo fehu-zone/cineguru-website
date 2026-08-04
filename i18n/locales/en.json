@@ -237,7 +237,7 @@
     ]
   },
   "about": {
-    "eyebrow": "ABOUT US · 05",
+    "eyebrow": "ABOUT US · 03",
     "title": "Born from set culture.\nBuilt for what comes next.",
     "description": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. We combine traditional filmmaking discipline with next-generation production technology.",
     "chapterLabel": "CHAPTER",
@@ -252,7 +252,7 @@
     "brandLogoSuffix": "logo"
   },
   "contact": {
-    "eyebrow": "A NEW FILM · 06",
+    "eyebrow": "A NEW FILM · 04",
     "title": "Let’s make the next story\ntogether.",
     "description": "Tell us briefly about the idea, timing and what you need. We will shape the rest together.",
     "mailCta": "Get Started Now",
@@ -276,6 +276,11 @@
     }
   },
   "footer": {
-    "line": "AI-Powered Video Production"
+    "line": "AI-Powered Video Production",
+    "aboutTitle": "ABOUT US",
+    "aboutText": "Cineguru is an independent Istanbul production studio creating commercials, event films and brand stories since 2017. We combine traditional filmmaking discipline with next-generation production technology and AI scale.",
+    "privacyTitle": "PRIVACY & CONTRACTS",
+    "privacyText": "Due to confidentiality agreements (NDAs) with our clients, we cannot publicly display all of our produced projects and brand collaborations on our website. This sensitivity is an essential part of our corporate security standards.",
+    "socialTitle": "FOLLOW US"
   }
 }

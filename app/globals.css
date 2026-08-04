@@ -176,7 +176,7 @@
     min-height: clamp(20rem, 24vw, 24rem);
     padding: 0;
     border: 1px solid color-mix(in srgb, var(--color-foreground) 16%, transparent);
-    background: var(--color-canvas);
+    background: #1b1b20;
     box-shadow: 0 1.5rem 3rem color-mix(in srgb, #000 16%, transparent);
     transition: border-color 450ms ease, background-color 450ms ease, transform 700ms var(--ease-cinematic), box-shadow 500ms ease;
   }
@@ -220,9 +220,9 @@
     width: 145%;
     height: 135%;
     border: 0;
-    opacity: 0.82;
+    opacity: 0.85;
     pointer-events: none;
-    filter: sepia(0.12) saturate(0.72) brightness(0.72) contrast(1.1);
+    filter: sepia(0.08) saturate(0.8) brightness(0.9) contrast(1.05);
     transform: translate(-50%, -50%);
   }
 
@@ -247,8 +247,8 @@
     z-index: 1;
     inset: 0;
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 30%, transparent), color-mix(in srgb, var(--color-canvas) 68%, transparent)),
-      linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 96%, transparent) 0%, color-mix(in srgb, var(--color-canvas) 78%, transparent) 52%, color-mix(in srgb, var(--color-canvas) 24%, transparent) 100%);
+      linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 15%, transparent), color-mix(in srgb, var(--color-canvas) 40%, transparent)),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 75%, transparent) 0%, color-mix(in srgb, var(--color-canvas) 50%, transparent) 55%, color-mix(in srgb, var(--color-canvas) 12%, transparent) 100%);
     cursor: default;
     pointer-events: auto;
   }
@@ -280,8 +280,8 @@
 
   .about-timeline-item:nth-child(even) .about-timeline-media-shield {
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 30%, transparent), color-mix(in srgb, var(--color-canvas) 68%, transparent)),
-      linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 96%, transparent) 0%, color-mix(in srgb, var(--color-canvas) 78%, transparent) 52%, color-mix(in srgb, var(--color-canvas) 24%, transparent) 100%);
+      linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 15%, transparent), color-mix(in srgb, var(--color-canvas) 40%, transparent)),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 75%, transparent) 0%, color-mix(in srgb, var(--color-canvas) 50%, transparent) 55%, color-mix(in srgb, var(--color-canvas) 12%, transparent) 100%);
   }
 
   .about-timeline-index {
@@ -389,8 +389,8 @@
     .about-timeline-media-shield,
     .about-timeline-item:nth-child(even) .about-timeline-media-shield {
       background:
-        linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 65%, transparent), color-mix(in srgb, var(--color-canvas) 48%, transparent) 45%, color-mix(in srgb, var(--color-canvas) 92%, transparent) 100%),
-        linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 78%, transparent), color-mix(in srgb, var(--color-canvas) 38%, transparent));
+        linear-gradient(180deg, color-mix(in srgb, var(--color-canvas) 40%, transparent), color-mix(in srgb, var(--color-canvas) 20%, transparent) 45%, color-mix(in srgb, var(--color-canvas) 60%, transparent) 100%),
+        linear-gradient(90deg, color-mix(in srgb, var(--color-canvas) 50%, transparent), color-mix(in srgb, var(--color-canvas) 15%, transparent));
     }
   }
 
@@ -742,7 +742,7 @@
   max-width: 235px !important;
   padding: 18px 20px !important;
   border-radius: 12px !important;
-  background: linear-gradient(135deg, rgba(20, 20, 25, 0.72) 0%, rgba(10, 10, 12, 0.45) 100%) !important;
+  background: linear-gradient(135deg, rgba(32, 32, 38, 0.78) 0%, rgba(18, 18, 22, 0.55) 100%) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-left: 2px solid var(--color-accent) !important;
   backdrop-filter: blur(24px) !important;
@@ -766,7 +766,7 @@
 .services-hotspot-card:hover,
 .services-hotspot-card.is-hovered {
   transform: translateY(-5px) scale(1.01) !important;
-  background: linear-gradient(135deg, rgba(24, 24, 30, 0.85) 0%, rgba(14, 14, 18, 0.65) 100%) !important;
+  background: linear-gradient(135deg, rgba(42, 42, 50, 0.88) 0%, rgba(24, 24, 30, 0.7) 100%) !important;
   border-color: rgba(227, 51, 38, 0.35) !important;
   box-shadow: 
     0 35px 70px rgba(0, 0, 0, 0.9), 
