@@ -689,18 +689,13 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 940px) {
   .services-overlay-box {
     display: none !important;
   }
 
   .services-feature-grid {
     display: grid !important;
-  }
-
-  .services-overlay-box {
-    width: 10.5rem;
-    padding: 0.55rem 0.7rem;
   }
 }
 

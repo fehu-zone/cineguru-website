@@ -35,7 +35,7 @@ export function SectionHeading({
         className,
       )}
     >
-      <Eyebrow className="col-span-3 max-[940px]:col-span-2 max-[640px]:col-span-1">{eyebrow}</Eyebrow>
+      {eyebrow ? <Eyebrow className="col-span-3 max-[940px]:col-span-2 max-[640px]:col-span-1">{eyebrow}</Eyebrow> : null}
       <h2
         id={titleId}
         className={cn(

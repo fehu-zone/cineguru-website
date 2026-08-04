@@ -56,6 +56,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
   const services = messages.services;
   // The services section must always enter on 01 / Strategy.
   const [activeIndex, setActiveIndex] = useState(0);
+  const [expandedCardIndex, setExpandedCardIndex] = useState<number | null>(0);
   const [threeIndex, setThreeIndex] = useState(0);
   const [sceneMounted, setSceneMounted] = useState(false);
   const [splineMounted, setSplineMounted] = useState(false);
@@ -112,6 +113,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
     if (normalized < 3) setThreeIndex(normalized);
     else setSplineMounted(true);
     setActiveIndex(normalized);
+    setExpandedCardIndex(0);
   }, [preloadService, services.items.length]);
 
   const handleKeys = useCallback((event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -267,27 +269,59 @@ export function ServicesSection({ messages }: { messages: Messages }) {
           </div>
         </div>
 
-        {/* ─── 3 Feature Cards Grid below Canvas ─── */}
-        <div className="services-feature-grid mt-6 grid grid-cols-3 gap-grid max-[940px]:grid-cols-1 max-[940px]:gap-4" key={`feature-grid-${activeIndex}`}>
-          {services.details[activeIndex].map((card, cardIndex) => (
-            <div
-              key={card.title}
-              className="group border border-foreground/10 bg-canvas/60 p-5 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:bg-canvas/90"
-            >
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-[0.56rem] font-bold tracking-[0.08em] text-accent">
-                  {String(cardIndex + 1).padStart(2, "0")}
-                </span>
-                <i className="size-1.5 rounded-full bg-foreground/20 transition-colors group-hover:bg-accent" />
-              </div>
-              <h4 className="mt-3 font-display text-[1.05rem] font-semibold leading-tight tracking-[-0.02em]">
-                {card.title}
-              </h4>
-              <p className="mt-2 text-[0.85rem] leading-relaxed text-foreground/60">
-                {card.description}
-              </p>
-            </div>
-          ))}
+        {/* ─── 3 Feature Cards Grid below Canvas (Interactive Accordion on Mobile/Tablet) ─── */}
+        <div className="services-feature-grid mt-6 grid grid-cols-3 gap-grid max-[940px]:grid-cols-1 max-[940px]:gap-3" key={`feature-grid-${activeIndex}`}>
+          {services.details[activeIndex].map((card, cardIndex) => {
+            const isExpanded = expandedCardIndex === cardIndex;
+            return (
+              <button
+                key={card.title}
+                type="button"
+                onClick={() => setExpandedCardIndex(isExpanded ? null : cardIndex)}
+                className={cn(
+                  "group block w-full rounded-xl border p-4 text-left backdrop-blur-sm transition-all duration-300 cursor-pointer max-[940px]:p-4.5",
+                  isExpanded
+                    ? "border-accent/60 bg-canvas/90 shadow-[0_0_20px_rgba(227,51,38,0.14)]"
+                    : "border-foreground/15 bg-canvas/60 hover:border-foreground/30 hover:bg-canvas/80",
+                )}
+                aria-expanded={isExpanded}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-[0.58rem] font-bold tracking-[0.08em] text-accent">
+                      {String(cardIndex + 1).padStart(2, "0")}
+                    </span>
+                    <span className="rounded-full border border-foreground/15 px-2.5 py-0.5 font-mono text-[0.5rem] uppercase tracking-[0.06em] text-foreground/60">
+                      {card.tag}
+                    </span>
+                  </div>
+                  <span
+                    className={cn(
+                      "flex size-5.5 items-center justify-center rounded-full border text-xs font-bold transition-all duration-300",
+                      isExpanded
+                        ? "border-accent bg-accent text-white"
+                        : "border-foreground/20 text-foreground/50 group-hover:border-foreground/40 group-hover:text-foreground",
+                    )}
+                  >
+                    {isExpanded ? "−" : "+"}
+                  </span>
+                </div>
+                <h4 className="mt-2.5 font-display text-[1.08rem] font-semibold leading-tight tracking-[-0.02em] text-foreground">
+                  {card.title}
+                </h4>
+                <div
+                  className={cn(
+                    "grid transition-all duration-300 ease-in-out",
+                    isExpanded ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0 overflow-hidden",
+                  )}
+                >
+                  <p className="overflow-hidden text-[0.85rem] leading-relaxed text-foreground/70">
+                    {card.description}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </section>
