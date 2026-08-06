@@ -52,6 +52,7 @@ export const reels = [
 ] as const;
 
 export const brands = [
+  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp", scale: 1.2 },
   { label: "ASFAT", id: "asfat", logo: "/assets/references/Asfat.webp", scale: 1.0 },
   { label: "Bi'Boya", id: "biboya", logo: "/assets/references/BiBOYA-1.webp", scale: 1.1 },
   { label: "BOSAD", id: "bosad", logo: "/assets/references/Bosad.webp", scale: 1.1 },
@@ -64,10 +65,7 @@ export const brands = [
   { label: "Vodafone", id: "vodafone", logo: "/assets/references/Vodafone.webp", scale: 1.15 },
   { label: "World Ethnosport", id: "world-ethnosport", logo: "/assets/references/World-Ethnosport.webp", scale: 1.2 },
   { label: "World Nomad Games", id: "world-nomad-games", logo: "/assets/references/World-Nomad-Games.webp", scale: 1.2 },
-  { label: "Sıfır Atık Vakfı", id: "sifir-atik-vakfi", logo: "/assets/references/sifir-atik-vakfi.webp", scale: 1.2 },
-  { label: "TurkNet", id: "turknet", logo: "/assets/references/turknet.webp", scale: 1.1 },
-  { label: "Hesap.com", id: "hesapno", logo: "/assets/references/hesap-basit.webp", scale: 1.1 },
-  { label: "İGA", id: "iga", logo: "/assets/references/iga.webp", scale: 1.1 },
+  { label: "Istanbul Airport", id: "iga", logo: "/assets/references/iga.webp", scale: 1.1 },
 ] as const;
 
 export const methodPhases = [
