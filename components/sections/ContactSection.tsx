@@ -18,7 +18,7 @@ export function ContactSection({ messages, locale }: { messages: Messages; local
         <p className="mx-auto mt-7 max-w-[46ch] text-[0.98rem] leading-[1.6] text-foreground/65">{contact.description}</p>
       </div>
 
-      <div className="contact-cta-group reveal-on-scroll mt-[clamp(3.5rem,6vw,6rem)] flex gap-grid max-[640px]:flex-col" data-reveal="split">
+      <div className="contact-cta-group reveal-on-scroll mt-[clamp(2.75rem,4.5vw,4.5rem)] flex items-center justify-center gap-5 max-[640px]:flex-col max-[640px]:items-stretch max-[640px]:gap-3.5" data-reveal="split">
         <HoverVideoButtonLink
           className="contact-cta-primary !bg-accent/92"
           href={siteConfig.getWhatsappHref(locale)}

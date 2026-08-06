@@ -152,18 +152,6 @@ function StrategyChessSet({ label }: { label: string }) {
   return (
     <group position={[0, -0.25, 0]} rotation={[0.08, -0.32, 0.06]}>
       <primitive object={scene} scale={4.1} />
-      <Html center position={[0, 0.68, 0.15]} distanceFactor={4}>
-        <div style={{
-          color: "#e33326",
-          fontFamily: "monospace",
-          fontSize: "10px",
-          fontWeight: 700,
-          letterSpacing: "0.16em",
-          whiteSpace: "nowrap",
-        }}>
-          {label}
-        </div>
-      </Html>
     </group>
   );
 }

@@ -79,6 +79,8 @@ export const aboutVideos = [
 export const reels = [
   { id: "alfemo-masko", slug: "alfemo-masko", youtubeId: "zgHJxbfs27o", year: "2026" },
   { id: "sifir-atik-festival", slug: "sifir-atik-festival", youtubeId: "t7DJjnegikA", year: "2026" },
+  { id: "dikey-produksiyon", slug: "dikey-produksiyon", youtubeId: "y1AI0oU2wIw", year: "2026" },
+  { id: "hesap-basit", slug: "hesap-basit", youtubeId: "CMFPbt9Krhk", year: "2026" },
 ] as const;
 
 export const brands = [

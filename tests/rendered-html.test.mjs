@@ -76,14 +76,17 @@ test("keeps real portfolio video identifiers in rendered output", async () => {
   assert.match(html, /showreel-poster-1280\.avif/);
 });
 
-test("renders the two unique vertical Shorts in the current feed", async () => {
+test("renders the vertical Shorts in the current feed", async () => {
   const response = await renderPath("/tr");
   const html = await response.text();
   const channelSection = html.match(/<section class=["'][^"']*\bchannel-section\b[^"']*["'][\s\S]*?<\/section>/i)?.[0] ?? "";
 
   assert.match(channelSection, /zgHJxbfs27o/);
   assert.match(channelSection, /t7DJjnegikA/);
+  assert.match(channelSection, /y1AI0oU2wIw/);
+  assert.match(channelSection, /CMFPbt9Krhk/);
   assert.match(channelSection, /alfemo-masko-1080\.avif/);
   assert.match(channelSection, /sifir-atik-festival-1080\.avif/);
+  assert.match(channelSection, /hesap-basit-1080\.avif/);
   assert.doesNotMatch(channelSection, /qG5OExBLt8c|aZrWhEaHDBg/);
 });

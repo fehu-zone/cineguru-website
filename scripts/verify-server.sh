@@ -26,6 +26,7 @@ grep -Fq "We turn ideas into films that leave a mark." "$temp_file"
 
 check_path "/assets/showreel-poster-1280.avif" "200"
 check_path "/assets/reels/alfemo-masko-1080.avif" "200"
+check_path "/assets/reels/hesap-basit-1080.avif" "200"
 check_path "/robots.txt" "200"
 check_path "/sitemap.xml" "200"
 
