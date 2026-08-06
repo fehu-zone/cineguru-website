@@ -10,6 +10,7 @@ permissions:
 
 concurrency:
   group: cineguru-production
+  # A local post-push hook also dispatches this workflow as a fallback.
   cancel-in-progress: true
 
 jobs:
