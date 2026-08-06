@@ -128,7 +128,7 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
         <div className="overflow-hidden border border-foreground/15 bg-surface">
           <div className="flex items-center border-b border-foreground/15" role="tablist" aria-label={work.referenceTabsLabel}>
             <div
-              className="horizontal-drag-surface case-tabs-scroller flex min-w-0 flex-1 cursor-grab select-none touch-pan-y overflow-x-auto"
+              className="horizontal-drag-surface case-tabs-scroller flex min-w-0 flex-1 cursor-grab select-none [touch-action:pan-x_pan-y] overflow-x-auto"
               ref={tabsScrollerRef}
               onPointerDown={handleTabsPointerDown}
               onPointerMove={handleTabsPointerMove}
@@ -178,9 +178,9 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
             </div>
           </div>
 
-          <div className="grid min-h-[42rem] grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] items-center gap-10 overflow-hidden px-[clamp(1.5rem,5vw,5rem)] py-[clamp(2.5rem,6vw,5.5rem)] max-[760px]:min-h-[48rem] max-[760px]:grid-cols-1 max-[760px]:gap-8" id="featured-case-study" role="tabpanel" aria-labelledby={activeProject.id}>
+          <div className="grid min-h-[42rem] grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] items-center gap-10 overflow-hidden px-[clamp(1.5rem,5vw,5rem)] py-[clamp(2.5rem,6vw,5.5rem)] max-[760px]:h-[48rem] max-[760px]:min-h-0 max-[760px]:grid-cols-1 max-[760px]:grid-rows-[minmax(0,1fr)_auto] max-[760px]:gap-8" id="featured-case-study" role="tabpanel" aria-labelledby={activeProject.id}>
             <button
-              className="group min-w-0 cursor-pointer text-left"
+              className="group min-h-0 min-w-0 cursor-pointer overflow-hidden text-left"
               type="button"
               data-cursor-label={messages.global.cursor}
               onClick={() => onOpenVideo({ id: activeProject.youtubeId, title: activeContent.title, orientation: "landscape" })}

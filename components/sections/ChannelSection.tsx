@@ -67,7 +67,7 @@ function DraggableContentRail({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className="horizontal-drag-surface no-scrollbar flex w-full cursor-grab gap-grid overflow-x-auto overflow-y-hidden pb-3 touch-pan-y"
+      className="horizontal-drag-surface no-scrollbar flex w-full snap-x snap-mandatory cursor-grab gap-grid overflow-x-auto overflow-y-hidden pb-3 [touch-action:pan-x_pan-y]"
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
@@ -114,7 +114,7 @@ function PlatformContentPanel({
             <a
               key={reel.id}
               href={`https://www.youtube.com/shorts/${reel.youtubeId}`}
-              className="group block w-[min(30vw,22rem)] shrink-0 max-[640px]:w-[min(72vw,17.5rem)]"
+              className="group block w-[min(30vw,22rem)] shrink-0 snap-start max-[640px]:w-[min(80vw,20rem)]"
               data-cursor-label={messages.global.cursor}
               onClick={(event) => {
                 event.preventDefault();
@@ -122,7 +122,7 @@ function PlatformContentPanel({
               }}
               aria-label={`${content.title} — ${channel.watchReel}`}
             >
-              <span className="block aspect-[9/16] overflow-hidden bg-surface"><ReelPoster slug={reel.slug} alt={content.alt} sizes="(max-width: 640px) 72vw, (max-width: 940px) 30vw, 22rem" /></span>
+              <span className="block aspect-[9/16] overflow-hidden bg-surface"><ReelPoster slug={reel.slug} alt={content.alt} sizes="(max-width: 640px) 80vw, (max-width: 940px) 30vw, 22rem" /></span>
               <span className="block border-t border-foreground/20 py-4"><small className="font-mono text-[0.52rem] uppercase tracking-[0.08em] text-foreground/45">{content.type} · {reel.year}</small><strong className="mt-1 block font-display text-xl [font-weight:560] leading-[1.05] tracking-[-0.03em]">{content.title}</strong><i className="mt-2 block font-mono text-[0.52rem] not-italic text-foreground/55">{channel.watchReel} ↗</i></span>
             </a>
           );
