@@ -7,8 +7,8 @@ export const siteConfig = {
   whatsappHref: "https://wa.me/905318446206",
   getWhatsappHref(locale: "tr" | "en" = "tr") {
     const text = locale === "en"
-      ? "Hello, welcome to Cineguru! 👋 How can we help you today?"
-      : "Merhaba, Cineguru'ya hoş geldiniz! 👋 Size nasıl yardımcı olabiliriz?";
+      ? "Hello, I would like to get information about a project."
+      : "Merhaba, projemiz hakkında bilgi almak istiyorum.";
     return `https://wa.me/905318446206?text=${encodeURIComponent(text)}`;
   },
   address: {
@@ -46,10 +46,34 @@ export const projects = [
 ] as const;
 
 export const aboutVideos = [
-  { id: "tek-kreatif-yon", video: "/assets/videos/tek-kreatif-yon.mov" },
-  { id: "hibrit-uretim", video: "/assets/videos/hibrit-uretim.mov" },
-  { id: "her-ekrana-hazir", video: "/assets/videos/her-ekrana-hazir.mov" },
-  { id: "iz-birakan-final", video: "/assets/videos/iz-birakan-final.mov" },
+  {
+    id: "tek-kreatif-yon",
+    video: {
+      desktop: "/assets/videos/1080p/tek-kreatif-yon.mp4",
+      mobile: "/assets/videos/720p/tek-kreatif-yon.mp4",
+    },
+  },
+  {
+    id: "hibrit-uretim",
+    video: {
+      desktop: "/assets/videos/1080p/hibrit-uretim.mp4",
+      mobile: "/assets/videos/720p/hibrit-uretim.mp4",
+    },
+  },
+  {
+    id: "her-ekrana-hazir",
+    video: {
+      desktop: "/assets/videos/1080p/her-ekrana-hazir.mp4",
+      mobile: "/assets/videos/720p/her-ekrana-hazir.mp4",
+    },
+  },
+  {
+    id: "iz-birakan-final",
+    video: {
+      desktop: "/assets/videos/1080p/iz-birakan-final.mp4",
+      mobile: "/assets/videos/720p/iz-birakan-final.mp4",
+    },
+  },
 ] as const;
 
 export const reels = [

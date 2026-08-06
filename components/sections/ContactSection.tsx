@@ -25,7 +25,8 @@ export function ContactSection({ messages, locale }: { messages: Messages; local
           target="_blank"
           rel="noopener noreferrer"
           poster={siteConfig.showreel.poster}
-          videoSrc="/assets/videos/hemen-baslayalim.mov"
+          desktopVideoSrc="/assets/videos/1080p/hemen-baslayalim.mp4"
+          mobileVideoSrc="/assets/videos/720p/hemen-baslayalim.mp4"
         >
           {contact.mailCta}
         </HoverVideoButtonLink>

@@ -14,7 +14,9 @@ import { cn } from "@/lib/classNames";
 type HoverVideoButtonLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "children"> & {
   children: ReactNode;
   poster?: string;
-  videoSrc: string;
+  videoSrc?: string;
+  desktopVideoSrc?: string;
+  mobileVideoSrc?: string;
 };
 
 export function HoverVideoButtonLink({
@@ -26,6 +28,8 @@ export function HoverVideoButtonLink({
   onPointerLeave,
   poster,
   videoSrc,
+  desktopVideoSrc,
+  mobileVideoSrc,
   ...props
 }: HoverVideoButtonLinkProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -87,8 +91,14 @@ export function HoverVideoButtonLink({
         disablePictureInPicture
         aria-hidden="true"
       >
-        <source src={videoSrc} type="video/mp4" />
-        <source src={videoSrc} type="video/quicktime" />
+        {desktopVideoSrc && mobileVideoSrc ? (
+          <>
+            <source src={desktopVideoSrc} media="(min-width: 641px)" type="video/mp4" />
+            <source src={mobileVideoSrc} media="(max-width: 640px)" type="video/mp4" />
+          </>
+        ) : videoSrc ? (
+          <source src={videoSrc} type="video/mp4" />
+        ) : null}
       </video>
       <span className="absolute inset-0 z-10 bg-canvas/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true" />
       <span className="relative z-20 inline-flex min-w-0 items-center justify-center gap-4 text-canvas transition-colors duration-300 group-hover:text-foreground group-focus-visible:text-foreground">

@@ -11,7 +11,7 @@ export function AboutJourney({
   mediaLabel,
 }: {
   principles: Principle[];
-  videos: readonly { video?: string; youtubeId?: string }[];
+  videos: readonly { video?: string | { desktop: string; mobile: string }; youtubeId?: string }[];
   chapterLabel: string;
   mediaLabel: string;
 }) {
@@ -44,8 +44,14 @@ export function AboutJourney({
                     disablePictureInPicture
                     aria-hidden="true"
                   >
-                    <source src={videoSrc} type="video/mp4" />
-                    <source src={videoSrc} type="video/quicktime" />
+                    {typeof videoSrc === "object" ? (
+                      <>
+                        <source src={videoSrc.desktop} media="(min-width: 641px)" type="video/mp4" />
+                        <source src={videoSrc.mobile} media="(max-width: 640px)" type="video/mp4" />
+                      </>
+                    ) : (
+                      <source src={videoSrc} type="video/mp4" />
+                    )}
                   </video>
                 ) : embedUrl ? (
                   <iframe
