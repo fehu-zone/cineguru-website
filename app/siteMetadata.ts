@@ -16,6 +16,22 @@ export const baseMetadata: Metadata = {
   title: siteConfig.name,
   description: getMessages("tr").metadata.description,
   keywords: getMessages("tr").metadata.keywords,
+  applicationName: siteConfig.name,
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+  category: "video production",
+  formatDetection: { telephone: true, address: true, email: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
   verification: {
     google: "E3lC3sNYrlXhOzK__u2R68oEZ6GTYeJUR6TtWJooT8Y",

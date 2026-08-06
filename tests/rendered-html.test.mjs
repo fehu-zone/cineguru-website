@@ -46,6 +46,9 @@ test("renders localized Turkish and English experiences", async () => {
   const enHtml = await enResponse.text();
   assert.match(trHtml, /<html[^>]+lang=["']tr["']/i);
   assert.match(enHtml, /<html[^>]+lang=["']en["']/i);
+  assert.match(trHtml, /<title>Cineguru Studio \| AI Destekli Video Prodüksiyon<\/title>/i);
+  assert.match(trHtml, /application\/ld\+json/);
+  assert.match(trHtml, /ProfessionalService/);
   assert.match(trHtml, /hero-title-line[^>]*>Fikri, iz bırakan<\/span>\s*<span[^>]*>filme dönüştürüyoruz\./);
   assert.match(enHtml, /hero-title-line[^>]*>Turning ideas into films<\/span>\s*<span[^>]*>that leave a mark\./);
   assert.match(enHtml, /\/en/);
