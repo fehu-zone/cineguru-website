@@ -44,7 +44,12 @@ export const projects = [
   { id: "asfat", slug: "asfat", youtubeId: "bct_ERqomNI", year: "2024", featured: false },
 ] as const;
 
-export const aboutVideos = projects.filter((project) => !project.featured).slice(0, 4);
+export const aboutVideos = [
+  { id: "tek-yaratici-yon", video: "/assets/videos/tek-yaratici-yon.mov" },
+  { id: "hibrit-uretim", video: "/assets/videos/hibrit-uretim.mov" },
+  { id: "her-ekrana-hazir", video: "/assets/videos/her-ekrana-hazir.mov" },
+  { id: "iz-birakan-final", video: "/assets/videos/iz-birakan-final.mov" },
+] as const;
 
 export const reels = [
   { id: "alfemo-masko", slug: "alfemo-masko", youtubeId: "zgHJxbfs27o", year: "2026" },

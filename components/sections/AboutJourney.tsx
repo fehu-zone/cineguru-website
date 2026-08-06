@@ -11,7 +11,7 @@ export function AboutJourney({
   mediaLabel,
 }: {
   principles: Principle[];
-  videos: { youtubeId: string }[];
+  videos: readonly { video?: string; youtubeId?: string }[];
   chapterLabel: string;
   mediaLabel: string;
 }) {
@@ -19,9 +19,10 @@ export function AboutJourney({
     <ol className="about-journey" aria-label="Cineguru üretim hikâyesi">
       {principles.map((principle, index) => {
         const chapter = String(index + 1).padStart(2, "0");
-        const video = videos[index];
-        const embedUrl = video
-          ? `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&loop=1&playlist=${video.youtubeId}`
+        const videoItem = videos[index];
+        const videoSrc = videoItem?.video;
+        const embedUrl = videoItem?.youtubeId
+          ? `https://www.youtube-nocookie.com/embed/${videoItem.youtubeId}?autoplay=1&mute=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&modestbranding=1&playsinline=1&rel=0&loop=1&playlist=${videoItem.youtubeId}`
           : null;
 
         return (
@@ -32,7 +33,21 @@ export function AboutJourney({
           >
             <article className="about-timeline-card">
               <div className="about-timeline-card-media">
-                {embedUrl ? (
+                {videoSrc ? (
+                  <video
+                    className="about-timeline-media-video object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    disablePictureInPicture
+                    aria-hidden="true"
+                  >
+                    <source src={videoSrc} type="video/mp4" />
+                    <source src={videoSrc} type="video/quicktime" />
+                  </video>
+                ) : embedUrl ? (
                   <iframe
                     className="about-timeline-media-video"
                     src={embedUrl}

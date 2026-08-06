@@ -88,6 +88,7 @@ export function HoverVideoButtonLink({
         aria-hidden="true"
       >
         <source src={videoSrc} type="video/mp4" />
+        <source src={videoSrc} type="video/quicktime" />
       </video>
       <span className="absolute inset-0 z-10 bg-canvas/20 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-focus-visible:opacity-100" aria-hidden="true" />
       <span className="relative z-20 inline-flex min-w-0 items-center justify-center gap-4 text-canvas transition-colors duration-300 group-hover:text-foreground group-focus-visible:text-foreground">
