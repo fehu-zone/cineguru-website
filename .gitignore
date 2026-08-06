@@ -40,3 +40,4 @@ next-env.d.ts
 # private deployment and launch notes
 /PRODUCTION_DEPLOYMENT.md
 /PRE_LAUNCH_CHECKLIST.md
+/MANUAL_DEPLOY.md
