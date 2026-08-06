@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# GitHub push events can be delayed or suppressed when commits are created by
+# an automation token. Keep production deployment attached to a successful
+# local push as a reliable fallback.
+branch=$(git symbolic-ref --quiet --short HEAD 2>/dev/null || true)
+
+if [ "$branch" != "main" ]; then
+  exit 0
+fi
+
+if ! command -v gh >/dev/null 2>&1; then
+  echo "Deploy hook: gh CLI is not available; run gh workflow run manually." >&2
+  exit 0
+fi
+
+echo "Deploy hook: starting Cineguru production candidate workflow for main."
+gh workflow run deploy-production.yml --repo fehu-zone/cineguru-website --ref main
