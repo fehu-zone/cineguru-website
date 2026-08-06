@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 
 import { reels, siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
@@ -10,10 +10,26 @@ import { ReelPoster } from "@/components/ui/ResponsiveMedia";
 type ChannelMessages = Messages["channel"];
 
 function DraggableContentRail({ children }: { children: ReactNode }) {
+  const railRef = useRef<HTMLDivElement>(null);
+  const [isScrollable, setIsScrollable] = useState(false);
   const dragRef = useRef({ pointerId: -1, mode: "idle" as "idle" | "pending" | "horizontal", startX: 0, startY: 0, startScrollLeft: 0, moved: false });
 
+  useEffect(() => {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    const updateScrollableState = () => {
+      setIsScrollable(rail.scrollWidth > rail.clientWidth + 1);
+    };
+
+    updateScrollableState();
+    const observer = new ResizeObserver(updateScrollableState);
+    observer.observe(rail);
+    return () => observer.disconnect();
+  }, []);
+
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse" && event.button !== 0) return;
+    if (event.pointerType !== "mouse" || event.button !== 0 || !isScrollable) return;
     dragRef.current = {
       pointerId: event.pointerId,
       mode: "pending",
@@ -25,6 +41,7 @@ function DraggableContentRail({ children }: { children: ReactNode }) {
   };
 
   const handlePointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "mouse") return;
     const drag = dragRef.current;
     if (drag.pointerId !== event.pointerId || drag.mode === "idle") return;
     const deltaX = event.clientX - drag.startX;
@@ -49,6 +66,7 @@ function DraggableContentRail({ children }: { children: ReactNode }) {
   };
 
   const handlePointerUp = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "mouse") return;
     event.currentTarget.classList.remove("is-dragging");
     if (dragRef.current.pointerId !== event.pointerId) return;
     const moved = dragRef.current.moved;
@@ -67,7 +85,8 @@ function DraggableContentRail({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className="horizontal-drag-surface no-scrollbar flex w-full snap-x snap-mandatory cursor-grab gap-grid overflow-x-auto overflow-y-hidden pb-3 [touch-action:pan-x_pan-y]"
+      ref={railRef}
+      className={`horizontal-drag-surface no-scrollbar flex w-full snap-x snap-mandatory gap-grid overflow-x-auto overflow-y-hidden pb-3 [touch-action:pan-x_pan-y] ${isScrollable ? "cursor-grab" : "cursor-default"}`}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}

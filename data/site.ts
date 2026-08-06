@@ -46,7 +46,7 @@ export const projects = [
 ] as const;
 
 export const aboutVideos = [
-  { id: "tek-yaratici-yon", video: "/assets/videos/tek-yaratici-yon.mov" },
+  { id: "tek-kreatif-yon", video: "/assets/videos/tek-kreatif-yon.mov" },
   { id: "hibrit-uretim", video: "/assets/videos/hibrit-uretim.mov" },
   { id: "her-ekrana-hazir", video: "/assets/videos/her-ekrana-hazir.mov" },
   { id: "iz-birakan-final", video: "/assets/videos/iz-birakan-final.mov" },

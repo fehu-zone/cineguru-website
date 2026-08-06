@@ -251,12 +251,11 @@ export function ServicesSection({ messages }: { messages: Messages }) {
                   "services-overlay-box absolute pointer-events-auto",
                   hudCardPositions[boxIndex],
                 )}
-              >
+                >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-mono text-[0.54rem] font-bold uppercase tracking-[0.08em] text-accent">
                     {String(boxIndex + 1).padStart(2, "0")} · {box.tag}
                   </span>
-                  <i className="size-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent)]" />
                 </div>
                 <h4 className="mt-1 font-display text-[0.88rem] font-semibold tracking-[-0.02em] text-foreground">
                   {box.title}

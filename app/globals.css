@@ -800,20 +800,6 @@
   opacity: 0.9;
 }
 
-.hotspot-dot {
-  width: 5px !important;
-  height: 5px !important;
-  border-radius: 50% !important;
-  background: var(--color-accent) !important;
-  box-shadow: 0 0 10px var(--color-accent) !important;
-  animation: pulse-dot 2.5s infinite ease-in-out !important;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: 0.5; }
-}
-
 .hotspot-title {
   font-family: var(--font-display), sans-serif !important;
   font-size: 0.94rem !important;
