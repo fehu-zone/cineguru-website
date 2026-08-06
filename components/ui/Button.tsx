@@ -15,9 +15,9 @@ const variantStyles: Record<ButtonVariant, string> = {
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  default: "min-h-12 gap-5 px-5 py-3 font-mono text-[0.62rem] font-bold uppercase tracking-[0.08em]",
-  compact: "min-h-10 gap-3 px-4 py-2 font-mono text-[0.58rem] font-bold uppercase tracking-[0.08em]",
-  display: "min-h-[clamp(8.75rem,10vw,10rem)] min-w-0 flex-1 gap-5 whitespace-nowrap px-[clamp(1.25rem,2.5vw,3rem)] py-6 text-center font-body text-[clamp(1.9rem,3.8vw,4rem)] font-normal normal-case leading-none tracking-[-0.045em] max-[640px]:min-h-28 max-[640px]:px-5 max-[640px]:text-[clamp(1.45rem,7vw,2.35rem)] max-[640px]:tracking-[-0.035em]",
+  default: "min-h-11 gap-4 px-4.5 py-2.5 font-mono text-[0.6rem] font-bold uppercase tracking-[0.08em]",
+  compact: "min-h-9 gap-2.5 px-3.5 py-1.5 font-mono text-[0.56rem] font-bold uppercase tracking-[0.08em]",
+  display: "min-h-[clamp(6rem,7vw,7rem)] min-w-0 flex-1 gap-4 whitespace-nowrap px-[clamp(1rem,2vw,2.25rem)] py-4 text-center font-body text-[clamp(1.35rem,2.6vw,2.7rem)] font-normal normal-case leading-none tracking-[-0.045em] max-[640px]:min-h-[4.75rem] max-[640px]:px-4 max-[640px]:text-[clamp(1.05rem,5.2vw,1.6rem)] max-[640px]:tracking-[-0.035em]",
 };
 
 export function buttonStyles({

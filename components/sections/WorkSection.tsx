@@ -207,7 +207,7 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
             >
               <ProjectPoster slug={activeProject.slug} alt={activeContent.alt} sizes="(max-width: 760px) 100vw, 42vw" />
               <span className="absolute inset-0 bg-gradient-to-t from-canvas/75 via-transparent to-canvas/10 opacity-70 transition-opacity duration-500 group-hover:opacity-100" aria-hidden="true" />
-              <span className="pointer-events-none absolute bottom-4 right-4 translate-y-2 rounded-full bg-foreground/90 px-4 py-2.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-canvas opacity-0 shadow-[0_5px_20px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[opacity,transform,background-color] duration-300 group-hover:translate-y-0 group-hover:opacity-100" aria-hidden="true">{work.watchLabel}</span>
+              <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-foreground/90 px-4 py-2.5 font-mono text-[0.75rem] font-semibold uppercase tracking-[0.1em] text-canvas opacity-100 shadow-[0_5px_20px_rgba(0,0,0,0.28)] backdrop-blur-md transition-[transform,background-color,color] duration-300 group-hover:scale-105 group-hover:bg-accent group-hover:text-foreground" aria-hidden="true">{work.watchLabel}</span>
             </a>
           </div>
         </div>

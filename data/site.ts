@@ -7,8 +7,8 @@ export const siteConfig = {
   whatsappHref: "https://wa.me/905318446206",
   getWhatsappHref(locale: "tr" | "en" = "tr") {
     const text = locale === "en"
-      ? "Hello, I would like to get information about a project."
-      : "Merhaba, projemiz hakkında bilgi almak istiyorum.";
+      ? "Hello, I would like to talk about our project."
+      : "Merhaba, projemiz hakkında konuşmak istiyorum.";
     return `https://wa.me/905318446206?text=${encodeURIComponent(text)}`;
   },
   address: {
