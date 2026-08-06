@@ -1,15 +1,13 @@
 "use client";
 
-import { useRef, useState, type KeyboardEvent, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
+import { useRef, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
 
 import { reels, siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import type { ActiveVideo } from "@/components/ui/VideoModal";
 import { ReelPoster } from "@/components/ui/ResponsiveMedia";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { cn } from "@/lib/classNames";
 
-type ChannelTab = "youtube" | "instagram";
 type ChannelMessages = Messages["channel"];
 
 const testReels = Array.from({ length: 6 }, (_, index) => {
@@ -90,22 +88,19 @@ function DraggableContentRail({ children }: { children: ReactNode }) {
 }
 
 function PlatformContentPanel({
-  platform,
   channel,
   messages,
   onOpenVideo,
 }: {
-  platform: ChannelTab;
   channel: ChannelMessages;
   messages: Messages;
   onOpenVideo: (video: ActiveVideo) => void;
 }) {
-  const isInstagram = platform === "instagram";
-  const overline = isInstagram ? channel.instagramOverline : channel.youtubeOverline;
-  const title = isInstagram ? channel.instagramPanelTitle : channel.youtubePanelTitle;
-  const description = isInstagram ? channel.instagramPanelDescription : channel.youtubePanelDescription;
-  const cta = isInstagram ? channel.instagramLink : channel.youtubeChannel;
-  const channelHref = isInstagram ? siteConfig.social[0].href : siteConfig.social[2].href;
+  const overline = channel.youtubeOverline;
+  const title = channel.youtubePanelTitle;
+  const description = channel.youtubePanelDescription;
+  const cta = channel.youtubeChannel;
+  const channelHref = siteConfig.social[2].href;
 
   return (
     <article>
@@ -145,48 +140,13 @@ function PlatformContentPanel({
 
 export function ChannelSection({ messages, onOpenVideo }: { messages: Messages; onOpenVideo: (video: ActiveVideo) => void }) {
   const channel = messages.channel;
-  const [activeTab, setActiveTab] = useState<ChannelTab>("youtube");
-  const tabs: ChannelTab[] = ["youtube", "instagram"];
-
-  const handleTabKeys = (event: KeyboardEvent<HTMLButtonElement>, tab: ChannelTab) => {
-    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) return;
-    event.preventDefault();
-    const index = tabs.indexOf(tab);
-    const nextIndex = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
-    const nextTab = tabs[nextIndex];
-    setActiveTab(nextTab);
-    document.getElementById(`channel-tab-${nextTab}`)?.focus();
-  };
 
   return (
     <section className="channel-section page-shell py-section" aria-labelledby="channel-title">
       <SectionHeading eyebrow={channel.eyebrow} title={channel.title} description={channel.description} titleId="channel-title" wideTitle titleClassName="!translate-x-8 translate-y-8 max-[940px]:!translate-x-0 max-[940px]:!translate-y-0" descriptionClassName="!mt-96 max-[940px]:!mt-6 max-[640px]:!mt-4" />
       <div className="reveal-on-scroll mt-[clamp(2.5rem,3.5vw,3.5rem)]" data-reveal="panel">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-5 border-b border-foreground/20 pb-3" role="tablist" aria-label={channel.tabsLabel}>
-          <div className="flex gap-1 rounded-full border border-foreground/20 bg-surface/70 p-1">
-            {tabs.map((tab, index) => {
-              const selected = activeTab === tab;
-              return (
-                <button
-                  key={tab}
-                  id={`channel-tab-${tab}`}
-                  className={cn("flex min-h-10 items-center gap-3 rounded-full px-4 py-2 font-mono text-[0.61rem] font-bold uppercase tracking-[0.08em] transition-colors duration-300 max-[480px]:gap-2 max-[480px]:px-3 max-[480px]:text-[0.54rem]", selected ? "bg-foreground text-canvas" : "text-foreground/55 hover:text-foreground")}
-                  type="button"
-                  role="tab"
-                  aria-selected={selected}
-                  aria-controls="channel-tab-panel"
-                  tabIndex={selected ? 0 : -1}
-                  onClick={() => setActiveTab(tab)}
-                  onKeyDown={(event) => handleTabKeys(event, tab)}
-                ><span className={cn(selected && "text-accent")}>0{index + 1}</span>{tab === "instagram" ? channel.instagramTab : channel.youtubeTab}</button>
-              );
-            })}
-          </div>
-          <span className="font-mono text-[0.57rem] uppercase tracking-[0.1em] text-foreground/40">{activeTab === "instagram" ? channel.instagramOverline : channel.youtubeOverline}</span>
-        </div>
-
-        <div id="channel-tab-panel" role="tabpanel" aria-labelledby={`channel-tab-${activeTab}`} className="channel-tab-panel min-h-[42rem]" key={activeTab}>
-          <PlatformContentPanel platform={activeTab} channel={channel} messages={messages} onOpenVideo={onOpenVideo} />
+        <div id="channel-tab-panel" className="channel-tab-panel min-h-[42rem]">
+          <PlatformContentPanel channel={channel} messages={messages} onOpenVideo={onOpenVideo} />
         </div>
       </div>
     </section>
