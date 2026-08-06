@@ -1,15 +1,16 @@
 import type { Ref } from "react";
 
 import { siteConfig } from "@/data/site";
-import type { Messages } from "@/i18n/config";
+import type { Locale, Messages } from "@/i18n/config";
 import { ButtonLink, TextLink } from "@/components/ui/Button";
 import { CameraHud } from "@/components/ui/CameraHud";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { ViewportVideo } from "@/components/ui/ViewportVideo";
 import { ReferenceCarousel } from "@/components/ui/ReferenceCarousel";
 
-export function HeroSection({ messages, timecodeRef }: { messages: Messages; timecodeRef: Ref<HTMLSpanElement> }) {
+export function HeroSection({ messages, timecodeRef, locale = "tr" }: { messages: Messages; timecodeRef: Ref<HTMLSpanElement>; locale?: Locale }) {
   const hero = messages.hero;
+  const whatsappHref = siteConfig.getWhatsappHref(locale);
 
   return (
     <section className="relative isolate min-h-[100svh] w-full max-w-none overflow-hidden" id="top">
@@ -60,14 +61,14 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
               ↓
             </span>
           </ButtonLink>
-          <TextLink className="max-[600px]:hidden" href={siteConfig.whatsappHref} target="_blank" rel="noopener noreferrer">
+          <TextLink className="max-[600px]:hidden" href={whatsappHref} target="_blank" rel="noopener noreferrer">
             {messages.navigation.projectCta}
             <span aria-hidden="true">↗</span>
           </TextLink>
           <ButtonLink
             variant="light"
             className="min-[601px]:!hidden max-[600px]:flex max-[600px]:min-h-[3.75rem] max-[600px]:w-full max-[600px]:justify-center max-[600px]:text-[0.88rem] max-[600px]:font-bold max-[600px]:tracking-[0.06em]"
-            href={siteConfig.whatsappHref}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
           >

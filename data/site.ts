@@ -5,6 +5,12 @@ export const siteConfig = {
   phoneDisplay: "+90 531 844 62 06",
   phoneHref: "tel:+905318446206",
   whatsappHref: "https://wa.me/905318446206",
+  getWhatsappHref(locale: "tr" | "en" = "tr") {
+    const text = locale === "en"
+      ? "Hello, welcome to Cineguru! 👋 How can we help you today?"
+      : "Merhaba, Cineguru'ya hoş geldiniz! 👋 Size nasıl yardımcı olabiliriz?";
+    return `https://wa.me/905318446206?text=${encodeURIComponent(text)}`;
+  },
   address: {
     street: "Caferağa Mah. Şifa Sk. No: 19",
     locality: "Kadıköy",

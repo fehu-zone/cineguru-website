@@ -39,7 +39,7 @@ export default function CineguruHome({ locale }: { locale: Locale }) {
         <CustomCursor label={messages.global.cursor} />
         <SiteHeader locale={locale} messages={messages} />
         <ScrollFilmline stageRef={stageLabelRef} progressRef={progressBarRef} initialStage={messages.global.stages[0]} hint={messages.global.scrollHint} />
-        <HeroSection messages={messages} timecodeRef={timecodeRef} />
+        <HeroSection messages={messages} timecodeRef={timecodeRef} locale={locale} />
         <WorkSection messages={messages} onOpenVideo={openVideo} />
         <ChannelSection messages={messages} onOpenVideo={openVideo} />
         <ServicesSection messages={messages} />

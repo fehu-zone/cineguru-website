@@ -97,7 +97,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
             <span className="text-accent">·</span>
             <Link href="/en" lang="en" hrefLang="en" className={cn("transition-colors hover:text-foreground", locale === "en" && "text-foreground")} aria-current={locale === "en" ? "page" : undefined} onClick={() => trackEvent("language_select", { language: "en" })}>EN</Link>
           </nav>
-          <ButtonLink variant="outline" size="compact" className="max-[940px]:hidden" href={siteConfig.whatsappHref} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("contact_cta", { placement: "header", language: locale })}>
+          <ButtonLink variant="outline" size="compact" className="max-[940px]:hidden" href={siteConfig.getWhatsappHref(locale)} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("contact_cta", { placement: "header", language: locale })}>
             {nav.projectCta}
           </ButtonLink>
           <button
