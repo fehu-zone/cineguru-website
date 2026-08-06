@@ -32,16 +32,14 @@ export const navigationItems = [
 ] as const;
 
 export const projects = [
+  { id: "etnospor-festivali", slug: "etnospor", youtubeId: "YgTxEe4HDbo", year: "2026", featured: true },
+  { id: "sifir-atik-blueaware", slug: "sifir-atik", youtubeId: "YMRjZhdPsfk", year: "2026", featured: true },
+  { id: "cineguru-showreel", slug: "showreel", youtubeId: "7B39eWsDc5s", year: "2026", featured: true },
+  { id: "kalekim", slug: "kalekim", youtubeId: "Mz5axZ1atJk", year: "2024", featured: true },
+  { id: "vialand", slug: "vialand", youtubeId: "DtZNVI2ON-U", year: "2024", featured: true },
+  { id: "asfat", slug: "asfat", youtubeId: "bct_ERqomNI", year: "2024", featured: true },
   { id: "sifir-atik", slug: "sifir-atik", youtubeId: "qG5OExBLt8c", year: "2026", featured: true },
   { id: "vex-robotics", slug: "vex-robotics", youtubeId: "aZrWhEaHDBg", year: "2026", featured: true },
-  { id: "demo-vialand", slug: "vialand", youtubeId: "qG5OExBLt8c", year: "2026", featured: true },
-  { id: "demo-kalekim", slug: "kalekim", youtubeId: "aZrWhEaHDBg", year: "2026", featured: true },
-  { id: "demo-etnospor", slug: "etnospor", youtubeId: "qG5OExBLt8c", year: "2026", featured: true },
-  { id: "demo-asfat", slug: "asfat", youtubeId: "aZrWhEaHDBg", year: "2026", featured: true },
-  { id: "kalekim", slug: "kalekim", youtubeId: "Mz5axZ1atJk", year: "2024", featured: false },
-  { id: "vialand", slug: "vialand", youtubeId: "DtZNVI2ON-U", year: "2024", featured: false },
-  { id: "etnospor", slug: "etnospor", youtubeId: "YNDz9ydGqPM", year: "2024", featured: false },
-  { id: "asfat", slug: "asfat", youtubeId: "bct_ERqomNI", year: "2024", featured: false },
 ] as const;
 
 export const aboutVideos = [

@@ -59,6 +59,66 @@
     "pauseLabel": "Pause",
     "resumeLabel": "Resume",
     "projects": {
+      "etnospor-festivali": {
+        "title": "8th Ethnosport Culture Festival",
+        "type": "Event Film",
+        "alt": "8th Ethnosport Culture Festival film — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Bringing traditional sports and cultural heritage to life with dynamic camera movement and vivid color." },
+          { "label": "Production system", "text": "Multi-camera setups, rhythmic editing and cinematic color grading for a comprehensive festival film." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "sifir-atik-blueaware": {
+        "title": "Zero Waste — Blueaware",
+        "type": "Promo Film",
+        "alt": "Zero Waste Blueaware promo film — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Transforming sustainability and environmental awareness into a high-impact visual brand narrative." },
+          { "label": "Production system", "text": "Visual symbolism, modern editing discipline and fluid storytelling in a custom commercial production." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "cineguru-showreel": {
+        "title": "Cineguru Studio Showreel",
+        "type": "Studio Showreel",
+        "alt": "Cineguru Studio Showreel film",
+        "caseStudy": [
+          { "label": "Film focus", "text": "The definitive studio reel showcasing Cineguru's commercial, event and next-gen production vision." },
+          { "label": "Production system", "text": "Signature shots and selected projects combining live-action discipline with hybrid production workflows." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "kalekim": {
+        "title": "Kalekim 50th Anniversary",
+        "type": "Commercial Film",
+        "alt": "Kalekim 50th Anniversary — Cineguru film",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Retelling Kalekim's 50-year brand legacy through modern cinematic visual language." },
+          { "label": "Production system", "text": "Commercial production blending human story, production details and emotional editing." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2024" }
+        ]
+      },
+      "vialand": {
+        "title": "Vialand",
+        "type": "3D Commercial",
+        "alt": "Vialand — Cineguru film",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Showcasing Vialand's theme park world and high energy with visual effects and motion." },
+          { "label": "Production system", "text": "Production combining 3D animation, editing rhythm and brand colors in a dynamic flow." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2024" }
+        ]
+      },
+      "asfat": {
+        "title": "ASFAT — PN MİLGEM",
+        "type": "Brand Film",
+        "alt": "ASFAT — PN MİLGEM — Cineguru film",
+        "caseStudy": [
+          { "label": "Film focus", "text": "Translating national defense and naval shipbuilding power into a cinematic narrative." },
+          { "label": "Production system", "text": "Defense industry film featuring macro detail shots, grand scale and epic sound design." },
+          { "label": "Release", "text": "Cineguru Studio YouTube · 2024" }
+        ]
+      },
       "sifir-atik": {
         "title": "Zero Waste Week",
         "type": "Commercial Film",
@@ -78,70 +138,6 @@
           { "label": "Production system", "text": "A film approach combining the technology theme with a strong edit rhythm and clear brand narrative." },
           { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
         ]
-      },
-      "demo-vialand": {
-        "title": "Vialand / 3D World",
-        "type": "3D Commercial",
-        "alt": "Vialand 3D commercial — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film focus", "text": "Make Vialand’s energy visible through a strong visual world and a sense of movement." },
-          { "label": "Production system", "text": "A visual system that brings 3D design, edit rhythm and brand colors into one flow." },
-          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "demo-kalekim": {
-        "title": "Kalekim / Brand Story",
-        "type": "Brand Film",
-        "alt": "Kalekim brand film — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film focus", "text": "Retell Kalekim’s brand memory through a visual language made for today." },
-          { "label": "Production system", "text": "Bring human stories, product details and cinematic images into one narrative." },
-          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "demo-etnospor": {
-        "title": "Ethnosport / Festival Film",
-        "type": "Festival Film",
-        "alt": "Ethnosport festival film — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film focus", "text": "Capture the movement, culture and crowd energy of the festival in one film rhythm." },
-          { "label": "Production system", "text": "Bring live action, fast editing and atmospheric frames into one story." },
-          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "demo-asfat": {
-        "title": "ASFAT / Brand Film",
-        "type": "Brand Film",
-        "alt": "ASFAT brand film — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film focus", "text": "Turn technology and production strength into a clear, assured and cinematic narrative." },
-          { "label": "Production system", "text": "Build one visual language from detail frames, scale and controlled camera movement." },
-          { "label": "Release", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "kalekim": {
-        "title": "Kalekim 50th Anniversary",
-        "type": "Commercial Film",
-        "alt": "Kalekim 50th Anniversary — Cineguru film",
-        "caseStudy": []
-      },
-      "vialand": {
-        "title": "Vialand",
-        "type": "3D Commercial",
-        "alt": "Vialand — Cineguru film",
-        "caseStudy": []
-      },
-      "etnospor": {
-        "title": "Ethnosport Culture Festival",
-        "type": "Festival Film",
-        "alt": "Ethnosport Culture Festival — Cineguru film",
-        "caseStudy": []
-      },
-      "asfat": {
-        "title": "ASFAT — PN MİLGEM",
-        "type": "Brand Film",
-        "alt": "ASFAT — PN MİLGEM — Cineguru film",
-        "caseStudy": []
       }
     }
   },

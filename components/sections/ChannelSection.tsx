@@ -6,7 +6,6 @@ import { reels, siteConfig } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import type { ActiveVideo } from "@/components/ui/VideoModal";
 import { ReelPoster } from "@/components/ui/ResponsiveMedia";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type ChannelMessages = Messages["channel"];
 
@@ -143,7 +142,6 @@ export function ChannelSection({ messages, onOpenVideo }: { messages: Messages; 
 
   return (
     <section className="channel-section page-shell py-section" aria-labelledby="channel-title">
-      <SectionHeading eyebrow={channel.eyebrow} title={channel.title} description={channel.description} titleId="channel-title" wideTitle titleClassName="!translate-x-8 translate-y-8 max-[940px]:!translate-x-0 max-[940px]:!translate-y-0" descriptionClassName="!mt-96 max-[940px]:!mt-6 max-[640px]:!mt-4" />
       <div className="reveal-on-scroll mt-[clamp(2.5rem,3.5vw,3.5rem)]" data-reveal="panel">
         <div id="channel-tab-panel" className="channel-tab-panel min-h-[42rem]">
           <PlatformContentPanel channel={channel} messages={messages} onOpenVideo={onOpenVideo} />

@@ -59,6 +59,66 @@
     "pauseLabel": "Duraklat",
     "resumeLabel": "Devam ettir",
     "projects": {
+      "etnospor-festivali": {
+        "title": "8. Etnospor Kültür Festivali",
+        "type": "Etkinlik Filmi",
+        "alt": "8. Etnospor Kültür Festivali filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Geleneksel sporları ve kültür mirasını dinamik set atmosferi ve canlı renk paletiyle ekranlara taşımak." },
+          { "label": "Üretim sistemi", "text": "Çoklu kamera açısı, ritmik kurgu ve sinematik renk derecelendirmesiyle hazırlanan festival filmi." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "sifir-atik-blueaware": {
+        "title": "Zero Waste — Blueaware",
+        "type": "Tanıtım Filmi",
+        "alt": "Zero Waste Blueaware tanıtım filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Sürdürülebilirlik ve çevre bilincini yüksek görsel standartta etki katan bir marka hikâyesine dönüştürmek." },
+          { "label": "Üretim sistemi", "text": "Görsel sembolizm, modern kurgu disiplini ve akıcı anlatımla birleşen özel reklam prodüksiyonu." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "cineguru-showreel": {
+        "title": "Cineguru Studio Showreel",
+        "type": "Stüdyo Tanıtım Filmi",
+        "alt": "Cineguru Studio Showreel tanıtım filmi",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Cineguru'nun reklam, etkinlik ve yeni nesil üretim vizyonunu bir araya getiren stüdyo tanıtım filmi." },
+          { "label": "Üretim sistemi", "text": "Canlı çekim disiplininden hibrit üretim süreçlerine uzanan seçkin projeler ve imza sahneler." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "kalekim": {
+        "title": "Kalekim 50. Yıl",
+        "type": "Reklam Filmi",
+        "alt": "Kalekim 50. Yıl — Cineguru filmi",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Kalekim’in 50 yıllık marka hafızasını ve köklü mirasını bugünün sinematik görsel diliyle yeniden anlatmak." },
+          { "label": "Üretim sistemi", "text": "İnsan hikâyesi, üretim detayları ve duygusal kurgu ritmini tek bir anlatıda buluşturan özel reklam filmi." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2024" }
+        ]
+      },
+      "vialand": {
+        "title": "Vialand",
+        "type": "3D Reklam Filmi",
+        "alt": "Vialand — Cineguru filmi",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Vialand’ın eğlence dünyasını ve yüksek enerjisini görsel efektler ve hareket duygusuyla görünür kılmak." },
+          { "label": "Üretim sistemi", "text": "3D animasyon, kurgu ritmi ve marka renklerini dinamik bir akışta birleştiren prodüksiyon." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2024" }
+        ]
+      },
+      "asfat": {
+        "title": "ASFAT — PN MİLGEM",
+        "type": "Tanıtım Filmi",
+        "alt": "ASFAT — PN MİLGEM — Cineguru filmi",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Milli savunma ve gemi inşa teknolojisinin yüksek üretim gücünü sinematik bir anlatıya taşımak." },
+          { "label": "Üretim sistemi", "text": "Detay planlar, geniş mekân ölçeği ve epik ses tasarımıyla kurulan savunma sanayi filmi." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2024" }
+        ]
+      },
       "sifir-atik": {
         "title": "Sıfır Atık Haftası",
         "type": "Reklam Filmi",
@@ -78,70 +138,6 @@
           { "label": "Üretim sistemi", "text": "Teknoloji temasını güçlü kurgu ritmi ve net marka anlatısıyla birleştiren film yaklaşımı." },
           { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
         ]
-      },
-      "demo-vialand": {
-        "title": "Vialand / 3D Dünya",
-        "type": "3D Reklam Filmi",
-        "alt": "Vialand 3D reklam filmi — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Vialand’ın enerjisini güçlü bir görsel dünya ve hareket duygusuyla görünür kılmak." },
-          { "label": "Üretim sistemi", "text": "3D tasarım, kurgu ritmi ve marka renklerini tek bir akışta buluşturan görsel sistem." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "demo-kalekim": {
-        "title": "Kalekim / Marka Hikâyesi",
-        "type": "Marka Filmi",
-        "alt": "Kalekim marka filmi — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Kalekim’in marka hafızasını bugünün görsel diliyle yeniden anlatmak." },
-          { "label": "Üretim sistemi", "text": "İnsan hikâyesi, ürün detayları ve sinematik görüntüyü tek bir anlatıda birleştirmek." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "demo-etnospor": {
-        "title": "Etnospor / Festival Filmi",
-        "type": "Festival Filmi",
-        "alt": "Etnospor festival filmi — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Festivalin hareketini, kültürünü ve kalabalık enerjisini tek bir film ritminde toplamak." },
-          { "label": "Üretim sistemi", "text": "Canlı çekim, hızlı kurgu ve güçlü atmosfer planlarını aynı hikâyede buluşturmak." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "demo-asfat": {
-        "title": "ASFAT / Tanıtım Filmi",
-        "type": "Tanıtım Filmi",
-        "alt": "ASFAT tanıtım filmi — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Teknoloji ve üretim gücünü net, güven veren ve sinematik bir anlatıya taşımak." },
-          { "label": "Üretim sistemi", "text": "Detay planları, mekân ölçeği ve kontrollü kamera hareketini tek bir görsel dilde kurmak." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "kalekim": {
-        "title": "Kalekim 50. Yıl",
-        "type": "Reklam Filmi",
-        "alt": "Kalekim 50. Yıl — Cineguru filmi",
-        "caseStudy": []
-      },
-      "vialand": {
-        "title": "Vialand",
-        "type": "3D Reklam Filmi",
-        "alt": "Vialand — Cineguru filmi",
-        "caseStudy": []
-      },
-      "etnospor": {
-        "title": "Etnospor Kültür Festivali",
-        "type": "Festival Filmi",
-        "alt": "Etnospor Kültür Festivali — Cineguru filmi",
-        "caseStudy": []
-      },
-      "asfat": {
-        "title": "ASFAT — PN MİLGEM",
-        "type": "Tanıtım Filmi",
-        "alt": "ASFAT — PN MİLGEM — Cineguru filmi",
-        "caseStudy": []
       }
     }
   },
