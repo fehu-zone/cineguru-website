@@ -9,11 +9,6 @@ import { ReelPoster } from "@/components/ui/ResponsiveMedia";
 
 type ChannelMessages = Messages["channel"];
 
-const testReels = Array.from({ length: 6 }, (_, index) => {
-  const source = reels[index % reels.length];
-  return { ...source, id: `${source.id}-test-${index}`, sourceId: source.id };
-});
-
 function DraggableContentRail({ children }: { children: ReactNode }) {
   const dragRef = useRef({ pointerId: -1, mode: "idle" as "idle" | "pending" | "horizontal", startX: 0, startY: 0, startScrollLeft: 0, moved: false });
 
@@ -113,8 +108,8 @@ function PlatformContentPanel({
       </div>
 
       <DraggableContentRail>
-        {testReels.map((reel) => {
-          const content = channel.reels[reel.sourceId];
+        {reels.map((reel) => {
+          const content = channel.reels[reel.id];
           return (
             <a
               key={reel.id}
