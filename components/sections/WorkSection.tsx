@@ -6,7 +6,6 @@ import { projects } from "@/data/site";
 import type { Messages } from "@/i18n/config";
 import type { ActiveVideo } from "@/components/ui/VideoModal";
 import { ProjectPoster } from "@/components/ui/ResponsiveMedia";
-import { ReferenceCarousel } from "@/components/ui/ReferenceCarousel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 import { useAutoAdvance } from "@/hooks/useMotion";
@@ -115,12 +114,6 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
       <div className="bg-canvas text-foreground">
         <div className="page-shell pb-[clamp(3rem,5vw,5rem)] pt-[clamp(6rem,11vw,13rem)] max-[600px]:pt-20">
           <SectionHeading eyebrow={work.eyebrow} title={work.title} description={work.description} />
-        </div>
-        <div className="reveal-on-scroll pb-12 max-[640px]:pb-8" data-reveal="panel">
-          <p className="mb-6 text-center font-mono text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-foreground/50">
-            {messages.hero.clientsLabel}
-          </p>
-          <ReferenceCarousel />
         </div>
       </div>
 

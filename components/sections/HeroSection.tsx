@@ -6,6 +6,7 @@ import { ButtonLink, TextLink } from "@/components/ui/Button";
 import { CameraHud } from "@/components/ui/CameraHud";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { ViewportVideo } from "@/components/ui/ViewportVideo";
+import { ReferenceCarousel } from "@/components/ui/ReferenceCarousel";
 
 export function HeroSection({ messages, timecodeRef }: { messages: Messages; timecodeRef: Ref<HTMLSpanElement> }) {
   const hero = messages.hero;
@@ -28,7 +29,7 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
         </div>
       </div>
 
-      <div className="relative z-30 ml-[max(calc(var(--spacing-page)+2rem),calc((100vw-var(--container-site))/2+var(--spacing-page)+2rem))] w-[min(58vw,47.5rem)] pt-[clamp(10rem,24vh,19rem)] max-[900px]:ml-page max-[900px]:w-[min(78%,42.5rem)] max-[900px]:pt-[clamp(8rem,20vh,13rem)] max-[600px]:ml-5 max-[600px]:w-[calc(100%-2.5rem)] max-[600px]:pt-[clamp(7.5rem,18vh,11.5rem)] pb-16">
+      <div className="relative z-30 ml-[max(calc(var(--spacing-page)+2rem),calc((100vw-var(--container-site))/2+var(--spacing-page)+2rem))] w-[min(58vw,47.5rem)] pb-28 pt-[clamp(10rem,24vh,19rem)] max-[900px]:ml-page max-[900px]:w-[min(78%,42.5rem)] max-[900px]:pt-[clamp(8rem,20vh,13rem)] max-[600px]:ml-5 max-[600px]:w-[calc(100%-2.5rem)] max-[600px]:pt-[clamp(7.5rem,18vh,11.5rem)]">
         <Eyebrow>{hero.eyebrow}</Eyebrow>
         <h1 className="mt-[clamp(1.25rem,2.3vw,2.1rem)] font-display text-[clamp(3.6rem,6.25vw,7.35rem)] font-semibold leading-[0.91] tracking-[-0.045em] max-[600px]:mt-3 max-[600px]:text-[clamp(1.85rem,7.8vw,2.75rem)] max-[600px]:leading-[1.02] max-[600px]:tracking-[-0.035em]">
           <span className="max-[600px]:hidden">
@@ -76,19 +77,8 @@ export function HeroSection({ messages, timecodeRef }: { messages: Messages; tim
         </div>
       </div>
 
-      <div className="absolute bottom-5 left-[max(var(--spacing-page),calc((100vw-var(--container-site))/2+2rem))] right-page z-10 grid grid-cols-[1fr_auto_auto] items-center gap-6 font-mono text-[0.55rem] font-semibold uppercase tracking-[0.09em] text-foreground/55 max-[900px]:left-page max-[640px]:hidden">
-        <p>{hero.foot}</p>
-        <div className="flex gap-2 max-[640px]:hidden">
-          {hero.tags.map((tag) => (
-            <span className="rounded-full border border-foreground/15 px-3 py-1.5" key={tag}>
-              {tag}
-            </span>
-          ))}
-        </div>
-        <a className="flex items-center gap-2 text-foreground" href="#work">
-          {hero.discover}
-          <span aria-hidden="true">↓</span>
-        </a>
+      <div className="absolute bottom-0 left-0 right-0 z-30">
+        <ReferenceCarousel />
       </div>
     </section>
   );
