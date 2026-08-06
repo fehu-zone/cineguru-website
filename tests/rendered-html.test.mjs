@@ -46,8 +46,8 @@ test("renders localized Turkish and English experiences", async () => {
   const enHtml = await enResponse.text();
   assert.match(trHtml, /<html[^>]+lang=["']tr["']/i);
   assert.match(enHtml, /<html[^>]+lang=["']en["']/i);
-  assert.match(trHtml, /hero-title-line[^>]*>Fikri, iz bırakan<\/span>\s*<span[^>]*>filme dönüştürüyoruz\./);
-  assert.match(enHtml, /hero-title-line[^>]*>We turn ideas into films<\/span>\s*<span[^>]*>that leave a mark\./);
+  assert.match(trHtml, /hero-title-line[^>]*>Fikri, iz bırakan<\/span>\s*<span[^>]*>filme dönüştürüyor\./);
+  assert.match(enHtml, /hero-title-line[^>]*>Turning ideas into films<\/span>\s*<span[^>]*>that leave a mark\./);
   assert.match(enHtml, /\/en/);
   assert.match(trHtml, /Sıfır Atık Haftası/);
   assert.match(trHtml, /VEX Robotics Türkiye/);
@@ -69,7 +69,7 @@ test("renders localized Turkish and English experiences", async () => {
 test("keeps real portfolio video identifiers in rendered output", async () => {
   const response = await renderPath("/tr");
   const html = await response.text();
-  for (const id of ["qG5OExBLt8c", "aZrWhEaHDBg", "Mz5axZ1atJk", "DtZNVI2ON-U", "YNDz9ydGqPM", "bct_ERqomNI"]) {
+  for (const id of ["YgTxEe4HDbo", "qG5OExBLt8c", "YMRjZhdPsfk", "aZrWhEaHDBg", "7B39eWsDc5s"]) {
     assert.match(html, new RegExp(id));
   }
   assert.doesNotMatch(html, /embed\/videoseries/);
