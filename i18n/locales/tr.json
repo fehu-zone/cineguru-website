@@ -69,6 +69,16 @@
           { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
         ]
       },
+      "sifir-atik": {
+        "title": "Sıfır Atık Haftası",
+        "type": "Reklam Filmi",
+        "alt": "Sıfır Atık Haftası reklam filmi — Cineguru Studio",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Sıfır Atık mesajını kısa, net ve hatırlanabilir bir reklam filmine taşımak." },
+          { "label": "Üretim sistemi", "text": "Mesaj, ritim ve görsel devamlılığı tek bir film akışında buluşturan hibrit prodüksiyon." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
       "sifir-atik-blueaware": {
         "title": "Zero Waste — Blueaware",
         "type": "Tanıtım Filmi",
@@ -79,56 +89,6 @@
           { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
         ]
       },
-      "cineguru-showreel": {
-        "title": "Cineguru Studio Showreel",
-        "type": "Stüdyo Tanıtım Filmi",
-        "alt": "Cineguru Studio Showreel tanıtım filmi",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Cineguru'nun reklam, etkinlik ve yeni nesil üretim vizyonunu bir araya getiren stüdyo tanıtım filmi." },
-          { "label": "Üretim sistemi", "text": "Canlı çekim disiplininden hibrit üretim süreçlerine uzanan seçkin projeler ve imza sahneler." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
-      "kalekim": {
-        "title": "Kalekim 50. Yıl",
-        "type": "Reklam Filmi",
-        "alt": "Kalekim 50. Yıl — Cineguru filmi",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Kalekim’in 50 yıllık marka hafızasını ve köklü mirasını bugünün sinematik görsel diliyle yeniden anlatmak." },
-          { "label": "Üretim sistemi", "text": "İnsan hikâyesi, üretim detayları ve duygusal kurgu ritmini tek bir anlatıda buluşturan özel reklam filmi." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2024" }
-        ]
-      },
-      "vialand": {
-        "title": "Vialand",
-        "type": "3D Reklam Filmi",
-        "alt": "Vialand — Cineguru filmi",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Vialand’ın eğlence dünyasını ve yüksek enerjisini görsel efektler ve hareket duygusuyla görünür kılmak." },
-          { "label": "Üretim sistemi", "text": "3D animasyon, kurgu ritmi ve marka renklerini dinamik bir akışta birleştiren prodüksiyon." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2024" }
-        ]
-      },
-      "asfat": {
-        "title": "ASFAT — PN MİLGEM",
-        "type": "Tanıtım Filmi",
-        "alt": "ASFAT — PN MİLGEM — Cineguru filmi",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Milli savunma ve gemi inşa teknolojisinin yüksek üretim gücünü sinematik bir anlatıya taşımak." },
-          { "label": "Üretim sistemi", "text": "Detay planlar, geniş mekân ölçeği ve epik ses tasarımıyla kurulan savunma sanayi filmi." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2024" }
-        ]
-      },
-      "sifir-atik": {
-        "title": "Sıfır Atık Haftası",
-        "type": "Reklam Filmi",
-        "alt": "Sıfır Atık Haftası reklam filmi — Cineguru Studio",
-        "caseStudy": [
-          { "label": "Film odağı", "text": "Sıfır Atık Haftası mesajını kısa, net ve hatırlanabilir bir reklam filmine taşımak." },
-          { "label": "Üretim sistemi", "text": "Mesaj, ritim ve görsel devamlılığı tek bir film akışında buluşturan hibrit prodüksiyon." },
-          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
-        ]
-      },
       "vex-robotics": {
         "title": "VEX Robotics Türkiye",
         "type": "Tanıtım Filmi",
@@ -136,6 +96,16 @@
         "caseStudy": [
           { "label": "Film odağı", "text": "VEX Robotics Türkiye’nin eğitim ve teknoloji dünyasını dinamik bir tanıtım filmiyle görünür kılmak." },
           { "label": "Üretim sistemi", "text": "Teknoloji temasını güçlü kurgu ritmi ve net marka anlatısıyla birleştiren film yaklaşımı." },
+          { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
+        ]
+      },
+      "cineguru-showreel": {
+        "title": "Cineguru Studio Showreel",
+        "type": "Stüdyo Tanıtım Filmi",
+        "alt": "Cineguru Studio Showreel tanıtım filmi",
+        "caseStudy": [
+          { "label": "Film odağı", "text": "Cineguru'nun reklam, etkinlik ve yeni nesil üretim vizyonunu bir araya getiren stüdyo tanıtım filmi." },
+          { "label": "Üretim sistemi", "text": "Canlı çekim disiplininden hibrit üretim süreçlerine uzanan seçkin projeler ve imza sahneler." },
           { "label": "Yayın", "text": "Cineguru Studio YouTube · 2026" }
         ]
       }
