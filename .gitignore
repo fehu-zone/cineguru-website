@@ -36,3 +36,7 @@ yarn-error.log*
 # typescript
 next-env.d.ts
 /tsconfig.tsbuildinfo
+
+# private deployment and launch notes
+/PRODUCTION_DEPLOYMENT.md
+/PRE_LAUNCH_CHECKLIST.md
