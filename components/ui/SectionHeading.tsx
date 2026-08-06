@@ -52,7 +52,7 @@ export function SectionHeading({
       >
         {wideTitle && title.includes("\n")
           ? title.split("\n").map((line) => (
-              <span className="block whitespace-nowrap" key={line}>{line}</span>
+              <span className="block whitespace-nowrap max-[640px]:whitespace-normal" key={line}>{line}</span>
             ))
           : title}
       </h2>
