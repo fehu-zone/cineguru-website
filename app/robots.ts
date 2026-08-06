@@ -6,15 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/assets/videos/"],
-      },
-      {
-        userAgent: "GPTBot",
-        disallow: "/",
-      },
-      {
-        userAgent: "CCBot",
-        disallow: "/",
+        disallow: ["/api/", "/_next/"],
       },
     ],
     sitemap: "https://www.wearecineguru.com/sitemap.xml",
