@@ -214,7 +214,6 @@ export function ServicesSection({ messages }: { messages: Messages }) {
                         active={sceneActive && activeIndex !== 3}
                         activeIndex={threeIndex}
                         reducedMotion={reducedMotion}
-                        sceneLabel={services.sceneLabels[threeIndex]}
                         details={services.details}
                       />
                     </Suspense>

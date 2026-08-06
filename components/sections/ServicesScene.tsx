@@ -146,7 +146,7 @@ function PostProdEntranceWrap({ children }: { children: React.ReactNode }) {
    Active 3D Models
    ═══════════════════════════════════════════════════════════ */
 
-function StrategyChessSet({ label }: { label: string }) {
+function StrategyChessSet() {
   const { scene } = useGLTF("/assets/strategy-chess-set/chess_set_1k.glb");
 
   return (
@@ -282,13 +282,11 @@ function ServicesSceneInner({
   active,
   activeIndex,
   reducedMotion,
-  sceneLabel,
   details,
 }: {
   active: boolean;
   activeIndex: number;
   reducedMotion: boolean;
-  sceneLabel: string;
   details?: DetailItem[][];
 }) {
   const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
@@ -345,7 +343,7 @@ function ServicesSceneInner({
       <Center>
         {activeIndex === 0 ? (
           <StrategyEntranceWrap key={`stage-0-${activeIndex}`}>
-            <StrategyChessSet label={sceneLabel} />
+            <StrategyChessSet />
           </StrategyEntranceWrap>
         ) : null}
         {activeIndex === 1 ? (
@@ -387,13 +385,11 @@ export function ServicesScene({
   active,
   activeIndex,
   reducedMotion,
-  sceneLabel,
   details,
 }: {
   active: boolean;
   activeIndex: number;
   reducedMotion: boolean;
-  sceneLabel: string;
   details?: DetailItem[][];
 }) {
   return (
@@ -408,7 +404,6 @@ export function ServicesScene({
         active={active}
         activeIndex={activeIndex}
         reducedMotion={reducedMotion}
-        sceneLabel={sceneLabel}
         details={details}
       />
     </Canvas>
