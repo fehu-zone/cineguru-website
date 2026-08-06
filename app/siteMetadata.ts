@@ -17,6 +17,9 @@ export const baseMetadata: Metadata = {
   description: getMessages("tr").metadata.description,
   keywords: getMessages("tr").metadata.keywords,
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  verification: {
+    google: "E3lC3sNYrlXhOzK__u2R68oEZ6GTYeJUR6TtWJooT8Y",
+  },
 };
 
 export function getLocalizedMetadata(lang: Locale): Metadata {
