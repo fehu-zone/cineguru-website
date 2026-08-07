@@ -72,12 +72,13 @@ export default function SiteDocument({
   };
 
   return (
-    <html lang={lang}>
-      <head>
+    <html lang={lang} suppressHydrationWarning>
+      <head suppressHydrationWarning>
         <script
           id="cineguru-structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          suppressHydrationWarning
         />
         <meta name="google-site-verification" content="E3lC3sNYrlXhOzK__u2R68oEZ6GTYeJUR6TtWJooT8Y" />
         <link rel="preload" as="image" href="/assets/showreel-poster-1280.avif" type="image/avif" fetchPriority="high" />
