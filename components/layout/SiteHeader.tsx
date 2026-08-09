@@ -46,6 +46,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
   return (
     <>
       <header
+        data-nosnippet
         className={cn(
           "fixed inset-x-0 top-0 z-[1000] mx-auto grid h-[4.875rem] w-full max-w-site grid-cols-[3fr_6fr_3fr] items-center gap-grid border-b border-foreground/10 bg-gradient-to-b from-canvas/90 via-canvas/60 to-transparent px-page backdrop-blur-md transition-[height,background-color,border-color] duration-300 max-[1180px]:grid-cols-[2fr_5fr_3fr] max-[940px]:grid-cols-[1fr_auto] max-[640px]:backdrop-blur-none",
           scrolled && "h-16 border-foreground/15 bg-canvas/90",
@@ -79,9 +80,9 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
             <div>
               <h4 className="eyebrow mb-6">{nav.contactInfoTitle}</h4>
               <div className="grid gap-5 text-sm text-foreground/75">
-                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.phoneLabel}</span><a href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>{nav.phoneCta}</a></p>
-                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{messages.contact.emailLabel.toUpperCase()}</span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
-                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.officeLabel}</span><span>{messages.contact.address}</span></p>
+                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.phoneLabel}: </span><a href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>{nav.phoneCta}</a></p>
+                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{messages.contact.emailLabel.toUpperCase()}: </span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
+                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.officeLabel}: </span><span>{messages.contact.address}</span></p>
               </div>
             </div>
             <div>

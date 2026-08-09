@@ -8,17 +8,17 @@ export function ContactPanel({ messages, locale }: { messages: Messages; locale:
   const f = messages.footer;
 
   return (
-    <div className="grid grid-cols-3 gap-grid border-t border-foreground/15 pt-5 max-[940px]:grid-cols-2 max-[640px]:grid-cols-1 gap-y-10">
+    <div data-nosnippet className="grid grid-cols-3 gap-grid border-t border-foreground/15 pt-5 max-[940px]:grid-cols-2 max-[640px]:grid-cols-1 gap-y-10">
       <a className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent" href={`mailto:${siteConfig.email}`}>
-        <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.emailLabel}</span>
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.emailLabel}: </span>
         <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{siteConfig.email}</strong>
       </a>
       <a className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent" href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>
-        <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{messages.navigation.phoneLabel}</span>
-        <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{messages.navigation.phoneCta}</strong>
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{messages.navigation.phoneLabel}: </span>
+        <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{messages.navigation.phoneCta} ({siteConfig.phoneDisplay})</strong>
       </a>
       <address className="flex flex-col gap-3 not-italic">
-        <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.location}</span>
+        <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.location}: </span>
         <strong className="font-normal text-foreground">{contact.address}</strong>
       </address>
       

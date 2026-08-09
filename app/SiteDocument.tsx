@@ -35,7 +35,12 @@ export default function SiteDocument({
         "@id": `${siteConfig.url}/#organization`,
         name: siteConfig.name,
         url: siteConfig.url,
-        logo: `${siteConfig.url}/assets/cineguru-logo.svg`,
+        logo: {
+          "@type": "ImageObject",
+          "url": `${siteConfig.url}/android-chrome-512x512.png`,
+          "width": 512,
+          "height": 512
+        },
         email: siteConfig.email,
         telephone: siteConfig.phoneDisplay,
         sameAs: siteConfig.social.map((social) => social.href),
