@@ -1,5 +1,8 @@
+"use client";
+
 import { siteConfig } from "@/data/site";
 import type { Locale, Messages } from "@/i18n/config";
+import { trackPhoneClick } from "@/lib/analytics";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import Link from "next/link";
 
@@ -13,7 +16,12 @@ export function ContactPanel({ messages, locale }: { messages: Messages; locale:
         <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{contact.emailLabel}: </span>
         <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{siteConfig.email}</strong>
       </a>
-      <a className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent" href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>
+      <a
+        className="group flex flex-col gap-3 text-foreground transition-colors hover:text-accent"
+        href={siteConfig.phoneHref}
+        title={siteConfig.phoneDisplay}
+        onClick={() => trackPhoneClick({ placement: "contact_panel", language: locale })}
+      >
         <span className="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-foreground/65">{messages.navigation.phoneLabel}: </span>
         <strong className="font-normal text-foreground transition-colors group-hover:text-accent">{messages.navigation.phoneCta} ({siteConfig.phoneDisplay})</strong>
       </a>

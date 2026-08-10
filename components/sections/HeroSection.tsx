@@ -1,7 +1,10 @@
+"use client";
+
 import type { Ref } from "react";
 
 import { siteConfig } from "@/data/site";
 import type { Locale, Messages } from "@/i18n/config";
+import { trackWhatsappClick } from "@/lib/analytics";
 import { ButtonLink, TextLink } from "@/components/ui/Button";
 import { CameraHud } from "@/components/ui/CameraHud";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -61,7 +64,13 @@ export function HeroSection({ messages, timecodeRef, locale = "tr" }: { messages
               ↓
             </span>
           </ButtonLink>
-          <TextLink className="max-[600px]:hidden" href={whatsappHref} target="_blank" rel="noopener noreferrer">
+          <TextLink
+            className="max-[600px]:hidden"
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackWhatsappClick({ placement: "hero_desktop", language: locale })}
+          >
             {messages.navigation.projectCta}
             <span aria-hidden="true">↗</span>
           </TextLink>
@@ -71,6 +80,7 @@ export function HeroSection({ messages, timecodeRef, locale = "tr" }: { messages
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackWhatsappClick({ placement: "hero_mobile", language: locale })}
           >
             {messages.navigation.projectCta}
             <span aria-hidden="true">↗</span>

@@ -1,5 +1,8 @@
+"use client";
+
 import { siteConfig } from "@/data/site";
 import type { Locale, Messages } from "@/i18n/config";
+import { trackWhatsappClick, trackPhoneClick } from "@/lib/analytics";
 import { ButtonLink } from "@/components/ui/Button";
 import { HoverVideoButtonLink } from "@/components/ui/HoverVideoButtonLink";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -27,10 +30,17 @@ export function ContactSection({ messages, locale }: { messages: Messages; local
           poster={siteConfig.showreel.poster}
           desktopVideoSrc="/assets/videos/1080p/hemen-baslayalim.mp4"
           mobileVideoSrc="/assets/videos/720p/hemen-baslayalim.mp4"
+          onClick={() => trackWhatsappClick({ placement: "contact_section", language: locale })}
         >
           {contact.mailCta}
         </HoverVideoButtonLink>
-        <ButtonLink className="contact-cta-secondary !bg-foreground/92" size="display" variant="light" href={siteConfig.phoneHref}>
+        <ButtonLink
+          className="contact-cta-secondary !bg-foreground/92"
+          size="display"
+          variant="light"
+          href={siteConfig.phoneHref}
+          onClick={() => trackPhoneClick({ placement: "contact_section", language: locale })}
+        >
           {contact.phoneCta}
         </ButtonLink>
       </div>

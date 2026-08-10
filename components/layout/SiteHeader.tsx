@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { navigationItems, siteConfig } from "@/data/site";
 import type { Locale, Messages } from "@/i18n/config";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackPhoneClick, trackWhatsappClick } from "@/lib/analytics";
 import { cn } from "@/lib/classNames";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { ButtonLink } from "@/components/ui/Button";
@@ -80,7 +80,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
             <div>
               <h4 className="eyebrow mb-6">{nav.contactInfoTitle}</h4>
               <div className="grid gap-5 text-sm text-foreground/75">
-                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.phoneLabel}: </span><a href={siteConfig.phoneHref} title={siteConfig.phoneDisplay}>{nav.phoneCta}</a></p>
+                <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.phoneLabel}: </span><a href={siteConfig.phoneHref} title={siteConfig.phoneDisplay} onClick={() => trackPhoneClick({ placement: "header_mobile_menu", language: locale })}>{nav.phoneCta}</a></p>
                 <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{messages.contact.emailLabel.toUpperCase()}: </span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
                 <p className="grid gap-1"><span className="font-mono text-[0.56rem] tracking-[0.08em] text-foreground/45">{nav.officeLabel}: </span><span>{messages.contact.address}</span></p>
               </div>
@@ -98,7 +98,7 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
             <span className="text-accent">·</span>
             <Link href="/en" lang="en" hrefLang="en" className={cn("transition-colors hover:text-foreground", locale === "en" && "text-foreground")} aria-current={locale === "en" ? "page" : undefined} onClick={() => trackEvent("language_select", { language: "en" })}>EN</Link>
           </nav>
-          <ButtonLink variant="outline" size="compact" className="max-[940px]:hidden" href={siteConfig.getWhatsappHref(locale)} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("contact_cta", { placement: "header", language: locale })}>
+          <ButtonLink variant="outline" size="compact" className="max-[940px]:hidden" href={siteConfig.getWhatsappHref(locale)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsappClick({ placement: "header", language: locale })}>
             {nav.projectCta}
           </ButtonLink>
           <button
