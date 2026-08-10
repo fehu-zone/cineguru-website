@@ -87,6 +87,7 @@ export default function SiteDocument({
           suppressHydrationWarning
         />
         <meta name="google-site-verification" content="E3lC3sNYrlXhOzK__u2R68oEZ6GTYeJUR6TtWJooT8Y" />
+        <meta name="facebook-domain-verification" content="wmo7dc13rnpykpmgcnrlxg4d61ynqd" />
         <link rel="preload" as="image" href="/assets/showreel-poster-1280.avif" type="image/avif" fetchPriority="high" />
         <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
         {/* Meta Pixel Code */}

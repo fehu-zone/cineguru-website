@@ -50,6 +50,9 @@ export const baseMetadata: Metadata = {
   },
   verification: {
     google: "E3lC3sNYrlXhOzK__u2R68oEZ6GTYeJUR6TtWJooT8Y",
+    other: {
+      "facebook-domain-verification": "wmo7dc13rnpykpmgcnrlxg4d61ynqd",
+    },
   },
 };
 
