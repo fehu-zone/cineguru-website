@@ -57,7 +57,7 @@ export function HeroSection({ messages, timecodeRef, locale = "tr" }: { messages
         </p>
         <div className="relative z-30 mt-8 flex items-center gap-6 max-[600px]:mt-6 max-[600px]:flex-col max-[600px]:items-stretch max-[600px]:gap-3.5">
           <ButtonLink
-            className="max-[600px]:min-h-[3.75rem] max-[600px]:w-full max-[600px]:justify-center max-[600px]:text-[0.88rem] max-[600px]:font-bold max-[600px]:tracking-[0.06em]"
+            className="max-[600px]:min-h-[3.75rem] max-[600px]:w-full max-[600px]:justify-center max-[600px]:text-[0.92rem] max-[600px]:font-extrabold max-[600px]:tracking-[0.06em]"
             href="#work"
           >
             {hero.primaryCta}
