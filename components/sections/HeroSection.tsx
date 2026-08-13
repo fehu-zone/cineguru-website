@@ -26,6 +26,7 @@ export function HeroSection({ messages, timecodeRef, locale = "tr" }: { messages
           className="size-full scale-[1.025] object-cover [filter:blur(1.8px)_brightness(.56)_contrast(1.05)_saturate(1.08)] max-[600px]:[filter:blur(1.3px)_brightness(.5)_contrast(1.04)_saturate(1.08)]"
           poster={siteConfig.showreel.poster}
           src={siteConfig.showreel.video}
+          mobileSrc={siteConfig.showreel.mobileVideo}
         />
         <div className="hero-cinematic-overlay absolute inset-0" />
         <div className="pointer-events-none absolute inset-3 max-[640px]:hidden">

@@ -21,6 +21,7 @@ export const siteConfig = {
   showreel: {
     id: "C9U3RJX1c0k",
     video: "/assets/Cineguru-Production-Showreel.mp4",
+    mobileVideo: undefined as string | undefined,
     poster: "/assets/showreel-poster-1280.webp",
   },
   social: [

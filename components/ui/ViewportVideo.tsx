@@ -6,10 +6,12 @@ export function ViewportVideo({
   className,
   poster,
   src,
+  mobileSrc,
 }: {
   className: string;
   poster: string;
   src: string;
+  mobileSrc?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -54,11 +56,12 @@ export function ViewportVideo({
       muted
       loop
       playsInline
-      preload="auto"
+      preload="metadata"
       poster={poster}
       disablePictureInPicture
       aria-hidden="true"
     >
+      {mobileSrc ? <source src={mobileSrc} media="(max-width: 640px)" type="video/mp4" /> : null}
       <source src={src} type="video/mp4" />
     </video>
   );
