@@ -7,6 +7,7 @@ import "./globals.css";
 const GA_ID = "G-KRY6M98B4Y";
 const GT_ID = "GT-MQD3MCKQ";
 const META_PIXEL_ID = "976702455393029";
+const GTM_ID = "GTM-MHNC3BDD";
 
 const inter = Inter({
   variable: "--font-cine-body",
@@ -80,6 +81,18 @@ export default function SiteDocument({
   return (
     <html lang={lang} suppressHydrationWarning>
       <head suppressHydrationWarning>
+        {/* Google Tag Manager */}
+        <script
+          id="gtm-script"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
         <script
           id="cineguru-structured-data"
           type="application/ld+json"
@@ -110,6 +123,16 @@ export default function SiteDocument({
         {/* End Meta Pixel Code */}
       </head>
       <body className={`${inter.variable} ${jetBrainsMono.variable}`}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
         {children}
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GT_ID}`} strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">{`
