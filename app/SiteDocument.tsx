@@ -102,6 +102,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
         <meta name="google-site-verification" content="E3lC3sNYrlXhOzK__u2R68oEZ6GTYeJUR6TtWJooT8Y" />
         <meta name="facebook-domain-verification" content="wmo7dc13rnpykpmgcnrlxg4d61ynqd" />
+        <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Context Summary" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
