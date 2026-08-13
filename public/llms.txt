@@ -1,0 +1,15 @@
+# Cineguru Studio — AI Destekli Video Prodüksiyon
+
+> Cineguru Studio, yapay zekâ teknolojileri ve insan kreatif gücünü bir araya getiren İstanbul merkezli video prodüksiyon stüdyosudur.
+
+## Hizmetler
+- **AI Video Prodüksiyon**: Yapay zekâ destekli kreatif görsel üretimi ve film yapımı.
+- **Reklam & Tanıtım Filmleri**: Markalar için yüksek kaliteli lansman ve imaj filmleri.
+- **Dikey Video & Sosyal Medya**: Reels, Shorts ve TikTok için dikey kurgu ve içerik üretimi.
+- **Etkinlik & Festival Filmleri**: Canlı atmosfer çekimleri ve etkinlik hikâyeleri.
+
+## Bağlantılar
+- Türkçe Ana Sayfa: https://www.wearecineguru.com/tr
+- English Homepage: https://www.wearecineguru.com/en
+- İletişim: https://www.wearecineguru.com/tr/iletisim
+- E-posta: info@wearecineguru.com
