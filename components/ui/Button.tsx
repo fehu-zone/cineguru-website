@@ -9,9 +9,9 @@ const baseStyles =
   "inline-flex items-center justify-center rounded-full border transition-[color,background-color,border-color] duration-300 ease-out";
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "border-accent bg-accent text-canvas hover:border-foreground hover:bg-foreground hover:text-canvas",
-  light: "border-foreground bg-foreground text-canvas hover:border-accent hover:bg-accent hover:text-canvas",
-  outline: "border-foreground/25 bg-foreground/5 text-foreground hover:border-foreground hover:bg-foreground hover:text-canvas",
+  primary: "border-accent bg-accent text-white hover:border-foreground hover:bg-foreground hover:text-canvas",
+  light: "border-foreground bg-foreground text-canvas hover:border-accent hover:bg-accent hover:text-white",
+  outline: "border-foreground/25 bg-foreground/5 text-foreground hover:border-foreground hover:bg-foreground hover:text-white",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

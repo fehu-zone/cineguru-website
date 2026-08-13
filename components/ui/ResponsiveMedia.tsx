@@ -13,9 +13,9 @@ export function ProjectPoster({ slug, alt, sizes }: { slug: string; alt: string;
       />
       <img
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-        src={`/assets/projects/${slug}-1280.webp`}
-        width="1280"
-        height="720"
+        src={`/assets/projects/${slug}-640.webp`}
+        width="640"
+        height="360"
         loading="lazy"
         decoding="async"
         draggable={false}
@@ -40,9 +40,9 @@ export function ReelPoster({ slug, alt, sizes }: { slug: string; alt: string; si
       />
       <img
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
-        src={`/assets/reels/${slug}-1080.webp`}
-        width="1080"
-        height="1920"
+        src={`/assets/reels/${slug}-540.webp`}
+        width="540"
+        height="960"
         loading="lazy"
         decoding="async"
         draggable={false}

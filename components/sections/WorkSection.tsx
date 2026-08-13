@@ -57,7 +57,6 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
       startScrollLeft: scroller.scrollLeft,
       moved: false,
     };
-
   };
 
   const handleTabsPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -126,10 +125,12 @@ export function WorkSection({ messages, onOpenVideo }: { messages: Messages; onO
         </div>
 
         <div className="overflow-hidden border border-foreground/15 bg-surface">
-          <div className="flex items-center border-b border-foreground/15" role="tablist" aria-label={work.referenceTabsLabel}>
+          <div className="flex items-center border-b border-foreground/15">
             <div
               className="horizontal-drag-surface case-tabs-scroller flex min-w-0 flex-1 cursor-grab select-none [touch-action:pan-x_pan-y] overflow-x-auto"
               ref={tabsScrollerRef}
+              role="tablist"
+              aria-label={work.referenceTabsLabel}
               onPointerDown={handleTabsPointerDown}
               onPointerMove={handleTabsPointerMove}
               onPointerUp={handleTabsPointerUp}

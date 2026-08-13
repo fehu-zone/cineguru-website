@@ -24,6 +24,7 @@ export function ClientLogo({ src, alt, className, style, scale = 1, mobileScale,
       style={logoStyle}
       width={width}
       height={height}
+      loading="lazy"
       decoding="async"
       {...props}
     />

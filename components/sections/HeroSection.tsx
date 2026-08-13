@@ -60,7 +60,7 @@ export function HeroSection({ messages, timecodeRef, locale = "tr" }: { messages
             href="#work"
           >
             {hero.primaryCta}
-            <span className="grid size-7 place-items-center rounded-full bg-black/10 text-canvas" aria-hidden="true">
+            <span className="grid size-7 place-items-center rounded-full bg-white/20 text-white" aria-hidden="true">
               ↓
             </span>
           </ButtonLink>
