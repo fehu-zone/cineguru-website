@@ -152,6 +152,7 @@ export function ServicesSection({ messages }: { messages: Messages }) {
             <button
               key={service.title}
               id={`service-tab-${index}`}
+              lang="en"
               className={cn(
                 "services-tab border-t border-foreground/10 px-2 pb-4 pt-5 text-left font-mono text-[0.58rem] uppercase tracking-[0.08em] text-foreground/35 transition-colors duration-300 hover:text-foreground/65 max-[640px]:pb-3 max-[640px]:pt-4",
                 index === activeIndex && "services-tab-active text-foreground",

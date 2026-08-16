@@ -162,9 +162,9 @@
     "sceneLabels": ["STRATEGY BOARD", "CREATIVE DIRECTION", "PRODUCTION", "POST PRODUCTION"],
     "items": [
       { "title": "Strategy", "description": "Finds the brand's core message and turns the idea into a story audiences remember.", "tags": ["Creative Direction", "Campaign", "Concept"] },
-      { "title": "Pre Production", "description": "Accelerates scripts, visual worlds, character continuity and storyboards with AI.", "tags": ["Script", "AI Visuals", "Storyboard"] },
-      { "title": "Production + AI Video", "description": "Unites live action and generative AI under one directing and cinematography language.", "tags": ["Live Action", "AI Film", "Studio"] },
-      { "title": "Post Production", "description": "Editing, VFX, color, sound and format adaptations create a final that works everywhere.", "tags": ["Editing", "VFX", "Color"] }
+      { "title": "PRE PRODUCTION", "description": "Accelerates scripts, visual worlds, character continuity and storyboards with AI.", "tags": ["Script", "AI Visuals", "Storyboard"] },
+      { "title": "PRODUCTION + AI VIDEO", "description": "Unites live action and generative AI under one directing and cinematography language.", "tags": ["Live Action", "AI Film", "Studio"] },
+      { "title": "POST PRODUCTION", "description": "Editing, VFX, color, sound and format adaptations create a final that works everywhere.", "tags": ["Editing", "VFX", "Color"] }
     ],
     "details": [
       [
