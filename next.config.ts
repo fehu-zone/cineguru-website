@@ -10,6 +10,20 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
   compress: true,
+  async redirects() {
+    return [
+      {
+        source: "/iletisim",
+        destination: "/tr#contact",
+        permanent: true,
+      },
+      {
+        source: "/contact",
+        destination: "/en#contact",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
