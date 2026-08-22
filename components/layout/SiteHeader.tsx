@@ -65,16 +65,18 @@ export function SiteHeader({ locale, messages }: { locale: Locale; messages: Mes
           )}
           aria-label={nav.mainLabel}
         >
-          <div className="flex justify-center gap-[clamp(1.1rem,2.4vw,2.8rem)] font-mono text-[0.63rem] font-semibold uppercase tracking-[0.09em] max-[940px]:flex-col max-[940px]:items-start max-[940px]:gap-1 max-[940px]:font-display max-[940px]:text-[clamp(2.75rem,11vw,5rem)] max-[940px]:font-semibold max-[940px]:normal-case max-[940px]:tracking-[-0.04em]">
+          <ul className="flex justify-center gap-[clamp(1.1rem,2.4vw,2.8rem)] font-mono text-[0.63rem] font-semibold uppercase tracking-[0.09em] max-[940px]:flex-col max-[940px]:items-start max-[940px]:gap-1 max-[940px]:font-display max-[940px]:text-[clamp(2.75rem,11vw,5rem)] max-[940px]:font-semibold max-[940px]:normal-case max-[940px]:tracking-[-0.04em] list-none p-0 m-0">
             {navigationItems.map((item) => {
               const href = isHomePage ? item.href : `/${locale}${item.href}`;
               return (
-                <Link key={item.key} className="text-foreground/65 transition-colors hover:text-foreground max-[940px]:text-foreground" href={href} onClick={closeMenu}>
-                  {nav.items[item.key]}
-                </Link>
+                <li key={item.key}>
+                  <Link className="text-foreground/65 transition-colors hover:text-foreground max-[940px]:text-foreground" href={href} onClick={closeMenu}>
+                    {nav.items[item.key]}
+                  </Link>
+                </li>
               );
             })}
-          </div>
+          </ul>
 
           <div className="mt-12 hidden grid-cols-2 gap-10 border-t border-foreground/15 pt-8 max-[940px]:grid max-[640px]:grid-cols-1">
             <div>

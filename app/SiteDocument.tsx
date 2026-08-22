@@ -1,6 +1,6 @@
 import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { siteConfig } from "@/data/site";
+import { navigationItems, siteConfig } from "@/data/site";
 import { getMessages } from "@/i18n/config";
 import "./globals.css";
 
@@ -74,6 +74,17 @@ export default function SiteDocument({
         url: siteConfig.url,
         publisher: { "@id": `${siteConfig.url}/#organization` },
         inLanguage: lang === "tr" ? "tr-TR" : "en-US",
+      },
+      {
+        "@type": "ItemList",
+        "@id": `${siteConfig.url}/#navigation`,
+        name: messages.navigation.mainLabel,
+        itemListElement: navigationItems.map((item, index) => ({
+          "@type": "SiteNavigationElement",
+          position: index + 1,
+          name: messages.navigation.items[item.key],
+          url: `${siteConfig.url}/${lang}${item.href}`,
+        })),
       },
     ],
   };
