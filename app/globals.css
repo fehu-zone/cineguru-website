@@ -94,10 +94,10 @@
     width: auto;
     color: var(--color-accent);
     font-family: var(--font-mono), "JetBrains Mono", monospace;
-    font-size: clamp(0.7rem, calc(0.12vw + 0.66rem), 0.82rem);
+    font-size: clamp(0.72rem, calc(0.14vw + 0.68rem), 0.84rem);
     font-weight: 700;
-    letter-spacing: 0.1em;
-    line-height: 1;
+    letter-spacing: 0.16em;
+    line-height: 1.2;
     text-transform: uppercase;
   }
 
